@@ -1,6 +1,6 @@
 package strategies.momentum.macd;
 
-import indicators.macd.MACD;
+import strategies.indicators.macd.MACD;
 
 public class MACDStrategy {
     private MACD macd;

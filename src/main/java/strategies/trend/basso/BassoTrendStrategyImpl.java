@@ -1,9 +1,8 @@
 package strategies.trend.basso;
 
-import indicators.bollinger.BollingerBands;
-import indicators.donchian.DonchianChannel;
-import indicators.keltner.*;
-import indicators.keltner.*;
+import strategies.indicators.bollinger.BollingerBands;
+import strategies.indicators.donchian.DonchianChannel;
+import strategies.indicators.keltner.*;
 
 public class BassoTrendStrategyImpl implements BassoTrendStrategy {
 

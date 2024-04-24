@@ -1,6 +1,6 @@
 package strategies.sideways.options;
 
-import indicators.hurst.HurstExponent;
+import strategies.indicators.hurst.HurstExponent;
 
 public class WeeklyOptionsStrategy {
     private TrendStateMap trendStateMap;

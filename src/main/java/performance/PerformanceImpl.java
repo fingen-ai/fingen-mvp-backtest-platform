@@ -1,6 +1,6 @@
 package performance;
 
-import metrics.FinancialMetrics;
+import performance.metrics.FinancialMetrics;
 
 public class PerformanceImpl implements Performance {
     

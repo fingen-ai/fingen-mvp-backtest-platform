@@ -1,6 +1,6 @@
 package strategies.statarb.price.meanrevert.iqr;
 
-import indicators.iqr.IQRExtremes;
+import strategies.indicators.iqr.IQRExtremes;
 
 public class IQRExtremesReversionStrategy {
     private double[] prices;
