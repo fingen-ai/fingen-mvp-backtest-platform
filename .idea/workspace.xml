@@ -4,7 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="">
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/Orchestrator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/ServiceHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/ServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/ServiceWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/SimpleData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/Warmup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightPub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightPubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSPub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsPub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsPubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfPub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfPubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PriceData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PriceHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PricePub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PricePubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PriceWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherPub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherPubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyPub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyPubImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/CSVFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/StreamingDataClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/OrchestratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/util/CSVFileReaderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,12 +74,54 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/bart/IdeaProjects/fingen-mvp-platform/src/test/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Orchestrator">
+    <configuration name="Orchestrator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="service.Orchestrator" />
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrchestratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OrchestratorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Orchestrator" />
+        <item itemvalue="JUnit.OrchestratorTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -42,10 +130,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713991260370</updated>
+      <workItem from="1713991261399" duration="552000" />
     </task>
+    <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
+      <option name="closed" value="true" />
+      <created>1713991533370</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713991533370</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
   </component>
 </project>
