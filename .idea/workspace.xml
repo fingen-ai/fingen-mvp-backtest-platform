@@ -4,42 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE.">
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/base/Warmup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/bollinger/BollingerBands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/bollinger/BollingerBands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/donchian/DonchianChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/donchian/DonchianChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/emax/EMACrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/emax/FiftyDayEMA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/FiftyDayEMA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/emax/TenDayEMA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/TenDayEMA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/hurst/HurstExponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/hurst/HurstExponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/iqr/IQRChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/iqr/IQRChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/iqr/IQRExtremes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/iqr/IQRExtremes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/keltner/AverageTrueRangeCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/keltner/AverageTrueRangeCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/keltner/ExponentialMovingAverageCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/keltner/ExponentialMovingAverageCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/keltner/KeltnerChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/keltner/KeltnerChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/keltner/MovingAverageCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/keltner/MovingAverageCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/keltner/SimpleAverageTrueRangeCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/keltner/SimpleAverageTrueRangeCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/macd/MACD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/macd/MACD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indicators/rsi/RSI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/rsi/RSI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metrics/FinancialMetrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/metrics/FinancialMetrics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/momentum/macd/MACDStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/momentum/macd/MACDStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/sideways/options/WeeklyOptionsStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/sideways/options/WeeklyOptionsStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/statarb/price/meanrevert/iqr/IQRExtremesReversionStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/statarb/price/meanrevert/iqr/IQRExtremesReversionStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/hedge/HedgeBassoTrendStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/hedge/HedgeBassoTrendStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategyImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategyImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/bollingerbands/BollingerBandsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/bollingerbands/BollingerBandsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/donchian/DonchianChannelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/donchian/DonchianChannelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/emax/EMACrossoverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMACrossoverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/emax/FiftyDayEMATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/FiftyDayEMATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/emax/TenDayEMATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/TenDayEMATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/hurst/HurstExponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/hurst/HurstExponentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/iqr/IQRChannelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/iqr/IQRChannelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/iqr/IQRExtremesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/iqr/IQRExtremesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/keltner/KeltnerChannelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/keltner/KeltnerChannelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/macd/MACDTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/macd/MACDTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/indicators/rsi/RSITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/rsi/RSITest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/metrics/FinancialMetricsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/performance/metrics/FinancialMetricsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +34,7 @@
   "keyToString": {
     "Application.CSVFileReaderTest.executor": "Run",
     "Application.HedgeBassoTrendStrategyTest.executor": "Run",
+    "Application.KeltnerChannelTest.executor": "Run",
     "Application.OMSBenchmarkMain.executor": "Run",
     "Application.Orchestrator.executor": "Run",
     "JUnit.BollingerBandsTest.executor": "Run",
@@ -72,11 +43,19 @@
     "JUnit.FiftyDayEMATest.executor": "Run",
     "JUnit.FinancialMetricsTest.executor": "Run",
     "JUnit.HurstExponentTest.executor": "Run",
+    "JUnit.IQRChannelTest.executor": "Run",
+    "JUnit.IQRExtremesReversionStrategyTest.executor": "Run",
+    "JUnit.IQRExtremesTest.executor": "Run",
+    "JUnit.LongShortOptionArbitrageStrategyTest.executor": "Run",
+    "JUnit.MACDStrategyTest.executor": "Run",
+    "JUnit.MACDTest.executor": "Run",
     "JUnit.OMSImplTest.executor": "Run",
     "JUnit.OrchestratorTest.executor": "Run",
     "JUnit.PerformanceTest.executor": "Run",
+    "JUnit.RSITest.executor": "Run",
     "JUnit.RiskTest.executor": "Run",
     "JUnit.TenDayEMATest.executor": "Run",
+    "JUnit.WeeklyOptionsStrategyTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -104,7 +83,20 @@
       <recent name="$PROJECT_DIR$/src/test/java/oems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IQRExtremesReversionStrategyTest">
+  <component name="RunManager" selected="Application.Orchestrator">
+    <configuration name="Orchestrator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.service.Orchestrator" />
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="IQRExtremesReversionStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
@@ -150,21 +142,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RSITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="strategies.indicators.rsi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="strategies.indicators.rsi" />
-      <option name="MAIN_CLASS_NAME" value="strategies.indicators.rsi.RSITest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WeeklyOptionsStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
@@ -182,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Orchestrator" />
         <item itemvalue="JUnit.IQRExtremesReversionStrategyTest" />
         <item itemvalue="JUnit.LongShortOptionArbitrageStrategyTest" />
         <item itemvalue="JUnit.WeeklyOptionsStrategyTest" />
         <item itemvalue="JUnit.MACDStrategyTest" />
-        <item itemvalue="JUnit.RSITest" />
       </list>
     </recent_temporary>
   </component>
@@ -199,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713991260370</updated>
       <workItem from="1713991261399" duration="1828000" />
-      <workItem from="1713999126024" duration="1330000" />
+      <workItem from="1713999126024" duration="3780000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -233,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713999785790</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE.">
+      <option name="closed" value="true" />
+      <created>1714000566811</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714000566811</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +229,7 @@
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
-    <option name="LAST_COMMIT_MESSAGE" value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
+    <MESSAGE value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
+    <option name="LAST_COMMIT_MESSAGE" value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
   </component>
 </project>
