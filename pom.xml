@@ -52,6 +52,21 @@
             <version>2.25ea8</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/net.openhft/chronicle-queue -->
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle-queue</artifactId>
+            <version>5.25ea13</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.openhft/jlbh -->
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>jlbh</artifactId>
+            <version>1.25ea7</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- For WebSocket Client -->
         <dependency>
             <groupId>org.glassfish.tyrus.bundles</groupId>

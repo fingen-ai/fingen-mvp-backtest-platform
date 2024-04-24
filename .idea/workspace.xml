@@ -4,54 +4,80 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Orchestrator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/ServiceHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/ServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/ServiceWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/SimpleData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/base/Warmup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightPub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/insight/InsightWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSPub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/oems/OEMSWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsPub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsPubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ops/OpsWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfPub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfPubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/performance/PerfWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PriceData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PriceHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PricePub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PricePubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/price/PriceWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherPub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherPubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyPub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyPubImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/CSVFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/StreamingDataClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/OrchestratorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/CSVFileReaderTest.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/OrderAdderMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/OrderViewerMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSOut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/api/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/AbstractEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/BuySell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/CancelAll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/CancelOrderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/ExecutionReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/NewOrderSingle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/OrderCancelReject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/OrderType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/oems/OMSBenchmarkMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/oems/OMSImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/oems/throughput-test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/cancelAll/in.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/cancelAll/out.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/cancelOrderRequest/in.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/cancelOrderRequest/out.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/newOrderSingle/in.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/newOrderSingle/out.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/base/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/base/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/base/ServiceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/base/ServiceHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/base/ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/base/ServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/base/ServiceWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/base/ServiceWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/base/SimpleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/base/SimpleData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/base/Warmup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/base/Warmup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/insight/InsightHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/insight/InsightPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/insight/InsightWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/oems/OEMSHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/oems/OEMSPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/oems/OEMSWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ops/OpsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ops/OpsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ops/OpsPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsPub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ops/OpsPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ops/OpsWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/performance/PerfHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/performance/PerfPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/performance/PerfWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/price/PriceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/price/PriceData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/price/PriceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/price/PriceHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/price/PricePub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/price/PricePub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/price/PricePubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/price/PricePubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/price/PriceWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/price/PriceWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/publisher/PublisherWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/strategy/StrategyWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/CSVFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/util/CSVFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/StreamingDataClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/util/StreamingDataClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OrchestratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/util/CSVFileReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/util/CSVFileReaderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +98,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.CSVFileReaderTest.executor": "Run",
+    "Application.Orchestrator.executor": "Run",
+    "JUnit.OMSImplTest.executor": "Run",
+    "JUnit.OrchestratorTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -83,6 +113,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -91,8 +124,24 @@
       <recent name="$PROJECT_DIR$/src/test/java" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/oems" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Orchestrator">
+  <component name="RunManager" selected="JUnit.OMSImplTest">
+    <configuration name="CSVFileReaderTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.util.CSVFileReaderTest" />
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Orchestrator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="service.Orchestrator" />
       <module name="fingen-mvp-platform" />
@@ -106,10 +155,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OMSImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="oems" />
+      <option name="MAIN_CLASS_NAME" value="oems.OMSImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrchestratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OrchestratorTest" />
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="core.OrchestratorTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -117,8 +181,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Orchestrator" />
+        <item itemvalue="JUnit.OMSImplTest" />
         <item itemvalue="JUnit.OrchestratorTest" />
+        <item itemvalue="Application.CSVFileReaderTest" />
+        <item itemvalue="Application.Orchestrator" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +196,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713991260370</updated>
-      <workItem from="1713991261399" duration="552000" />
+      <workItem from="1713991261399" duration="1571000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -140,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713991533370</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
+      <option name="closed" value="true" />
+      <created>1713992017459</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713992017459</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +222,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
+    <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
   </component>
 </project>
