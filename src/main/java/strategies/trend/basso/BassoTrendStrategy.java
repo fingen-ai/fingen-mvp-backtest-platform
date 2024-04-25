@@ -4,5 +4,5 @@ import core.service.strategy.StrategyData;
 
 public interface BassoTrendStrategy {
 
-    String getStrategyDecision();
+    String getStrategyDecision(double[] prices, double[] high, double[] low, double[] close);
 }

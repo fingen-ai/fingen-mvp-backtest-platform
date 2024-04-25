@@ -17,7 +17,7 @@ public class HedgeBassoTrendStrategy {
 
     public void updateHedge(double[] prices, double[] high, double[] low, double[] close) {
 
-        String trendDecision = trendStrategy.getStrategyDecision();
+        String trendDecision = trendStrategy.getStrategyDecision(prices, high, low, close);
 
         // Calculate the current price's 21-day EMA
         double currentEMA = calculateEMA(prices);

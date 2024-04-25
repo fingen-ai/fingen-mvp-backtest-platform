@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE.">
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/strategies/hedge/HedgeBassoTrendStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/hedge/HedgeBassoTrendStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategyImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategyImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/hedge/HedgeBassoTrendStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/hedge/HedgeBassoTrendStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/trend/basso/BassoTrendBassoTrendStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/trend/basso/BassoTrendBassoTrendStrategyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +39,7 @@
     "Application.KeltnerChannelTest.executor": "Run",
     "Application.OMSBenchmarkMain.executor": "Run",
     "Application.Orchestrator.executor": "Run",
+    "JUnit.BassoTrendBassoTrendStrategyTest.executor": "Run",
     "JUnit.BollingerBandsTest.executor": "Run",
     "JUnit.DonchianChannelTest.executor": "Run",
     "JUnit.EMACrossoverTest.executor": "Run",
@@ -83,7 +86,20 @@
       <recent name="$PROJECT_DIR$/src/test/java/oems" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Orchestrator">
+  <component name="RunManager" selected="Application.HedgeBassoTrendStrategyTest">
+    <configuration name="HedgeBassoTrendStrategyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="strategies.hedge.HedgeBassoTrendStrategyTest" />
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="strategies.hedge.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Orchestrator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="core.service.Orchestrator" />
       <module name="fingen-mvp-platform" />
@@ -93,6 +109,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BassoTrendBassoTrendStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="strategies.trend.basso.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="strategies.trend.basso" />
+      <option name="MAIN_CLASS_NAME" value="strategies.trend.basso.BassoTrendBassoTrendStrategyTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -127,43 +158,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MACDStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="strategies.momentum.macd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="strategies.momentum.macd" />
-      <option name="MAIN_CLASS_NAME" value="strategies.momentum.macd.MACDStrategyTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeeklyOptionsStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="strategies.sideways.options.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="strategies.sideways.options" />
-      <option name="MAIN_CLASS_NAME" value="strategies.sideways.options.WeeklyOptionsStrategyTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HedgeBassoTrendStrategyTest" />
+        <item itemvalue="JUnit.BassoTrendBassoTrendStrategyTest" />
         <item itemvalue="Application.Orchestrator" />
         <item itemvalue="JUnit.IQRExtremesReversionStrategyTest" />
         <item itemvalue="JUnit.LongShortOptionArbitrageStrategyTest" />
-        <item itemvalue="JUnit.WeeklyOptionsStrategyTest" />
-        <item itemvalue="JUnit.MACDStrategyTest" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +177,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713991260370</updated>
       <workItem from="1713991261399" duration="1828000" />
-      <workItem from="1713999126024" duration="3780000" />
+      <workItem from="1713999126024" duration="8810000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -218,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714000566811</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP.">
+      <option name="closed" value="true" />
+      <created>1714002968732</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714002968732</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +239,7 @@
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
     <MESSAGE value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
-    <option name="LAST_COMMIT_MESSAGE" value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
+    <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
   </component>
 </project>
