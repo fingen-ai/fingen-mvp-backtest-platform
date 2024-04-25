@@ -15,4 +15,6 @@ public class InsightData extends SelfDescribingMarshallable {
     public double marketCap;
     public CharSequence start;
     public CharSequence end;
+    public double lhcAvgPrice;
+    public String bassoOrderIdea;
 }

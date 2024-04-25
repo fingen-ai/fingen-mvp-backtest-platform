@@ -1,10 +1,5 @@
 package core.service.strategy;
 
-import net.openhft.chronicle.core.OS;
-import net.openhft.chronicle.queue.ExcerptAppender;
-import net.openhft.chronicle.queue.RollCycles;
-import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
-import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
 import strategies.trend.basso.BassoTrendStrategy;
 import strategies.trend.basso.BassoTrendStrategyImpl;
 
@@ -19,13 +14,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
     private double[] low = new double[50];
     private double[] close = new double[50];
     private int i = 0;
-
     String bassoOrderIdea = null;
-    String basePath = OS.TMP + "/HiveMain/Queues/orderIdeaQ";
-    private ExcerptAppender appender;
-    SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(basePath)
-            .rollCycle(RollCycles.DAILY) // Set the roll cycle for new queue files
-            .build();
 
     BassoTrendStrategy bassoTrendStrategy = new BassoTrendStrategyImpl();
 
@@ -46,23 +35,13 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
 
         if(i == 49) {
             bassoOrderIdea = bassoTrendStrategy.getStrategyDecision(prices, high, low, close);
-            this.appender = queue.acquireAppender();
-            appender.writeText(bassoOrderIdea);
-
+            strategyData.lhcAvgPrice = prices[i];
+            strategyData.bassoOrderIdea = bassoOrderIdea;
             removeTheElement(low, 0);
             removeTheElement(high, 0);
             removeTheElement(close, 0);
             removeTheElement(prices, 0);
-
             i = 49;
-
-            // USE IN TEST CLASS
-            //ExcerptTailer tailer = queue.createTailer();
-            //String text;
-            //while ((text = tailer.readText()) != null) {
-                //System.out.println("Read Basso Order Idea: " + text);
-            //}
-
         } else {
             i++;
         }
