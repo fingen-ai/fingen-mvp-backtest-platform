@@ -2,7 +2,6 @@ package core.service.strategy;
 
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptAppender;
-import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.RollCycles;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
@@ -46,10 +45,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         prices[i] = (low[i] + high[i] + close[i]) / 3;
 
         if(i == 49) {
-
             bassoOrderIdea = bassoTrendStrategy.getStrategyDecision(prices, high, low, close);
-            System.out.println("Print Basso Order Idea: " + bassoOrderIdea);
-
             this.appender = queue.acquireAppender();
             appender.writeText(bassoOrderIdea);
 
@@ -60,11 +56,12 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
 
             i = 49;
 
-            ExcerptTailer tailer = queue.createTailer();
-            String text;
-            while ((text = tailer.readText()) != null) {
-                System.out.println("Read Basso Order Idea: " + text);
-            }
+            // USE IN TEST CLASS
+            //ExcerptTailer tailer = queue.createTailer();
+            //String text;
+            //while ((text = tailer.readText()) != null) {
+                //System.out.println("Read Basso Order Idea: " + text);
+            //}
 
         } else {
             i++;
