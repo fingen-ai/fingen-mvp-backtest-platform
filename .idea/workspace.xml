@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE.">
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +171,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713991260370</updated>
       <workItem from="1713991261399" duration="1828000" />
-      <workItem from="1713999126024" duration="13165000" />
+      <workItem from="1713999126024" duration="13619000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -246,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714017361850</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE.">
+      <option name="closed" value="true" />
+      <created>1714018474887</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714018474887</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +266,7 @@
     <MESSAGE value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
     <MESSAGE value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
+    <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE." />
+    <option name="LAST_COMMIT_MESSAGE" value="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE." />
   </component>
 </project>

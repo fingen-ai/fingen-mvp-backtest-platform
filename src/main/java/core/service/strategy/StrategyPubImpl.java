@@ -28,6 +28,15 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
     public void simpleCall(StrategyData strategyData) throws IOException {
         strategyData.svcStartTs = System.nanoTime();
 
+        bassTrendStrategy(strategyData);
+
+        strategyData.svcStopTs = System.nanoTime();
+        strategyData.svcLatency = strategyData.svcStopTs - strategyData.svcStartTs;
+        System.out.println("STRATEGY: " + strategyData);
+        output.simpleCall(strategyData);
+    }
+
+    private void bassTrendStrategy(StrategyData strategyData) {
         low[i] = strategyData.low;
         high[i] = strategyData.high;
         close[i] = strategyData.close;
@@ -45,14 +54,8 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         } else {
             i++;
         }
-
-        strategyData.svcStopTs = System.nanoTime();
-        strategyData.svcLatency = strategyData.svcStopTs - strategyData.svcStartTs;
-        System.out.println("STRATEGY: " + strategyData);
-        output.simpleCall(strategyData);
     }
 
-    // Function to remove the element
     private static double[] removeTheElement(double[] arr, int index)
     {
         if (arr == null || index < 0
@@ -63,18 +66,15 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         // Create another array of size one less
         double[] updateArray = new double[arr.length - 1];
 
-        // Copy the elements except the index
-        // from original array to the other array
+        // Copy the elements except the index from original array to the other array
         for (int i = 0, k = 0; i < arr.length; i++) {
 
-            // if the index is
-            // the removal element index
+            // if the index is the removal element index
             if (i == index) {
                 continue;
             }
 
-            // if the index is not
-            // the removal element index
+            // if the index is not the removal element index
             updateArray[k++] = arr[i];
         }
 
