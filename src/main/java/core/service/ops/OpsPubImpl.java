@@ -18,7 +18,7 @@ public class OpsPubImpl implements OpsPub, OpsHandler<OpsPub> {
         opsData.svcStartTs = System.nanoTime();
         opsData.svcStopTs = System.nanoTime();
         opsData.svcLatency = opsData.svcStopTs - opsData.svcStartTs;
-        //System.out.println("OPS: " + opsData);
+        System.out.println("OPS: " + opsData);
         output.simpleCall(opsData);
     }
 }

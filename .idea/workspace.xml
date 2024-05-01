@@ -104,7 +104,7 @@
       <recent name="$PROJECT_DIR$/src/test/java/oems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrchestratorTest">
+  <component name="RunManager" selected="Application.Orchestrator">
     <configuration name="HedgeBassoTrendStrategyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="strategies.hedge.HedgeBassoTrendStrategyTest" />
       <module name="fingen-mvp-platform" />
@@ -179,9 +179,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Orchestrator" />
         <item itemvalue="JUnit.OrchestratorTest" />
         <item itemvalue="JUnit.OrchestratorTest.testPriceQueueOutputNEW" />
-        <item itemvalue="Application.Orchestrator" />
         <item itemvalue="Application.HedgeBassoTrendStrategyTest" />
         <item itemvalue="JUnit.BassoTrendBassoTrendStrategyTest" />
       </list>
