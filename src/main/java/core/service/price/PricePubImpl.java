@@ -12,7 +12,7 @@ public class PricePubImpl implements PricePub, PriceHandler<PricePub> {
         priceData.svcStartTs = System.nanoTime();
         priceData.svcStopTs = System.nanoTime();
         priceData.svcLatency = priceData.svcStopTs - priceData.svcStartTs;
-        System.out.println("PRICE: " + priceData);
+        //System.out.println("PRICE: " + priceData);
         output.simpleCall(priceData);
     }
 }

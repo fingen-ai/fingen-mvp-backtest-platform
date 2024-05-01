@@ -19,7 +19,7 @@ public class PublisherPubImpl implements PublisherPub, PublisherHandler<Publishe
         publisherData.svcStartTs = System.nanoTime();
         publisherData.svcStopTs = System.nanoTime();
         publisherData.svcLatency = publisherData.svcStopTs - publisherData.svcStartTs;
-        System.out.println("PUBLISHER: " + publisherData);
+        //System.out.println("PUBLISHER: " + publisherData);
         output.simpleCall(publisherData);
     }
 }
