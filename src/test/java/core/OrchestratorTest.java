@@ -27,7 +27,7 @@ public class OrchestratorTest {
                     }
                     PriceData priceData = dc.wire().read().object(PriceData.class);
                     if (priceData != null) {
-                        System.out.println("Data read: " + priceData);
+                        System.out.println("PriceData read: " + priceData);
                     } else {
                         System.out.println("Reached an entry that couldn't be deserialized to PriceData.");
                     }
