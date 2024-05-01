@@ -4,17 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="AccountTest - WIP.&#10;Account svc - WIP.&#10;AccountRawSpecific svc - WIP.&#10;MapAccountData svc - WIP.">
+      <change afterPath="$PROJECT_DIR$/null/tmp/HiveMain/Queues/priceQ/metadata.cq4t" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;fingen-ai&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/fingen-ai/fingen-mvp-backtest-platform.git&quot;,
+    &quot;accountId&quot;: &quot;dae64447-b5f7-43f1-9ad8-a5052b0a0296&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -28,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.CSVFileReaderTest.executor": "Run",
     "Application.HedgeBassoTrendStrategyTest.executor": "Run",
     "Application.KeltnerChannelTest.executor": "Run",
@@ -48,6 +71,8 @@
     "JUnit.MACDTest.executor": "Run",
     "JUnit.OMSImplTest.executor": "Run",
     "JUnit.OrchestratorTest.executor": "Run",
+    "JUnit.OrchestratorTest.testPriceQueueOutput.executor": "Debug",
+    "JUnit.OrchestratorTest.testPriceQueueOutputNEW.executor": "Run",
     "JUnit.PerformanceTest.executor": "Run",
     "JUnit.RSITest.executor": "Run",
     "JUnit.RiskTest.executor": "Run",
@@ -58,7 +83,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/bart/IdeaProjects/fingen-mvp-platform/src/test/java",
+    "last_opened_file_path": "/Users/bart/IdeaProjects/fingen-mvp-backtest-platform",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,7 +105,7 @@
       <recent name="$PROJECT_DIR$/src/test/java/oems" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Orchestrator">
+  <component name="RunManager" selected="JUnit.OrchestratorTest">
     <configuration name="HedgeBassoTrendStrategyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="strategies.hedge.HedgeBassoTrendStrategyTest" />
       <module name="fingen-mvp-platform" />
@@ -122,45 +147,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IQRExtremesReversionStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrchestratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="strategies.statarb.price.meanrevert.iqr.*" />
+          <option name="PATTERN" value="core.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="strategies.statarb.price.meanrevert.iqr" />
-      <option name="MAIN_CLASS_NAME" value="strategies.statarb.price.meanrevert.iqr.IQRExtremesReversionStrategyTest" />
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="core.OrchestratorTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LongShortOptionArbitrageStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrchestratorTest.testPriceQueueOutputNEW" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="strategies.statarb.options.*" />
+          <option name="PATTERN" value="core.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="strategies.statarb.options" />
-      <option name="MAIN_CLASS_NAME" value="strategies.statarb.options.LongShortOptionArbitrageStrategyTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="core.OrchestratorTest" />
+      <option name="METHOD_NAME" value="testPriceQueueOutputNEW" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrchestratorTest" />
+        <item itemvalue="JUnit.OrchestratorTest.testPriceQueueOutputNEW" />
         <item itemvalue="Application.Orchestrator" />
         <item itemvalue="Application.HedgeBassoTrendStrategyTest" />
         <item itemvalue="JUnit.BassoTrendBassoTrendStrategyTest" />
-        <item itemvalue="JUnit.IQRExtremesReversionStrategyTest" />
-        <item itemvalue="JUnit.LongShortOptionArbitrageStrategyTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -172,6 +206,8 @@
       <updated>1713991260370</updated>
       <workItem from="1713991261399" duration="1828000" />
       <workItem from="1713999126024" duration="13619000" />
+      <workItem from="1714491451336" duration="5691000" />
+      <workItem from="1714497258764" duration="12382000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -259,7 +295,19 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module" />
