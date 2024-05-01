@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment=" Re-init commit.">
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment=" Re-init commit.&#10; OrchestratorTest - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/price/PricePubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/price/PricePubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +207,7 @@
       <workItem from="1713999126024" duration="13619000" />
       <workItem from="1714491451336" duration="5691000" />
       <workItem from="1714497258764" duration="12382000" />
-      <workItem from="1714541585185" duration="6828000" />
+      <workItem from="1714541585185" duration="7695000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -312,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714541607871</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary=" Re-init commit.&#10; OrchestratorTest - WIP.">
+      <option name="closed" value="true" />
+      <created>1714585669570</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714585669570</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,6 +341,7 @@
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE." />
     <MESSAGE value="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc." />
     <MESSAGE value=" Re-init commit." />
-    <option name="LAST_COMMIT_MESSAGE" value=" Re-init commit." />
+    <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value=" Re-init commit.&#10; OrchestratorTest - WIP." />
   </component>
 </project>

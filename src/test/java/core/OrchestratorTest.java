@@ -1,7 +1,12 @@
 package core;
 
 import core.service.Orchestrator;
+import core.service.insight.InsightData;
+import core.service.oems.OEMSData;
+import core.service.ops.OpsData;
+import core.service.performance.PerfData;
 import core.service.price.PriceData;
+import core.service.publisher.PublisherData;
 import core.service.strategy.StrategyData;
 import core.util.CSVFileReader;
 import net.openhft.chronicle.core.OS;
@@ -33,6 +38,12 @@ public class OrchestratorTest {
         // Get expected data
         PriceData expectedPriceData = new PriceData();
         StrategyData expectedStrategyData = new StrategyData();
+        InsightData expectedInsightData = new InsightData();
+        OEMSData expectedOEMSData = new OEMSData();
+        PerfData expectedPerfData = new PerfData();
+        PublisherData expectedPubData = new PublisherData();
+        OpsData expectedOpsData = new OpsData();
+
         String userHome = System.getProperty("user.home");
         String filePath = userHome + "/FinGen/Test_Data/usd-coin_2018-10-08_2024-04-21.csv";
         CSVFileReader csvFileReader = new CSVFileReader(filePath);
@@ -56,14 +67,21 @@ public class OrchestratorTest {
         // Validate data from each queue
         PriceData actualPriceData = readDataFromQueue("priceQ", PriceData.class);
         StrategyData actualStrategyData = readDataFromQueue("stratQ", StrategyData.class);
+        InsightData actualInsightData = readDataFromQueue("stratQ", InsightData.class);
+        OEMSData actualOEMSData = readDataFromQueue("oemsQ", OEMSData.class);
+        PerfData actualPerfData = readDataFromQueue("perfQ", PerfData.class);
+        PublisherData actualPubData = readDataFromQueue("pubQ", PublisherData.class);
+        OpsData actualOpsData = readDataFromQueue("opsQ", OpsData.class);
 
         // Perform validations
         if(expectedPriceData.start.equals(actualPriceData.start)) {
             validatePriceData(actualPriceData, expectedPriceData);
             validateStrategyData(actualStrategyData, expectedStrategyData);
-            System.out.println("E-Price: " + expectedPriceData);
-            System.out.println("A-Price: " + actualPriceData);
-            System.out.println("\n");
+            validateInsightData(actualInsightData, expectedInsightData);
+            validateOEMSData(actualOEMSData, expectedOEMSData);
+            validatePerfData(actualPerfData, expectedPerfData);
+            validatePublishingData(actualPubData, expectedPubData);
+            validateOpsData(actualOpsData, expectedOpsData);
         }
     }
 
@@ -109,6 +127,86 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Strategy field", expected.svcStartTs, actual.svcStartTs, 0.001);
         assertEquals("Mismatch in some Strategy field", expected.svcStopTs, actual.svcStopTs, 0.001);
         assertEquals("Mismatch in some Strategy field", expected.svcLatency, actual.svcLatency, 0.001);
+    }
+
+    private void validateInsightData(InsightData actual, InsightData expected) {
+        assertEquals("Mismatch in some Insight field", expected.start, actual.start);
+        assertEquals("Mismatch in some Insight field", expected.recId, actual.recId, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.start, actual.start);
+        assertEquals("Mismatch in some Insight field", expected.end, actual.end);
+        assertEquals("Mismatch in some Insight field", expected.open, actual.open, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.high, actual.high, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.low, actual.low, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.close, actual.close, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.volume, actual.volume, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.marketCap, actual.marketCap, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.svcStartTs, actual.svcStartTs, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.svcStopTs, actual.svcStopTs, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.svcLatency, actual.svcLatency, 0.001);
+    }
+
+    private void validateOEMSData(OEMSData actual, OEMSData expected) {
+        assertEquals("Mismatch in some OEMS field", expected.start, actual.start);
+        assertEquals("Mismatch in some OEMS field", expected.recId, actual.recId, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.start, actual.start);
+        assertEquals("Mismatch in some OEMS field", expected.end, actual.end);
+        assertEquals("Mismatch in some OEMS field", expected.open, actual.open, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.high, actual.high, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.low, actual.low, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.close, actual.close, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.volume, actual.volume, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.marketCap, actual.marketCap, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.svcStartTs, actual.svcStartTs, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.svcStopTs, actual.svcStopTs, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.svcLatency, actual.svcLatency, 0.001);
+    }
+
+    private void validatePerfData(PerfData actual, PerfData expected) {
+        assertEquals("Mismatch in some Perf field", expected.start, actual.start);
+        assertEquals("Mismatch in some Perf field", expected.recId, actual.recId, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.start, actual.start);
+        assertEquals("Mismatch in some Perf field", expected.end, actual.end);
+        assertEquals("Mismatch in some Perf field", expected.open, actual.open, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.high, actual.high, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.low, actual.low, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.close, actual.close, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.volume, actual.volume, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.marketCap, actual.marketCap, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.svcStartTs, actual.svcStartTs, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.svcStopTs, actual.svcStopTs, 0.001);
+        assertEquals("Mismatch in some Perf field", expected.svcLatency, actual.svcLatency, 0.001);
+    }
+
+    private void validatePublishingData(PublisherData actual, PublisherData expected) {
+        assertEquals("Mismatch in some Publishing field", expected.start, actual.start);
+        assertEquals("Mismatch in some Publishing field", expected.recId, actual.recId, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.start, actual.start);
+        assertEquals("Mismatch in some Publishing field", expected.end, actual.end);
+        assertEquals("Mismatch in some Publishing field", expected.open, actual.open, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.high, actual.high, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.low, actual.low, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.close, actual.close, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.volume, actual.volume, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.marketCap, actual.marketCap, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.svcStartTs, actual.svcStartTs, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.svcStopTs, actual.svcStopTs, 0.001);
+        assertEquals("Mismatch in some Publishing field", expected.svcLatency, actual.svcLatency, 0.001);
+    }
+
+    private void validateOpsData(OpsData actual, OpsData expected) {
+        assertEquals("Mismatch in some Ops field", expected.start, actual.start);
+        assertEquals("Mismatch in some Ops field", expected.recId, actual.recId, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.start, actual.start);
+        assertEquals("Mismatch in some Ops field", expected.end, actual.end);
+        assertEquals("Mismatch in some Ops field", expected.open, actual.open, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.high, actual.high, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.low, actual.low, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.close, actual.close, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.volume, actual.volume, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.marketCap, actual.marketCap, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.svcStartTs, actual.svcStartTs, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.svcStopTs, actual.svcStopTs, 0.001);
+        assertEquals("Mismatch in some Ops field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
     private static PriceData printRecord(String[] record) {
