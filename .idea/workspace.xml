@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc.">
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment=" Re-init commit." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714018474887</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary=" Re-init commit.">
+      <option name="closed" value="true" />
+      <created>1714541373893</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714541373893</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +320,7 @@
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE." />
     <MESSAGE value="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc." />
-    <option name="LAST_COMMIT_MESSAGE" value="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc." />
+    <MESSAGE value=" Re-init commit." />
+    <option name="LAST_COMMIT_MESSAGE" value=" Re-init commit." />
   </component>
 </project>
