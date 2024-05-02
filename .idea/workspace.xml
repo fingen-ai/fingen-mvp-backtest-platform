@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment=" Re-init commit.&#10; OrchestratorTest - WIP.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment=" Re-init commit.&#10; OrchestratorTest - DONE.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/StrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,6 +105,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/resources/oems" />
       <recent name="$PROJECT_DIR$/src/test/java/oems" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="core" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Orchestrator">
@@ -207,7 +213,7 @@
       <workItem from="1713999126024" duration="13619000" />
       <workItem from="1714491451336" duration="5691000" />
       <workItem from="1714497258764" duration="12382000" />
-      <workItem from="1714541585185" duration="7695000" />
+      <workItem from="1714541585185" duration="10008000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -313,7 +319,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714585669570</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=" Re-init commit.&#10; OrchestratorTest - DONE.">
+      <option name="closed" value="true" />
+      <created>1714586641467</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714586641467</updated>
+    </task>
+    <task id="LOCAL-00015" summary=" Re-init commit.&#10; OrchestratorTest - DONE.">
+      <option name="closed" value="true" />
+      <created>1714586750331</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1714586750331</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,6 +364,7 @@
     <MESSAGE value="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc." />
     <MESSAGE value=" Re-init commit." />
     <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value=" Re-init commit.&#10; OrchestratorTest - WIP." />
+    <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - DONE." />
+    <option name="LAST_COMMIT_MESSAGE" value=" Re-init commit.&#10; OrchestratorTest - DONE." />
   </component>
 </project>

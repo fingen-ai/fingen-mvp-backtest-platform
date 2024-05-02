@@ -26,8 +26,7 @@ public class OrchestratorTest {
     @Before
     public void setup() throws IOException {
         // Initialize Orchestrator with test configurations, if needed
-        String[] instruments = {"TestInstrument"}; // example instruments array
-        Orchestrator.init(instruments);
+        Orchestrator.init();
     }
 
     @Test

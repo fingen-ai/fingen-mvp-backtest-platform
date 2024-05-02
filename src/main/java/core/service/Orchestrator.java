@@ -27,7 +27,7 @@ public class Orchestrator {
 
     private static PricePub pricePubIn;
 
-    public static void init(String[] instruments) throws IOException {
+    public static void init() throws IOException {
 
         String priceQ = OS.TMP + "/HiveMain/Queues/priceQ";
         String stratQ = OS.TMP + "/HiveMain/Queues/stratQ";
@@ -81,8 +81,7 @@ public class Orchestrator {
     }
 
     public static void main(String[] args) throws IOException {
-        String[] instruments = new String[]{"EUR_USD"};
-        init(instruments);
+        init();
         run();
     }
 
