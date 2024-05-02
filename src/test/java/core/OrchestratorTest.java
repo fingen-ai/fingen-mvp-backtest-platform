@@ -34,7 +34,7 @@ public class OrchestratorTest {
         // Run the Orchestrator to populate the queues
         Orchestrator.run();
 
-        // Get expected data
+        // Instantiate dto
         PriceData expectedPriceData = new PriceData();
         StrategyData expectedStrategyData = new StrategyData();
         InsightData expectedInsightData = new InsightData();
@@ -43,6 +43,7 @@ public class OrchestratorTest {
         PublisherData expectedPubData = new PublisherData();
         OpsData expectedOpsData = new OpsData();
 
+        // Read source csv file
         String userHome = System.getProperty("user.home");
         String filePath = userHome + "/FinGen/Test_Data/usd-coin_2018-10-08_2024-04-21.csv";
         CSVFileReader csvFileReader = new CSVFileReader(filePath);
@@ -63,16 +64,19 @@ public class OrchestratorTest {
             }
         }
 
-        // Validate data from each queue
+        // Read data from each queue
         PriceData actualPriceData = readDataFromQueue("priceQ", PriceData.class);
         StrategyData actualStrategyData = readDataFromQueue("stratQ", StrategyData.class);
-        InsightData actualInsightData = readDataFromQueue("stratQ", InsightData.class);
+        InsightData actualInsightData = readDataFromQueue("insightQ", InsightData.class);
         OEMSData actualOEMSData = readDataFromQueue("oemsQ", OEMSData.class);
         PerfData actualPerfData = readDataFromQueue("perfQ", PerfData.class);
         PublisherData actualPubData = readDataFromQueue("pubQ", PublisherData.class);
         OpsData actualOpsData = readDataFromQueue("opsQ", OpsData.class);
 
-        // Perform validations
+        // Perform validations of each queue vs source file
+        // IF statement prevents race-condition that was compromising test-integrity
+        // EACH service (Price, Strategy, etc) is pinned to it's own CPU core
+        // SO race-conditions are likley
         if(expectedPriceData.start.equals(actualPriceData.start)) {
             validatePriceData(actualPriceData, expectedPriceData);
             validateStrategyData(actualStrategyData, expectedStrategyData);
@@ -84,6 +88,7 @@ public class OrchestratorTest {
         }
     }
 
+    // Read from queue
     private <T> T readDataFromQueue(String queueName, Class<T> type) throws IOException {
         String queuePath = OS.TMP + "/HiveMain/Queues/" + queueName;
         try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(queuePath).build()) {
@@ -229,48 +234,3 @@ public class OrchestratorTest {
         return priceData;
     }
 }
-
-
-/*
-package core;
-
-import core.service.price.PriceData;
-import net.openhft.chronicle.core.OS;
-import net.openhft.chronicle.queue.ExcerptTailer;
-import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
-import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
-import net.openhft.chronicle.wire.DocumentContext;
-import org.junit.Test;
-import java.io.IOException;
-
-public class OrchestratorTest {
-
-    static String priceQ = OS.TMP + "/HiveMain/Queues/priceQ";
-    private static final String PRICE_QUEUE_PATH = priceQ;
-
-    @Test
-    public void testReadAllPriceQueueRecords() throws IOException {
-        String path = PRICE_QUEUE_PATH;
-        try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(path).build()) {
-            ExcerptTailer tailer = queue.createTailer();
-
-            while (true) {
-                try (DocumentContext dc = tailer.readingDocument()) {
-                    if (!dc.isPresent()) {
-                        break; // Break the loop when no more entries are present
-                    }
-                    PriceData priceData = dc.wire().read().object(PriceData.class);
-                    if (priceData != null) {
-                        System.out.println("PriceData read: " + priceData);
-                    } else {
-                        System.out.println("Reached an entry that couldn't be deserialized to PriceData.");
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("An error occurred: " + e.getMessage());
-        }
-    }
-}
- */

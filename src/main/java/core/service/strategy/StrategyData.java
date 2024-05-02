@@ -3,6 +3,7 @@ package core.service.strategy;
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
 
 public class StrategyData extends SelfDescribingMarshallable {
+    // Price data
     public long recId;
     public long svcStartTs;
     public long svcStopTs;
@@ -15,6 +16,8 @@ public class StrategyData extends SelfDescribingMarshallable {
     public double marketCap;
     public CharSequence start;
     public CharSequence end;
+
+    // Strategy data
     public double lhcAvgPrice;
     public String bassoOrderIdea;
 }

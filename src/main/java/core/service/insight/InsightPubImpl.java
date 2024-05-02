@@ -2,10 +2,6 @@ package core.service.insight;
 
 public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
-    private InsightData insightDataALL = new InsightData();
-
-    int counter = 0;
-
     private InsightPub output;
 
     public InsightPubImpl() {
@@ -18,6 +14,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     public void simpleCall(InsightData insightData) {
         insightData.svcStartTs = System.nanoTime();
 
+        double equity = 0; // get from risk class
         double riskPercentage = getRiskPercentage(insightData);
         double volPercentage = getVolPercentage(insightData);
 
