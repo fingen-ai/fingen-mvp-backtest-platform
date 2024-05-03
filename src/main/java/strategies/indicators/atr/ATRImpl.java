@@ -30,8 +30,4 @@ public class ATRImpl implements ATR {
     public double calculateTR(double high, double low, double previousClose) {
         return Math.max(high - low, Math.max(Math.abs(high - previousClose), Math.abs(low - previousClose)));
     }
-
-    public double getAtr() {
-        return atr;
-    }
 }

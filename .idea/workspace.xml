@@ -4,31 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="InsightTest - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/dmi/DMI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMAImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/roc/ROC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/sts/STS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/atr/ATRTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMATest.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossoverImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/Performance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/metrics/FinancialMetrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/metrics/FinancialMetrics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/risk/Risk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/risk/Risk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/risk/RiskImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/risk/RiskImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/performance/metrics/FinancialMetricsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/performance/metrics/FinancialMetricsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/risk/RiskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/risk/RiskTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMACrossoverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMAImplCrossoverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/FiftyDayEMATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/FiftyDayEMAImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/TenDayEMATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/TenDayEMAImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/FiftyDayEMA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/TenDayEMA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMAImplCrossoverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMACrossoverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/FiftyDayEMAImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/TenDayEMAImplTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -75,6 +62,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.ATRTest.executor": "Run",
     "Application.CSVFileReaderTest.executor": "Run",
+    "Application.EMACrossoverTest.executor": "Run",
     "Application.EMATest.executor": "Run",
     "Application.HedgeBassoTrendStrategyTest.executor": "Run",
     "Application.KeltnerChannelTest.executor": "Run",
@@ -136,13 +124,26 @@
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ATRTest">
+  <component name="RunManager" selected="Application.EMACrossoverTest">
     <configuration name="ATRTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="strategies.indicators.atr.ATRTest" />
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="strategies.indicators.atr.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EMACrossoverTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="strategies.indicators.emax.EMACrossoverTest" />
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="strategies.indicators.emax.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -194,28 +195,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrchestratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="core.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="core" />
-      <option name="MAIN_CLASS_NAME" value="core.OrchestratorTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EMACrossoverTest" />
+        <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="Application.ATRTest" />
         <item itemvalue="Application.EMATest" />
-        <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="JUnit.FinancialMetricsTest.testCalculateAnnualReturn" />
-        <item itemvalue="JUnit.OrchestratorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -245,7 +231,7 @@
       <workItem from="1714667666309" duration="9522000" />
       <workItem from="1714678744659" duration="87000" />
       <workItem from="1714678972708" duration="3865000" />
-      <workItem from="1714697093560" duration="1198000" />
+      <workItem from="1714697093560" duration="2216000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -383,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714666893021</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
+      <option name="closed" value="true" />
+      <created>1714698435262</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1714698435262</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,6 +409,7 @@
     <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - DONE." />
     <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - DONE.&#10; InsightTest - WIP." />
     <MESSAGE value="InsightTest - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="InsightTest - WIP." />
+    <MESSAGE value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
   </component>
 </project>

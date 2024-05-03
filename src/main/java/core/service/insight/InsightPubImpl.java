@@ -29,7 +29,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.equity = performance.getInitialInvestment();
         insightData.tradeCount = performance.getTradeCount();
 
-        //insightData.atr = atr.single(insightData.close, insightData.low, insightData.high, insightData.priorATR);
+        insightData.atr = atr50.update(insightData.high, insightData.low, insightData.close, insightData.priorClose);
 
         if(insightData.tradeCount == 0) {
             insightData.riskInitPercentThreshold = risk.getInitRiskPercentThreshold();

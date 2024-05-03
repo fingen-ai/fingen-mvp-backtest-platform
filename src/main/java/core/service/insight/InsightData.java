@@ -37,7 +37,7 @@ public class InsightData extends SelfDescribingMarshallable {
     public double equity;
     public double positionRisk;
     double atr;
-    double priorATR;
+    double priorClose;
     public double riskInitPercentThreshold;
     public double volInitPercentThreshold;
     public double riskOngoingPercentThreshold;
