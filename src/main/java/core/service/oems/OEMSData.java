@@ -49,4 +49,47 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double tradeAmtPerRiskInstruction;
     public double tradeAmtPerVolInstruction;
     public double tradeAmtInstruction;
+
+    // oems q real-time data
+    public double openOrderId;
+    public double openOrderTimestamp;
+    public double openOrderState;
+    public double openOrderAmt;
+    public double openOrderPrice;
+    public double openOrderExpiry;
+
+    public double closeOrderId;
+    public double closeOrderTimestamp;
+    public double closeOrderState;
+    public double closeOrderAmt;
+    public double closeOrderPrice;
+    public double closeOrderExpiry;
+
+    public double openTradeId;
+    public double openTradeTimestamp;
+    public double openTradeState;
+    public double openTradeAmt;
+    public double openTradePrice;
+    public double openTradeExpiry;
+
+    public double closeTradeId;
+    public double closeTradeTimestamp;
+    public double closeTradeState;
+    public double closeTradeAmt;
+    public double closeTradePrice;
+    public double closeTradeExpiry;
+
+    public double openPositionId;
+    public double openPositionTimestamp;
+    public double openPositionState;
+    public double openPositionAmt;
+    public double openPositionPrice;
+    public double openPositionExpiry;
+
+    public double closePositionId;
+    public double closePositionTimestamp;
+    public double closePositionState;
+    public double closePositionAmt;
+    public double closePositionPrice;
+    public double closePositionExpiry;
 }

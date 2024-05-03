@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="STS - CXLD.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +79,7 @@
     "JUnit.LongShortOptionArbitrageStrategyTest.executor": "Run",
     "JUnit.MACDStrategyTest.executor": "Run",
     "JUnit.MACDTest.executor": "Run",
+    "JUnit.OEMSTest.executor": "Run",
     "JUnit.OMSImplTest.executor": "Run",
     "JUnit.OrchestratorTest.executor": "Run",
     "JUnit.OrchestratorTest.testPriceQueueOutput.executor": "Debug",
@@ -224,7 +226,7 @@
       <workItem from="1714667666309" duration="9522000" />
       <workItem from="1714678744659" duration="87000" />
       <workItem from="1714678972708" duration="3865000" />
-      <workItem from="1714697093560" duration="14011000" />
+      <workItem from="1714697093560" duration="16175000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -426,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714717220430</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="OEMS Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714747976937</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1714747976937</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,6 +475,7 @@
     <MESSAGE value="Indicators svcs:&#10;DMI - DONE.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE." />
     <MESSAGE value="STS - CXLD." />
-    <option name="LAST_COMMIT_MESSAGE" value="STS - CXLD." />
+    <MESSAGE value="OEMS Test - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="OEMS Test - WIP." />
   </component>
 </project>
