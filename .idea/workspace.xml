@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,7 +222,7 @@
       <workItem from="1714667666309" duration="9522000" />
       <workItem from="1714678744659" duration="87000" />
       <workItem from="1714678972708" duration="3865000" />
-      <workItem from="1714697093560" duration="22458000" />
+      <workItem from="1714697093560" duration="22566000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -460,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714777244950</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="OEMS Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714779175691</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714779175691</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
