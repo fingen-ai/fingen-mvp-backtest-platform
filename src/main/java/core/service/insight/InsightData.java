@@ -36,6 +36,7 @@ public class InsightData extends SelfDescribingMarshallable {
     // insight q real-time data
     public double nav;
     public double positionRisk;
+    public int tradeCount;
     double atr;
     double priorClose;
     public double riskInitPercentThreshold;
@@ -44,6 +45,8 @@ public class InsightData extends SelfDescribingMarshallable {
     public double volOngoingPercentThreshold;
     public double currentTotalPercentRiskPercent;
     public double currentTotalPercentVolRiskPercent;
-    public String tradeInstructionStatus;
-    public int tradeCount;
+    public String tradeDecisionInstruction;
+    public double tradeAmtPerRiskInstruction;
+    public double tradeAmtPerVolInstruction;
+    public double tradeAmtInstruction;
 }

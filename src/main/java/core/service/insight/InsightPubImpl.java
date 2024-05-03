@@ -30,19 +30,27 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.atr = atr50.update(insightData.high, insightData.low, insightData.close, insightData.priorClose);
         insightData.tradeCount = performance.getTradeCount();
 
+        // Trade instructions
         if(insightData.tradeCount == 0) {
+
+            // Initial instructions
             insightData.nav = performance.getInitialInvestment();
             insightData.riskInitPercentThreshold = risk.getInitRiskPercentThreshold();
             insightData.volInitPercentThreshold = risk.getInitVolPercentThreshold();
 
             if(insightData.bassoOrderIdea != null) {
-                insightData.tradeInstructionStatus = "Trade";
+                insightData.tradeDecisionInstruction = "Trade";
+                insightData.tradeAmtPerRiskInstruction = risk.updateOngoingRiskAmtThreshold(insightData.nav, insightData.riskInitPercentThreshold);
+                insightData.tradeAmtPerVolInstruction = risk.updateOngoingVolAmtThreshold(insightData.nav, insightData.volInitPercentThreshold);
+
             } else {
-                insightData.tradeInstructionStatus = "Do Not Trade";
+                insightData.tradeDecisionInstruction = "Do Not Trade";
             }
 
         } else {
-            insightData.nav = accountData.nav; // NAV MUST UPDATE IN PERFORMANCE !!!!
+
+            // Ongoing instructions
+            insightData.nav = accountData.nav;
             insightData.positionRisk = risk.getCurrentTotalPercentRisk(accountData.positionAmt, accountData.nav);
 
             insightData.riskOngoingPercentThreshold = risk.getOngoingRiskPercentThreshold();
@@ -50,22 +58,30 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
             if(insightData.bassoOrderIdea != null) {
 
-                if(insightData.riskOngoingPercentThreshold < risk.getOngoingRiskPercentThreshold()) {
-                    insightData.tradeInstructionStatus = "Trade";
+                if(insightData.currentTotalPercentRiskPercent < insightData.riskOngoingPercentThreshold) {
+                    insightData.tradeDecisionInstruction = "Trade";
+                    insightData.tradeAmtPerRiskInstruction = risk.updateOngoingRiskAmtThreshold(insightData.nav, insightData.riskOngoingPercentThreshold);
+
                 } else {
-                    insightData.tradeInstructionStatus = "Do Not Trade";
+                    insightData.tradeDecisionInstruction = "Do Not Trade";
+                    insightData.tradeAmtPerRiskInstruction = 0;
                 }
 
-                if(insightData.volOngoingPercentThreshold < risk.getOngoingVolPercentThreshold()) {
-                    insightData.tradeInstructionStatus = "Trade";
+                if(insightData.currentTotalPercentVolRiskPercent < insightData.volOngoingPercentThreshold) {
+                    insightData.tradeDecisionInstruction = "Trade";
+                    insightData.tradeAmtPerVolInstruction = risk.updateOngoingVolAmtThreshold(insightData.nav, insightData.volOngoingPercentThreshold);
                 } else {
-                    insightData.tradeInstructionStatus = "Do Not Trade";
+                    insightData.tradeDecisionInstruction = "Do Not Trade";
+                    insightData.tradeAmtPerVolInstruction = 0;
                 }
 
             } else {
 
-                insightData.tradeInstructionStatus = "Do Not Trade";
+                insightData.tradeDecisionInstruction = "Do Not Trade";
             }
+
+            // Decide trade amt instruction
+            insightData.tradeAmtInstruction = Math.min(insightData.tradeAmtPerRiskInstruction, insightData.tradeAmtPerVolInstruction);
         }
 
         // Calc current total risk

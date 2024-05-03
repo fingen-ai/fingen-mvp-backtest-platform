@@ -13,4 +13,8 @@ public interface Risk {
     double getCurrentTotalPercentRisk(double positionAmt, double nav);
 
     double getCurrentTotalVolPercentRisk(double atr, double nav);
+
+    double updateOngoingRiskAmtThreshold(double nav, double riskOngoingPercentThreshold);
+
+    double updateOngoingVolAmtThreshold(double nav, double volOngoingPercentThreshold);
 }

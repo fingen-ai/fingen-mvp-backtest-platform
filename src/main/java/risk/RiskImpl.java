@@ -7,8 +7,6 @@ public class RiskImpl implements Risk {
     double initVolPercentThreshold = 0.3;
     double ongoingRiskPercentThreshold = 1;
     double ongoingVolPercentThreshold = 0.4;
-    double currentTotalPercentRisk = 16;
-    double currentTotalVolPercentRisk = 6;
 
     public double getInitRiskPercentThreshold() {
         return initRiskPercentThreshold;
@@ -26,11 +24,19 @@ public class RiskImpl implements Risk {
         return ongoingVolPercentThreshold;
     }
 
-    public double getCurrentTotalPercentRisk(double positionRisk, double equity) {
-        return currentTotalPercentRisk = positionRisk/equity;
+    public double getCurrentTotalPercentRisk(double position, double nav) {
+        return position/nav;
     }
 
-    public double getCurrentTotalVolPercentRisk(double atr, double equity) {
-        return currentTotalVolPercentRisk = atr/equity;
+    public double getCurrentTotalVolPercentRisk(double atr, double nav) {
+        return atr/nav;
+    }
+
+    public double updateOngoingRiskAmtThreshold(double nav, double ongoingRiskPercent) {
+        return ongoingRiskPercent*nav;
+    }
+
+    public double updateOngoingVolAmtThreshold(double nav, double ongoingVolPercent) {
+        return ongoingVolPercent*nav;
     }
 }
