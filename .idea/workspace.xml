@@ -118,7 +118,7 @@
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.InsightTest">
+  <component name="RunManager" selected="Application.EMACrossoverTest">
     <configuration name="ATRTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="strategies.indicators.atr.ATRTest" />
       <module name="fingen-mvp-platform" />
@@ -191,8 +191,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="Application.EMACrossoverTest" />
+        <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="Application.ATRTest" />
         <item itemvalue="Application.EMATest" />
         <item itemvalue="JUnit.FinancialMetricsTest.testCalculateAnnualReturn" />
