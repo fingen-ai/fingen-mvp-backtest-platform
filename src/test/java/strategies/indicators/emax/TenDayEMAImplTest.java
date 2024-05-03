@@ -5,7 +5,7 @@ import strategies.indicators.emax.TenDayEMA;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TenDayEMATest {
+class TenDayEMAImplTest {
 
     @Test
     void testCalculateEMA() {

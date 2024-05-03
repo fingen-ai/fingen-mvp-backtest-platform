@@ -2,6 +2,7 @@ package performance;
 
 public interface Performance {
 
+    double getInitialInvestment();
     double getCAGRPercentage();
     double getSharpeRatio();
     double getSortinoRatio();
@@ -13,4 +14,5 @@ public interface Performance {
     double getReliabilityPercentage();
     double getTotalProfit();
     double getProfitFactor();
+    int getTradeCount();
 }

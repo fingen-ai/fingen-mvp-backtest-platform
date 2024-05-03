@@ -2,15 +2,15 @@ package risk;
 
 public interface Risk {
 
-    double getInitRiskThreshold();
+    double getInitRiskPercentThreshold();
 
-    double getInitVolThreshold();
+    double getInitVolPercentThreshold();
 
-    double getOngoingRiskThreshold();
+    double getOngoingRiskPercentThreshold();
 
-    double getOngoingVolThreshold();
+    double getOngoingVolPercentThreshold();
 
-    double getTotalRiskThreshold();
+    double getCurrentTotalPercentRisk(double positionRisk, double equity);
 
-    double getTotalVolThreshold();
+    double getCurrentTotalVolPercentRisk(double atr, double equity);
 }

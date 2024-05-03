@@ -5,12 +5,14 @@ import performance.metrics.FinancialMetrics;
 public class PerformanceImpl implements Performance {
     
     double initialInvestment = 10000000.00;
-    double finalValue = 16270687.00;
-    int numberOfYears = 1;
+    int tradeCount = 0;
+    double finalValue = 0.00;
+    double numberOfYears = 5.5415;
     double riskFreeRate = 0.02;
-    double[] returns = new double[]{0.10, 0.05, -0.02, 0.04, -0.01}; // sample annual returns
-    double[] profits = new double[]{200, 150, 300}; // sample profits
-    double[] losses = new double[]{-50, -70, -90}; // sample losses
+    double[] returns = new double[]{}; // PerfTest data {0.10, 0.05, -0.02, 0.04, -0.01}; // sample annual returns
+    double[] profits = new double[]{}; // PerfTest data {200, 150, 300}; // sample profits
+    double[] losses = new double[]{}; // PerfTest data {-50, -70, -90}; // sample losses
+
 
     FinancialMetrics finMet = new FinancialMetrics();
     
@@ -25,7 +27,11 @@ public class PerformanceImpl implements Performance {
     double reliablityPercentage = 0;
     double totalProfit = 0;
     double profitFactor = 0;
-    
+
+    public double getInitialInvestment() {
+        return initialInvestment;
+    }
+
     public double getCAGRPercentage() {
         cagr = finMet.calculateCAGR(initialInvestment, finalValue, numberOfYears);
         return cagr;
@@ -80,4 +86,8 @@ public class PerformanceImpl implements Performance {
         profitFactor = finMet.calculateProfitFactor(profits, losses);
         return profitFactor;
     }
+    public int getTradeCount() {
+        return tradeCount;
+    }
+
 }

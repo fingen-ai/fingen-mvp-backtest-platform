@@ -2,13 +2,7 @@ package core;
 
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
-import core.service.oems.OEMSData;
-import core.service.ops.OpsData;
-import core.service.performance.PerfData;
-import core.service.price.PriceData;
-import core.service.publisher.PublisherData;
 import core.service.strategy.StrategyData;
-import core.util.CSVFileReader;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
@@ -17,7 +11,6 @@ import net.openhft.chronicle.wire.DocumentContext;
 import org.junit.Before;
 import org.junit.Test;
 
-import static core.service.Orchestrator.priceData;
 import static org.junit.Assert.*;
 import java.io.IOException;
 
@@ -61,6 +54,7 @@ public class InsightTest {
         throw new IOException("Failed to read data from queue: " + queueName);
     }
 
+    // Validate data from strategy svc matches data passed to insight svc
     private void validateInsightData(InsightData actual, StrategyData expected) {
         // Price data, sans start, stop and latency, being diff. svcs and all ;)
         assertEquals("Mismatch in some Insight field", expected.start, actual.start);

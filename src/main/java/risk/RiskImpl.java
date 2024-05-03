@@ -3,34 +3,34 @@ package risk;
 public class RiskImpl implements Risk {
 
     // risk thresholds
-    double initRiskThreshold = 0.5;
-    double initVolThreshold = 0.3;
-    double ongoingRiskThreshold = 1;
-    double ongoingVolThreshold = 0.4;
-    double totalRiskThreshold = 16;
-    double totalVolThreshold = 6;
+    double initRiskPercentThreshold = 0.5;
+    double initVolPercentThreshold = 0.3;
+    double ongoingRiskPercentThreshold = 1;
+    double ongoingVolPercentThreshold = 0.4;
+    double currentTotalPercentRisk = 16;
+    double currentTotalVolPercentRisk = 6;
 
-    public double getInitRiskThreshold() {
-        return initRiskThreshold;
+    public double getInitRiskPercentThreshold() {
+        return initRiskPercentThreshold;
     }
 
-    public double getInitVolThreshold() {
-        return initVolThreshold;
+    public double getInitVolPercentThreshold() {
+        return initVolPercentThreshold;
     }
 
-    public double getOngoingRiskThreshold() {
-        return ongoingRiskThreshold;
+    public double getOngoingRiskPercentThreshold() {
+        return ongoingRiskPercentThreshold;
     }
 
-    public double getOngoingVolThreshold() {
-        return ongoingVolThreshold;
+    public double getOngoingVolPercentThreshold() {
+        return ongoingVolPercentThreshold;
     }
 
-    public double getTotalRiskThreshold() {
-        return totalRiskThreshold;
+    public double getCurrentTotalPercentRisk(double positionRisk, double equity) {
+        return currentTotalPercentRisk = positionRisk/equity;
     }
 
-    public double getTotalVolThreshold() {
-        return totalVolThreshold;
+    public double getCurrentTotalVolPercentRisk(double atr, double equity) {
+        return currentTotalVolPercentRisk = atr/equity;
     }
 }

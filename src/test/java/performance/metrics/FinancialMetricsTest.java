@@ -33,6 +33,12 @@ class FinancialMetricsTest {
     }
 
     @Test
+    void testCalculateAnnualReturn() {
+        double annualRet = fm.calculateAnnualReturn(initialInvestment, finalValue);
+        assertEquals(0.009900990099009901, annualRet, 0.0001);
+    }
+
+    @Test
     void testCalculateCAGR() {
         double cagr = fm.calculateCAGR(initialInvestment, finalValue, numberOfYears);
         assertEquals(0.010000000000000009, cagr, 0.0001);

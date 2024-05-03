@@ -7,7 +7,11 @@ public class FinancialMetrics {
         // Initialize with actual data
     }
 
-    public double calculateCAGR(double initialInvestment, double finalValue, int numberOfYears) {
+    public double calculateAnnualReturn(double positionBegValue, double positionEndValue) {
+        return (positionEndValue - positionBegValue) / positionEndValue;
+    }
+
+    public double calculateCAGR(double initialInvestment, double finalValue, double numberOfYears) {
         return Math.pow(finalValue / initialInvestment, 1.0 / numberOfYears) - 1;
     }
 

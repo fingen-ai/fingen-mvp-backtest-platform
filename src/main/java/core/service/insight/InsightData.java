@@ -33,35 +33,17 @@ public class InsightData extends SelfDescribingMarshallable {
     public double lhcAvgPrice;
     public String bassoOrderIdea;
 
-    // insights q real-time data
-    public String outlook;
-    public long outlookDurationInDays;
-    public String outlookDirection;
-    public String outlookMomentum;  // MACD, RSI
-    public String outlookHealth;  // Glicko2
-    public double outlookGainPosterior;
-    public double outlookLossPosterior;
-    public double outlookAvgExpectedGain;
-    public double outlookAvgExpectedLoss;
-    public double outlookEdge;
-    public double trendHighPrice;
-    public double trendLowPrice;
-    public long trendNewHighCount;
-    public long trendNewLowCount;
-    public long trendUpDaysCount;
-    public long trendDownDaysCount;
-    public long trendInsideDaysCount;
-    public long trendOutsideDaysCount;
-    public long trendTotalDaysCount;
-    public double trapezoidRule;
-
-    // insights q iqr data
-    // build arrays of each q data above
-    // calc stats
-    // calc physics
-    // calc deltas
-    // calc delta stats
-    // calc delta physics
-    // calc edge
-    // calc posterior - active inference
+    // insight q real-time data
+    public double equity;
+    public double positionRisk;
+    double atr;
+    double priorATR;
+    public double riskInitPercentThreshold;
+    public double volInitPercentThreshold;
+    public double riskOngoingPercentThreshold;
+    public double volOngoingPercentThreshold;
+    public double currentTotalPercentRiskPercent;
+    public double currentTotalPercentVolRiskPercent;
+    public String tradeInstructionStatus;
+    public int tradeCount;
 }
