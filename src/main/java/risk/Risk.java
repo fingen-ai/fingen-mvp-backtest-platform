@@ -10,7 +10,7 @@ public interface Risk {
 
     double getOngoingVolPercentThreshold();
 
-    double getCurrentTotalPercentRisk(double positionRisk, double equity);
+    double getCurrentTotalPercentRisk(double positionAmt, double nav);
 
-    double getCurrentTotalVolPercentRisk(double atr, double equity);
+    double getCurrentTotalVolPercentRisk(double atr, double nav);
 }

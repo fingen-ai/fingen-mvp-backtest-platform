@@ -3,10 +3,10 @@ package performance;
 import performance.metrics.FinancialMetrics;
 
 public class PerformanceImpl implements Performance {
-    
-    double initialInvestment = 10000000.00;
+
     int tradeCount = 0;
-    double finalValue = 0.00;
+    double initialInvestment = 10000000;
+    double finalValue = 11000000;
     double numberOfYears = 5.5415;
     double riskFreeRate = 0.02;
     double[] returns = new double[]{}; // PerfTest data {0.10, 0.05, -0.02, 0.04, -0.01}; // sample annual returns

@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossoverImpl.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - DONE.&#10;EMA rewrite - DONE.&#10;EMAX rewrite - DONE.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/account/AccountData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/EMACrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/FiftyDayEMA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/emax/TenDayEMA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMAImplCrossoverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/EMACrossoverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/FiftyDayEMAImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/emax/TenDayEMAImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/risk/Risk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/risk/Risk.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -124,7 +120,7 @@
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.EMACrossoverTest">
+  <component name="RunManager" selected="JUnit.InsightTest">
     <configuration name="ATRTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="strategies.indicators.atr.ATRTest" />
       <module name="fingen-mvp-platform" />
@@ -197,8 +193,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EMACrossoverTest" />
         <item itemvalue="JUnit.InsightTest" />
+        <item itemvalue="Application.EMACrossoverTest" />
         <item itemvalue="Application.ATRTest" />
         <item itemvalue="Application.EMATest" />
         <item itemvalue="JUnit.FinancialMetricsTest.testCalculateAnnualReturn" />
@@ -231,7 +227,7 @@
       <workItem from="1714667666309" duration="9522000" />
       <workItem from="1714678744659" duration="87000" />
       <workItem from="1714678972708" duration="3865000" />
-      <workItem from="1714697093560" duration="2216000" />
+      <workItem from="1714697093560" duration="3987000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -377,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714698435262</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - DONE.&#10;EMA rewrite - DONE.&#10;EMAX rewrite - DONE.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
+      <option name="closed" value="true" />
+      <created>1714699397652</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714699397652</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,6 +414,7 @@
     <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - DONE.&#10; InsightTest - WIP." />
     <MESSAGE value="InsightTest - WIP." />
     <MESSAGE value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
+    <MESSAGE value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - DONE.&#10;EMA rewrite - DONE.&#10;EMAX rewrite - DONE.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - DONE.&#10;EMA rewrite - DONE.&#10;EMAX rewrite - DONE.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
   </component>
 </project>

@@ -34,7 +34,7 @@ public class InsightData extends SelfDescribingMarshallable {
     public String bassoOrderIdea;
 
     // insight q real-time data
-    public double equity;
+    public double nav;
     public double positionRisk;
     double atr;
     double priorClose;
