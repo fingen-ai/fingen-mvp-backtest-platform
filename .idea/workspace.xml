@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/sts/STS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/sts/STS.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="STS - CXLD.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,26 +118,13 @@
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SpeculativeEdgeHMMTest">
+  <component name="RunManager" selected="JUnit.OEMSTest">
     <configuration name="DMITest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="strategies.indicators.dmi.DMITest" />
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="strategies.indicators.dmi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EMACrossoverTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="strategies.indicators.emax.EMACrossoverTest" />
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="strategies.indicators.emax.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -186,13 +173,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OEMSTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="core.OEMSTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SpeculativeEdgeHMMTest" />
+        <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.InsightTest" />
+        <item itemvalue="Application.SpeculativeEdgeHMMTest" />
         <item itemvalue="Application.ROCTest" />
         <item itemvalue="Application.DMITest" />
-        <item itemvalue="Application.EMACrossoverTest" />
       </list>
     </recent_temporary>
   </component>
@@ -222,7 +224,7 @@
       <workItem from="1714667666309" duration="9522000" />
       <workItem from="1714678744659" duration="87000" />
       <workItem from="1714678972708" duration="3865000" />
-      <workItem from="1714697093560" duration="13061000" />
+      <workItem from="1714697093560" duration="14011000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -416,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714708991474</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="STS - CXLD.">
+      <option name="closed" value="true" />
+      <created>1714717220430</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1714717220430</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,6 +464,7 @@
     <MESSAGE value="Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;DMI - DONE.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE." />
-    <option name="LAST_COMMIT_MESSAGE" value="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE." />
+    <MESSAGE value="STS - CXLD." />
+    <option name="LAST_COMMIT_MESSAGE" value="STS - CXLD." />
   </component>
 </project>
