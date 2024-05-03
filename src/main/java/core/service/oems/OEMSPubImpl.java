@@ -17,6 +17,14 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) {
         oemsData.svcStartTs = System.nanoTime();
 
+        if(oemsData.bassoOrderIdea != null) {
+            if(oemsData.bassoOrderIdea.equals("Bullish") || oemsData.bassoOrderIdea.equals("Bearish")) {
+                System.out.println(oemsData.bassoOrderIdea);
+            } else {
+                System.out.println(oemsData.bassoOrderIdea);
+            }
+        }
+
         // OMS-IN OPEN ORDER
         // place new order (single, market)
 

@@ -90,7 +90,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
-        System.out.println("INSIGHT: " + insightData);
+        //System.out.println("INSIGHT: " + insightData);
         output.simpleCall(insightData);
     }
 }
