@@ -1,8 +1,17 @@
 package core.service.oems;
 
+import oems.OMSImpl;
+import oems.api.OMSIn;
+import oems.api.OMSOut;
+import oems.dto.NewOrderSingle;
+import oems.dto.OrderType;
+
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private OEMSData oemsDataALL = new OEMSData();
+    private NewOrderSingle nos = new NewOrderSingle();
+    OMSIn omsIn;
+    OMSOut omsOut;
 
     int counter = 0;
 
@@ -17,31 +26,37 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) {
         oemsData.svcStartTs = System.nanoTime();
 
+        // New signal response
         if(oemsData.bassoOrderIdea != null) {
-            if(oemsData.bassoOrderIdea.equals("Bullish") || oemsData.bassoOrderIdea.equals("Bearish")) {
-                System.out.println(oemsData.bassoOrderIdea);
-            } else {
-                System.out.println(oemsData.bassoOrderIdea);
+
+            // Curr pos in the symbol
+                // Risk % check
+                // Vol % check
+                // Add to  position or not
+
+            // No curr pos in the symbol
+            if(oemsData.bassoOrderIdea.equals("Bullish")) {
+                // Build open long order + details
+                nos.symbol(1); // use long instead of String for symbol. lowers latency.
+                nos.ordType(OrderType.limit);
+                nos.price(oemsData.bid);
+                omsIn.newOrderSingle(nos);
+
+            } else if(oemsData.bassoOrderIdea.equals("Bearish")) {
+                // Build open short order + details
+                nos.symbol(1); // just have a long to symbol identification map
+                nos.ordType(OrderType.limit);
+                nos.price(oemsData.ask);
+                omsIn.newOrderSingle(nos);
             }
         }
 
-        // OMS-IN OPEN ORDER
-        // place new order (single, market)
+        // Get all open trades
+            // Recalc stops
+            // Yes hit stop
+                // Place close order
+            // Update stop
 
-        // place new order (single, limit)
-
-        // place new order (single, stop)
-
-        // place new order (single, trailing stop)
-
-        // OMS-IN CLOSE ORDER
-        // place new order (single, market)
-
-        // place new order (single, limit)
-
-        // place new order (single, stop)
-
-        // place new order (single, trailing stop)
 
         // OMS-OUT REPORTING
         // get all orders

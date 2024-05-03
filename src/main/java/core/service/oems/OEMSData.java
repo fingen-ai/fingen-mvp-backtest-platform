@@ -17,8 +17,8 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double low;
     public double close;
     public double volume;
-    public BigDecimal bid;
-    public BigDecimal ask;
+    public double bid;
+    public double ask;
     public BigDecimal bidSize;
     public BigDecimal askSize;
     public BigDecimal vwap;
@@ -51,7 +51,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double tradeAmtInstruction;
 
     // oems q real-time data
-    public double openOrderId;
+    public String openOrderId;
     public double openOrderTimestamp;
     public double openOrderState;
     public double openOrderAmt;
