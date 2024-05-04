@@ -2,9 +2,10 @@ package core.service.oems;
 
 import account.AccountData;
 import oems.BRM;
-import oems.OrderBuilder;
-import oems.api.OMSIn;
-import oems.api.OMSOut;
+import oems.OrderBuilderImpl;
+import oems.OrderManagerImpl;
+import oems.api.OrderBuilder;
+import oems.api.OrderManager;
 import oems.dto.*;
 import risk.Risk;
 import risk.RiskImpl;
@@ -14,9 +15,8 @@ import java.io.IOException;
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private NewOrderSingle nos = new NewOrderSingle();
-    private OrderBuilder ob = new OrderBuilder();
-    private OMSIn omsIn = null;
-    private OMSOut omsOut = null;
+    private OrderBuilder ob = new OrderBuilderImpl();
+    private OrderManager om = new OrderManagerImpl();
     private ExecutionReport er = new ExecutionReport();
     private BRM brm = new BRM();
     private Risk risk = new RiskImpl();
@@ -44,7 +44,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         nos = ob.buildNOS(oemsData);
-        //omsIn.newOrderSingle(nos);
+        om.newOrderSingle(nos);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

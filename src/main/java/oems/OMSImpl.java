@@ -4,19 +4,10 @@
 
 package oems;
 
-import net.openhft.chronicle.core.time.SystemTimeProvider;
 import oems.api.OMSIn;
-import oems.api.OMSOut;
 import oems.dto.*;
 
-/**
- * OMSImpl is a concrete implementation of the {@link OMSIn} interface, acting as an intermediary between client requests and the {@link OMSOut}.
- * <p>
- * The class processes requests for order creation, cancellation and complete cancellation.
- * <p>
- * {@link ExecutionReport} and {@link OrderCancelReject} are instantiated as instance variables to prevent unnecessary instantiation on every method call.
- */
-public class OMSImpl implements OMSIn {
+public class OMSImpl {
     // The outbound interface for sending execution reports and order cancel rejections
     //private final OMSOut out;
 
@@ -26,21 +17,6 @@ public class OMSImpl implements OMSIn {
     // Reusable instance of OrderCancelReject for cancelling orders
     //private final OrderCancelReject ocr = new OrderCancelReject();
 
-    /**
-     * Constructs a new OMSImpl with a given outbound interface.
-     *
-     * @param out the outbound interface to be used for sending responses
-     */
-    public OMSImpl(OMSOut out) {
-        //this.out = out;
-    }
-
-    /**
-     * Processes a new order request. The request's details are populated into an execution report and sent out.
-     *
-     * @param nos the new order request to process
-     */
-    @Override
     public void newOrderSingle(NewOrderSingle nos) {
         //er.reset();
         //final long orderID = SystemTimeProvider.CLOCK.currentTimeNanos(); // Generate unique order ID
@@ -66,12 +42,6 @@ public class OMSImpl implements OMSIn {
         //out.executionReport(er);
     }
 
-    /**
-     * Processes a cancellation request for an order. The request's details are populated into an order cancellation rejection and sent out.
-     *
-     * @param cor the cancellation request to process
-     */
-    @Override
     public void cancelOrderRequest(CancelOrderRequest cor) {
         /*
         // Populate OrderCancelReject with request details
@@ -87,12 +57,6 @@ public class OMSImpl implements OMSIn {
         //out.orderCancelReject(ocr);
     }
 
-    /**
-     * Processes a cancellation request for all orders. The request's details are populated into an order cancellation rejection and sent out.
-     *
-     * @param cancelAll the cancellation request to process
-     */
-    @Override
     public void cancelAll(CancelAll cancelAll) {
         /*
         // Populate OrderCancelReject with request details

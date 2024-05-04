@@ -8,15 +8,16 @@ import core.service.oems.OEMSData;
 import net.openhft.chronicle.core.pool.ClassAliasPool;
 import net.openhft.chronicle.core.time.SystemTimeProvider;
 import net.openhft.chronicle.wire.converter.Base85;
+import oems.api.OrderBuilder;
 import oems.dto.BuySell;
 import oems.dto.NewOrderSingle;
 import oems.dto.OrderType;
 
 import java.io.IOException;
 
-public class OrderBuilder {
+public class OrderBuilderImpl implements OrderBuilder {
 
-    public NewOrderSingle buildNOS(OEMSData oems) throws IOException {
+    public NewOrderSingle buildNOS(OEMSData oems) {
 
         // Add NewOrderSingle class to the alias pool
         ClassAliasPool.CLASS_ALIASES.addAlias(NewOrderSingle.class);
