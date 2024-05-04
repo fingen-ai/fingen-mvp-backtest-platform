@@ -44,7 +44,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         nos = ob.buildNOS(oemsData);
-        omsIn.newOrderSingle(nos);
+        //omsIn.newOrderSingle(nos);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

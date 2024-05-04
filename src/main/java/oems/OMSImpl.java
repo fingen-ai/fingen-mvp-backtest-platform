@@ -18,13 +18,13 @@ import oems.dto.*;
  */
 public class OMSImpl implements OMSIn {
     // The outbound interface for sending execution reports and order cancel rejections
-    private final OMSOut out;
+    //private final OMSOut out;
 
     // Reusable instance of ExecutionReport for creating new orders
-    private final ExecutionReport er = new ExecutionReport();
+    //private final ExecutionReport er = new ExecutionReport();
 
     // Reusable instance of OrderCancelReject for cancelling orders
-    private final OrderCancelReject ocr = new OrderCancelReject();
+    //private final OrderCancelReject ocr = new OrderCancelReject();
 
     /**
      * Constructs a new OMSImpl with a given outbound interface.
@@ -32,7 +32,7 @@ public class OMSImpl implements OMSIn {
      * @param out the outbound interface to be used for sending responses
      */
     public OMSImpl(OMSOut out) {
-        this.out = out;
+        //this.out = out;
     }
 
     /**
@@ -42,9 +42,10 @@ public class OMSImpl implements OMSIn {
      */
     @Override
     public void newOrderSingle(NewOrderSingle nos) {
-        er.reset();
-        final long orderID = SystemTimeProvider.CLOCK.currentTimeNanos(); // Generate unique order ID
+        //er.reset();
+        //final long orderID = SystemTimeProvider.CLOCK.currentTimeNanos(); // Generate unique order ID
 
+        /*
         // Populate the ExecutionReport with request details
         er.sender(nos.target())
                 .target(nos.sender())
@@ -59,9 +60,10 @@ public class OMSImpl implements OMSIn {
                 .leavesQty(0)
                 .orderID(orderID)
                 .text("Not ready");
+        */
 
         // Send execution report
-        out.executionReport(er);
+        //out.executionReport(er);
     }
 
     /**
@@ -71,6 +73,7 @@ public class OMSImpl implements OMSIn {
      */
     @Override
     public void cancelOrderRequest(CancelOrderRequest cor) {
+        /*
         // Populate OrderCancelReject with request details
         ocr.sender(cor.target())
                 .target(cor.sender())
@@ -78,9 +81,10 @@ public class OMSImpl implements OMSIn {
                 .clOrdID(cor.clOrdID())
                 .sendingTime(cor.sendingTime())
                 .reason("No such order");
+         */
 
         // Send order cancellation rejection
-        out.orderCancelReject(ocr);
+        //out.orderCancelReject(ocr);
     }
 
     /**
@@ -90,6 +94,7 @@ public class OMSImpl implements OMSIn {
      */
     @Override
     public void cancelAll(CancelAll cancelAll) {
+        /*
         // Populate OrderCancelReject with request details
         ocr.sender(cancelAll.target())
                 .target(cancelAll.sender())
@@ -97,8 +102,9 @@ public class OMSImpl implements OMSIn {
                 .clOrdID("")
                 .sendingTime(cancelAll.sendingTime())
                 .reason("No such orders");
+         */
 
         // Send order cancellation rejection
-        out.orderCancelReject(ocr);
+        //out.orderCancelReject(ocr);
     }
 }
