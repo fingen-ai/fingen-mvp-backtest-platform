@@ -33,26 +33,18 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
-        // New signal response
         if(oemsData.bassoOrderIdea != null) {
             // openOrders = brm.getOpenOrders(order.orderId);
             // if(openOrders) {
-
-                oemsData.tradeAmtPerRiskInstruction = risk.getOngoingRiskPercentThreshold() * acct.nav;
-                oemsData.tradeAmtPerVolInstruction = risk.getOngoingVolPercentThreshold() * acct.nav;
-
-                oemsData.tradeAmtPerRiskInstruction = risk.getInitRiskPercentThreshold() * acct.nav;
-                oemsData.tradeAmtPerVolInstruction = risk.getInitVolPercentThreshold() * acct.nav;
-                nos = ob.buildNOS(oemsData);
-                omsIn.newOrderSingle(nos);
-
+            oemsData.tradeAmtPerRiskInstruction = risk.getOngoingRiskPercentThreshold() * acct.nav;
+            oemsData.tradeAmtPerVolInstruction = risk.getOngoingVolPercentThreshold() * acct.nav;
             // } else {
-            //
-            // Get init risk amount by Risk %
-            // Get init risk amount by Vol %
-            // omsIn.newOrderSingle(nos);
-            // }
+            oemsData.tradeAmtPerRiskInstruction = risk.getInitRiskPercentThreshold() * acct.nav;
+            oemsData.tradeAmtPerVolInstruction = risk.getInitVolPercentThreshold() * acct.nav;
         }
+
+        nos = ob.buildNOS(oemsData);
+        omsIn.newOrderSingle(nos);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
