@@ -1,20 +1,26 @@
 package core.service.oems;
 
+import account.AccountData;
 import oems.BRM;
-import oems.OMSImpl;
+import oems.OrderBuilder;
 import oems.api.OMSIn;
 import oems.api.OMSOut;
 import oems.dto.*;
+import risk.Risk;
+import risk.RiskImpl;
 
 import java.io.IOException;
-import java.util.List;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private NewOrderSingle nos = new NewOrderSingle();
-    OMSIn omsIn;
-    OMSOut omsOut;
-    ExecutionReport er = new ExecutionReport();
+    private OrderBuilder ob = new OrderBuilder();
+    private OMSIn omsIn = null;
+    private OMSOut omsOut = null;
+    private ExecutionReport er = new ExecutionReport();
+    private BRM brm = new BRM();
+    private Risk risk = new RiskImpl();
+    private AccountData acct = new AccountData();
 
     private OEMSPub output;
 
@@ -24,28 +30,26 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         this.output = output;
     }
 
-    public void simpleCall(OEMSData oemsData) {
+    public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
         // New signal response
         if(oemsData.bassoOrderIdea != null) {
+            // openOrders = brm.getOpenOrders(order.orderId);
+            // if(openOrders) {
 
-            // Curr pos in the symbol
-                // Get orders map. Keyed by openOrderId. Returns OrdersMap
-                // Risk % check
-                // Vol % check
-                // Add to  position or not
+                oemsData.tradeAmtPerRiskInstruction = risk.getInitRiskPercentThreshold() * acct.nav;
+                oemsData.tradeAmtPerVolInstruction = risk.getInitVolPercentThreshold() * acct.nav;
+                nos = ob.buildNOS(oemsData);
+                omsIn.newOrderSingle(nos);
 
-            // No curr pos in the symbol
-            if(oemsData.bassoOrderIdea.equals("Bullish")) {
-                omsIn.newOrderSingle(nos);
-            } else if(oemsData.bassoOrderIdea.equals("Bearish")) {
-                omsIn.newOrderSingle(nos);
-            }
+            // } else {
+            //
+            // Get init risk amount by Risk %
+            // Get init risk amount by Vol %
+            // omsIn.newOrderSingle(nos);
+            // }
         }
-
-        // Trade and Order history
-        //omsOut.executionReport(er);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
