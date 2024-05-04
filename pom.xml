@@ -74,6 +74,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/net.openhft/chronicle-core -->
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle-core</artifactId>
+            <version>2.25ea14</version>
+        </dependency>
+
         <!-- For WebSocket Client -->
         <dependency>
             <groupId>org.glassfish.tyrus.bundles</groupId>

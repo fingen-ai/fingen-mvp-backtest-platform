@@ -1,6 +1,7 @@
 package oems;
 
 import net.openhft.chronicle.map.ChronicleMap;
+import oems.dto.NewOrderSingle;
 import oems.dto.Order;
 import oems.dto.Trade;
 
@@ -17,6 +18,7 @@ public class BRM {
     ChronicleMap<String, Order> ordersMap;
     ChronicleMap<String, Trade> tradesMap;
 
+    /*
     public BRM() {
         ordersMap = ChronicleMap
                 .of(String.class, Order.class)
@@ -33,7 +35,7 @@ public class BRM {
                 .create();
     }
 
-    public void addOrder(Order order) {
+    public void addOrder(NewOrderSingle order) {
         ordersMap.put(order.getOrderId(), order);
     }
 
@@ -69,4 +71,6 @@ public class BRM {
         ordersMap.close();
         tradesMap.close();
     }
+
+     */
 }

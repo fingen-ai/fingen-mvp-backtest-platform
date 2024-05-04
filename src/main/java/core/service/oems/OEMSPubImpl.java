@@ -53,8 +53,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         // Get open orders
-        List<Order> openOrders = brm.getOpenOrders();
-        openOrders.forEach(order -> System.out.println("Open Order: " + order));
+        //List<Order> openOrders = brm.getOpenOrders();
+        //openOrders.forEach(order -> System.out.println("Open Order: " + order));
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
