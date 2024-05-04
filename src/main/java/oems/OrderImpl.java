@@ -16,8 +16,6 @@ import net.openhft.chronicle.wire.converter.Base85;
 import oems.api.OMSIn;
 import oems.dto.*;
 
-import java.io.IOException;
-
 public class OrderImpl implements OMSIn {
 
     @Override
