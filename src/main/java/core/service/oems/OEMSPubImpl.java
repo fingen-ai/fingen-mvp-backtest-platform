@@ -1,6 +1,7 @@
 package core.service.oems;
 
 import oems.BRM;
+import oems.OMSImpl;
 import oems.api.OMSIn;
 import oems.api.OMSOut;
 import oems.dto.*;
@@ -13,11 +14,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private NewOrderSingle nos = new NewOrderSingle();
     OMSIn omsIn;
     OMSOut omsOut;
-    BRM brm = new BRM();
+    ExecutionReport er = new ExecutionReport();
 
     private OEMSPub output;
 
-    public OEMSPubImpl() throws IOException {
+    public OEMSPubImpl() {
     }
     public void init(OEMSPub output) {
         this.output = output;
@@ -37,21 +38,14 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             // No curr pos in the symbol
             if(oemsData.bassoOrderIdea.equals("Bullish")) {
-                nos.symbol(1); // just have a long to symbol identification map
-                nos.ordType(OrderType.limit);
-                nos.price(oemsData.bid);
-
+                omsIn.newOrderSingle(nos);
             } else if(oemsData.bassoOrderIdea.equals("Bearish")) {
-                nos.symbol(1); // just have a long to symbol identification map
-                nos.ordType(OrderType.limit);
-                nos.price(oemsData.ask);
                 omsIn.newOrderSingle(nos);
             }
         }
 
-        // BRM methods
-        //List<Order> openOrders = brm.getOpenOrders();
-        //openOrders.forEach(order -> System.out.println("Open Order: " + order));
+        // Trade and Order history
+        //omsOut.executionReport(er);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

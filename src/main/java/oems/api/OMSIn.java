@@ -20,7 +20,6 @@ public interface OMSIn {
 
     @MethodId(1)
     void newOrderSingle(NewOrderSingle nos);
-    //void newOrderSingle(OEMSData oemsData);
 
     /**
      * Handles a cancel order request.
