@@ -1,18 +1,19 @@
 package core.service.oems;
 
+import oems.BRM;
 import oems.api.OMSIn;
 import oems.api.OMSOut;
-import oems.dto.ExecutionReport;
-import oems.dto.NewOrderSingle;
-import oems.dto.OrderType;
+import oems.dto.*;
 
 import java.io.IOException;
+import java.util.List;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private NewOrderSingle nos = new NewOrderSingle();
     OMSIn omsIn;
     OMSOut omsOut;
+    BRM brm;
 
     private OEMSPub output;
 
@@ -51,14 +52,24 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             }
         }
 
+        /*
+        // Get all open orders
+        List<Order> openOrders = brm.getOpenOrders();
+        for(Order order : openOrders) {
+            System.out.println("Open Order: " + order.toString());
+        }
+
         // Get all open trades
+        List<Trade> openTrades = brm.getOpenTrades();
+        for(Trade trade : openTrades) {
+            System.out.println("Open Trade: " + trade.toString());
 
             // Recalc stop
             // Yes hit stop
-                // Place close trade
-                // Confirmed closed trade
+            // Place close trade
+            // Confirmed closed trade
             // Update stop
-
+        }
 
         // OMS-OUT REPORTING
         ExecutionReport er = null;
@@ -66,6 +77,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         er.clOrdID(nos.clOrdID());
         er.ordType(OrderType.valueOf(nos.clOrdID()));
         omsOut.executionReport(er);
+
+         */
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

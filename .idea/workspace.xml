@@ -132,7 +132,7 @@
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BRMTest">
+  <component name="RunManager" selected="JUnit.OEMSTest">
     <configuration name="BRMTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="oems.BRMTest" />
       <module name="fingen-mvp-platform" />
@@ -206,9 +206,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.BRMTest" />
         <item itemvalue="Application.BRMTest" />
-        <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="Application.SpeculativeEdgeHMMTest" />
       </list>
