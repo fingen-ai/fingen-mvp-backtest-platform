@@ -13,7 +13,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private NewOrderSingle nos = new NewOrderSingle();
     OMSIn omsIn;
     OMSOut omsOut;
-    BRM brm;
+    BRM brm = new BRM();
 
     private OEMSPub output;
 
@@ -52,33 +52,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             }
         }
 
-        /*
-        // Get all open orders
+        // Get open orders
         List<Order> openOrders = brm.getOpenOrders();
-        for(Order order : openOrders) {
-            System.out.println("Open Order: " + order.toString());
-        }
-
-        // Get all open trades
-        List<Trade> openTrades = brm.getOpenTrades();
-        for(Trade trade : openTrades) {
-            System.out.println("Open Trade: " + trade.toString());
-
-            // Recalc stop
-            // Yes hit stop
-            // Place close trade
-            // Confirmed closed trade
-            // Update stop
-        }
-
-        // OMS-OUT REPORTING
-        ExecutionReport er = null;
-        er.orderID(Long.parseLong(nos.clOrdID()));
-        er.clOrdID(nos.clOrdID());
-        er.ordType(OrderType.valueOf(nos.clOrdID()));
-        omsOut.executionReport(er);
-
-         */
+        openOrders.forEach(order -> System.out.println("Open Order: " + order));
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

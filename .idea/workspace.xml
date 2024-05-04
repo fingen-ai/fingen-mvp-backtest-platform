@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/BRM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/Trade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/oems/BRMTest.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP.&#10;BRM Test - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
     </list>
@@ -242,7 +238,7 @@
       <workItem from="1714678972708" duration="3865000" />
       <workItem from="1714697093560" duration="22566000" />
       <workItem from="1714779286024" duration="8281000" />
-      <workItem from="1714835188193" duration="3144000" />
+      <workItem from="1714835188193" duration="5573000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -492,7 +488,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714779295401</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="OEMS Test - WIP.&#10;BRM Test - DONE.">
+      <option name="closed" value="true" />
+      <created>1714838455220</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1714838455220</updated>
+    </task>
+    <task id="LOCAL-00033" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714838705410</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714838705410</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,6 +544,8 @@
     <MESSAGE value="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE." />
     <MESSAGE value="STS - CXLD." />
     <MESSAGE value="OEMS Test - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="OEMS Test - WIP." />
+    <MESSAGE value="OEMS Test - WIP.&#10;BRM Test - DONE." />
+    <MESSAGE value="OEMS Test - WIP.&#10;BRM Test - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="OEMS Test - WIP.&#10;BRM Test - WIP." />
   </component>
 </project>
