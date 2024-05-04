@@ -75,6 +75,25 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
         // Insight data
-        // asseerts here ...
+        assertEquals("Mismatch in some Insight field", expected.nav, actual.nav, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.positionRisk, actual.positionRisk, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeCount, actual.tradeCount, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.priorClose, actual.priorClose, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.riskInitPercentThreshold, actual.riskInitPercentThreshold, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.volInitPercentThreshold, actual.volInitPercentThreshold, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.riskOngoingPercentThreshold, actual.riskOngoingPercentThreshold, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.volOngoingPercentThreshold, actual.volOngoingPercentThreshold, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.currentTotalPercentRiskPercent, actual.currentTotalPercentRiskPercent, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.currentTotalPercentVolRiskPercent, actual.currentTotalPercentVolRiskPercent, 0.001);
+
+        assertEquals("Mismatch in some Insight field", expected.tradeDecisionInstruction, actual.tradeDecisionInstruction);
+
+        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerRiskInstruction, actual.tradeAmtPerRiskInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerVolInstruction, actual.tradeAmtPerVolInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeAmtInstruction, actual.tradeAmtInstruction, 0.001);
+
+        // OEMS Broker Reporting Manager (BRM)
+        // asserts here ...
     }
 }

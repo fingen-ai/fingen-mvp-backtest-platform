@@ -37,8 +37,8 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double nav;
     public double positionRisk;
     public int tradeCount;
-    double atr;
-    double priorClose;
+    public double atr;
+    public double priorClose;
     public double riskInitPercentThreshold;
     public double volInitPercentThreshold;
     public double riskOngoingPercentThreshold;
