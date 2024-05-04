@@ -38,6 +38,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             // openOrders = brm.getOpenOrders(order.orderId);
             // if(openOrders) {
 
+                oemsData.tradeAmtPerRiskInstruction = risk.getOngoingRiskPercentThreshold() * acct.nav;
+                oemsData.tradeAmtPerVolInstruction = risk.getOngoingVolPercentThreshold() * acct.nav;
+
                 oemsData.tradeAmtPerRiskInstruction = risk.getInitRiskPercentThreshold() * acct.nav;
                 oemsData.tradeAmtPerVolInstruction = risk.getInitVolPercentThreshold() * acct.nav;
                 nos = ob.buildNOS(oemsData);
