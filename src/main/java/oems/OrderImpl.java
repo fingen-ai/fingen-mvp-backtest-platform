@@ -14,15 +14,14 @@ import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
 import net.openhft.chronicle.queue.rollcycles.TestRollCycles;
 import net.openhft.chronicle.wire.converter.Base85;
 import oems.api.OMSIn;
-import oems.dto.BuySell;
-import oems.dto.NewOrderSingle;
-import oems.dto.OrderType;
+import oems.dto.*;
 
 import java.io.IOException;
 
-public class OrderImpl {
+public class OrderImpl implements OMSIn {
 
-    public void openOrder(OEMSData oemsData) throws IOException {
+    @Override
+    public void newOrderSingle(OEMSData oemsData) throws IOException {
         // Add NewOrderSingle class to the alias pool
         ClassAliasPool.CLASS_ALIASES.addAlias(NewOrderSingle.class);
 
@@ -66,6 +65,16 @@ public class OrderImpl {
     }
 
     private void cancelAllOrders() {
+
+    }
+
+    @Override
+    public void cancelOrderRequest(CancelOrderRequest cor) {
+
+    }
+
+    @Override
+    public void cancelAll(CancelAll cancelAll) {
 
     }
 

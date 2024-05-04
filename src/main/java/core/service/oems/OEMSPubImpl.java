@@ -38,21 +38,18 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             // No curr pos in the symbol
             if(oemsData.bassoOrderIdea.equals("Bullish")) {
                 // Build open long order + details
-                nos.symbol(1); // use long instead of String for symbol. lowers latency.
-                nos.ordType(OrderType.limit);
-                nos.price(oemsData.bid);
-                omsIn.newOrderSingle(nos);
+                omsIn.newOrderSingle(oemsData);
 
             } else if(oemsData.bassoOrderIdea.equals("Bearish")) {
                 // Build open short order + details
                 nos.symbol(1); // just have a long to symbol identification map
                 nos.ordType(OrderType.limit);
                 nos.price(oemsData.ask);
-                omsIn.newOrderSingle(nos);
+                omsIn.newOrderSingle(oemsData);
             }
         }
 
-        // Get open orders
+        // BRM methods
         //List<Order> openOrders = brm.getOpenOrders();
         //openOrders.forEach(order -> System.out.println("Open Order: " + order));
 

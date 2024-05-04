@@ -4,6 +4,7 @@
 
 package oems.api;
 
+import core.service.oems.OEMSData;
 import net.openhft.chronicle.bytes.MethodId;
 import oems.dto.CancelAll;
 import oems.dto.CancelOrderRequest;
@@ -17,13 +18,9 @@ import oems.dto.NewOrderSingle;
  */
 public interface OMSIn {
 
-    /**
-     * Handles a new single order.
-     *
-     * @param nos The {@link NewOrderSingle} object representing the details of the new order.
-     */
     @MethodId(1)
-    void newOrderSingle(NewOrderSingle nos);
+    //void newOrderSingle(NewOrderSingle nos);
+    void newOrderSingle(OEMSData oemsData);
 
     /**
      * Handles a cancel order request.
