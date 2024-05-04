@@ -1,23 +1,22 @@
 package core.service.oems;
 
-import oems.OMSImpl;
 import oems.api.OMSIn;
 import oems.api.OMSOut;
+import oems.dto.ExecutionReport;
 import oems.dto.NewOrderSingle;
 import oems.dto.OrderType;
 
+import java.io.IOException;
+
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
-    private OEMSData oemsDataALL = new OEMSData();
     private NewOrderSingle nos = new NewOrderSingle();
     OMSIn omsIn;
     OMSOut omsOut;
 
-    int counter = 0;
-
     private OEMSPub output;
 
-    public OEMSPubImpl() {
+    public OEMSPubImpl() throws IOException {
     }
     public void init(OEMSPub output) {
         this.output = output;
@@ -30,6 +29,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         if(oemsData.bassoOrderIdea != null) {
 
             // Curr pos in the symbol
+                // Get orders map. Keyed by openOrderId. Returns OrdersMap
                 // Risk % check
                 // Vol % check
                 // Add to  position or not
@@ -52,21 +52,20 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         // Get all open trades
-            // Recalc stops
+
+            // Recalc stop
             // Yes hit stop
-                // Place close order
+                // Place close trade
+                // Confirmed closed trade
             // Update stop
 
 
         // OMS-OUT REPORTING
-        // get all orders
-
-        // get all trades
-
-        // positions
-        // get reports of all states: order, trade, position
-
-        // get reports of all activity: order, trade, position
+        ExecutionReport er = null;
+        er.orderID(Long.parseLong(nos.clOrdID()));
+        er.clOrdID(nos.clOrdID());
+        er.ordType(OrderType.valueOf(nos.clOrdID()));
+        omsOut.executionReport(er);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

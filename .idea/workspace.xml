@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP." />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/BRM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/Trade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/oems/BRMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +56,8 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.ATRTest.executor": "Run",
+    "Application.BRPTest.executor": "Run",
+    "Application.BrokerageReportManagerTest.executor": "Run",
     "Application.CSVFileReaderTest.executor": "Run",
     "Application.DMITest.executor": "Run",
     "Application.EMACrossoverTest.executor": "Run",
@@ -59,6 +68,8 @@
     "Application.Orchestrator.executor": "Run",
     "Application.ROCTest.executor": "Run",
     "Application.SpeculativeEdgeHMMTest.executor": "Run",
+    "JUnit.BRMTest.executor": "Run",
+    "JUnit.BRPTest.executor": "Run",
     "JUnit.BassoTrendBassoTrendStrategyTest.executor": "Run",
     "JUnit.BollingerBandsTest.executor": "Run",
     "JUnit.DonchianChannelTest.executor": "Run",
@@ -90,7 +101,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/bart/IdeaProjects/fingen-mvp-backtest-platform/src/main/java/strategies/indicators",
+    "last_opened_file_path": "/Users/bart/IdeaProjects/fingen-mvp-backtest-platform/src/main/java/oems/map",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,6 +115,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/oems/map" />
       <recent name="$PROJECT_DIR$/src/main/java/strategies/indicators" />
       <recent name="$PROJECT_DIR$/src/test/java" />
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -112,30 +124,21 @@
       <recent name="$PROJECT_DIR$/src/test/resources/oems" />
       <recent name="$PROJECT_DIR$/src/test/java/oems" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="oems" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="oems.dto" />
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OEMSTest">
-    <configuration name="DMITest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="strategies.indicators.dmi.DMITest" />
+  <component name="RunManager" selected="JUnit.BRMTest">
+    <configuration name="BRMTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oems.BRMTest" />
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="strategies.indicators.dmi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ROCTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="strategies.indicators.roc.ROCTest" />
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="strategies.indicators.roc.*" />
+          <option name="PATTERN" value="oems.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,6 +155,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BRMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="oems" />
+      <option name="MAIN_CLASS_NAME" value="oems.BRMTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BRMTest" />
+        <item itemvalue="Application.BRMTest" />
         <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="Application.SpeculativeEdgeHMMTest" />
-        <item itemvalue="Application.ROCTest" />
-        <item itemvalue="Application.DMITest" />
       </list>
     </recent_temporary>
   </component>
@@ -223,6 +241,8 @@
       <workItem from="1714678744659" duration="87000" />
       <workItem from="1714678972708" duration="3865000" />
       <workItem from="1714697093560" duration="22566000" />
+      <workItem from="1714779286024" duration="8281000" />
+      <workItem from="1714835188193" duration="3144000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -464,7 +484,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714779175691</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="OEMS Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714779295401</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714779295401</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
