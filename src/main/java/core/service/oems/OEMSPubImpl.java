@@ -37,15 +37,15 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             // No curr pos in the symbol
             if(oemsData.bassoOrderIdea.equals("Bullish")) {
-                // Build open long order + details
-                omsIn.newOrderSingle(oemsData);
+                nos.symbol(1); // just have a long to symbol identification map
+                nos.ordType(OrderType.limit);
+                nos.price(oemsData.bid);
 
             } else if(oemsData.bassoOrderIdea.equals("Bearish")) {
-                // Build open short order + details
                 nos.symbol(1); // just have a long to symbol identification map
                 nos.ordType(OrderType.limit);
                 nos.price(oemsData.ask);
-                omsIn.newOrderSingle(oemsData);
+                omsIn.newOrderSingle(nos);
             }
         }
 

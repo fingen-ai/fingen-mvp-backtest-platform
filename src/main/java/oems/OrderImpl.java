@@ -16,9 +16,8 @@ import net.openhft.chronicle.wire.converter.Base85;
 import oems.api.OMSIn;
 import oems.dto.*;
 
-public class OrderImpl implements OMSIn {
+public class OrderImpl {
 
-    @Override
     public void newOrderSingle(OEMSData oemsData) {
         // Add NewOrderSingle class to the alias pool
         ClassAliasPool.CLASS_ALIASES.addAlias(NewOrderSingle.class);
@@ -66,12 +65,10 @@ public class OrderImpl implements OMSIn {
 
     }
 
-    @Override
     public void cancelOrderRequest(CancelOrderRequest cor) {
 
     }
 
-    @Override
     public void cancelAll(CancelAll cancelAll) {
 
     }

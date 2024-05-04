@@ -19,8 +19,8 @@ import oems.dto.NewOrderSingle;
 public interface OMSIn {
 
     @MethodId(1)
-    //void newOrderSingle(NewOrderSingle nos);
-    void newOrderSingle(OEMSData oemsData);
+    void newOrderSingle(NewOrderSingle nos);
+    //void newOrderSingle(OEMSData oemsData);
 
     /**
      * Handles a cancel order request.

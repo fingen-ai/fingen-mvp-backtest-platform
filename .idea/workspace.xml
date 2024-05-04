@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS Test - WIP.&#10;BRM Test - WIP.">
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderAdderMain.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" afterDir="false" />
     </list>
@@ -240,7 +241,7 @@
       <workItem from="1714697093560" duration="22566000" />
       <workItem from="1714779286024" duration="8281000" />
       <workItem from="1714835188193" duration="11151000" />
-      <workItem from="1714846465667" duration="1380000" />
+      <workItem from="1714846465667" duration="1689000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -530,7 +531,39 @@
       <option name="project" value="LOCAL" />
       <updated>1714847631218</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714847855872</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1714847855872</updated>
+    </task>
+    <task id="LOCAL-00038" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714847863386</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1714847863386</updated>
+    </task>
+    <task id="LOCAL-00039" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714847878454</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1714847878454</updated>
+    </task>
+    <task id="LOCAL-00040" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
+      <option name="closed" value="true" />
+      <created>1714847899252</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1714847899252</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
