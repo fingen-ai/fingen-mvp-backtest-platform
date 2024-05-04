@@ -21,7 +21,7 @@ import java.io.IOException;
 public class OrderImpl implements OMSIn {
 
     @Override
-    public void newOrderSingle(OEMSData oemsData) throws IOException {
+    public void newOrderSingle(OEMSData oemsData) {
         // Add NewOrderSingle class to the alias pool
         ClassAliasPool.CLASS_ALIASES.addAlias(NewOrderSingle.class);
 
