@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSImpl - WIP.&#10;OMS - WIP.&#10;OrderBuilder - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/OEMSImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/api/OrderBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderViewerMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OMSBenchmarkMain.java" beforeDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderManagerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +241,7 @@
       <workItem from="1714779286024" duration="8281000" />
       <workItem from="1714835188193" duration="11151000" />
       <workItem from="1714846465667" duration="12645000" />
-      <workItem from="1714866518887" duration="384000" />
+      <workItem from="1714866518887" duration="740000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -618,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714859753754</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE.">
+      <option name="closed" value="true" />
+      <created>1714867099860</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1714867099860</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
@@ -662,6 +662,7 @@
     <MESSAGE value="OEMS Test - WIP.&#10;BRM Test - WIP." />
     <MESSAGE value="OEMS Test - WIP.&#10;ExecutionReport - WIP.&#10;OMSImpl - WIP.&#10;BRM &amp; BRM Test - Deprecated." />
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSImpl - WIP.&#10;OMS - WIP.&#10;OrderBuilder - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSImpl - WIP.&#10;OMS - WIP.&#10;OrderBuilder - WIP." />
+    <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE." />
+    <option name="LAST_COMMIT_MESSAGE" value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE." />
   </component>
 </project>

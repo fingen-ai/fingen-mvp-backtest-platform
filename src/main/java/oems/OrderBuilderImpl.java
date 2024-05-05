@@ -28,11 +28,13 @@ public class OrderBuilderImpl implements OrderBuilder {
                 .target(toLong("target"))
                 .transactTime(now())
                 .sendingTime(now())
+                .clOrdID(String.valueOf(now()))
                 .orderQty(1)
                 .ordType(OrderType.limit)
                 .price(oems.close)
                 .side(BuySell.buy)
                 .symbol(toLong("BTC_USD"));
+
 
         return nos;
     }
