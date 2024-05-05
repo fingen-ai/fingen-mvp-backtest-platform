@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE.">
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP.&#10;OrderBuilder - DONE.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/oems/OMSImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/BRM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/ReportMgrImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OMSImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/NewOrderSingle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/dto/NewOrderSingle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/Trade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/oems/BRMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/ReportMgrTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,26 +137,13 @@
       <recent name="core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OEMSTest">
+  <component name="RunManager" selected="JUnit.OMSImplTest">
     <configuration name="BRMTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="oems.BRMTest" />
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="oems.dto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpeculativeEdgeHMMTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="strategies.trend.basso.hmm.SpeculativeEdgeHMMTest" />
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="strategies.trend.basso.hmm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -204,13 +196,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OMSImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="oems" />
+      <option name="MAIN_CLASS_NAME" value="oems.OMSImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OMSImplTest" />
         <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.BRMTest" />
         <item itemvalue="Application.BRMTest" />
         <item itemvalue="JUnit.InsightTest" />
-        <item itemvalue="Application.SpeculativeEdgeHMMTest" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +251,10 @@
       <workItem from="1714779286024" duration="8281000" />
       <workItem from="1714835188193" duration="11151000" />
       <workItem from="1714846465667" duration="12645000" />
-      <workItem from="1714866518887" duration="1736000" />
+      <workItem from="1714866518887" duration="5345000" />
+      <workItem from="1714872715069" duration="1919000" />
+      <workItem from="1714874880030" duration="318000" />
+      <workItem from="1714875307195" duration="1124000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -630,7 +640,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714867290272</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP.&#10;OrderBuilder - DONE.">
+      <option name="closed" value="true" />
+      <created>1714868859111</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1714868859111</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module" />
     <MESSAGE value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
     <MESSAGE value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
@@ -674,6 +691,7 @@
     <MESSAGE value="OEMS Test - WIP.&#10;ExecutionReport - WIP.&#10;OMSImpl - WIP.&#10;BRM &amp; BRM Test - Deprecated." />
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSImpl - WIP.&#10;OMS - WIP.&#10;OrderBuilder - WIP." />
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE." />
-    <option name="LAST_COMMIT_MESSAGE" value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE." />
+    <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP.&#10;OrderBuilder - DONE." />
+    <option name="LAST_COMMIT_MESSAGE" value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP.&#10;OrderBuilder - DONE." />
   </component>
 </project>

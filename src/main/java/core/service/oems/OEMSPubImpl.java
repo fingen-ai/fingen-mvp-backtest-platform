@@ -1,7 +1,6 @@
 package core.service.oems;
 
 import account.AccountData;
-import oems.BRM;
 import oems.OrderBuilderImpl;
 import oems.OMSImpl;
 import oems.api.OrderBuilder;
@@ -18,13 +17,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private OrderBuilder ob = new OrderBuilderImpl();
     private OMS om = new OMSImpl();
     private ExecutionReport er = new ExecutionReport();
-    private BRM brm = new BRM();
     private Risk risk = new RiskImpl();
     private AccountData acct = new AccountData();
 
     private OEMSPub output;
 
-    public OEMSPubImpl() {
+    public OEMSPubImpl() throws IOException {
     }
     public void init(OEMSPub output) {
         this.output = output;

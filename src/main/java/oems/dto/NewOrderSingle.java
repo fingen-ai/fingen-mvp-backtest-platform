@@ -187,7 +187,7 @@ public class NewOrderSingle extends AbstractEvent<NewOrderSingle> {
         return this;
     }
 
-
+    /*
     @Override
     public void writeMarshallable(BytesOut<?> out) {
         super.writeMarshallable(out);
@@ -202,7 +202,28 @@ public class NewOrderSingle extends AbstractEvent<NewOrderSingle> {
             out.writeObject(String.class, clOrdID);
         }
     }
+     */
 
+    @Override
+    public void writeMarshallable(BytesOut<?> out) {
+        super.writeMarshallable(out);
+        if (PREGENERATED_MARSHALLABLE) {
+            out.writeStopBit(MASHALLABLE_VERSION);
+            out.writeLong(symbol);  // Assuming primitives like longs are always initialized
+            out.writeLong(transactTime);
+            out.writeDouble(orderQty);
+            out.writeDouble(price);
+
+            // Handling potential null values for enum types
+            out.writeObject(BuySell.class, side != null ? side : BuySell.buy); // Default to BUY if null
+            out.writeObject(OrderType.class, ordType != null ? ordType : OrderType.market); // Default to MARKET if null
+
+            // Ensure clOrdID is not null or write an empty string as a fallback
+            out.writeObject(String.class, clOrdID != null ? clOrdID : "");
+        }
+    }
+
+    /*
     @Override
     public void readMarshallable(BytesIn<?> in) {
         super.readMarshallable(in);
@@ -216,6 +237,31 @@ public class NewOrderSingle extends AbstractEvent<NewOrderSingle> {
                 side = in.readObject(BuySell.class);
                 ordType = in.readObject(OrderType.class);
                 clOrdID = in.readObject(String.class);
+            }
+        }
+    }
+     */
+
+    @Override
+    public void readMarshallable(BytesIn<?> in) {
+        super.readMarshallable(in);
+        if (PREGENERATED_MARSHALLABLE) {
+            int version = (int) in.readStopBit();
+            if (version == MASHALLABLE_VERSION) {
+                symbol = in.readLong();
+                transactTime = in.readLong();
+                orderQty = in.readDouble();
+                price = in.readDouble();
+
+                // Read nullable fields safely
+                side = in.readObject(BuySell.class);
+                if (side == null) side = BuySell.buy; // Apply default if null was read
+
+                ordType = in.readObject(OrderType.class);
+                if (ordType == null) ordType = OrderType.limit; // Apply default if null was read
+
+                clOrdID = in.readObject(String.class);
+                if (clOrdID == null) clOrdID = ""; // Apply default if null was read
             }
         }
     }
