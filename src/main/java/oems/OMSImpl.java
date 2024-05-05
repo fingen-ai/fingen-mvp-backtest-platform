@@ -1,74 +1,28 @@
-/*
- * Copyright (c) 2016-2019 Chronicle Software Ltd
- */
-
 package oems;
 
-import oems.api.OMSIn;
-import oems.dto.*;
+import oems.api.OMS;
+import oems.dto.CancelAll;
+import oems.dto.CancelOrderRequest;
+import oems.dto.NewOrderSingle;
 
-public class OMSImpl {
-    // The outbound interface for sending execution reports and order cancel rejections
-    //private final OMSOut out;
+public class OMSImpl implements OMS {
 
-    // Reusable instance of ExecutionReport for creating new orders
-    //private final ExecutionReport er = new ExecutionReport();
+    BRM brm = new BRM();
 
-    // Reusable instance of OrderCancelReject for cancelling orders
-    //private final OrderCancelReject ocr = new OrderCancelReject();
-
+    @Override
     public void newOrderSingle(NewOrderSingle nos) {
-        //er.reset();
-        //final long orderID = SystemTimeProvider.CLOCK.currentTimeNanos(); // Generate unique order ID
-
-        /*
-        // Populate the ExecutionReport with request details
-        er.sender(nos.target())
-                .target(nos.sender())
-                .symbol(nos.symbol())
-                .clOrdID(nos.clOrdID())
-                .ordType(nos.ordType())
-                .orderQty(nos.orderQty())
-                .price(nos.price())
-                .side(nos.side())
-                .sendingTime(nos.sendingTime())
-                .transactTime(nos.transactTime())
-                .leavesQty(0)
-                .orderID(orderID)
-                .text("Not ready");
-        */
-
-        // Send execution report
-        //out.executionReport(er);
+        System.out.println("\nNOS: " + nos);
+        // add to open orders map
     }
 
-    public void cancelOrderRequest(CancelOrderRequest cor) {
-        /*
-        // Populate OrderCancelReject with request details
-        ocr.sender(cor.target())
-                .target(cor.sender())
-                .symbol(cor.symbol())
-                .clOrdID(cor.clOrdID())
-                .sendingTime(cor.sendingTime())
-                .reason("No such order");
-         */
-
-        // Send order cancellation rejection
-        //out.orderCancelReject(ocr);
+    @Override
+    public void closeOrderSingle(CancelOrderRequest cor) {
+        System.out.println("\nCAN: " + cor);
+        // add to  orders map
     }
 
-    public void cancelAll(CancelAll cancelAll) {
-        /*
-        // Populate OrderCancelReject with request details
-        ocr.sender(cancelAll.target())
-                .target(cancelAll.sender())
-                .symbol(cancelAll.symbol())
-                .clOrdID("")
-                .sendingTime(cancelAll.sendingTime())
-                .reason("No such orders");
-         */
-
-        // Send order cancellation rejection
-        //out.orderCancelReject(ocr);
+    @Override
+    public void closeOrderAll(CancelAll cancelAll) {
+        System.out.println("\nCANALL: " + cancelAll);
     }
 }

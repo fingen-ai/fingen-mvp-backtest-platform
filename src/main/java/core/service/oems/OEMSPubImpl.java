@@ -3,9 +3,9 @@ package core.service.oems;
 import account.AccountData;
 import oems.BRM;
 import oems.OrderBuilderImpl;
-import oems.OrderManagerImpl;
+import oems.OMSImpl;
 import oems.api.OrderBuilder;
-import oems.api.OrderManager;
+import oems.api.OMS;
 import oems.dto.*;
 import risk.Risk;
 import risk.RiskImpl;
@@ -16,7 +16,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private NewOrderSingle nos = new NewOrderSingle();
     private OrderBuilder ob = new OrderBuilderImpl();
-    private OrderManager om = new OrderManagerImpl();
+    private OMS om = new OMSImpl();
     private ExecutionReport er = new ExecutionReport();
     private BRM brm = new BRM();
     private Risk risk = new RiskImpl();

@@ -4,11 +4,11 @@ import oems.dto.CancelAll;
 import oems.dto.CancelOrderRequest;
 import oems.dto.NewOrderSingle;
 
-public interface OrderManager {
+public interface OMS {
 
     void newOrderSingle(NewOrderSingle nos);
 
-    void cancelOrderRequest(CancelOrderRequest cor);
+    void closeOrderSingle(CancelOrderRequest cor);
 
-    void cancelAll(CancelAll cancelAll);
+    void closeOrderAll(CancelAll cancelAll);
 }

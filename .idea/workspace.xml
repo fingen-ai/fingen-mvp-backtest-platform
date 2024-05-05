@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OMSImplTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +244,7 @@
       <workItem from="1714779286024" duration="8281000" />
       <workItem from="1714835188193" duration="11151000" />
       <workItem from="1714846465667" duration="12645000" />
-      <workItem from="1714866518887" duration="740000" />
+      <workItem from="1714866518887" duration="1736000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
       <option name="closed" value="true" />
@@ -619,7 +622,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714867099860</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE.">
+      <option name="closed" value="true" />
+      <created>1714867290272</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1714867290272</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
