@@ -34,6 +34,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         if(oemsData.bassoOrderIdea != null) {
 
             //Get curr pos direction
+
             //If(currPosDir != bassoOrderIdea) {
             //Close all curr pos in symbol
             //} else {
