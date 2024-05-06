@@ -92,8 +92,5 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.tradeAmtPerRiskInstruction, actual.tradeAmtPerRiskInstruction, 0.001);
         assertEquals("Mismatch in some Insight field", expected.tradeAmtPerVolInstruction, actual.tradeAmtPerVolInstruction, 0.001);
         assertEquals("Mismatch in some Insight field", expected.tradeAmtInstruction, actual.tradeAmtInstruction, 0.001);
-
-        // OEMS Broker Reporting Manager (BRM)
-        // asserts here ...
     }
 }

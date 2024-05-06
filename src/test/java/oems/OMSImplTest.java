@@ -22,7 +22,7 @@ public class OMSImplTest {
     }
 
     @Test
-    public void testAddAndRetrieveOrder() {
+    public void testAddAndRetrieveOrder() throws IOException {
         // Create a fully initialized NewOrderSingle DTO with test data
         NewOrderSingle nos = new NewOrderSingle();
         nos.symbol(12345L);  // Ensure symbol is set
@@ -43,10 +43,10 @@ public class OMSImplTest {
         assertNotNull(nos.ordType(), "Order Type should not be null");
 
         // Send the order to be processed by OMSImpl
-        oms.addOrderMap(nos.clOrdID(), nos);
+        oms.addUpdateNOS(nos.clOrdID(), nos);
 
         // Use clOrdID as the key to retrieve the order from the map
-        NewOrderSingle retrievedOrder = oms.getOrderMap(nos.clOrdID(), new NewOrderSingle());
+        NewOrderSingle retrievedOrder = oms.getNOS(nos.clOrdID(), new NewOrderSingle());
 
         // Assert that the stored and retrieved order properties match
         assertNotNull(retrievedOrder, "The retrieved order should not be null");

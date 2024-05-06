@@ -1,67 +1,91 @@
 package oems;
 
 import net.openhft.chronicle.core.OS;
-import net.openhft.chronicle.core.values.LongValue;
 import net.openhft.chronicle.map.ChronicleMap;
-import net.openhft.chronicle.values.Values;
-import oems.api.OMS;
-import oems.dto.CancelAll;
-import oems.dto.CancelOrderRequest;
+import oems.api.OMSIn;
+import oems.dto.CloseOrderAll;
 import oems.dto.NewOrderSingle;
 
 import java.io.File;
 import java.io.IOException;
 
-public class OMSImpl implements OMS {
+public class OMSImpl implements OMSIn {
 
-    File openOrderMap = new File(OS.USER_HOME + "/FinGen/Maps/OMS/openOrderMap");
+    // NOS map inits
+    File nosMap = new File(OS.USER_HOME + "/FinGen/Maps/OMS/nosMap");
     static ChronicleMap<CharSequence, NewOrderSingle> NOS;
     static NewOrderSingle nos = new NewOrderSingle();
 
+    // COA map inits
+    File coaMap = new File(OS.USER_HOME + "/FinGen/Maps/OMS/coaMap");
+    static ChronicleMap<CharSequence, CloseOrderAll> COA;
+    static CloseOrderAll coa = new CloseOrderAll();
+
     public OMSImpl() throws IOException {
-        if (!openOrderMap.exists()) {
+
+        // NOS map
+        if (!nosMap.exists()) {
             NOS = ChronicleMap
                     .of(CharSequence.class, NewOrderSingle.class)
-                    .name("openOrder.map")
+                    .name("nos.map")
                     .entries(1_000)
                     .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
                     .averageValue(nos)
-                    .createPersistedTo(openOrderMap);
+                    .createPersistedTo(nosMap);
         } else {
             NOS = ChronicleMap
                     .of(CharSequence.class, NewOrderSingle.class)
-                    .name("openOrder.map")
+                    .name("nos.map")
                     .entries(1_000)
                     .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
                     .averageValue(nos)
-                    .recoverPersistedTo(openOrderMap, false);
+                    .recoverPersistedTo(nosMap, false);
+        }
+
+        // COA map
+        if (!coaMap.exists()) {
+            COA = ChronicleMap
+                    .of(CharSequence.class, CloseOrderAll.class)
+                    .name("coa.map")
+                    .entries(1_000)
+                    .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
+                    .averageValue(coa)
+                    .createPersistedTo(coaMap);
+        } else {
+            COA = ChronicleMap
+                    .of(CharSequence.class, CloseOrderAll.class)
+                    .name("coa.map")
+                    .entries(1_000)
+                    .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
+                    .averageValue(coa)
+                    .recoverPersistedTo(coaMap, false);
         }
     }
 
-    public void addOrderMap(CharSequence setKey, NewOrderSingle nos) {
-
+    // NOS map methods
+    public void addUpdateNOS(CharSequence setKey, NewOrderSingle nos) {
         NOS.put(setKey, nos);
     }
-    public NewOrderSingle getOrderMap(CharSequence getKey, NewOrderSingle nos) {
-
+    public NewOrderSingle getNOS(CharSequence getKey, NewOrderSingle nos) {
         return NOS.getUsing(getKey, nos);
     }
 
+    // COA map methods
+    public void addUpdateCOA(CharSequence setKey, CloseOrderAll coa) {
+        COA.put(setKey, coa);
+    }
+    public CloseOrderAll getCOA(CharSequence getKey, CloseOrderAll coa) {
+        return COA.getUsing(getKey, coa);
+    }
+
+    // All order map method calls
     @Override
-    public void newOrderSingle(NewOrderSingle nos) throws IOException {
-        addOrderMap(nos.clOrdID(), nos);
-        System.out.println("New order placed: " + nos);
+    public void newOrderSingle(NewOrderSingle nos) {
+        addUpdateNOS(nos.clOrdID(), nos);
     }
 
     @Override
-    public void closeOrderSingle(CancelOrderRequest cor) {
-        System.out.println("\nCAN: " + cor);
-        getOrderMap(nos.clOrdID(), nos);
-    }
-
-    @Override
-    public void closeOrderAll(CancelAll cancelAll) {
-        System.out.println("\nCANALL: " + cancelAll);
-        // Add logic to close all orders
+    public void closeOrderAll(CloseOrderAll coa) {
+        addUpdateCOA(coa.clOrdID(), coa);
     }
 }
