@@ -28,6 +28,6 @@ public interface OMSOut {
      *
      * @param ocr The {@link OrderCancelReject} object representing the details of the order cancel reject.
      */
-    @MethodId(12)
-    void orderCancelReject(OrderCancelReject ocr);
+    //@MethodId(12)
+    //void orderCancelReject(OrderCancelReject ocr);
 }
