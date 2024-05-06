@@ -3,7 +3,6 @@ package core;
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
 import core.service.oems.OEMSData;
-import core.service.strategy.StrategyData;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
@@ -89,8 +88,8 @@ public class OEMSTest {
 
         assertEquals("Mismatch in some Insight field", expected.tradeDecisionInstruction, actual.tradeDecisionInstruction);
 
-        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerRiskInstruction, actual.tradeAmtPerRiskInstruction, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerVolInstruction, actual.tradeAmtPerVolInstruction, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeAmtInstruction, actual.tradeAmtInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerRiskInstruction, actual.tradeQtyPerRiskInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerVolInstruction, actual.tradeQtyPerVolInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeAmtInstruction, actual.tradeQtyInstruction, 0.001);
     }
 }

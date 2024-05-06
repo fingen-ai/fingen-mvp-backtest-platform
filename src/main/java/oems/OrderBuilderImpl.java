@@ -5,61 +5,47 @@
 package oems;
 
 import core.service.oems.OEMSData;
-import net.openhft.chronicle.core.pool.ClassAliasPool;
 import net.openhft.chronicle.core.time.SystemTimeProvider;
 import net.openhft.chronicle.wire.converter.Base85;
 import oems.api.OrderBuilder;
-import oems.dto.BuySell;
 import oems.dto.CloseOrderAll;
 import oems.dto.NewOrderSingle;
 import oems.dto.OrderType;
-
-import java.io.IOException;
-
-import static oems.OMSImpl.coa;
 
 public class OrderBuilderImpl implements OrderBuilder {
 
     public NewOrderSingle buildNOS(OEMSData oems) {
 
-        // Add NewOrderSingle class to the alias pool
-        ClassAliasPool.CLASS_ALIASES.addAlias(NewOrderSingle.class);
-
         // Create a new order single
-        NewOrderSingle nos = new NewOrderSingle()
-                .sender(toLong("sender"))
-                .target(toLong("target"))
-                .transactTime(now())
-                .sendingTime(now())
-                .clOrdID(String.valueOf(now()))
-                .orderQty(1)
-                .ordType(OrderType.limit)
-                .price(oems.close)
-                .side(BuySell.buy)
-                .symbol(toLong("BTC_USD"));
-
+        NewOrderSingle nos = new NewOrderSingle();
+        nos.sender = "sender";
+        nos.target = "target";
+        nos.transactTime = String.valueOf(System.nanoTime());
+        nos.sendingTime = String.valueOf(System.nanoTime());
+        nos.clOrdID = String.valueOf(System.nanoTime());
+        nos.orderQty = oems.openOrderQty;
+        nos.ordType = String.valueOf(OrderType.limit);
+        nos.price = oems.close;
+        nos.side = oems.openOrderSide;;
+        nos.symbol = oems.symbol;
 
         return nos;
     }
 
     public CloseOrderAll buildCOA(OEMSData oems) {
 
-        // Add NewOrderSingle class to the alias pool
-        ClassAliasPool.CLASS_ALIASES.addAlias(CloseOrderAll.class);
-
         // Create a new order single
-        CloseOrderAll nos = new CloseOrderAll()
-                .sender(toLong("sender"))
-                .target(toLong("target"))
-                .transactTime(now())
-                .sendingTime(now())
-                .clOrdID(String.valueOf(now()))
-                .orderQty(1)
-                .ordType(OrderType.limit)
-                .price(oems.close)
-                .side(BuySell.buy)
-                .symbol(toLong("BTC_USD"));
-
+        CloseOrderAll coa = new CloseOrderAll();
+        coa.sender = "sender";
+        coa.target = "target";
+        coa.transactTime = String.valueOf(System.nanoTime());
+        coa.sendingTime = String.valueOf(System.nanoTime());
+        coa.clOrdID = String.valueOf(System.nanoTime());
+        coa.orderQty = oems.openOrderQty;
+        coa.ordType = String.valueOf(OrderType.limit);
+        coa.price = oems.close;
+        coa.side = oems.closeOrderSide;;
+        coa.symbol = oems.symbol;
 
         return coa;
     }

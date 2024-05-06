@@ -109,33 +109,41 @@ public class OMSImpl implements OMSIn {
     }
 
     // NOS map methods
+    @Override
     public void addUpdateNOS(CharSequence setKey, NewOrderSingle nos) {
         NOS.put(setKey, nos);
     }
+    @Override
     public NewOrderSingle getNOS(CharSequence getKey, NewOrderSingle nos) {
         return NOS.getUsing(getKey, nos);
     }
 
     // COA map methods
+    @Override
     public void addUpdateCOA(CharSequence setKey, CloseOrderAll coa) {
         COA.put(setKey, coa);
     }
+    @Override
     public CloseOrderAll getCOA(CharSequence getKey, CloseOrderAll coa) {
         return COA.getUsing(getKey, coa);
     }
 
     // NOS ARRAY map methods
+    @Override
     public void addUpdateNOSArray(CharSequence setKey, double[] nosArray) {
         NOSArrayMap.put(setKey, nosArray);
     }
+    @Override
     public double[] getNOSArray(CharSequence getKey, double[] nosArray) {
         return NOSArrayMap.getUsing(getKey, nosArray);
     }
 
     // COA ARRAY map methods
+    @Override
     public void addUpdateCOAArray(CharSequence setKey, double[] coaArray) {
         COAArrayMap.put(setKey, coaArray);
     }
+    @Override
     public double[] getCOAArray(CharSequence getKey, double[] coaArray) {
         return COAArrayMap.getUsing(getKey, coaArray);
     }
@@ -144,30 +152,20 @@ public class OMSImpl implements OMSIn {
     @Override
     public void newOrderSingle(NewOrderSingle nos) {
         // update map
-        addUpdateNOS(nos.clOrdID(), nos);
+        addUpdateNOS(nos.clOrdID, nos);
         // update array map
     }
 
     @Override
     public void closeOrderAll(CloseOrderAll coa) {
         // update map
-        addUpdateCOA(coa.clOrdID(), coa);
+        addUpdateCOA(coa.clOrdID, coa);
         // update array map
     }
 
     @Override
     public void updateSLTP(NewOrderSingle nos) {
         // update map
-        addUpdateNOS(nos.clOrdID(), nos);
-    }
-
-    @Override
-    public void updateNOSArray(NewOrderSingle nos, double[] nosArray) {
-        addUpdateNOSArray(nos.clOrdID(), nosArray);
-    }
-
-    @Override
-    public void updateCOAArray(CloseOrderAll coa, double[] coaArray) {
-        addUpdateCOAArray(nos.clOrdID(), coaArray);
+        addUpdateNOS(nos.clOrdID, nos);
     }
 }
