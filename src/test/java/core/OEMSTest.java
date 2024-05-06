@@ -88,8 +88,8 @@ public class OEMSTest {
 
         assertEquals("Mismatch in some Insight field", expected.tradeDecisionInstruction, actual.tradeDecisionInstruction);
 
-        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerRiskInstruction, actual.tradeQtyPerRiskInstruction, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeAmtPerVolInstruction, actual.tradeQtyPerVolInstruction, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeAmtInstruction, actual.tradeQtyInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeQtyPerRiskInstruction, actual.tradeQtyPerRiskInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeQtyPerVolInstruction, actual.tradeQtyPerVolInstruction, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.tradeQtyInstruction, actual.tradeQtyInstruction, 0.001);
     }
 }

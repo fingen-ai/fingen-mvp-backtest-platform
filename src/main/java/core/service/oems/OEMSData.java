@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class OEMSData extends SelfDescribingMarshallable {
+    // Price data
     public long recId;
     public double marketCap;
     public long svcStartTs;

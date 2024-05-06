@@ -40,8 +40,8 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
             if(insightData.bassoOrderIdea != null) {
                 insightData.tradeDecisionInstruction = "Trade";
-                insightData.tradeAmtPerRiskInstruction = risk.updateOngoingRiskAmtThreshold(insightData.nav, insightData.riskInitPercentThreshold);
-                insightData.tradeAmtPerVolInstruction = risk.updateOngoingVolAmtThreshold(insightData.nav, insightData.volInitPercentThreshold);
+                insightData.tradeQtyPerRiskInstruction = risk.updateOngoingRiskAmtThreshold(insightData.nav, insightData.riskInitPercentThreshold);
+                insightData.tradeQtyPerVolInstruction = risk.updateOngoingVolAmtThreshold(insightData.nav, insightData.volInitPercentThreshold);
 
             } else {
                 insightData.tradeDecisionInstruction = "Do Not Trade";
@@ -60,19 +60,19 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
                 if(insightData.currentTotalPercentRiskPercent < insightData.riskOngoingPercentThreshold) {
                     insightData.tradeDecisionInstruction = "Trade";
-                    insightData.tradeAmtPerRiskInstruction = risk.updateOngoingRiskAmtThreshold(insightData.nav, insightData.riskOngoingPercentThreshold);
+                    insightData.tradeQtyPerRiskInstruction = risk.updateOngoingRiskAmtThreshold(insightData.nav, insightData.riskOngoingPercentThreshold);
 
                 } else {
                     insightData.tradeDecisionInstruction = "Do Not Trade";
-                    insightData.tradeAmtPerRiskInstruction = 0;
+                    insightData.tradeQtyPerRiskInstruction = 0;
                 }
 
                 if(insightData.currentTotalPercentVolRiskPercent < insightData.volOngoingPercentThreshold) {
                     insightData.tradeDecisionInstruction = "Trade";
-                    insightData.tradeAmtPerVolInstruction = risk.updateOngoingVolAmtThreshold(insightData.nav, insightData.volOngoingPercentThreshold);
+                    insightData.tradeQtyPerVolInstruction = risk.updateOngoingVolAmtThreshold(insightData.nav, insightData.volOngoingPercentThreshold);
                 } else {
                     insightData.tradeDecisionInstruction = "Do Not Trade";
-                    insightData.tradeAmtPerVolInstruction = 0;
+                    insightData.tradeQtyPerVolInstruction = 0;
                 }
 
             } else {
@@ -81,7 +81,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
             }
 
             // Decide trade amt instruction
-            insightData.tradeAmtInstruction = Math.min(insightData.tradeAmtPerRiskInstruction, insightData.tradeAmtPerVolInstruction);
+            insightData.tradeQtyInstruction = Math.min(insightData.tradeQtyPerRiskInstruction, insightData.tradeQtyPerVolInstruction);
         }
 
         // Calc current total risk

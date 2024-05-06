@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/CloseOrderAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/dto/CloseOrderAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/NewOrderSingle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/dto/NewOrderSingle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -257,15 +252,7 @@
       <workItem from="1714875307195" duration="3018000" />
       <workItem from="1714959584509" duration="6772000" />
       <workItem from="1715017066287" duration="146000" />
-      <workItem from="1715017216293" duration="2755000" />
-    </task>
-    <task id="LOCAL-00009" summary="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP.">
-      <option name="closed" value="true" />
-      <created>1714017361850</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1714017361850</updated>
+      <workItem from="1715017216293" duration="3126000" />
     </task>
     <task id="LOCAL-00010" summary="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE.">
       <option name="closed" value="true" />
@@ -651,7 +638,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715017304910</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1715022098143</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1715022098144</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

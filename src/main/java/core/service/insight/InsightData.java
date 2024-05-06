@@ -6,12 +6,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class InsightData extends SelfDescribingMarshallable {
+    // Price data
     public long recId;
     public double marketCap;
     public long svcStartTs;
     public long svcStopTs;
     public long svcLatency;
-    public String instrument;
+    public String symbol;
     public double open;
     public double high;
     public double low;
@@ -46,7 +47,7 @@ public class InsightData extends SelfDescribingMarshallable {
     public double currentTotalPercentRiskPercent;
     public double currentTotalPercentVolRiskPercent;
     public String tradeDecisionInstruction;
-    public double tradeAmtPerRiskInstruction;
-    public double tradeAmtPerVolInstruction;
-    public double tradeAmtInstruction;
+    public double tradeQtyPerRiskInstruction;
+    public double tradeQtyPerVolInstruction;
+    public double tradeQtyInstruction;
 }
