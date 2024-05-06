@@ -81,11 +81,21 @@ public class OMSImpl implements OMSIn {
     // All order map method calls
     @Override
     public void newOrderSingle(NewOrderSingle nos) {
+        // update map
         addUpdateNOS(nos.clOrdID(), nos);
+        // update array map
     }
 
     @Override
     public void closeOrderAll(CloseOrderAll coa) {
+        // update map
         addUpdateCOA(coa.clOrdID(), coa);
+        // update array map
+    }
+
+    @Override
+    public void updateSLTP(NewOrderSingle nos) {
+        // update map
+        addUpdateNOS(nos.clOrdID(), nos);
     }
 }

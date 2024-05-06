@@ -12,4 +12,6 @@ public interface OMSIn {
     void newOrderSingle(NewOrderSingle nos);
 
     void closeOrderAll(CloseOrderAll coa);
+
+    void updateSLTP(NewOrderSingle nos);
 }

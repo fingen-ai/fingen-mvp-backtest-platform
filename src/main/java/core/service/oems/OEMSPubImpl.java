@@ -14,6 +14,7 @@ import java.io.IOException;
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private NewOrderSingle nos = new NewOrderSingle();
+    private CloseOrderAll coa = new CloseOrderAll();
     private OrderBuilder ob = new OrderBuilderImpl();
     private OMSIn om = new OMSImpl();
     private ExecutionReport er = new ExecutionReport();
@@ -33,34 +34,41 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         if(oemsData.bassoOrderIdea != null) {
 
+            //Get curr nav
             //Get curr pos direction
 
-            //If(currPosDir != bassoOrderIdea) {
-            //Close all curr pos in symbol
-            //} else {
-            //Update stop loss and take profit exits
-            //}
+            //If(ExistingPos == Yes) {
 
-            //Get curr nav
+                //If(currPosDir != bassoOrderIdea) {
+                    // add add'l oemsdata for order builder
+                    ob.buildCOA(oemsData);
+                    om.closeOrderAll(coa);
+                    // Given nos order closed, delete tradeID from nosArray
+                    // Given nos order closed, add new tradeID to coaArray
 
-            //If(ExistingPositions == Yes)
+                //} else {
+                    // Get new SL and TP prices
+                    ob.buildNOS(oemsData);
+                    om.updateSLTP(nos);
 
                 //Get curr pos amt
                 //If(currPos <= tradeAmtInstruction) {
                     oemsData.tradeAmtPerRiskInstruction = risk.getOngoingRiskPercentThreshold() * acct.nav;
                     oemsData.tradeAmtPerVolInstruction = risk.getOngoingVolPercentThreshold() * acct.nav;
-                //} else {
-                    // No trade due to pos lmt
+                    // add add'l oemsdata for order builder
                 //}
+
             //} else {
 
                 oemsData.tradeAmtPerRiskInstruction = risk.getInitRiskPercentThreshold() * acct.nav;
                 oemsData.tradeAmtPerVolInstruction = risk.getInitVolPercentThreshold() * acct.nav;
+                // add add'l oemsdata for order builder
             //}
         }
 
         nos = ob.buildNOS(oemsData);
         om.newOrderSingle(nos);
+        // Given nos order opened, add new tradeID to nosArray
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;

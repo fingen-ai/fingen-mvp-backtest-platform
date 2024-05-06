@@ -10,10 +10,13 @@ import net.openhft.chronicle.core.time.SystemTimeProvider;
 import net.openhft.chronicle.wire.converter.Base85;
 import oems.api.OrderBuilder;
 import oems.dto.BuySell;
+import oems.dto.CloseOrderAll;
 import oems.dto.NewOrderSingle;
 import oems.dto.OrderType;
 
 import java.io.IOException;
+
+import static oems.OMSImpl.coa;
 
 public class OrderBuilderImpl implements OrderBuilder {
 
@@ -37,6 +40,28 @@ public class OrderBuilderImpl implements OrderBuilder {
 
 
         return nos;
+    }
+
+    public CloseOrderAll buildCOA(OEMSData oems) {
+
+        // Add NewOrderSingle class to the alias pool
+        ClassAliasPool.CLASS_ALIASES.addAlias(CloseOrderAll.class);
+
+        // Create a new order single
+        CloseOrderAll nos = new CloseOrderAll()
+                .sender(toLong("sender"))
+                .target(toLong("target"))
+                .transactTime(now())
+                .sendingTime(now())
+                .clOrdID(String.valueOf(now()))
+                .orderQty(1)
+                .ordType(OrderType.limit)
+                .price(oems.close)
+                .side(BuySell.buy)
+                .symbol(toLong("BTC_USD"));
+
+
+        return coa;
     }
 
     static long now() {

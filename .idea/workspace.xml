@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/dto/CloseOrderAll.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OrderBuilderImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMSOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/CancelAll.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/CancelOrderRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/dto/OrderCancelReject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OMSImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/OMSImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OrderBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OrderBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,31 +251,7 @@
       <workItem from="1714872715069" duration="1919000" />
       <workItem from="1714874880030" duration="318000" />
       <workItem from="1714875307195" duration="3018000" />
-      <workItem from="1714959584509" duration="2442000" />
-    </task>
-    <task id="LOCAL-00002" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-strat module&#10;3. Add fingen-oems module&#10;4. Add fingen-risk module">
-      <option name="closed" value="true" />
-      <created>1713992017459</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1713992017459</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Init commit.&#10;&#10;Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strat module&#10;4. Add fingen-risk module">
-      <option name="closed" value="true" />
-      <created>1713992913165</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1713992913165</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE.">
-      <option name="closed" value="true" />
-      <created>1713999785790</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1713999785790</updated>
+      <workItem from="1714959584509" duration="4208000" />
     </task>
     <task id="LOCAL-00005" summary="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE.">
       <option name="closed" value="true" />
@@ -651,7 +621,31 @@
       <option name="project" value="LOCAL" />
       <updated>1714876574702</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1714962047301</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1714962047301</updated>
+    </task>
+    <task id="LOCAL-00052" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1714962097157</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1714962097157</updated>
+    </task>
+    <task id="LOCAL-00053" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1714962161077</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1714962161077</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +664,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Next steps: &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
     <MESSAGE value="Next steps: DONE. &#10;1. Add fingen-core-8 module - DONE.&#10;2. Add fingen-oems module - DONE.&#10;3. Add fingen-strategies module - DONE.&#10;4. Add fingen-risk module - DONE.&#10;5. Add fingen-performance module - DONE.&#10;6. Add fingen-metrics - DONE.&#10;7. Add fingen-indicators - DONE." />
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE." />
@@ -695,6 +688,7 @@
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OrderManager - WIP.&#10;OrderBuilder - DONE." />
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP.&#10;OrderBuilder - DONE." />
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP." />
+    <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP." />
   </component>
 </project>
