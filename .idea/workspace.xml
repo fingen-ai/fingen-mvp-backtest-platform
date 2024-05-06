@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/AppendArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/OMSImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/api/OMSIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +125,7 @@
       <recent name="oems" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="util" />
       <recent name="oems.dto" />
       <recent name="oems" />
       <recent name="core" />
@@ -248,15 +249,7 @@
       <workItem from="1714872715069" duration="1919000" />
       <workItem from="1714874880030" duration="318000" />
       <workItem from="1714875307195" duration="3018000" />
-      <workItem from="1714959584509" duration="5411000" />
-    </task>
-    <task id="LOCAL-00006" summary="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP.">
-      <option name="closed" value="true" />
-      <created>1714002968732</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1714002968732</updated>
+      <workItem from="1714959584509" duration="5724000" />
     </task>
     <task id="LOCAL-00007" summary="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP.">
       <option name="closed" value="true" />
@@ -642,7 +635,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714963814063</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1714965030190</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1714965030190</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

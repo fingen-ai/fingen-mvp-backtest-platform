@@ -75,7 +75,7 @@ public class OMSImpl implements OMSIn {
                     .of(CharSequence.class, double[].class)
                     .name("nosArray.map")
                     .entries(1_000)
-                    .averageKey("EUR_USD")
+                    .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
                     .averageValue(new double[50])
                     .createPersistedTo(nosArrayMap);
         } else {
@@ -83,27 +83,27 @@ public class OMSImpl implements OMSIn {
                     .of(CharSequence.class, double[].class)
                     .name("nosArray.map")
                     .entries(1_000)
-                    .averageKey("EUR_USD")
+                    .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
                     .averageValue(new double[144])
                     .recoverPersistedTo(nosArrayMap, false);
         }
 
-        // NOS Array map
+        // COA Array map
         if(!coaArrayMap.exists()) {
             COAArrayMap = ChronicleMap
                     .of(CharSequence.class, double[].class)
-                    .name("nosArray.map")
+                    .name("coaArray.map")
                     .entries(1_000)
-                    .averageKey("EUR_USD")
-                    .averageValue(new double[50])
+                    .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
+                    .averageValue(new double[1_000])
                     .createPersistedTo(coaArrayMap);
         } else {
             COAArrayMap = ChronicleMap
                     .of(CharSequence.class, double[].class)
-                    .name("nosArray.map")
+                    .name("coaArray.map")
                     .entries(1_000)
-                    .averageKey("EUR_USD")
-                    .averageValue(new double[144])
+                    .averageKey("mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm-mmm")
+                    .averageValue(new double[1_000])
                     .recoverPersistedTo(coaArrayMap, false);
         }
     }
