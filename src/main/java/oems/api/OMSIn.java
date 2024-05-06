@@ -14,4 +14,8 @@ public interface OMSIn {
     void closeOrderAll(CloseOrderAll coa);
 
     void updateSLTP(NewOrderSingle nos);
+
+    void updateNOSArray(NewOrderSingle nos, double[] nosArray);
+
+    void updateCOAArray(CloseOrderAll coa, double[] coaArray);
 }

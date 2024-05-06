@@ -21,6 +21,14 @@ public class OMSImpl implements OMSIn {
     static ChronicleMap<CharSequence, CloseOrderAll> COA;
     static CloseOrderAll coa = new CloseOrderAll();
 
+    // NOS Array map inits
+    File nosArrayMap = new File(OS.USER_HOME + "/FinGen/Maps/OMS/nosArrayMap");
+    static ChronicleMap<CharSequence, double[]> NOSArrayMap;
+
+    // COA Array map inits
+    File coaArrayMap = new File(OS.USER_HOME + "/FinGen/Maps/OMS/coaArrayMap");
+    static ChronicleMap<CharSequence, double[]> COAArrayMap;
+
     public OMSImpl() throws IOException {
 
         // NOS map
@@ -60,6 +68,44 @@ public class OMSImpl implements OMSIn {
                     .averageValue(coa)
                     .recoverPersistedTo(coaMap, false);
         }
+
+        // NOS Array map
+        if(!nosArrayMap.exists()) {
+            NOSArrayMap = ChronicleMap
+                    .of(CharSequence.class, double[].class)
+                    .name("nosArray.map")
+                    .entries(1_000)
+                    .averageKey("EUR_USD")
+                    .averageValue(new double[50])
+                    .createPersistedTo(nosArrayMap);
+        } else {
+            NOSArrayMap = ChronicleMap
+                    .of(CharSequence.class, double[].class)
+                    .name("nosArray.map")
+                    .entries(1_000)
+                    .averageKey("EUR_USD")
+                    .averageValue(new double[144])
+                    .recoverPersistedTo(nosArrayMap, false);
+        }
+
+        // NOS Array map
+        if(!coaArrayMap.exists()) {
+            COAArrayMap = ChronicleMap
+                    .of(CharSequence.class, double[].class)
+                    .name("nosArray.map")
+                    .entries(1_000)
+                    .averageKey("EUR_USD")
+                    .averageValue(new double[50])
+                    .createPersistedTo(coaArrayMap);
+        } else {
+            COAArrayMap = ChronicleMap
+                    .of(CharSequence.class, double[].class)
+                    .name("nosArray.map")
+                    .entries(1_000)
+                    .averageKey("EUR_USD")
+                    .averageValue(new double[144])
+                    .recoverPersistedTo(coaArrayMap, false);
+        }
     }
 
     // NOS map methods
@@ -76,6 +122,22 @@ public class OMSImpl implements OMSIn {
     }
     public CloseOrderAll getCOA(CharSequence getKey, CloseOrderAll coa) {
         return COA.getUsing(getKey, coa);
+    }
+
+    // NOS ARRAY map methods
+    public void addUpdateNOSArray(CharSequence setKey, double[] nosArray) {
+        NOSArrayMap.put(setKey, nosArray);
+    }
+    public double[] getNOSArray(CharSequence getKey, double[] nosArray) {
+        return NOSArrayMap.getUsing(getKey, nosArray);
+    }
+
+    // COA ARRAY map methods
+    public void addUpdateCOAArray(CharSequence setKey, double[] coaArray) {
+        COAArrayMap.put(setKey, coaArray);
+    }
+    public double[] getCOAArray(CharSequence getKey, double[] coaArray) {
+        return COAArrayMap.getUsing(getKey, coaArray);
     }
 
     // All order map method calls
@@ -97,5 +159,15 @@ public class OMSImpl implements OMSIn {
     public void updateSLTP(NewOrderSingle nos) {
         // update map
         addUpdateNOS(nos.clOrdID(), nos);
+    }
+
+    @Override
+    public void updateNOSArray(NewOrderSingle nos, double[] nosArray) {
+        addUpdateNOSArray(nos.clOrdID(), nosArray);
+    }
+
+    @Override
+    public void updateCOAArray(CloseOrderAll coa, double[] coaArray) {
+        addUpdateCOAArray(nos.clOrdID(), coaArray);
     }
 }

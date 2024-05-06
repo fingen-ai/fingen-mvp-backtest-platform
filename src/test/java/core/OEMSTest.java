@@ -36,7 +36,7 @@ public class OEMSTest {
         // Perform validations of each queue vs source file
         // IF statement prevents race-condition that was compromising test-integrity
         // EACH service (Price, Strategy, etc) is pinned to it's own CPU core
-        // SO race-conditions are likley
+        // SO race-conditions are likely
         if(actualOEMSData.start.equals(actualInsightData.start)) {
             validateInsightData(actualOEMSData, actualInsightData);
         }
@@ -56,7 +56,7 @@ public class OEMSTest {
         throw new IOException("Failed to read data from queue: " + queueName);
     }
 
-    // Validate data from strategy svc matches data passed to insight svc
+    // Validate data from insight svc matches data passed to oems svc
     private void validateInsightData(OEMSData actual, InsightData expected) {
         // Price data, sans start, stop and latency, being diff. svcs and all ;)
         assertEquals("Mismatch in some Insight field", expected.start, actual.start);
