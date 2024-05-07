@@ -8,16 +8,20 @@ import risk.RiskImpl;
 import strategies.indicators.atr.ATR;
 import strategies.indicators.atr.ATRImpl;
 
+import java.io.IOException;
+
 public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
     Performance performance = new PerformanceImpl();
-    Risk risk = new RiskImpl();
-    ATR atr50 = new ATRImpl(50);
     AccountData accountData = new AccountData();
+    ATR atr50 = new ATRImpl(50);
+    Risk risk = new RiskImpl();
+    double[] nosArray = null;
+    double[] coaArray = null;
 
     private InsightPub output;
 
-    public InsightPubImpl() {
+    public InsightPubImpl() throws IOException {
     }
 
     public void init(InsightPub output) {
@@ -25,11 +29,50 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     }
 
     public void simpleCall(InsightData insightData) {
+
         insightData.svcStartTs = System.nanoTime();
 
-        insightData.atr = atr50.update(insightData.high, insightData.low, insightData.close, insightData.priorClose);
+        insightData.bassoOrderIdea = "Bullish";
+
+        if(insightData.bassoOrderIdea.equals("Bullish")) {
+            // Have existing pos, But diff direction?
+                coaInsight(insightData);
+                nosInsight(insightData);
+
+            // Have existing pos, But same direction?
+                updateInsight(insightData);
+                // Add more to the position?
+                nosInsight(insightData);
+
+            // Have no pos?
+                nosInsight(insightData);
+        }
+
+        if(insightData.bassoOrderIdea.equals("Bearish")) {
+            // Have existing pos, But diff direction?
+            coaInsight(insightData);
+            nosInsight(insightData);
+
+            // Have existing pos, But same direction?
+            updateInsight(insightData);
+            // Add more to the position?
+            nosInsight(insightData);
+
+            // Have no pos?
+            nosInsight(insightData);
+        }
+
+        if(insightData.bassoOrderIdea == null) {
+            // Have existing pos - update SL/TP
+            updateInsight(insightData);
+            nosInsight(insightData);
+
+            // Have no pos?
+            nosInsight(insightData);
+        }
 
         /*
+        insightData.atr = atr50.update(insightData.high, insightData.low, insightData.close, insightData.priorClose);
         insightData.tradeCount = performance.getTradeCount();
 
         // Trade instructions
@@ -95,5 +138,17 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
         //System.out.println("INSIGHT: " + insightData);
         output.simpleCall(insightData);
+    }
+
+    private void nosInsight(InsightData insightData) {
+        insightData.tradeDecisionInstruction = "NOS";
+    }
+
+    private void updateInsight(InsightData insightData) {
+        insightData.tradeDecisionInstruction = "UPD";
+    }
+
+    private void coaInsight(InsightData insightData) {
+        insightData.tradeDecisionInstruction = "COA";
     }
 }

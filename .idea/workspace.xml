@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -272,23 +273,7 @@
       <workItem from="1715024776978" duration="16940000" />
       <workItem from="1715045932564" duration="2427000" />
       <workItem from="1715054214105" duration="1848000" />
-      <workItem from="1715058986979" duration="365000" />
-    </task>
-    <task id="LOCAL-00011" summary=" Re-init commit.">
-      <option name="closed" value="true" />
-      <created>1714541373893</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1714541373893</updated>
-    </task>
-    <task id="LOCAL-00012" summary=" Re-init commit.">
-      <option name="closed" value="true" />
-      <created>1714541607871</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1714541607871</updated>
+      <workItem from="1715058986979" duration="5283000" />
     </task>
     <task id="LOCAL-00013" summary=" Re-init commit.&#10; OrchestratorTest - WIP.">
       <option name="closed" value="true" />
@@ -666,7 +651,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715059238215</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1715059383575</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1715059383575</updated>
+    </task>
+    <task id="LOCAL-00061" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1715059637823</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1715059637823</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
