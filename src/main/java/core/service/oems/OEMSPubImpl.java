@@ -1,30 +1,22 @@
 package core.service.oems;
 
-import account.AccountData;
-import oems.OrderBuilderImpl;
-import oems.OMSImpl;
-import oems.api.OMSIn;
-import oems.api.OrderBuilder;
-import oems.dto.*;
-import risk.Risk;
-import risk.RiskImpl;
+import oems.dto.CloseOrderAll;
+import oems.dto.NewOrderSingle;
+import oems.map.MapManager;
 
 import java.io.IOException;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
-    private NewOrderSingle nos = new NewOrderSingle();
-    private CloseOrderAll coa = new CloseOrderAll();
-    private OrderBuilder ob = new OrderBuilderImpl();
-    private OMSIn om = new OMSImpl();
-    private ExecutionReport er = new ExecutionReport();
-    private Risk risk = new RiskImpl();
-    private AccountData acct = new AccountData();
+    NewOrderSingle nos = new NewOrderSingle();
+    CloseOrderAll coa = new CloseOrderAll();
+    MapManager mm = new MapManager(CharSequence.class, OEMSData.class, 1000);
 
     private OEMSPub output;
 
     public OEMSPubImpl() throws IOException {
     }
+
     public void init(OEMSPub output) {
         this.output = output;
     }
@@ -32,45 +24,26 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
-        System.out.println("Basso: " + oemsData.bassoOrderIdea);
-
-        if(oemsData.bassoOrderIdea != null) {
-
-            //Get curr nav
-            //Get curr pos direction
-
-            //If(ExistingPos == Yes) {
-
-                //If(currPosDir != bassoOrderIdea) {
-                    // add add'l oemsdata for order builder
-                    //ob.buildCOA(oemsData);
-                    //om.closeOrderAll(coa);
-                    // Given nos order closed, delete tradeID from nosArray
-                    // Given nos order closed, add new tradeID to coaArray
-
-                //} else {
-                    // Get new SL and TP prices
-                    //ob.buildNOS(oemsData);
-                    //om.updateSLTP(nos);
-
-                //Get curr pos amt
-                //If(currPos <= tradeAmtInstruction) {
-                    //oemsData.tradeQtyPerRiskInstruction = risk.getOngoingRiskPercentThreshold() * acct.nav;
-                    //oemsData.tradeQtyPerVolInstruction = risk.getOngoingVolPercentThreshold() * acct.nav;
-                    // add add'l oemsdata for order builder
-                //}
-
-            //} else {
-
-                //oemsData.tradeQtyPerRiskInstruction = risk.getInitRiskPercentThreshold() * acct.nav;
-                //oemsData.tradeQtyPerVolInstruction = risk.getInitVolPercentThreshold() * acct.nav;
-                // add add'l oemsdata for order builder
-            //}
-        }
+        addNOS(oemsData);
+        updateNOS(oemsData);
+        closeNOS(oemsData);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
         System.out.println("OEMS: " + oemsData);
         output.simpleCall(oemsData);
+    }
+
+    private void addNOS(OEMSData oemsData) {
+        mm.add(oemsData.symbol, oemsData);
+        System.out.println("OEMS ADD: " + oemsData);
+    }
+
+    private void updateNOS(OEMSData oemsData) {
+        System.out.println("OEMS UPDT: " + oemsData);
+    }
+
+    private void closeNOS(OEMSData oemsData) {
+        System.out.println("OEMS CLOSE: " + oemsData);
     }
 }

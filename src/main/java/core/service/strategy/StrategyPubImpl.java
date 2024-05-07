@@ -15,8 +15,8 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
     private double[] close = new double[50];
     private int i = 0;
     String bassoOrderIdea = null;
-
     BassoTrendStrategy bassoTrendStrategy = new BassoTrendStrategyImpl();
+    String bassoTradeDecision = null;
 
     public StrategyPubImpl() {
     }

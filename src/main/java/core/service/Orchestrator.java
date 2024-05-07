@@ -95,6 +95,7 @@ public class Orchestrator {
             priceData.svcStartTs = priceData.recId;
 
             // 8 data elements within the record array
+            priceData.symbol = "DXY";
             priceData.start = record[0];
             priceData.end = record[1];
             priceData.open = Double.parseDouble(record[2].trim());

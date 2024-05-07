@@ -28,6 +28,8 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         insightData.atr = atr50.update(insightData.high, insightData.low, insightData.close, insightData.priorClose);
+
+        /*
         insightData.tradeCount = performance.getTradeCount();
 
         // Trade instructions
@@ -87,6 +89,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         // Calc current total risk
         insightData.currentTotalPercentRiskPercent = risk.getCurrentTotalPercentRisk(insightData.positionRisk, insightData.nav);
         insightData.currentTotalPercentVolRiskPercent = risk.getCurrentTotalVolPercentRisk(insightData.atr, insightData.nav);
+        */
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
