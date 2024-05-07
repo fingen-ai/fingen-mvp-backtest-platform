@@ -22,7 +22,7 @@ public class DoubleArrayMapManagerTest {
 
     @Test
     public void testAddAndGet() {
-        CharSequence key = "testKey1";
+        CharSequence key = "testKey-BTC";
         double[] expectedValues = {1.5, 2.5, 3.5, 4.5, 5.5};
         mapManager.add(key, expectedValues);
 
