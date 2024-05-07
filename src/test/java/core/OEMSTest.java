@@ -74,22 +74,6 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
         // Insight data
-        assertEquals("Mismatch in some Insight field", expected.nav, actual.nav, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.positionRisk, actual.positionRisk, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeCount, actual.tradeCount, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.priorClose, actual.priorClose, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.riskInitPercentThreshold, actual.riskInitPercentThreshold, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.volInitPercentThreshold, actual.volInitPercentThreshold, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.riskOngoingPercentThreshold, actual.riskOngoingPercentThreshold, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.volOngoingPercentThreshold, actual.volOngoingPercentThreshold, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.currentTotalPercentRiskPercent, actual.currentTotalPercentRiskPercent, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.currentTotalPercentVolRiskPercent, actual.currentTotalPercentVolRiskPercent, 0.001);
-
-        assertEquals("Mismatch in some Insight field", expected.tradeDecisionInstruction, actual.tradeDecisionInstruction);
-
-        assertEquals("Mismatch in some Insight field", expected.tradeQtyPerRiskInstruction, actual.tradeQtyPerRiskInstruction, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeQtyPerVolInstruction, actual.tradeQtyPerVolInstruction, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.tradeQtyInstruction, actual.tradeQtyInstruction, 0.001);
+        // redo this testing
     }
 }

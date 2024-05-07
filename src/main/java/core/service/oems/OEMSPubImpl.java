@@ -23,18 +23,17 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStartTs = System.nanoTime();
 
         oemsData.openOrderId = String.valueOf(System.nanoTime());
-        oemsData.tradeDecisionInstruction = "NOS";
 
-        if(oemsData.tradeDecisionInstruction.equals("NOS")) {
+        if(oemsData.nosOrderInsight.equals("NOS")) {
             mm.add(oemsData.openOrderId, oemsData);
         }
 
-        if(oemsData.tradeDecisionInstruction.equals("UPD")) {
+        if(oemsData.updOrderInsight.equals("UPD")) {
             mm.update(oemsData.openOrderId, oemsData);
             mm.add(oemsData.openOrderId, oemsData);
         }
 
-        if(oemsData.tradeDecisionInstruction.equals("COA")) {
+        if(oemsData.coaOrderInsight.equals("COA")) {
             mm.delete(oemsData.openOrderId);
             mm.add(oemsData.openOrderId, oemsData);
         }

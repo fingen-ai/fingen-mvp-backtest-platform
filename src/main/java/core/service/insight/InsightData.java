@@ -1,5 +1,7 @@
 package core.service.insight;
 
+import net.openhft.chronicle.wire.Base85LongConverter;
+import net.openhft.chronicle.wire.NanoTimestampLongConverter;
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
 
 import java.math.BigDecimal;
@@ -36,18 +38,20 @@ public class InsightData extends SelfDescribingMarshallable {
 
     // insight q real-time data
     public double nav;
-    public double positionRisk;
-    public int tradeCount;
     public double atr;
     public double priorClose;
-    public double riskInitPercentThreshold;
-    public double volInitPercentThreshold;
-    public double riskOngoingPercentThreshold;
-    public double volOngoingPercentThreshold;
-    public double currentTotalPercentRiskPercent;
-    public double currentTotalPercentVolRiskPercent;
-    public String tradeDecisionInstruction;
-    public double tradeQtyPerRiskInstruction;
-    public double tradeQtyPerVolInstruction;
-    public double tradeQtyInstruction;
+    public double initRiskPercentThreshold;
+    public double initVolPercentThreshold;
+    public double ongoingRiskPercentThreshold;
+    public double ongoingVolPercentThreshold;
+    public double currRiskPercent;
+    public double currVolRiskPercent;
+    public double orderQtyPerRisk;
+    public double orderQtyPerVol;
+    public double orderQty;
+    public String orderSide;
+    public String orderType;
+    public String nosOrderInsight;
+    public String updOrderInsight;
+    public String coaOrderInsight;
 }

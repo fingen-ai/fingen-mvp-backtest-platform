@@ -34,41 +34,39 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         insightData.bassoOrderIdea = "Bullish";
 
-        if(insightData.bassoOrderIdea.equals("Bullish")) {
-            // Have existing pos, But diff direction?
+        if(insightData.bassoOrderIdea == null) {
+            // Have existing pos - update SL/TP
+            updateInsight(insightData);
+
+        } else {
+
+            if(insightData.bassoOrderIdea.equals("Bullish")) {
+                // Have existing pos, But diff direction?
                 coaInsight(insightData);
                 nosInsight(insightData);
 
-            // Have existing pos, But same direction?
+                // Have existing pos, But same direction?
                 updateInsight(insightData);
                 // Add more to the position?
                 nosInsight(insightData);
 
-            // Have no pos?
+                // Have no pos?
                 nosInsight(insightData);
-        }
+            }
 
-        if(insightData.bassoOrderIdea.equals("Bearish")) {
-            // Have existing pos, But diff direction?
-            coaInsight(insightData);
-            nosInsight(insightData);
+            if(insightData.bassoOrderIdea.equals("Bearish")) {
+                // Have existing pos, But diff direction?
+                coaInsight(insightData);
+                nosInsight(insightData);
 
-            // Have existing pos, But same direction?
-            updateInsight(insightData);
-            // Add more to the position?
-            nosInsight(insightData);
+                // Have existing pos, But same direction?
+                updateInsight(insightData);
+                // Add more to the position?
+                nosInsight(insightData);
 
-            // Have no pos?
-            nosInsight(insightData);
-        }
-
-        if(insightData.bassoOrderIdea == null) {
-            // Have existing pos - update SL/TP
-            updateInsight(insightData);
-            nosInsight(insightData);
-
-            // Have no pos?
-            nosInsight(insightData);
+                // Have no pos?
+                nosInsight(insightData);
+            }
         }
 
         /*
@@ -136,19 +134,19 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
-        //System.out.println("INSIGHT: " + insightData);
+        System.out.println("INSIGHT: " + insightData);
         output.simpleCall(insightData);
     }
 
     private void nosInsight(InsightData insightData) {
-        insightData.tradeDecisionInstruction = "NOS";
+        insightData.nosOrderInsight = "NOS";
     }
 
     private void updateInsight(InsightData insightData) {
-        insightData.tradeDecisionInstruction = "UPD";
+        insightData.updOrderInsight = "UPD";
     }
 
     private void coaInsight(InsightData insightData) {
-        insightData.tradeDecisionInstruction = "COA";
+        insightData.coaOrderInsight = "COA";
     }
 }
