@@ -6,11 +6,11 @@ import java.io.IOException;
 public class DoubleArrayMapManager {
     private ChronicleMap<CharSequence, byte[]> map;
 
-    public DoubleArrayMapManager(int entries, CharSequence sampleKey, int arraySize) throws IOException {
+    public DoubleArrayMapManager(int entries, CharSequence sampleKey, int estimatedMaxArraySize) throws IOException {
         map = ChronicleMap
                 .of(CharSequence.class, byte[].class)
                 .averageKey(sampleKey)  // Using a sample key to estimate the average key size
-                .averageValueSize(Double.BYTES * arraySize)  // Estimate based on number of doubles in the array
+                .averageValueSize(Double.BYTES * estimatedMaxArraySize)  // Estimation with max expected array size
                 .entries(entries)
                 .create();
     }
@@ -24,11 +24,17 @@ public class DoubleArrayMapManager {
     }
 
     public void delete(CharSequence key) {
-        map.remove(key);
+        map.remove(key); // Ensure this actually removes the entry
     }
 
     public double[] get(CharSequence key) {
         byte[] value = map.get(key);
+        if (value == null) {
+            return null;  // This will correctly handle cases where the key does not exist.
+        }
+        if (value.length == 0) {
+            return new double[0];  // Ensure zero-length arrays are returned as empty arrays, not null.
+        }
         return bytesToDoubles(value);
     }
 
@@ -37,6 +43,9 @@ public class DoubleArrayMapManager {
     }
 
     private byte[] doublesToBytes(double[] doubles) {
+        if (doubles == null || doubles.length == 0) {
+            return new byte[0];
+        }
         byte[] bytes = new byte[doubles.length * Double.BYTES];
         for (int i = 0; i < doubles.length; i++) {
             long bits = Double.doubleToLongBits(doubles[i]);
@@ -48,7 +57,9 @@ public class DoubleArrayMapManager {
     }
 
     private double[] bytesToDoubles(byte[] bytes) {
-        if (bytes == null) return null;
+        if (bytes == null || bytes.length == 0) {
+            return new double[0];
+        }
         double[] doubles = new double[bytes.length / Double.BYTES];
         for (int i = 0; i < doubles.length; i++) {
             long bits = 0;

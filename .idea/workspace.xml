@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/map/DoubleArrayMapManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/oems/DoubleArrayMapManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPub.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/DoubleArrayMapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/DoubleArrayMapManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/oems/DoubleArrayMapManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/DoubleArrayMapManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +75,7 @@
     "JUnit.BassoTrendBassoTrendStrategyTest.executor": "Run",
     "JUnit.BollingerBandsTest.executor": "Run",
     "JUnit.DonchianChannelTest.executor": "Run",
+    "JUnit.DoubleArrayMapManagerTest (1).executor": "Run",
     "JUnit.DoubleArrayMapManagerTest.executor": "Run",
     "JUnit.EMACrossoverTest.executor": "Run",
     "JUnit.FiftyDayEMATest.executor": "Run",
@@ -144,8 +142,8 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.DoubleArrayMapManagerTest">
-    <configuration name="OrderAdderMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="oms.OrderAdderMain" />
+    <configuration name="OrderViewerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oms.OrderViewerMain" />
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
@@ -157,15 +155,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderViewerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="oms.OrderViewerMain" />
+    <configuration name="DoubleArrayMapManagerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="oms.*" />
+          <option name="PATTERN" value="oems.map.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="oems.map" />
+      <option name="MAIN_CLASS_NAME" value="oems.map.DoubleArrayMapManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -233,10 +233,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DoubleArrayMapManagerTest" />
+        <item itemvalue="JUnit.DoubleArrayMapManagerTest (1)" />
         <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.MapManagerTest" />
         <item itemvalue="Application.OrderViewerMain" />
-        <item itemvalue="Application.OrderAdderMain" />
       </list>
     </recent_temporary>
   </component>
@@ -280,23 +280,7 @@
       <workItem from="1715024776978" duration="16940000" />
       <workItem from="1715045932564" duration="2427000" />
       <workItem from="1715054214105" duration="1848000" />
-      <workItem from="1715058986979" duration="8443000" />
-    </task>
-    <task id="LOCAL-00014" summary=" Re-init commit.&#10; OrchestratorTest - DONE.">
-      <option name="closed" value="true" />
-      <created>1714586641467</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1714586641467</updated>
-    </task>
-    <task id="LOCAL-00015" summary=" Re-init commit.&#10; OrchestratorTest - DONE.">
-      <option name="closed" value="true" />
-      <created>1714586750331</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1714586750331</updated>
+      <workItem from="1715058986979" duration="9759000" />
     </task>
     <task id="LOCAL-00016" summary=" Re-init commit.&#10; OrchestratorTest - DONE.&#10; InsightTest - WIP.">
       <option name="closed" value="true" />
@@ -674,7 +658,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715095607424</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1715099269329</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1715099269329</updated>
+    </task>
+    <task id="LOCAL-00064" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
+      <option name="closed" value="true" />
+      <created>1715099375620</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1715099375620</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

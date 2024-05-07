@@ -1,6 +1,7 @@
 package core.service.insight;
 
 import account.AccountData;
+import oems.map.DoubleArrayMapManager;
 import performance.Performance;
 import performance.PerformanceImpl;
 import risk.Risk;
@@ -28,20 +29,21 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         this.output = output;
     }
 
-    public void simpleCall(InsightData insightData) {
+    public void simpleCall(InsightData insightData) throws IOException {
 
+        DoubleArrayMapManager damm = new DoubleArrayMapManager(1000, "BTC_USD", 1);
         insightData.svcStartTs = System.nanoTime();
 
-        insightData.bassoOrderIdea = "Bullish";
-
-        if(insightData.bassoOrderIdea == null) {
+        if(insightData.bassoOrderIdea.equals("")) {
             // Have existing pos - update SL/TP
+            nosArray = damm.get("BTC_USD");
             updateInsight(insightData);
 
         } else {
 
             if(insightData.bassoOrderIdea.equals("Bullish")) {
                 // Have existing pos, But diff direction?
+                nosArray = damm.get("BTC_USD");
                 coaInsight(insightData);
                 nosInsight(insightData);
 
