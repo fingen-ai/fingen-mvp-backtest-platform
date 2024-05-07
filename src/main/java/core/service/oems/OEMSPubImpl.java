@@ -20,8 +20,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
+        // build order
+        // map order
         oemsData.openOrderId = String.valueOf(System.nanoTime());
         mm.add(oemsData.openOrderId, oemsData);
+        mm.update(oemsData.openOrderId, oemsData);
+        mm.delete(oemsData.openOrderId);
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
