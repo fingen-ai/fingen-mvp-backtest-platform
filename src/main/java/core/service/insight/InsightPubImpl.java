@@ -1,7 +1,8 @@
 package core.service.insight;
 
 import account.AccountData;
-import org.glassfish.grizzly.http.io.BinaryNIOInputSource;
+import core.service.oems.OEMSData;
+import oems.map.OrderMappingService;
 import performance.Performance;
 import performance.PerformanceImpl;
 import risk.Risk;
@@ -13,35 +14,25 @@ import java.io.IOException;
 
 public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
+    OrderMappingService oms = new OrderMappingService();
     Performance performance = new PerformanceImpl();
     AccountData accountData = new AccountData();
     ATR atr50 = new ATRImpl(50);
     Risk risk = new RiskImpl();
-    double[] nosArray = null;
-    double[] coaArray = null;
+    int[] nosIDArray = null;
+    OEMSData oemsData = new OEMSData();
 
     private InsightPub output;
 
     public InsightPubImpl() throws IOException {
     }
 
-    public void init(InsightPub output) {
-        this.output = output;
-    }
+    public void init(InsightPub output) {this.output = output;}
 
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
 
-        getSide(insightData);
-        getPositions(insightData);
-
-        if(insightData.orderSide.equals("Buy")) {
-            addOrder(insightData);
-        }
-
-        if(insightData.orderSide.equals("Sell")) {
-            updateOrder(insightData);
-        }
+        nosIDArray = getPositions(insightData);
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
@@ -61,21 +52,24 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         }
     }
 
-    private void getPositions(InsightData insightData) {
-        // Call Chronicle Map to get current position in given asset
+    private int[] getPositions(InsightData insightData) {
+        return oms.getPositions(insightData.symbol);
     }
 
     private void closePositions(InsightData insightData) {
-        // Call Chronicle Map to close all positives in given asset
+        oms.closePosition(insightData.symbol);
     }
 
-    private void addOrder(InsightData insightData) {
-        // Call Chronicle Map to add new position in given asset
+    private void addOrder(OEMSData oemsData) {
+        int[] newOrderIds = {oemsData.openOrderId}; // Assuming insightData contains an orderId
+        oms.addOrder(oemsData.symbol, newOrderIds);
     }
 
     private void updateOrder(InsightData insightData) {
-        // Call Chronicle Map to update current positions in given asset; update stop-loss, take-profit
+        OEMSData updateNOS = new OEMSData();
+        updateNOS.orderQty = insightData.orderQty;
+        updateNOS.close = insightData.close;
+        updateNOS.orderType = insightData.orderType;
+        oms.updateOrder(updateNOS.openOrderId, updateNOS);
     }
-
-    // Populate all InsightData elements
 }

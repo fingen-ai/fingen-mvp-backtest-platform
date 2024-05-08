@@ -57,7 +57,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public String coaOrderInsight;
 
     // oems q real-time data
-    public String openOrderId;
+    public int openOrderId;
     public double openOrderTimestamp;
     public double openOrderState;
     public int openOrderQty;
