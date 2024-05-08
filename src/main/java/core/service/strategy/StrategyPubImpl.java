@@ -45,7 +45,6 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         if(i == 49) {
             strategyData.bassoOrderIdea = bassoTrendStrategy.getStrategyDecision(prices, high, low, close);
             strategyData.lhcAvgPrice = prices[i];
-            strategyData.bassoOrderIdea = bassoOrderIdea;
             removeTheElement(low, 0);
             removeTheElement(high, 0);
             removeTheElement(close, 0);

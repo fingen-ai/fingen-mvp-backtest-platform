@@ -32,15 +32,24 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
 
-        nosIDArray = getPositions(insightData);
-        if(nosIDArray != null) {
+        if(!insightData.bassoOrderIdea.equals("Neutral")) {
 
-            for (int i = 0; i < nosIDArray.length; i++) {
-                System.out.println("nosIDArray[" + i + "]=" + nosIDArray[i]);
+            nosIDArray = getPositions(insightData);
+            if (nosIDArray != null) {
+
+                // Have current position
+                for (int i = 0; i < nosIDArray.length; i++) {
+                    System.out.println("nosIDArray[" + i + "]=" + nosIDArray[i]);
+                    // update current NOS SL/TP instructions
+                    // build NOS instructions
+                }
+
+            } else {
+
+                // Do not have current position
+                System.out.println("nosIDArray is null");
+                // build NOS instructions
             }
-
-        } else {
-            System.out.println("nosIDArray is null");
         }
 
         insightData.svcStopTs = System.nanoTime();
