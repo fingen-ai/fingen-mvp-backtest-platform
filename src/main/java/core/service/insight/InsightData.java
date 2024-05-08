@@ -20,6 +20,7 @@ public class InsightData extends SelfDescribingMarshallable {
     public double low;
     public double close;
     public double volume;
+    /*
     public BigDecimal bid;
     public BigDecimal ask;
     public BigDecimal bidSize;
@@ -29,6 +30,8 @@ public class InsightData extends SelfDescribingMarshallable {
     public BigDecimal quoteVolume;
     public Date timestamp;
     public BigDecimal last;
+
+     */
     public CharSequence start;
     public CharSequence end;
 

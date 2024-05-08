@@ -1,6 +1,7 @@
 package core.service.insight;
 
 import account.AccountData;
+import org.glassfish.grizzly.http.io.BinaryNIOInputSource;
 import performance.Performance;
 import performance.PerformanceImpl;
 import risk.Risk;
@@ -31,9 +32,50 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
 
+        getSide(insightData);
+        getPositions(insightData);
+
+        if(insightData.orderSide.equals("Buy")) {
+            addOrder(insightData);
+        }
+
+        if(insightData.orderSide.equals("Sell")) {
+            updateOrder(insightData);
+        }
+
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
         System.out.println("INSIGHT: " + insightData);
         output.simpleCall(insightData);
     }
+
+    private void getSide(InsightData insightData) {
+        if(insightData.bassoOrderIdea.equals("Bullish")) {
+            insightData.orderSide = "Buy";
+        }
+        if(insightData.bassoOrderIdea.equals("Bearish")) {
+            insightData.orderSide = "Sell";
+        }
+        if(insightData.bassoOrderIdea.equals("Neutral")) {
+            insightData.orderSide = "Hold";
+        }
+    }
+
+    private void getPositions(InsightData insightData) {
+        // Call Chronicle Map to get current position in given asset
+    }
+
+    private void closePositions(InsightData insightData) {
+        // Call Chronicle Map to close all positives in given asset
+    }
+
+    private void addOrder(InsightData insightData) {
+        // Call Chronicle Map to add new position in given asset
+    }
+
+    private void updateOrder(InsightData insightData) {
+        // Call Chronicle Map to update current positions in given asset; update stop-loss, take-profit
+    }
+
+    // Populate all InsightData elements
 }

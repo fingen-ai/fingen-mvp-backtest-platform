@@ -43,7 +43,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         prices[i] = (low[i] + high[i] + close[i]) / 3;
 
         if(i == 49) {
-            bassoOrderIdea = bassoTrendStrategy.getStrategyDecision(prices, high, low, close);
+            strategyData.bassoOrderIdea = bassoTrendStrategy.getStrategyDecision(prices, high, low, close);
             strategyData.lhcAvgPrice = prices[i];
             strategyData.bassoOrderIdea = bassoOrderIdea;
             removeTheElement(low, 0);
@@ -52,6 +52,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
             removeTheElement(prices, 0);
             i = 49;
         } else {
+            strategyData.bassoOrderIdea = "Neutral";
             i++;
         }
     }
