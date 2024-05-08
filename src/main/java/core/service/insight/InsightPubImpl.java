@@ -33,6 +33,13 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         nosIDArray = getPositions(insightData);
+        if(nosIDArray != null) {
+
+            for (int i = 0; i < nosIDArray.length; i++) {
+                System.out.println("nosIDArray[" + i + "]=" + nosIDArray[i]);
+            }
+
+        }
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
