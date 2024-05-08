@@ -265,15 +265,7 @@
       <workItem from="1715045932564" duration="2427000" />
       <workItem from="1715054214105" duration="1848000" />
       <workItem from="1715058986979" duration="9759000" />
-      <workItem from="1715131598107" duration="9442000" />
-    </task>
-    <task id="LOCAL-00019" summary="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - DONE.&#10;EMA rewrite - DONE.&#10;EMAX rewrite - DONE.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
-      <option name="closed" value="true" />
-      <created>1714699397652</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1714699397652</updated>
+      <workItem from="1715131598107" duration="10767000" />
     </task>
     <task id="LOCAL-00020" summary="InsightTest - DONE.&#10;&#10;And Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
       <option name="closed" value="true" />
@@ -659,7 +651,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715141087223</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Insight - WIP.">
+      <option name="closed" value="true" />
+      <created>1715141351092</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1715141351092</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

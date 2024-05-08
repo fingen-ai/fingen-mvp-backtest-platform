@@ -39,6 +39,8 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
                 System.out.println("nosIDArray[" + i + "]=" + nosIDArray[i]);
             }
 
+        } else {
+            System.out.println("nosIDArray is null");
         }
 
         insightData.svcStopTs = System.nanoTime();
