@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class AppendArrayTest {
 
     @Test
-    public void testAppendArray() {
+    public void testAppendDoubleArray() {
         AppendArray appendArray = new AppendArray();
 
         double[] array = {1.0, 2.0, 3.0};
@@ -14,6 +14,6 @@ public class AppendArrayTest {
         int length = 4;
 
         double[] expected = {1.0, 2.0, 3.0, 4.0}; // Adjusted expected array length
-        assertArrayEquals(expected, appendArray.appendArray(array, x, length));
+        assertArrayEquals(expected, appendArray.appendDoubleArray(array, x, length));
     }
 }

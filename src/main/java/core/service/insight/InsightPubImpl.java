@@ -3,12 +3,14 @@ package core.service.insight;
 import account.AccountData;
 import core.service.oems.OEMSData;
 import oems.map.OrderMappingService;
+import org.apache.commons.lang3.ArrayUtils;
 import performance.Performance;
 import performance.PerformanceImpl;
 import risk.Risk;
 import risk.RiskImpl;
 import strategies.indicators.atr.ATR;
 import strategies.indicators.atr.ATRImpl;
+import util.AppendArray;
 
 import java.io.IOException;
 
@@ -19,7 +21,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     AccountData accountData = new AccountData();
     ATR atr50 = new ATRImpl(50);
     Risk risk = new RiskImpl();
-    int[] nosIDArray = null;
+    long[] nosIDArray = new long[0];
     OEMSData oemsData = new OEMSData();
 
     private InsightPub output;
@@ -33,24 +35,33 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
-
-            nosIDArray = getPositions(insightData);
+            nosIDArray = oms.getFromNOSIDArray(insightData.symbol);
             if (nosIDArray != null) {
 
                 // Have current position
                 for (int i = 0; i < nosIDArray.length; i++) {
                     System.out.println("nosIDArray[" + i + "]=" + nosIDArray[i]);
-                    // update current NOS SL/TP instructions
-                    // build NOS instructions
+                    // build UPDT-NOS SL/TP instructions
+                    // send UPDT-NOS instructions
                 }
 
             } else {
 
                 // Do not have current position
                 System.out.println("nosIDArray is null");
-                // build NOS instructions
+                // build CURR-NOS instructions
             }
         }
+        
+        oemsData.openOrderId = System.nanoTime();
+        oemsData.symbol = insightData.symbol;
+        nosIDArray = ArrayUtils.add(nosIDArray, oemsData.openOrderId);
+
+        System.out.println("NOS ID: " + oemsData.openOrderId);
+        System.out.println("NOS Symbol: " + oemsData.symbol);
+        System.out.println("NOS ID ARRAY: " + nosIDArray.length);
+
+        oms.addToNOSIDArray(oemsData.symbol, nosIDArray);
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
@@ -68,26 +79,5 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         if(insightData.bassoOrderIdea.equals("Neutral")) {
             insightData.orderSide = "Hold";
         }
-    }
-
-    private int[] getPositions(InsightData insightData) {
-        return oms.getPositions(insightData.symbol);
-    }
-
-    private void closePositions(InsightData insightData) {
-        oms.closePosition(insightData.symbol);
-    }
-
-    private void addOrder(OEMSData oemsData) {
-        int[] newOrderIds = {oemsData.openOrderId}; // Assuming insightData contains an orderId
-        oms.addOrder(oemsData.symbol, newOrderIds);
-    }
-
-    private void updateOrder(InsightData insightData) {
-        OEMSData updateNOS = new OEMSData();
-        updateNOS.orderQty = insightData.orderQty;
-        updateNOS.close = insightData.close;
-        updateNOS.orderType = insightData.orderType;
-        oms.updateOrder(updateNOS.openOrderId, updateNOS);
     }
 }

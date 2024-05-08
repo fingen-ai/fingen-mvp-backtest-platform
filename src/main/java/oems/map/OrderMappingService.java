@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class OrderMappingService {
-    private ChronicleMap<String, int[]> nosIDArrayMap;
-    public ChronicleMap<Integer, OEMSData> nosMap;
+    private ChronicleMap<String, long[]> nosIDArrayMap;
+    public ChronicleMap<Long, OEMSData> nosMap;
     public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/";
 
     public OrderMappingService() throws IOException {
@@ -21,7 +21,7 @@ public class OrderMappingService {
 
     private void initMaps() throws IOException {
         nosIDArrayMap = ChronicleMap
-                .of(String.class, int[].class)
+                .of(String.class, long[].class)
                 .name("nos-id-array-map")
                 .averageKeySize(10) // Average size of a stock symbol, adjust as necessary
                 .averageValueSize(100) // Estimated average size of an array of ints
@@ -29,29 +29,36 @@ public class OrderMappingService {
                 .createPersistedTo(new File(MAP_DIRECTORY + "nosIDArray.dat")); // Specific file for this map
 
         nosMap = ChronicleMap
-                .of(Integer.class, OEMSData.class)
+                .of(Long.class, OEMSData.class)
                 .name("nos-map")
                 .averageValueSize(256) // Estimated average serialized size of OEMSData
                 .entries(10_000)
                 .createPersistedTo(new File(MAP_DIRECTORY + "nos.dat")); // Specific file for this map
     }
 
-    public int[] getPositions(String symbol) {
+    // ARRAYS REC MGT
+    public long[] getFromNOSIDArray(String symbol) {
         return nosIDArrayMap.get(symbol);
     }
 
-    public void addOrder(String symbol, int[] orderIds) {
+    public void addToNOSIDArray(String symbol, long[] orderIds) {
         nosIDArrayMap.put(symbol, orderIds);
     }
 
-    public void updateOrder(int orderId, OEMSData newData) {
+    public void deleteFromNOSIDArray(String symbol) {
+        nosIDArrayMap.remove(symbol);
+    }
+
+    // DTO REC MGT
+    public void addUpdateNOS(long orderId, OEMSData newData) {
         nosMap.put(orderId, newData);
     }
 
-    public void closePosition(String symbol) {
-        nosMap.remove(symbol);
+    public void closePosition(OEMSData newData) {
+        nosMap.remove(newData.openOrderId);
     }
 
+    // SYS MGT
     public void close() {
         nosIDArrayMap.close();
         nosMap.close();

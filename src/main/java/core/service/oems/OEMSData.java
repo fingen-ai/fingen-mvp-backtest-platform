@@ -2,9 +2,6 @@ package core.service.oems;
 
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 public class OEMSData extends SelfDescribingMarshallable {
     // Price data
     public long recId;
@@ -57,7 +54,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public String coaOrderInsight;
 
     // oems q real-time data
-    public int openOrderId;
+    public long openOrderId;
     public double openOrderTimestamp;
     public double openOrderState;
     public int openOrderQty;
@@ -65,7 +62,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double openOrderPrice;
     public double openOrderExpiry;
 
-    public double closeOrderId;
+    public long closeOrderId;
     public double closeOrderTimestamp;
     public double closeOrderState;
     public double closeOrderQty;

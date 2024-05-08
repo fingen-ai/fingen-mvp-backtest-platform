@@ -32,21 +32,21 @@ public class OrderMappingServiceTest {
     }
 
     @Test
-    public void testAddAndGetPositions() {
+    public void testAddAndGetFromNOSIDArray() {
         String symbol = "AAPL";
-        int[] expectedOrderIds = {1, 2, 3};
-        orderMappingService.addOrder(symbol, expectedOrderIds);
+        long[] expectedOrderIds = {1, 2, 3};
+        orderMappingService.addToNOSIDArray(symbol, expectedOrderIds);
 
-        int[] retrievedOrderIds = orderMappingService.getPositions(symbol);
+        long[] retrievedOrderIds = orderMappingService.getFromNOSIDArray(symbol);
         assertArrayEquals("The retrieved order IDs should match the expected values.", expectedOrderIds, retrievedOrderIds);
     }
 
     @Test
-    public void testUpdateOrder() {
-        int orderId = 1;
+    public void testAddUpdateNOS() {
+        long orderId = 1;
         OEMSData initialData = new OEMSData();
         initialData.symbol = "AAPL";
-        orderMappingService.updateOrder(orderId, initialData);
+        orderMappingService.addUpdateNOS(orderId, initialData);
 
         OEMSData retrievedData = orderMappingService.nosMap.get(orderId);
         assertNotNull("The retrieved data should not be null.", retrievedData);
@@ -55,13 +55,13 @@ public class OrderMappingServiceTest {
 
     @Test
     public void testClosePosition() {
-        int orderId = 2;
+        long orderId = 2;
         OEMSData data = new OEMSData();
         data.symbol = "GOOGL";
-        orderMappingService.updateOrder(orderId, data);
+        orderMappingService.addUpdateNOS(orderId, data);
 
         assertNotNull("The data should be present before deletion.", orderMappingService.nosMap.get(orderId));
-        orderMappingService.closePosition(data.symbol);
+        orderMappingService.closePosition(data);
         assertNull("The data should be null after deletion.", orderMappingService.nosMap.get(orderId));
     }
 }
