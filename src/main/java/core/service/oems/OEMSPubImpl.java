@@ -1,14 +1,16 @@
 package core.service.oems;
 
 import oems.map.OrderMappingService;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     OrderMappingService orderMS = new OrderMappingService();
 
-    long[] arrayOpenOrderID = new long[0];
+    long[] openOrdersIDArray =  new long[0];
 
     private OEMSPub output;
 
@@ -23,7 +25,13 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStartTs = System.nanoTime();
 
         if(!oemsData.bassoOrderIdea.equals("Neutral")) {
-            placeNOSInitOrder(oemsData);
+
+            openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+            if(openOrdersIDArray != null) {
+                placeNOSOngoingOrder(oemsData);
+            } else {
+                placeNOSInitOrder(oemsData);
+            }
         }
 
         oemsData.svcStopTs = System.nanoTime();
@@ -38,7 +46,21 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.openOrderState = "Init Order";
 
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
-        OEMSData addedNOS = orderMS.getNOS(oemsData.openOrderId);
-        System.out.println("ADDED OEMS: " + addedNOS);
+        openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
+        orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
+
+        System.out.println("OEMS: " + oemsData);
+    }
+
+    private void placeNOSOngoingOrder(OEMSData oemsData) {
+        oemsData.openOrderId = System.nanoTime();
+        oemsData.openOrderTimestamp = System.nanoTime();
+        oemsData.openOrderState = "Ongoing Order";
+
+        orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
+        openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
+        orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
+
+        System.out.println("GOT ONE: " + openOrdersIDArray.length);
     }
 }
