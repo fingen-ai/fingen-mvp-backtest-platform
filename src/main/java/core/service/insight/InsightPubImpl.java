@@ -2,27 +2,30 @@ package core.service.insight;
 
 import account.AccountData;
 import core.service.oems.OEMSData;
+import oems.map.InsightMappingService;
 import oems.map.OrderMappingService;
-import org.apache.commons.lang3.ArrayUtils;
 import performance.Performance;
 import performance.PerformanceImpl;
 import risk.Risk;
 import risk.RiskImpl;
-import strategies.indicators.atr.ATR;
-import strategies.indicators.atr.ATRImpl;
-import util.AppendArray;
 
 import java.io.IOException;
 
 public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
-    OrderMappingService oms = new OrderMappingService();
-    Performance performance = new PerformanceImpl();
+    InsightMappingService insightMS = new InsightMappingService();
+    OrderMappingService orderMS = new OrderMappingService();
+    Performance perf = new PerformanceImpl();
+
     AccountData accountData = new AccountData();
-    ATR atr50 = new ATRImpl(50);
+    OEMSData currNOSInsight = new OEMSData();
+    OEMSData openNOSOrder = new OEMSData();
+    long[] arrayOpenOrderID = new long[0];
+
+
     Risk risk = new RiskImpl();
-    long[] nosIDArray = new long[0];
-    OEMSData oemsData = new OEMSData();
+    double riskQty = 0;
+    double volRiskQty = 0;
 
     private InsightPub output;
 
@@ -35,33 +38,14 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
-            nosIDArray = oms.getFromNOSIDArray(insightData.symbol);
-            if (nosIDArray != null) {
 
-                // Have current position
-                for (int i = 0; i < nosIDArray.length; i++) {
-                    System.out.println("nosIDArray[" + i + "]=" + nosIDArray[i]);
-                    // build UPDT-NOS SL/TP instructions
-                    // send UPDT-NOS instructions
-                }
-
+            if(insightData.bassoOrderIdea.equals("Bullish")) {
+                System.out.println("INSIGHT - BULLS: " + insightData.bassoOrderIdea);
             } else {
-
-                // Do not have current position
-                System.out.println("nosIDArray is null");
-                // build CURR-NOS instructions
+                System.out.println("INSIGHT - BEARS: " + insightData.bassoOrderIdea);
             }
+
         }
-        
-        oemsData.openOrderId = System.nanoTime();
-        oemsData.symbol = insightData.symbol;
-        nosIDArray = ArrayUtils.add(nosIDArray, oemsData.openOrderId);
-
-        System.out.println("NOS ID: " + oemsData.openOrderId);
-        System.out.println("NOS Symbol: " + oemsData.symbol);
-        System.out.println("NOS ID ARRAY: " + nosIDArray.length);
-
-        oms.addToNOSIDArray(oemsData.symbol, nosIDArray);
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
@@ -69,7 +53,66 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         output.simpleCall(insightData);
     }
 
-    private void getSide(InsightData insightData) {
+    private void buildNOSInitInsight(InsightData insightData) {
+        currNOSInsight.symbol = insightData.symbol;
+
+        riskQty = (risk.getInitRiskPercentThreshold() * accountData.nav) / insightData.close;
+        volRiskQty = (risk.getInitVolPercentThreshold() * accountData.nav) / insightData.close;;
+        currNOSInsight.closeOrderQty = Math.max(riskQty, volRiskQty);
+
+        currNOSInsight.openOrderId = 0;
+        currNOSInsight.openOrderTimestamp = 0;
+        currNOSInsight.openOrderState = "";
+        currNOSInsight.openOrderQty = 0;
+        currNOSInsight.openOrderSide = getSide(insightData);;
+        currNOSInsight.openOrderPrice = insightData.close;
+        currNOSInsight.openOrderExpiry = "";
+
+        currNOSInsight.closeOrderId = 0;
+        currNOSInsight.closeOrderTimestamp = 0;
+        currNOSInsight.closeOrderState = "";
+        currNOSInsight.closeOrderQty = 0;
+        currNOSInsight.closeOrderSide = "";;
+        currNOSInsight.closeOrderPrice = 0;
+        currNOSInsight.closeOrderExpiry = "";
+
+        System.out.println("INSIGHT - Init Curr NOS Insight: " + currNOSInsight);
+
+        insightMS.addNOSInsight(currNOSInsight.recId, currNOSInsight);
+    }
+
+    private void buildNOSOgoingInsight(InsightData insightData) {
+        currNOSInsight.symbol = insightData.symbol;
+
+        for(int i=0; i < arrayOpenOrderID.length; i++) {
+            System.out.println("Ongoing Curr NOS Insight ... See Our Open Order ID: " + arrayOpenOrderID[i]);
+        }
+
+        //riskQty = (risk.getOngoingRiskPercentThreshold() * accountData.nav) / insightData.close;
+        //volRiskQty = (risk.getOngoingVolPercentThreshold() * accountData.nav) / insightData.close;;
+
+        currNOSInsight.closeOrderQty = Math.max(riskQty, volRiskQty);
+
+        currNOSInsight.openOrderId = 0;
+        currNOSInsight.openOrderTimestamp = 0;
+        currNOSInsight.openOrderState = "";
+        currNOSInsight.openOrderQty = 0;
+        currNOSInsight.openOrderSide = getSide(insightData);;
+        currNOSInsight.openOrderPrice = insightData.close;
+        currNOSInsight.openOrderExpiry = "";
+
+        currNOSInsight.closeOrderId = 0;
+        currNOSInsight.closeOrderTimestamp = 0;
+        currNOSInsight.closeOrderState = "";
+        currNOSInsight.closeOrderQty = 0;
+        currNOSInsight.closeOrderSide = "";;
+        currNOSInsight.closeOrderPrice = 0;
+        currNOSInsight.closeOrderExpiry = "";
+
+        insightMS.addNOSInsight(currNOSInsight.recId, currNOSInsight);
+    }
+
+    private String getSide(InsightData insightData) {
         if(insightData.bassoOrderIdea.equals("Bullish")) {
             insightData.orderSide = "Buy";
         }
@@ -79,5 +122,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         if(insightData.bassoOrderIdea.equals("Neutral")) {
             insightData.orderSide = "Hold";
         }
+        return insightData.orderSide;
     }
 }

@@ -1,11 +1,6 @@
 package core.service.insight;
 
-import net.openhft.chronicle.wire.Base85LongConverter;
-import net.openhft.chronicle.wire.NanoTimestampLongConverter;
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
-
-import java.math.BigDecimal;
-import java.util.Date;
 
 public class InsightData extends SelfDescribingMarshallable {
     // Price data
@@ -20,18 +15,6 @@ public class InsightData extends SelfDescribingMarshallable {
     public double low;
     public double close;
     public double volume;
-    /*
-    public BigDecimal bid;
-    public BigDecimal ask;
-    public BigDecimal bidSize;
-    public BigDecimal askSize;
-    public BigDecimal vwap;
-    public BigDecimal percentageChange;
-    public BigDecimal quoteVolume;
-    public Date timestamp;
-    public BigDecimal last;
-
-     */
     public CharSequence start;
     public CharSequence end;
 
@@ -42,7 +25,6 @@ public class InsightData extends SelfDescribingMarshallable {
     // insight q real-time data
     public double nav;
     public double atr;
-    public double priorClose;
     public double initRiskPercentThreshold;
     public double initVolPercentThreshold;
     public double ongoingRiskPercentThreshold;
@@ -51,10 +33,25 @@ public class InsightData extends SelfDescribingMarshallable {
     public double currVolRiskPercent;
     public double orderQtyPerRisk;
     public double orderQtyPerVol;
-    public double orderQty;
-    public String orderSide;
     public String orderType;
-    public String nosOrderInsight;
-    public String updOrderInsight;
-    public String coaOrderInsight;
+    public String orderSide;
+
+    public int openOrderQty;
+    public String openOrderSide;
+    public double openOrderPrice;
+
+    public double closeOrderQty;
+    public String closeOrderSide;
+    public double closeOrderPrice;
+
+    // oems q real-time data
+    public long openOrderId;
+    public double openOrderTimestamp;
+    public String openOrderExpiry;
+    public String openOrderState;
+
+    public long closeOrderId;
+    public double closeOrderTimestamp;
+    public String closeOrderExpiry;
+    public String closeOrderState;
 }

@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Insight - WIP.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/oems/map/InsightMappingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppendArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AppendArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OrderMappingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/OrderMappingServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/util/AppendArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/AppendArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppendArray.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OrderMappingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/InsightMappingServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/util/AppendArrayTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +143,7 @@
       <recent name="oems" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="oems.map" />
       <recent name="util" />
       <recent name="oems.dto" />
       <recent name="oems" />
@@ -145,7 +151,22 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.OEMSTest">
-    <configuration name="DoubleArrayMapManagerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DoubleArrayMapManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oems.map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="oems" />
+      <option name="MAIN_CLASS_NAME" value="oems.DoubleArrayMapManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DoubleArrayMapManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
@@ -160,16 +181,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DoubleArrayMapManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InsightMappingServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="oems.map.*" />
+          <option name="PATTERN" value="oems.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="oems" />
-      <option name="MAIN_CLASS_NAME" value="oems.DoubleArrayMapManagerTest" />
+      <option name="MAIN_CLASS_NAME" value="oems.InsightMappingServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -205,25 +226,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderMappingServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="oems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="oems" />
-      <option name="MAIN_CLASS_NAME" value="oems.OrderMappingServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OEMSTest" />
-        <item itemvalue="JUnit.OrderMappingServiceTest" />
+        <item itemvalue="JUnit.InsightMappingServiceTest" />
         <item itemvalue="JUnit.DoubleArrayMapManagerTest" />
         <item itemvalue="JUnit.DoubleArrayMapManagerTest (1)" />
         <item itemvalue="JUnit.MapManagerTest" />
@@ -272,15 +278,7 @@
       <workItem from="1715054214105" duration="1848000" />
       <workItem from="1715058986979" duration="9759000" />
       <workItem from="1715131598107" duration="23063000" />
-      <workItem from="1715192177944" duration="912000" />
-    </task>
-    <task id="LOCAL-00022" summary="Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP.">
-      <option name="closed" value="true" />
-      <created>1714708116156</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1714708116156</updated>
+      <workItem from="1715192177944" duration="23115000" />
     </task>
     <task id="LOCAL-00023" summary="Indicators svcs:&#10;DMI - DONE.&#10;STS - WIP.&#10;ROC - WIP.">
       <option name="closed" value="true" />
@@ -666,7 +664,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715143795928</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Insight - WIP.">
+      <option name="closed" value="true" />
+      <created>1715193582489</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1715193582489</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -2,13 +2,14 @@ package oems.map;
 
 import core.service.oems.OEMSData;
 import net.openhft.chronicle.map.ChronicleMap;
+
 import java.io.File;
 import java.io.IOException;
 
 public class OrderMappingService {
     private ChronicleMap<String, long[]> nosIDArrayMap;
     public ChronicleMap<Long, OEMSData> nosMap;
-    public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/";
+    public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders";
 
     public OrderMappingService() throws IOException {
         ensureDirectoryExists(); // Ensure the directory exists
@@ -40,20 +41,20 @@ public class OrderMappingService {
     public long[] getFromNOSIDArray(String symbol) {
         return nosIDArrayMap.get(symbol);
     }
-
     public void addToNOSIDArray(String symbol, long[] orderIds) {
         nosIDArrayMap.put(symbol, orderIds);
     }
-
     public void deleteFromNOSIDArray(String symbol) {
         nosIDArrayMap.remove(symbol);
     }
 
     // DTO REC MGT
+    public OEMSData getNOS(long orderId) {
+        return nosMap.get(orderId);
+    }
     public void addUpdateNOS(long orderId, OEMSData newData) {
         nosMap.put(orderId, newData);
     }
-
     public void closePosition(OEMSData newData) {
         nosMap.remove(newData.openOrderId);
     }
