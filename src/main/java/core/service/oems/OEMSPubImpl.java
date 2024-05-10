@@ -37,6 +37,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.openOrderTimestamp = System.nanoTime();
         oemsData.openOrderState = "Init Order";
 
-        System.out.println("OEMS: " + oemsData);
+        orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
+        OEMSData addedNOS = orderMS.getNOS(oemsData.openOrderId);
+        System.out.println("ADDED OEMS: " + addedNOS);
     }
 }
