@@ -23,12 +23,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public String bassoOrderIdea;
 
     // insight q real-time data
-    public double nav;
     public double atr;
-    public double initRiskPercentThreshold;
-    public double initVolPercentThreshold;
-    public double ongoingRiskPercentThreshold;
-    public double ongoingVolPercentThreshold;
     public double currRiskPercent;
     public double currVolRiskPercent;
     public double orderQtyPerRisk;

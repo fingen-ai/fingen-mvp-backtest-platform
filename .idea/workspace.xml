@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Insight - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oems/map/InsightMappingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppendArray.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/OrderMappingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/InsightMappingServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/util/AppendArrayTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,15 +272,7 @@
       <workItem from="1715054214105" duration="1848000" />
       <workItem from="1715058986979" duration="9759000" />
       <workItem from="1715131598107" duration="23063000" />
-      <workItem from="1715192177944" duration="23115000" />
-    </task>
-    <task id="LOCAL-00023" summary="Indicators svcs:&#10;DMI - DONE.&#10;STS - WIP.&#10;ROC - WIP.">
-      <option name="closed" value="true" />
-      <created>1714708536326</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1714708536326</updated>
+      <workItem from="1715192177944" duration="27567000" />
     </task>
     <task id="LOCAL-00024" summary="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE.">
       <option name="closed" value="true" />
@@ -672,7 +658,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715193582489</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Insight - WIP.">
+      <option name="closed" value="true" />
+      <created>1715307961011</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1715307961011</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

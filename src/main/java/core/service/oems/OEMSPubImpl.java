@@ -1,6 +1,5 @@
 package core.service.oems;
 
-import oems.map.InsightMappingService;
 import oems.map.OrderMappingService;
 
 import java.io.IOException;
@@ -23,15 +22,21 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
-        if(oemsData.bassoOrderIdea.equals("Bullish")) {
-            System.out.println("OEMS - BULLS: " + oemsData.bassoOrderIdea);
-        } else {
-            System.out.println("OEMS - BEARS: " + oemsData.bassoOrderIdea);
+        if(!oemsData.bassoOrderIdea.equals("Neutral")) {
+            placeNOSInitOrder(oemsData);
         }
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
-        System.out.println("OEMS: " + oemsData);
+        //System.out.println("OEMS: " + oemsData);
         output.simpleCall(oemsData);
+    }
+
+    private void placeNOSInitOrder(OEMSData oemsData) {
+        oemsData.openOrderId = System.nanoTime();
+        oemsData.openOrderTimestamp = System.nanoTime();
+        oemsData.openOrderState = "Init Order";
+
+        System.out.println("OEMS: " + oemsData);
     }
 }

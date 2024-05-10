@@ -18,14 +18,13 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     Performance perf = new PerformanceImpl();
 
     AccountData accountData = new AccountData();
-    OEMSData currNOSInsight = new OEMSData();
-    OEMSData openNOSOrder = new OEMSData();
+    InsightData currNOSInsight = new InsightData();
     long[] arrayOpenOrderID = new long[0];
 
 
     Risk risk = new RiskImpl();
-    double riskQty = 0;
-    double volRiskQty = 0;
+    int riskQty = 0;
+    int volRiskQty = 0;
 
     private InsightPub output;
 
@@ -38,54 +37,37 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
-
-            if(insightData.bassoOrderIdea.equals("Bullish")) {
-                System.out.println("INSIGHT - BULLS: " + insightData.bassoOrderIdea);
-            } else {
-                System.out.println("INSIGHT - BEARS: " + insightData.bassoOrderIdea);
-            }
-
+            buildNOSInitInsight(insightData);
         }
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
-        System.out.println("INSIGHT: " + insightData);
+        //System.out.println("INSIGHT: " + currNOSInsight);
         output.simpleCall(insightData);
     }
 
     private void buildNOSInitInsight(InsightData insightData) {
-        currNOSInsight.symbol = insightData.symbol;
 
-        riskQty = (risk.getInitRiskPercentThreshold() * accountData.nav) / insightData.close;
-        volRiskQty = (risk.getInitVolPercentThreshold() * accountData.nav) / insightData.close;;
-        currNOSInsight.closeOrderQty = Math.max(riskQty, volRiskQty);
+        riskQty = (int) (Math.round (risk.getInitRiskPercentThreshold() * accountData.nav) / insightData.close);
+        volRiskQty = (int) (Math.round (risk.getInitVolPercentThreshold() * accountData.nav) / insightData.close);
 
-        currNOSInsight.openOrderId = 0;
-        currNOSInsight.openOrderTimestamp = 0;
-        currNOSInsight.openOrderState = "";
-        currNOSInsight.openOrderQty = 0;
-        currNOSInsight.openOrderSide = getSide(insightData);;
-        currNOSInsight.openOrderPrice = insightData.close;
-        currNOSInsight.openOrderExpiry = "";
+        insightData.openOrderId = 0;
+        insightData.openOrderTimestamp = 0;
+        insightData.openOrderState = "Init Insight";
 
-        currNOSInsight.closeOrderId = 0;
-        currNOSInsight.closeOrderTimestamp = 0;
-        currNOSInsight.closeOrderState = "";
-        currNOSInsight.closeOrderQty = 0;
-        currNOSInsight.closeOrderSide = "";;
-        currNOSInsight.closeOrderPrice = 0;
-        currNOSInsight.closeOrderExpiry = "";
+        insightData.openOrderQty = Math.max(riskQty, volRiskQty);
+        insightData.openOrderSide = getSide(insightData);;
+        insightData.openOrderPrice = insightData.close;
+        insightData.openOrderExpiry = "NA";
 
-        System.out.println("INSIGHT - Init Curr NOS Insight: " + currNOSInsight);
-
-        insightMS.addNOSInsight(currNOSInsight.recId, currNOSInsight);
+        System.out.println("INSIGHT: " + insightData);
     }
 
     private void buildNOSOgoingInsight(InsightData insightData) {
         currNOSInsight.symbol = insightData.symbol;
 
+        // GET OPEN ORDERS FOR SYMBOL
         for(int i=0; i < arrayOpenOrderID.length; i++) {
-            System.out.println("Ongoing Curr NOS Insight ... See Our Open Order ID: " + arrayOpenOrderID[i]);
         }
 
         //riskQty = (risk.getOngoingRiskPercentThreshold() * accountData.nav) / insightData.close;
@@ -95,11 +77,11 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         currNOSInsight.openOrderId = 0;
         currNOSInsight.openOrderTimestamp = 0;
-        currNOSInsight.openOrderState = "";
+        currNOSInsight.openOrderState = "Ongoing Insight";
         currNOSInsight.openOrderQty = 0;
         currNOSInsight.openOrderSide = getSide(insightData);;
         currNOSInsight.openOrderPrice = insightData.close;
-        currNOSInsight.openOrderExpiry = "";
+        currNOSInsight.openOrderExpiry = "NA";
 
         currNOSInsight.closeOrderId = 0;
         currNOSInsight.closeOrderTimestamp = 0;
@@ -107,9 +89,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         currNOSInsight.closeOrderQty = 0;
         currNOSInsight.closeOrderSide = "";;
         currNOSInsight.closeOrderPrice = 0;
-        currNOSInsight.closeOrderExpiry = "";
-
-        insightMS.addNOSInsight(currNOSInsight.recId, currNOSInsight);
+        currNOSInsight.closeOrderExpiry = "NA";
     }
 
     private String getSide(InsightData insightData) {

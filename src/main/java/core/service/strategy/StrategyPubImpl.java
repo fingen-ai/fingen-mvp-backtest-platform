@@ -32,7 +32,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
 
         strategyData.svcStopTs = System.nanoTime();
         strategyData.svcLatency = strategyData.svcStopTs - strategyData.svcStartTs;
-        System.out.println("STRATEGY: " + strategyData);
+        //System.out.println("STRATEGY: " + strategyData);
         output.simpleCall(strategyData);
     }
 
