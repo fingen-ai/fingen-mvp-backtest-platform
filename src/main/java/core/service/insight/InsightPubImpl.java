@@ -19,7 +19,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
     AccountData accountData = new AccountData();
     InsightData currNOSInsight = new InsightData();
-    long[] arrayOpenOrderID = new long[0];
+    long[] openOrdersIDArray = new long[0];
 
 
     Risk risk = new RiskImpl();
@@ -37,7 +37,13 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
-            buildNOSInitInsight(insightData);
+
+            openOrdersIDArray = orderMS.getFromNOSIDArray(insightData.symbol);
+            if(openOrdersIDArray != null) {
+                buildNOSOngoingInsight(insightData);
+            } else {
+                buildNOSInitInsight(insightData);
+            }
         }
 
         insightData.svcStopTs = System.nanoTime();
@@ -63,33 +69,8 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         System.out.println("INSIGHT: " + insightData);
     }
 
-    private void buildNOSOgoingInsight(InsightData insightData) {
-        currNOSInsight.symbol = insightData.symbol;
-
-        // GET OPEN ORDERS FOR SYMBOL
-        for(int i=0; i < arrayOpenOrderID.length; i++) {
-        }
-
-        //riskQty = (risk.getOngoingRiskPercentThreshold() * accountData.nav) / insightData.close;
-        //volRiskQty = (risk.getOngoingVolPercentThreshold() * accountData.nav) / insightData.close;;
-
-        currNOSInsight.closeOrderQty = Math.max(riskQty, volRiskQty);
-
-        currNOSInsight.openOrderId = 0;
-        currNOSInsight.openOrderTimestamp = 0;
-        currNOSInsight.openOrderState = "Ongoing Insight";
-        currNOSInsight.openOrderQty = 0;
-        currNOSInsight.openOrderSide = getSide(insightData);;
-        currNOSInsight.openOrderPrice = insightData.close;
-        currNOSInsight.openOrderExpiry = "NA";
-
-        currNOSInsight.closeOrderId = 0;
-        currNOSInsight.closeOrderTimestamp = 0;
-        currNOSInsight.closeOrderState = "";
-        currNOSInsight.closeOrderQty = 0;
-        currNOSInsight.closeOrderSide = "";;
-        currNOSInsight.closeOrderPrice = 0;
-        currNOSInsight.closeOrderExpiry = "NA";
+    private void buildNOSOngoingInsight(InsightData insightData) {
+        System.out.println("ONGOING INSIGHT: " + openOrdersIDArray.length);
     }
 
     private String getSide(InsightData insightData) {

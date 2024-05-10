@@ -61,6 +61,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
 
-        System.out.println("GOT ONE: " + openOrdersIDArray.length);
+        System.out.println("ONGOING ORDER: " + openOrdersIDArray.length);
     }
 }
