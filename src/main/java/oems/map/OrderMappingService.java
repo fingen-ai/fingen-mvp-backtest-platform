@@ -9,6 +9,7 @@ import java.io.IOException;
 public class OrderMappingService {
     private ChronicleMap<String, long[]> nosIDArrayMap;
     public ChronicleMap<Long, OEMSData> nosMap;
+    public ChronicleMap<Long, OEMSData> cosMap;
     public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/";
 
     public OrderMappingService() throws IOException {
@@ -35,6 +36,13 @@ public class OrderMappingService {
                 .averageValueSize(256) // Estimated average serialized size of OEMSData
                 .entries(10_000)
                 .createPersistedTo(new File(MAP_DIRECTORY + "nos.dat")); // Specific file for this map
+
+        cosMap = ChronicleMap
+                .of(Long.class, OEMSData.class)
+                .name("cos-map")
+                .averageValueSize(256) // Estimated average serialized size of OEMSData
+                .entries(10_000)
+                .createPersistedTo(new File(MAP_DIRECTORY + "cos.dat")); // Specific file for this map
     }
 
     // ARRAYS REC MGT
@@ -49,14 +57,20 @@ public class OrderMappingService {
     }
 
     // DTO REC MGT
-    public OEMSData getNOS(long orderId) {
-        return nosMap.get(orderId);
-    }
     public void addUpdateNOS(long orderId, OEMSData newData) {
         nosMap.put(orderId, newData);
     }
-    public void closePosition(OEMSData newData) {
+
+    public OEMSData getNOS(long orderId) {
+        return nosMap.get(orderId);
+    }
+
+    public void deleteNOS(OEMSData newData) {
         nosMap.remove(newData.openOrderId);
+    }
+
+    public void addUpdateCOS(long orderId, OEMSData newData) {
+        cosMap.put(orderId, newData);
     }
 
     // SYS MGT

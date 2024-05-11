@@ -50,6 +50,8 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
             } else {
                 buildNOSInitInsight(insightData);
             }
+        } else {
+            insightData.openOrderSide = "Hold";
         }
 
         insightData.svcStopTs = System.nanoTime();
