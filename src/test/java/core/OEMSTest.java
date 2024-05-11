@@ -84,30 +84,30 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.orderType, actual.orderType);
         assertEquals("Mismatch in some Insight field", expected.orderSide, actual.orderSide);
 
+        assertEquals("Mismatch in some Insight field", expected.openOrderId, actual.openOrderId, 0.001);
+
         assertEquals("Mismatch in some Insight field", expected.openOrderQty, actual.openOrderQty, 0.001);
 
         assertEquals("Mismatch in some Insight field", expected.openOrderSide, actual.openOrderSide);
 
         assertEquals("Mismatch in some Insight field", expected.openOrderPrice, actual.openOrderPrice, 0.001);
 
-        assertEquals("Mismatch in some Insight field", expected.openOrderId, actual.openOrderId, 0.001);
-
-        /*
-        assertEquals("Mismatch in some Insight field", expected.openOrderTimestamp, actual.openOrderTimestamp);
-        assertEquals("Mismatch in some Insight field", expected.openOrderExpiry, actual.openOrderExpiry);
-        assertEquals("Mismatch in some Insight field", expected.openOrderState, actual.openOrderState);
-
         assertEquals("Mismatch in some Insight field", expected.closeOrderId, actual.closeOrderId, 0.001);
-
-        assertEquals("Mismatch in some Insight field", expected.closeOrderTimestamp, actual.closeOrderTimestamp);
-        assertEquals("Mismatch in some Insight field", expected.closeOrderExpiry, actual.closeOrderExpiry);
-        assertEquals("Mismatch in some Insight field", expected.closeOrderState, actual.closeOrderState);
 
         assertEquals("Mismatch in some Insight field", expected.closeOrderQty, actual.closeOrderQty, 0.001);
 
         assertEquals("Mismatch in some Insight field", expected.closeOrderSide, actual.closeOrderSide);
 
         assertEquals("Mismatch in some Insight field", expected.closeOrderPrice, actual.closeOrderPrice, 0.001);
+
+        /*
+        assertEquals("Mismatch in some Insight field", expected.openOrderTimestamp, actual.openOrderTimestamp);
+        assertEquals("Mismatch in some Insight field", expected.openOrderExpiry, actual.openOrderExpiry);
+        assertEquals("Mismatch in some Insight field", expected.openOrderState, actual.openOrderState);
+
+        assertEquals("Mismatch in some Insight field", expected.closeOrderTimestamp, actual.closeOrderTimestamp);
+        assertEquals("Mismatch in some Insight field", expected.closeOrderExpiry, actual.closeOrderExpiry);
+        assertEquals("Mismatch in some Insight field", expected.closeOrderState, actual.closeOrderState);
          */
     }
 }
