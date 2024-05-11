@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/InsightMappingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/InsightMappingServiceTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,23 +287,7 @@
       <workItem from="1715131598107" duration="23063000" />
       <workItem from="1715192177944" duration="47990000" />
       <workItem from="1715402052613" duration="8792000" />
-      <workItem from="1715457098249" duration="4907000" />
-    </task>
-    <task id="LOCAL-00037" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
-      <option name="closed" value="true" />
-      <created>1714847855872</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1714847855872</updated>
-    </task>
-    <task id="LOCAL-00038" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
-      <option name="closed" value="true" />
-      <created>1714847863386</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1714847863386</updated>
+      <workItem from="1715457098249" duration="7849000" />
     </task>
     <task id="LOCAL-00039" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
       <option name="closed" value="true" />
@@ -683,7 +665,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715456683170</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="OEMS - WIP.">
+      <option name="closed" value="true" />
+      <created>1715462441575</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462441576</updated>
+    </task>
+    <task id="LOCAL-00087" summary="OEMS - WIP.">
+      <option name="closed" value="true" />
+      <created>1715462452858</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462452858</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

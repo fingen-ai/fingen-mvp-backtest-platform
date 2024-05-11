@@ -45,4 +45,11 @@ public class InsightData extends SelfDescribingMarshallable {
     public double openOrderTimestamp;
     public String openOrderExpiry;
     public String openOrderState;
+    public double openOrderSLPrice;
+    public String prevBassoOrderIdea;
+
+    public long closeOrderId;
+    public double closeOrderTimestamp;
+    public String closeOrderExpiry;
+    public String closeOrderState;
 }

@@ -94,14 +94,19 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeCOSOrder(OEMSData oemsData) {
-        // delete from open orders ID array - deleteFromNOSIDArray(oemsData.openOrderID)
-        // delete from open orders - deleteFromNOS(oemsData.openOrderID)
+        // delete the ID from the ID array
+        for(int i=0; i < openOrdersIDArray.length; i++) {
+            if(oemsData.openOrderId == openOrdersIDArray[i]) {
+                long[] updateOpenOrderIDArray = ArrayUtils.remove(openOrdersIDArray, i);
+            }
+        }
 
         oemsData.closeOrderId = System.nanoTime();
         oemsData.closeOrderTimestamp = System.nanoTime();
         oemsData.closeOrderExpiry = "GTC";
         oemsData.closeOrderState = "Close Order Single";
-        // put to closed orders - placeCOS(oemsData.openOrderID)
+
+        orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
@@ -110,15 +115,15 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.prevBassoOrderIdea = prevOEMSData.bassoOrderIdea;
             if (!oemsData.bassoOrderIdea.equals(oemsData.prevBassoOrderIdea)) {
 
-                for(int i=0; i < openOrdersIDArray.length; i++) {
-                    // delete from open orders ID array - deleteFromNOSIDArray(oemsData.openOrderID)
-                    // delete from open orders - deleteFromNOS(oemsData.openOrderID)
+                orderMS.deleteFromNOSIDArray(oemsData.symbol);
 
+                for(int i=0; i < openOrdersIDArray.length; i++) {
                     oemsData.closeOrderId = System.nanoTime();
                     oemsData.closeOrderTimestamp = System.nanoTime();
                     oemsData.closeOrderExpiry = "GTC";
                     oemsData.closeOrderState = "Close Orders All";
-                    // put to closed orders - placeCOS(oemsData.openOrderID)
+
+                    orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
                 }
             }
         }
