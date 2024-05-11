@@ -38,7 +38,7 @@ public class OEMSData extends SelfDescribingMarshallable {
 
     // oems q real-time data
     public long openOrderId;
-    public double openOrderTimestamp;
+    public long openOrderTimestamp;
     public String openOrderExpiry;
     public String openOrderState;
 
@@ -46,7 +46,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public String prevBassoOrderIdea;
 
     public long closeOrderId;
-    public double closeOrderTimestamp;
+    public long closeOrderTimestamp;
     public String closeOrderExpiry;
     public String closeOrderState;
     public int closeOrderQty;
