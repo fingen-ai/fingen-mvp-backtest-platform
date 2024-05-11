@@ -2,10 +2,7 @@ package core.service.insight;
 
 import account.AccountData;
 import core.service.oems.OEMSData;
-import oems.map.InsightMappingService;
 import oems.map.OrderMappingService;
-import performance.Performance;
-import performance.PerformanceImpl;
 import risk.Risk;
 import risk.RiskImpl;
 import strategies.indicators.atr.ATR;
@@ -15,9 +12,7 @@ import java.io.IOException;
 
 public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
-    InsightMappingService insightMS = new InsightMappingService();
     OrderMappingService orderMS = new OrderMappingService();
-    Performance perf = new PerformanceImpl();
     ATR atr = new ATRImpl();
 
     AccountData accountData = new AccountData();
@@ -40,7 +35,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
 
-        // assign prev close for curr atr compute
         insightData.previousClose = prevInsightData.previousClose;
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
@@ -61,7 +55,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
 
-        // assign curr values for the next atr compute
         prevInsightData = insightData;
 
         //System.out.println("INSIGHT: " + currNOSInsight);
@@ -85,29 +78,24 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     }
 
     private void buildNOSOngoingInsight(InsightData insightData) {
-        // get all open positions and sum the total qty exposure
         for(int i=0; i < openOrdersIDArray.length; i++) {
             OEMSData oemsData = orderMS.getNOS(openOrdersIDArray[i]);
             totalPositionQty += oemsData.openOrderQty;
         }
 
-        // compute current risk %
         insightData.currRiskPercent = risk.getCurrentTotalPercentRisk(
                 (totalPositionQty * insightData.close), accountData.nav);
 
-        insightData.atr = atr.calculateATR(insightData, 50);
+        insightData.atr = atr.calculateATR(insightData, 10);
 
         insightData.currVolRiskPercent = risk.getCurrentTotalVolPercentRisk(
                 (insightData.atr * insightData.close), accountData.nav);
 
-        // validate current risk % < risk % threshold
         double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - insightData.currRiskPercent;
-
         if(riskPercentAvail > 0) {
             insightData.orderQtyPerRisk = (int) (Math.round (riskPercentAvail * accountData.nav) / insightData.close);
         }
 
-        // validate current vol % < vol % threshold
         double volRiskPercentAvail =  risk.getOngoingVolPercentThreshold() - insightData.currVolRiskPercent;
         if(volRiskPercentAvail > 0) {
             insightData.orderQtyPerVol = (int) (Math.round (volRiskPercentAvail * accountData.nav) / insightData.close);
