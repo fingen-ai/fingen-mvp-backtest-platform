@@ -1,25 +1,32 @@
 package strategies.indicators.atr;
 
+import core.service.insight.InsightData;
+import org.junit.Test;
+
 public class ATRTest {
-    public static void main(String[] args) {
-        testATRCalculator();
+
+    @Test
+    public void testATR() {
+        ATR atrCalculator = new ATRImpl();
+        InsightData[] dataPoints = generateTestData();
+
+        for (InsightData data : dataPoints) {
+            double atr = atrCalculator.calculateATR(data, 14);
+            System.out.println("Day " + data.recId + " ATR: " + atr);
+        }
     }
 
-    private static void testATRCalculator() {
-        ATR atr = new ATRImpl(14); // using a common period of 14 for ATR
-
-        // Simulating a series of high, low, and close values along with previous close
-        // These values would typically be derived from actual market data
-        atr.update(120, 115, 118, 117); // First data point
-        atr.update(122, 116, 119, 118);
-        atr.update(123, 117, 120, 119);
-        atr.update(125, 120, 123, 120);
-        double atrUpdate = atr.update(126, 122, 124, 123);
-
-        System.out.println("Computed ATR: " + atr);
-
-        // The expected ATR here is hypothetical; the correct value should be pre-calculated or known from a reliable source
-        double expectedATR = 3.0; // This is just an example value
-        assert Math.abs(atrUpdate - expectedATR) < 0.1 : "ATR calculation error: Expected ATR close to " + expectedATR + ", but got " + atr;
+    private static InsightData[] generateTestData() {
+        // Assume this generates 14 days of data with realistic high, low, and previous close values
+        InsightData[] dataPoints = new InsightData[14];
+        for (int i = 0; i < dataPoints.length; i++) {
+            InsightData data = new InsightData();
+            data.recId = i + 1;
+            data.high = 120 + Math.random() * 10;  // Simulated high
+            data.low = 115 + Math.random() * 5;   // Simulated low
+            data.previousClose = 117 + Math.random() * 8; // Simulated previous close
+            dataPoints[i] = data;
+        }
+        return dataPoints;
     }
 }

@@ -1,7 +1,8 @@
 package strategies.indicators.atr;
 
+import core.service.insight.InsightData;
+
 public interface ATR {
 
-    double calculateTR(double high, double low, double previousClose);
-    double update(double high, double low, double close, double previousClose);
+    double calculateATR(InsightData data, int period);
 }

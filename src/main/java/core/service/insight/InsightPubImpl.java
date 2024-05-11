@@ -18,7 +18,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     InsightMappingService insightMS = new InsightMappingService();
     OrderMappingService orderMS = new OrderMappingService();
     Performance perf = new PerformanceImpl();
-    ATR atr = new ATRImpl(50);
+    ATR atr = new ATRImpl();
 
     AccountData accountData = new AccountData();
 
@@ -90,7 +90,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.currRiskPercent = risk.getCurrentTotalPercentRisk(
                 (totalPositionQty * insightData.close), accountData.nav);
 
-        insightData.atr = atr.calculateTR(insightData.high, insightData.low, insightData.close);
+        insightData.atr = atr.calculateATR(insightData, 50);
 
         insightData.currVolRiskPercent = risk.getCurrentTotalVolPercentRisk(
                 (insightData.atr * insightData.close), accountData.nav);

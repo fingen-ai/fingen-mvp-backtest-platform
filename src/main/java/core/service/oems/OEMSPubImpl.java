@@ -72,4 +72,14 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         // if(oemsData.close) exceeds TP price, close this order
         // else update TP price
     }
+
+    private void placeCOSOrder() {
+        // build close order
+        // close one position per SL or TP
+    }
+
+    private void placeCOAOrder(OEMSData oemsData) {
+        // build close order
+        // close all positions per symbol and insight re: trend reversal
+    }
 }

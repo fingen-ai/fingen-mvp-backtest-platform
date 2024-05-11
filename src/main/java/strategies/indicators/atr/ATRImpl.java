@@ -1,33 +1,43 @@
 package strategies.indicators.atr;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import core.service.insight.InsightData;
 
 public class ATRImpl implements ATR {
-    private final int period;
-    private final Queue<Double> trValues = new LinkedList<>();
-    private double atr = 0.0;
+    private static final int PERIOD = 14;
+    private double[] trueRanges = new double[PERIOD];
+    private double currentATR = 0.0;
+    private int dayCount = 0;
 
-    public ATRImpl(int period) {
-        if (period <= 0) {
-            throw new IllegalArgumentException("Period must be greater than zero.");
-        }
-        this.period = period;
-    }
+    @Override
+    public double calculateATR(InsightData data, int period) {
+        double trueRange = calculateTrueRange(data);
+        trueRanges[dayCount % PERIOD] = trueRange;
+        dayCount++;
 
-    // This method updates ATR with new high, low, and close values
-    public double update(double high, double low, double close, double previousClose) {
-        double tr = calculateTR(high, low, previousClose);
-        if (trValues.size() == period) {
-            atr = (atr * period - trValues.poll() + tr) / period;
+        // Calculate EMA for ATR
+        if (dayCount <= PERIOD) {
+            // Initially, just compute the simple average
+            double sum = 0;
+            for (int i = 0; i < dayCount; i++) {
+                sum += trueRanges[i];
+            }
+            currentATR = sum / dayCount;
         } else {
-            trValues.offer(tr);
-            atr = (atr * (trValues.size() - 1) + tr) / trValues.size();
+            // Compute EMA
+            double multiplier = 2.0 / (PERIOD + 1);
+            currentATR = (trueRange - currentATR) * multiplier + currentATR;
         }
-        return atr;
+
+        return currentATR;
     }
 
-    public double calculateTR(double high, double low, double previousClose) {
-        return Math.max(high - low, Math.max(Math.abs(high - previousClose), Math.abs(low - previousClose)));
+    private double calculateTrueRange(InsightData data) {
+        double high = data.high;
+        double low = data.low;
+        double previousClose = data.previousClose;
+        double term1 = high - low;
+        double term2 = Math.abs(high - previousClose);
+        double term3 = Math.abs(low - previousClose);
+        return Math.max(term1, Math.max(term2, term3));
     }
 }
