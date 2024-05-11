@@ -27,7 +27,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
             if(openOrdersIDArray != null) {
+
+                // before we look at new insights, and placing NOS
+                // we need to update SL and exit if called to do so
+                getStopLoss(oemsData);
                 placeNOSOngoingOrder(oemsData);
+
             } else {
                 placeNOSInitOrder(oemsData);
             }
@@ -63,20 +68,36 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         System.out.println("OEMS ONGOING: " + oemsData);
     }
 
+    /**
+     * Exit is 3X Average True Range (10 day period) subtracted from the close.
+     * The trailing stop can only get closer to the current market price, not further away.
+     * @param oemsData
+     */
     private void getStopLoss(OEMSData oemsData) {
-        // exit is 3X Average True Range (10 day period) subtracted from the close.
-        // the trailing stop can only get closer to the current market price, not further away.
+        double stopPrice = 0;
+        if(oemsData.openOrderSide.equals("Buy")) {
+            stopPrice = oemsData.close - (oemsData.atr * 3);
+            if (oemsData.close < stopPrice) {
+                placeCOSOrder();
+            } else {
+                System.out.println("UPDT BUY SL");
+                oemsData.openOrderSLPrice = stopPrice;
+            }
+        }
 
-        // if(oemsData.close) exceeds SL price, close this order
-        // else update SL price
-    }
-
-    private void getTakeProfit(OEMSData oemsData) {
-        // if(oemsData.close) exceeds TP price, close this order
-        // else update TP price
+        if (oemsData.openOrderSide.equals("Sell")) {
+            stopPrice = oemsData.close + (oemsData.atr * 3);
+            if (oemsData.close > stopPrice) {
+                placeCOSOrder();
+            } else {
+                System.out.println("UPDT SELL SL");
+                oemsData.openOrderSLPrice = stopPrice;
+            }
+        }
     }
 
     private void placeCOSOrder() {
+        System.out.println("COS");
         // build close order
         // close one position per SL or TP
     }

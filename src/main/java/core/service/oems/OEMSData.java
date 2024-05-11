@@ -23,6 +23,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public String bassoOrderIdea;
 
     // insight q real-time data
+    public double previousClose;
     public double atr;
     public double currRiskPercent;
     public double currVolRiskPercent;
@@ -44,6 +45,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double openOrderTimestamp;
     public String openOrderExpiry;
     public String openOrderState;
+    public double openOrderSLPrice;
 
     public long closeOrderId;
     public double closeOrderTimestamp;
