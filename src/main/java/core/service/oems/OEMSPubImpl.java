@@ -64,6 +64,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void getStopLoss(OEMSData oemsData) {
+        // exit is 3X Average True Range (10 day period) subtracted from the close.
+        // the trailing stop can only get closer to the current market price, not further away.
+
         // if(oemsData.close) exceeds SL price, close this order
         // else update SL price
     }

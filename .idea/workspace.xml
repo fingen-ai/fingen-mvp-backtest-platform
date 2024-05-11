@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Insight - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/atr/ATRImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/atr/ATRTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/atr/ATRTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,15 +286,7 @@
       <workItem from="1715058986979" duration="9759000" />
       <workItem from="1715131598107" duration="23063000" />
       <workItem from="1715192177944" duration="47990000" />
-      <workItem from="1715402052613" duration="4630000" />
-    </task>
-    <task id="LOCAL-00032" summary="OEMS Test - WIP.&#10;BRM Test - DONE.">
-      <option name="closed" value="true" />
-      <created>1714838455220</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1714838455220</updated>
+      <workItem from="1715402052613" duration="5941000" />
     </task>
     <task id="LOCAL-00033" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
       <option name="closed" value="true" />
@@ -683,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715401733143</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Insight - WIP.">
+      <option name="closed" value="true" />
+      <created>1715452040666</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1715452040666</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

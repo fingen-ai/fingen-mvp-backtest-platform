@@ -21,11 +21,9 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     ATR atr = new ATRImpl();
 
     AccountData accountData = new AccountData();
+    InsightData prevInsightData = new InsightData(); // previousClose needed for ATR
 
-    InsightData currNOSInsight = new InsightData();
     long[] openOrdersIDArray = new long[0];
-
-
     Risk risk = new RiskImpl();
     int riskQty = 0;
     int volRiskQty = 0;
@@ -41,6 +39,9 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
+
+        // assign prev close for curr atr compute
+        insightData.previousClose = prevInsightData.previousClose;
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
 
@@ -59,6 +60,10 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
+
+        // assign curr values for the next atr compute
+        prevInsightData = insightData;
+
         //System.out.println("INSIGHT: " + currNOSInsight);
         output.simpleCall(insightData);
     }

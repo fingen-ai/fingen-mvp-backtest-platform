@@ -3,19 +3,18 @@ package strategies.indicators.atr;
 import core.service.insight.InsightData;
 
 public class ATRImpl implements ATR {
-    private static final int PERIOD = 14;
-    private double[] trueRanges = new double[PERIOD];
     private double currentATR = 0.0;
     private int dayCount = 0;
 
     @Override
     public double calculateATR(InsightData data, int period) {
+        double[] trueRanges = new double[period];
         double trueRange = calculateTrueRange(data);
-        trueRanges[dayCount % PERIOD] = trueRange;
+        trueRanges[dayCount % period] = trueRange;
         dayCount++;
 
         // Calculate EMA for ATR
-        if (dayCount <= PERIOD) {
+        if (dayCount <= period) {
             // Initially, just compute the simple average
             double sum = 0;
             for (int i = 0; i < dayCount; i++) {
@@ -24,7 +23,7 @@ public class ATRImpl implements ATR {
             currentATR = sum / dayCount;
         } else {
             // Compute EMA
-            double multiplier = 2.0 / (PERIOD + 1);
+            double multiplier = 2.0 / (period + 1);
             currentATR = (trueRange - currentATR) * multiplier + currentATR;
         }
 
