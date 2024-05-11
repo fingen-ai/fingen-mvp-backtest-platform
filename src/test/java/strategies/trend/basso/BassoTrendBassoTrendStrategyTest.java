@@ -5,10 +5,10 @@ import org.junit.Test;
 
 public class BassoTrendBassoTrendStrategyTest {
 
-    private double[] prices = new double[50];
-    private double[] high = new double[50];
-    private double[] low = new double[50];
-    private double[] close = new double[50];
+    private final double[] prices = new double[50];
+    private final double[] high = new double[50];
+    private final double[] low = new double[50];
+    private final double[] close = new double[50];
 
     @Test
     public void testStrategy() {

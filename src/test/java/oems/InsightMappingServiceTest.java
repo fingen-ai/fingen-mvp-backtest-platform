@@ -26,8 +26,8 @@ public class InsightMappingServiceTest {
         // Close the maps and delete the test files to clean up after tests
         if (insightMappingService != null) {
             insightMappingService.close();
-            new File(insightMappingService.MAP_DIRECTORY + "nosIDArray.dat").delete();
-            new File(insightMappingService.MAP_DIRECTORY + "nos.dat").delete();
+            new File(InsightMappingService.MAP_DIRECTORY + "nosIDArray.dat").delete();
+            new File(InsightMappingService.MAP_DIRECTORY + "nos.dat").delete();
         }
     }
 
@@ -50,7 +50,7 @@ public class InsightMappingServiceTest {
         initialData.symbol = "AAPL";
         insightMappingService.addNOSInsight(orderId, initialData);
 
-        OEMSData retrievedData = insightMappingService.nosIdeaMap.get(orderId);
+        OEMSData retrievedData = insightMappingService.nosInsightMap.get(orderId);
         assertNotNull("The retrieved data should not be null.", retrievedData);
         assertEquals("The symbol of the retrieved data should match the expected symbol.", "AAPL", retrievedData.symbol);
     }
@@ -62,7 +62,7 @@ public class InsightMappingServiceTest {
         data.symbol = "GOOGL";
         insightMappingService.addNOSInsight(orderId, data);
 
-        assertNotNull("The data should be present before deletion.", insightMappingService.nosIdeaMap.get(orderId));
+        assertNotNull("The data should be present before deletion.", insightMappingService.nosInsightMap.get(orderId));
         //insightMappingService.closePosition(data);
         //assertNull("The data should be null after deletion.", insightMappingService.nosIdeaMap.get(orderId));
     }

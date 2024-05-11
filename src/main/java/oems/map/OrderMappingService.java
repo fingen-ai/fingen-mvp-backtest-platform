@@ -9,7 +9,7 @@ import java.io.IOException;
 public class OrderMappingService {
     private ChronicleMap<String, long[]> nosIDArrayMap;
     public ChronicleMap<Long, OEMSData> nosMap;
-    public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders";
+    public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/";
 
     public OrderMappingService() throws IOException {
         ensureDirectoryExists(); // Ensure the directory exists

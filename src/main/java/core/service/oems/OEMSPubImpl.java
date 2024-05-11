@@ -63,4 +63,14 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         System.out.println("ONGOING ORDER: " + openOrdersIDArray.length);
     }
+
+    private void getStopLoss(OEMSData oemsData) {
+        // if(oemsData.close) exceeds SL price, close this order
+        // else update SL price
+    }
+
+    private void getTakeProfit(OEMSData oemsData) {
+        // if(oemsData.close) exceeds TP price, close this order
+        // else update TP price
+    }
 }
