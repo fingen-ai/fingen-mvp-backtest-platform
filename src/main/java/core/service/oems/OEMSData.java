@@ -45,6 +45,7 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double openOrderTimestamp;
     public String openOrderExpiry;
     public String openOrderState;
+
     public double openOrderSLPrice;
     public String prevBassoOrderIdea;
 

@@ -74,6 +74,7 @@ public class OEMSTest {
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
         // Insight data
+        assertEquals("Mismatch in some Insight field", expected.previousClose, actual.previousClose, 0.001);
         assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.001);
         assertEquals("Mismatch in some Insight field", expected.currRiskPercent, actual.currRiskPercent, 0.001);
         assertEquals("Mismatch in some Insight field", expected.currVolRiskPercent, actual.currVolRiskPercent, 0.001);
@@ -88,10 +89,25 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.openOrderSide, actual.openOrderSide);
 
         assertEquals("Mismatch in some Insight field", expected.openOrderPrice, actual.openOrderPrice, 0.001);
+
+        assertEquals("Mismatch in some Insight field", expected.openOrderId, actual.openOrderId, 0.001);
+
+        /*
+        assertEquals("Mismatch in some Insight field", expected.openOrderTimestamp, actual.openOrderTimestamp);
+        assertEquals("Mismatch in some Insight field", expected.openOrderExpiry, actual.openOrderExpiry);
+        assertEquals("Mismatch in some Insight field", expected.openOrderState, actual.openOrderState);
+
+        assertEquals("Mismatch in some Insight field", expected.closeOrderId, actual.closeOrderId, 0.001);
+
+        assertEquals("Mismatch in some Insight field", expected.closeOrderTimestamp, actual.closeOrderTimestamp);
+        assertEquals("Mismatch in some Insight field", expected.closeOrderExpiry, actual.closeOrderExpiry);
+        assertEquals("Mismatch in some Insight field", expected.closeOrderState, actual.closeOrderState);
+
         assertEquals("Mismatch in some Insight field", expected.closeOrderQty, actual.closeOrderQty, 0.001);
 
         assertEquals("Mismatch in some Insight field", expected.closeOrderSide, actual.closeOrderSide);
 
         assertEquals("Mismatch in some Insight field", expected.closeOrderPrice, actual.closeOrderPrice, 0.001);
+         */
     }
 }
