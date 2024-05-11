@@ -3,10 +3,10 @@ package risk;
 public class RiskImpl implements Risk {
 
     // risk thresholds
-    double initRiskPercentThreshold = 0.5;
-    double initVolPercentThreshold = 0.3;
-    double ongoingRiskPercentThreshold = 1;
-    double ongoingVolPercentThreshold = 0.4;
+    double initRiskPercentThreshold = 0.005;
+    double initVolPercentThreshold = 0.003;
+    double ongoingRiskPercentThreshold = 0.01;
+    double ongoingVolPercentThreshold = 0.004;
 
     public double getInitRiskPercentThreshold() {
         return initRiskPercentThreshold;

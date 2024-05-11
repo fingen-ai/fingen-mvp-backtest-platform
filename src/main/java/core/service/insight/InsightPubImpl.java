@@ -77,8 +77,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.openOrderSide = getSide(insightData);;
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
-
-        System.out.println("INSIGHT INIT: " + insightData);
     }
 
     private void buildNOSOngoingInsight(InsightData insightData) {
@@ -92,27 +90,13 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.currRiskPercent = risk.getCurrentTotalPercentRisk(
                 (totalPositionQty * insightData.close), accountData.nav);
 
-        // compute current vol %
-        System.out.println("ATR High: " + insightData.high);
-        System.out.println("ATR Low: " + insightData.low);
-        System.out.println("ATR Close: " + insightData.close);
-
         insightData.atr = atr.calculateTR(insightData.high, insightData.low, insightData.close);
-
-        System.out.println("ATR ATR: " + insightData.atr);
 
         insightData.currVolRiskPercent = risk.getCurrentTotalVolPercentRisk(
                 (insightData.atr * insightData.close), accountData.nav);
 
-        System.out.println("ATR CLOSE: " + insightData.close);
-        System.out.println("ATR NAV: " + accountData.nav);
-        System.out.println("ATR CURR VOL RISK %: " + insightData.currVolRiskPercent);
-
         // validate current risk % < risk % threshold
         double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - insightData.currRiskPercent;
-
-        System.out.println("ATR CURR VOL RISK THRESHOLD %: " + risk.getOngoingRiskPercentThreshold());
-        System.out.println("ATR RISK % AVAIL: " + riskPercentAvail);
 
         if(riskPercentAvail > 0) {
             insightData.orderQtyPerRisk = (int) (Math.round (riskPercentAvail * accountData.nav) / insightData.close);
