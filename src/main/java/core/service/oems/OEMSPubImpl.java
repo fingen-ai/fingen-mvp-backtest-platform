@@ -4,7 +4,6 @@ import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
@@ -49,7 +48,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
 
-        System.out.println("OEMS: " + oemsData);
+        System.out.println("OEMS INIT: " + oemsData);
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
@@ -61,7 +60,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
 
-        System.out.println("ONGOING ORDER: " + openOrdersIDArray.length);
+        System.out.println("OEMS ONGOING: " + oemsData);
     }
 
     private void getStopLoss(OEMSData oemsData) {

@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Insight - WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/InsightMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/InsightMappingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/InsightMappingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oems/InsightMappingServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/trend/basso/BassoTrendBassoTrendStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/trend/basso/BassoTrendBassoTrendStrategyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,15 +272,7 @@
       <workItem from="1715054214105" duration="1848000" />
       <workItem from="1715058986979" duration="9759000" />
       <workItem from="1715131598107" duration="23063000" />
-      <workItem from="1715192177944" duration="39796000" />
-    </task>
-    <task id="LOCAL-00028" summary="OEMS Test - WIP.">
-      <option name="closed" value="true" />
-      <created>1714754338894</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1714754338894</updated>
+      <workItem from="1715192177944" duration="45016000" />
     </task>
     <task id="LOCAL-00029" summary="OEMS Test - WIP.">
       <option name="closed" value="true" />
@@ -668,7 +658,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715313736070</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Insight - WIP.">
+      <option name="closed" value="true" />
+      <created>1715391661152</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1715391661152</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -78,6 +78,7 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.currRiskPercent, actual.currRiskPercent, 0.001);
         assertEquals("Mismatch in some Insight field", expected.currVolRiskPercent, actual.currVolRiskPercent, 0.001);
         assertEquals("Mismatch in some Insight field", expected.orderQtyPerRisk, actual.orderQtyPerRisk, 0.001);
+        assertEquals("Mismatch in some Insight field", expected.orderQtyPerVol, actual.orderQtyPerVol, 0.001);
 
         assertEquals("Mismatch in some Insight field", expected.orderType, actual.orderType);
         assertEquals("Mismatch in some Insight field", expected.orderSide, actual.orderSide);

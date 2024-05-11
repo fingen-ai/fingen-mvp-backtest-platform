@@ -26,8 +26,8 @@ public class InsightData extends SelfDescribingMarshallable {
     public double atr;
     public double currRiskPercent;
     public double currVolRiskPercent;
-    public double orderQtyPerRisk;
-    public double orderQtyPerVol;
+    public int orderQtyPerRisk;
+    public int orderQtyPerVol;
     public String orderType;
     public String orderSide;
 
@@ -35,7 +35,7 @@ public class InsightData extends SelfDescribingMarshallable {
     public String openOrderSide;
     public double openOrderPrice;
 
-    public double closeOrderQty;
+    public int closeOrderQty;
     public String closeOrderSide;
     public double closeOrderPrice;
 

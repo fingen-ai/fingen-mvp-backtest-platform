@@ -21,6 +21,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     ATR atr = new ATRImpl(50);
 
     AccountData accountData = new AccountData();
+
     InsightData currNOSInsight = new InsightData();
     long[] openOrdersIDArray = new long[0];
 
@@ -29,6 +30,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     int riskQty = 0;
     int volRiskQty = 0;
     double totalPositionQty = 0;
+    int recCount = 0;
 
     private InsightPub output;
 
@@ -41,6 +43,11 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcStartTs = System.nanoTime();
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
+
+            if(recCount == 0) {
+                accountData.nav = 10000;
+                recCount++;
+            }
 
             openOrdersIDArray = orderMS.getFromNOSIDArray(insightData.symbol);
             if(openOrdersIDArray != null) {
@@ -64,51 +71,70 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.openOrderId = 0;
         insightData.openOrderTimestamp = 0;
         insightData.openOrderState = "Init Insight";
+        insightData.orderType = "Limit";
 
         insightData.openOrderQty = Math.min(riskQty, volRiskQty);
         insightData.openOrderSide = getSide(insightData);;
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
 
-        System.out.println("INSIGHT: " + insightData);
+        System.out.println("INSIGHT INIT: " + insightData);
     }
 
     private void buildNOSOngoingInsight(InsightData insightData) {
-
+        // get all open positions and sum the total qty exposure
         for(int i=0; i < openOrdersIDArray.length; i++) {
             OEMSData oemsData = orderMS.getNOS(openOrdersIDArray[i]);
             totalPositionQty += oemsData.openOrderQty;
         }
 
         // compute current risk %
-        insightData.currRiskPercent = risk.getCurrentTotalPercentRisk(totalPositionQty, accountData.nav);
+        insightData.currRiskPercent = risk.getCurrentTotalPercentRisk(
+                (totalPositionQty * insightData.close), accountData.nav);
 
         // compute current vol %
+        System.out.println("ATR High: " + insightData.high);
+        System.out.println("ATR Low: " + insightData.low);
+        System.out.println("ATR Close: " + insightData.close);
+
         insightData.atr = atr.calculateTR(insightData.high, insightData.low, insightData.close);
-        insightData.currRiskPercent = risk.getCurrentTotalVolPercentRisk(insightData.atr, accountData.nav);
+
+        System.out.println("ATR ATR: " + insightData.atr);
+
+        insightData.currVolRiskPercent = risk.getCurrentTotalVolPercentRisk(
+                (insightData.atr * insightData.close), accountData.nav);
+
+        System.out.println("ATR CLOSE: " + insightData.close);
+        System.out.println("ATR NAV: " + accountData.nav);
+        System.out.println("ATR CURR VOL RISK %: " + insightData.currVolRiskPercent);
 
         // validate current risk % < risk % threshold
         double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - insightData.currRiskPercent;
+
+        System.out.println("ATR CURR VOL RISK THRESHOLD %: " + risk.getOngoingRiskPercentThreshold());
+        System.out.println("ATR RISK % AVAIL: " + riskPercentAvail);
+
         if(riskPercentAvail > 0) {
-            riskQty = (int) (Math.round (riskPercentAvail * accountData.nav) / insightData.close);
-            System.out.println("INSIGHT ONGOING RISK NOS: " + insightData);
+            insightData.orderQtyPerRisk = (int) (Math.round (riskPercentAvail * accountData.nav) / insightData.close);
         }
 
         // validate current vol % < vol % threshold
         double volRiskPercentAvail =  risk.getOngoingVolPercentThreshold() - insightData.currVolRiskPercent;
-        if(riskPercentAvail > 0) {
-            volRiskQty = (int) (Math.round (volRiskPercentAvail * accountData.nav) / insightData.close);
-            System.out.println("INSIGHT ONGOING VOL NOS: " + insightData);
+        if(volRiskPercentAvail > 0) {
+            insightData.orderQtyPerVol = (int) (Math.round (volRiskPercentAvail * accountData.nav) / insightData.close);
         }
 
         insightData.openOrderId = 0;
         insightData.openOrderTimestamp = 0;
         insightData.openOrderState = "Ongoing Insight";
+        insightData.orderType = "Limit";
 
-        insightData.openOrderQty = Math.min(riskQty, volRiskQty);
+        insightData.openOrderQty = Math.min(insightData.orderQtyPerRisk, insightData.orderQtyPerVol);
         insightData.openOrderSide = getSide(insightData);;
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
+
+        System.out.println("INSIGHT ONGOING: " + insightData);
     }
 
     private String getSide(InsightData insightData) {
