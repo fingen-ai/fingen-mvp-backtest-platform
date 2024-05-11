@@ -118,6 +118,9 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
 
+        // reset
+        totalPositionQty = 0;
+
         System.out.println("INSIGHT ONGOING: " + insightData);
     }
 
