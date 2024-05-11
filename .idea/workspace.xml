@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Insight - WIP.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="Insight - DONE.&#10;OEMS - WIP.">
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
     </list>
@@ -286,15 +284,7 @@
       <workItem from="1715058986979" duration="9759000" />
       <workItem from="1715131598107" duration="23063000" />
       <workItem from="1715192177944" duration="47990000" />
-      <workItem from="1715402052613" duration="6836000" />
-    </task>
-    <task id="LOCAL-00034" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
-      <option name="closed" value="true" />
-      <created>1714841077399</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1714841077399</updated>
+      <workItem from="1715402052613" duration="7757000" />
     </task>
     <task id="LOCAL-00035" summary="OEMS Test - WIP.&#10;BRM Test - WIP.">
       <option name="closed" value="true" />
@@ -680,7 +670,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715454248341</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Insight - DONE.&#10;OEMS - WIP.">
+      <option name="closed" value="true" />
+      <created>1715455156237</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1715455156237</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -699,7 +697,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - WIP." />
     <MESSAGE value="Next Steps:&#10;1. Integrate BassoTrendStrategy - DONE." />
     <MESSAGE value="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc." />
     <MESSAGE value=" Re-init commit." />
@@ -724,6 +721,7 @@
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMS - WIP." />
     <MESSAGE value="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP." />
     <MESSAGE value="Insight - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="Insight - WIP." />
+    <MESSAGE value="Insight - DONE.&#10;OEMS - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="Insight - DONE.&#10;OEMS - WIP." />
   </component>
 </project>

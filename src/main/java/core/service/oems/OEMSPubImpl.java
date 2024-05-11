@@ -9,6 +9,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     OrderMappingService orderMS = new OrderMappingService();
 
+    OEMSData prevOEMSData = new OEMSData();
+
     long[] openOrdersIDArray =  new long[0];
 
     private OEMSPub output;
@@ -28,8 +30,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
             if(openOrdersIDArray != null) {
 
+                // before we do anything,
+                // coa positions by symbol if trend just reversed
+                placeCOAOrder(oemsData);
                 // before we look at new insights, and placing NOS
-                // we need to update SL and exit if called to do so
+                // we need to update SL and exit if called to do so.
                 getStopLoss(oemsData);
                 placeNOSOngoingOrder(oemsData);
 
@@ -78,7 +83,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         if(oemsData.openOrderSide.equals("Buy")) {
             stopPrice = oemsData.close - (oemsData.atr * 3);
             if (oemsData.close < stopPrice) {
-                placeCOSOrder();
+                placeCOSOrder(oemsData);
             } else {
                 System.out.println("UPDT BUY SL");
                 oemsData.openOrderSLPrice = stopPrice;
@@ -88,7 +93,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         if (oemsData.openOrderSide.equals("Sell")) {
             stopPrice = oemsData.close + (oemsData.atr * 3);
             if (oemsData.close > stopPrice) {
-                placeCOSOrder();
+                placeCOSOrder(oemsData);
             } else {
                 System.out.println("UPDT SELL SL");
                 oemsData.openOrderSLPrice = stopPrice;
@@ -96,14 +101,21 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void placeCOSOrder() {
+    private void placeCOSOrder(OEMSData oemsData) {
+        // build close order, and close one position by order ID
         System.out.println("COS");
-        // build close order
-        // close one position per SL or TP
     }
 
     private void placeCOAOrder(OEMSData oemsData) {
-        // build close order
-        // close all positions per symbol and insight re: trend reversal
+
+        if(prevOEMSData != null) {
+            oemsData.prevBassoOrderIdea = prevOEMSData.bassoOrderIdea;
+            if (!oemsData.bassoOrderIdea.equals(oemsData.prevBassoOrderIdea)) {
+                // build close order, and close all positions by symbol
+                System.out.println("COA");
+            }
+        }
+
+        prevOEMSData. prevBassoOrderIdea = oemsData.bassoOrderIdea;
     }
 }
