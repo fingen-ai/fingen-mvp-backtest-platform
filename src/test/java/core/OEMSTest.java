@@ -126,4 +126,13 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.closeOrderExpiry, actual.closeOrderExpiry);
         assertEquals("Mismatch in some Insight field", expected.closeOrderState, actual.closeOrderState);
     }
+
+    // oems scenarios based on usd-coin_2018-10-08_2024-04-21.csv source data
+    // recs 50-EOF: oems nos, cos
+
+        // Recon of nos-2-cos = returns 100% match = true
+
+        // Recon of cos to nos id array = returns 0% match = false
+
+        // Recon of nos to nos id array = returns 100% match = true
 }
