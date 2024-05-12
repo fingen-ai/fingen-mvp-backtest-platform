@@ -97,7 +97,7 @@ public class OEMSTest {
 
         assertEquals("Mismatch in some Insight field", expected.closeOrderPrice, actual.closeOrderPrice, 0.001);
 
-        // insight scenarios
+        // insight scenarios based on usd-coin_2018-10-08_2024-04-21.csv source data
         // recs 1-49: BassoOrderIdea="Neutral" and OpenOrderSide="Hold"
         if(recCount < 50) {
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
@@ -105,14 +105,13 @@ public class OEMSTest {
             assertEquals("Mismatch in some Insight field", null, actual.orderSide);
         }
 
-        // recs 50-??: BassoOrderIdea="???" and OpenOrderSide="???"
+        // recs 50-EOF: Apparently the Tom Basso strategy didn't find a single Bearish signal.
+        // DBL CHECK THIS!!!
         if((recCount > 50) && (recCount < 10000)) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
             assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
         }
-
-        // recs ??-??: BassoOrderIdea="???" and OpenOrderSide="???"
 
         // oems data
         assertEquals("Mismatch in some Insight field", expected.openOrderId, actual.openOrderId, 0.001);
