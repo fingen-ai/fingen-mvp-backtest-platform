@@ -101,6 +101,7 @@ public class OEMSTest {
         // insight scenarios based on usd-coin_2018-10-08_2024-04-21.csv source data
         // recs 1-49: BassoOrderIdea="Neutral" and OpenOrderSide="Hold"
         if(recCount < 50) {
+            System.out.println("> 50 RECOUNT COUNT" + recCount);
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
             assertEquals("Mismatch in some Insight field", null, actual.orderType);
             assertEquals("Mismatch in some Insight field", null, actual.orderSide);
@@ -109,6 +110,7 @@ public class OEMSTest {
         // recs 50-EOF: Apparently the Tom Basso strategy didn't find a single Bearish signal.
         // DBL CHECK THIS!!!
         if((recCount > 50) && (recCount < 10000)) {
+            System.out.println("> 50 < 10000 RECOUNT COUNT" + recCount);
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
             assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
@@ -130,16 +132,16 @@ public class OEMSTest {
         // oems scenarios based on usd-coin_2018-10-08_2024-04-21.csv source data
         // recs 50:
         if(recCount == 50) {
+            System.out.println("== 50 RECOUNT COUNT" + recCount);
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", "boogie", actual.closeOrderState);
         }
 
-        if(recCount > 50) {
+        if(recCount > 50) {System.out.println("> 50 RECOUNT COUNT" + recCount);
             assertEquals("Mismatch in some OEMS field", "Ongoing New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", "boogie", actual.closeOrderState);
         }
 
-        System.out.println("RECOUNT COUNT" + recCount);
         recCount++;
 
         // Recon of nos-2-cos = returns 100% match = true
