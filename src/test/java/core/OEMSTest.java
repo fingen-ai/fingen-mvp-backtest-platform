@@ -14,10 +14,11 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class OEMSTest {
 
-    int recCount = 0;
+    int recCount = 1;
 
     @Before
     public void setup() throws IOException {
@@ -114,25 +115,37 @@ public class OEMSTest {
         }
 
         // oems data
-        assertEquals("Mismatch in some Insight field", expected.openOrderId, actual.openOrderId, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.openOrderId, actual.openOrderId, 0.001);
 
-        assertEquals("Mismatch in some Insight field", expected.openOrderTimestamp, actual.openOrderTimestamp, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.openOrderExpiry, actual.openOrderExpiry);
-        assertEquals("Mismatch in some Insight field", expected.openOrderState, actual.openOrderState);
+        assertEquals("Mismatch in some OEMS field", expected.openOrderTimestamp, actual.openOrderTimestamp, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.openOrderExpiry, actual.openOrderExpiry);
+        assertEquals("Mismatch in some OEMS field", expected.openOrderState, actual.openOrderState);
 
-        assertEquals("Mismatch in some Insight field", expected.closeOrderId, actual.closeOrderId, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.closeOrderId, actual.closeOrderId, 0.001);
 
-        assertEquals("Mismatch in some Insight field", expected.closeOrderTimestamp, actual.closeOrderTimestamp, 0.001);
-        assertEquals("Mismatch in some Insight field", expected.closeOrderExpiry, actual.closeOrderExpiry);
-        assertEquals("Mismatch in some Insight field", expected.closeOrderState, actual.closeOrderState);
-    }
+        assertEquals("Mismatch in some OEMS field", expected.closeOrderTimestamp, actual.closeOrderTimestamp, 0.001);
+        assertEquals("Mismatch in some OEMS field", expected.closeOrderExpiry, actual.closeOrderExpiry);
+        assertEquals("Mismatch in some OEMS field", expected.closeOrderState, actual.closeOrderState);
 
-    // oems scenarios based on usd-coin_2018-10-08_2024-04-21.csv source data
-    // recs 50-EOF: oems nos, cos
+        // oems scenarios based on usd-coin_2018-10-08_2024-04-21.csv source data
+        // recs 50:
+        if(recCount == 50) {
+            assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
+            assertEquals("Mismatch in some OEMS field", "boogie", actual.closeOrderState);
+        }
+
+        if(recCount > 50) {
+            assertEquals("Mismatch in some OEMS field", "Ongoing New Order Single", actual.openOrderState);
+            assertEquals("Mismatch in some OEMS field", "boogie", actual.closeOrderState);
+        }
+
+        System.out.println("RECOUNT COUNT" + recCount);
+        recCount++;
 
         // Recon of nos-2-cos = returns 100% match = true
 
         // Recon of cos to nos id array = returns 0% match = false
 
         // Recon of nos to nos id array = returns 100% match = true
+    }
 }
