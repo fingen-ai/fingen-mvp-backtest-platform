@@ -106,7 +106,7 @@ public class OEMSTest {
         }
 
         // recs 50-??: BassoOrderIdea="???" and OpenOrderSide="???"
-        if((recCount > 50) && (recCount < 100)) {
+        if((recCount > 50) && (recCount < 10000)) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
             assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
