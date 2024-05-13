@@ -61,11 +61,15 @@ public class Orchestrator {
 
         CSVFileReader csvFileReader = new CSVFileReader(filePath);
 
+        int i = 0;
+
         try {
             csvFileReader.openStream();
             String[] headers = csvFileReader.readNext(); // Assuming the first row contains headers
             String[] record;
             while ((record = csvFileReader.readNext()) != null) {
+                i++;
+                priceData.recId = i;
                 priceData = printRecord(record);
                 pricePubIn.simpleCall(priceData);
             }
@@ -90,8 +94,8 @@ public class Orchestrator {
      * @param record A string array containing comma-separated values of one record.
      */
     private static PriceData printRecord(String[] record) {
+
         if (record.length >= 8) { // Ensure there are enough elements in the record
-            priceData.recId = System.nanoTime();
             priceData.svcStartTs = priceData.recId;
 
             // 8 data elements within the record array

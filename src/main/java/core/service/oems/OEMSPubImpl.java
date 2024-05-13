@@ -38,6 +38,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.openOrderSide = "Hold";
         }
 
+        prevOEMSData.prevBassoOrderIdea = oemsData.bassoOrderIdea;
+
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
         System.out.println("OEMS: " + oemsData);
@@ -128,6 +130,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             }
         }
 
-        prevOEMSData. prevBassoOrderIdea = oemsData.bassoOrderIdea;
+        //prevOEMSData.prevBassoOrderIdea = oemsData.bassoOrderIdea;
     }
 }
