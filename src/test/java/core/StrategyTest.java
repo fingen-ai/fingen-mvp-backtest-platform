@@ -2,6 +2,7 @@ package core;
 
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
+import core.service.price.PriceData;
 import core.service.strategy.StrategyData;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
@@ -11,10 +12,11 @@ import net.openhft.chronicle.wire.DocumentContext;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import java.io.IOException;
 
-public class InsightTest {
+import static org.junit.Assert.assertEquals;
+
+public class StrategyTest {
 
     @Before
     public void setup() throws IOException {
@@ -28,15 +30,15 @@ public class InsightTest {
         Orchestrator.run();
 
         // Read data from each queue
+        PriceData actualPriceData = readDataFromQueue("priceQ", PriceData.class);
         StrategyData actualStrategyData = readDataFromQueue("stratQ", StrategyData.class);
-        InsightData actualInsightData = readDataFromQueue("insightQ", InsightData.class);
 
         // Perform validations of each queue vs source file
         // IF statement prevents race-condition that was compromising test-integrity
         // EACH service (Price, Strategy, etc) is pinned to it's own CPU core
-        // SO race-conditions are likley
-        if(actualInsightData.start.equals(actualStrategyData.start)) {
-            validateInsightData(actualStrategyData, actualInsightData);
+        // SO race-conditions are likely
+        if(actualPriceData.start.equals(actualStrategyData.start)) {
+            validateInsightData(actualPriceData, actualStrategyData);
         }
     }
 
@@ -55,7 +57,7 @@ public class InsightTest {
     }
 
     // Validate data from strategy svc matches data passed to insight svc
-    private void validateInsightData(StrategyData expected, InsightData actual) {
+    private void validateInsightData(PriceData expected, StrategyData actual) {
         // Price data, sans start, stop and latency, being diff. svcs and all ;)
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId, 0.001);
@@ -67,9 +69,5 @@ public class InsightTest {
         assertEquals("Mismatch in some Price field", expected.close, actual.close, 0.001);
         assertEquals("Mismatch in some Price field", expected.volume, actual.volume, 0.001);
         assertEquals("Mismatch in some Price field", expected.marketCap, actual.marketCap, 0.001);
-
-        // Strategy data
-        assertEquals("Mismatch in some Strategy field", expected.lhcAvgPrice, actual.lhcAvgPrice, 0.001);
-        assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
     }
 }

@@ -41,7 +41,7 @@ public class OEMSTest {
         // EACH service (Price, Strategy, etc) is pinned to it's own CPU core
         // SO race-conditions are likely
         if (actualOEMSData.start.equals(actualInsightData.start)) {
-            validateInsightData(actualOEMSData, actualInsightData);
+            validateInsightData(actualInsightData, actualOEMSData);
         }
     }
 
@@ -60,7 +60,7 @@ public class OEMSTest {
     }
 
     // Validate data from insight svc matches data passed to oems svc
-    private void validateInsightData(OEMSData actual, InsightData expected) {
+    private void validateInsightData(InsightData expected, OEMSData actual) {
         // Price data, sans start, stop and latency, being diff. svcs and all ;)
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId, 0.001);

@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="OEMS - WIP.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/oems/throughput-test.txt" beforeDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/StrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,7 @@
     "JUnit.MACDStrategyTest.executor": "Run",
     "JUnit.MACDTest.executor": "Run",
     "JUnit.MapManagerTest.executor": "Run",
-    "JUnit.OEMSTest.executor": "Debug",
+    "JUnit.OEMSTest.executor": "Run",
     "JUnit.OMSImplTest.executor": "Run",
     "JUnit.OMSProcessorTest.executor": "Run",
     "JUnit.OrchestratorTest.executor": "Run",
@@ -102,6 +99,7 @@
     "JUnit.PerformanceTest.executor": "Run",
     "JUnit.RSITest.executor": "Run",
     "JUnit.RiskTest.executor": "Run",
+    "JUnit.StrategyTest.executor": "Run",
     "JUnit.TenDayEMATest.executor": "Run",
     "JUnit.WeeklyOptionsStrategyTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -138,11 +136,11 @@
       <recent name="oems" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="core" />
       <recent name="oems.map" />
       <recent name="util" />
       <recent name="oems.dto" />
       <recent name="oems" />
-      <recent name="core" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.OEMSTest">
@@ -182,21 +180,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="oems" />
-      <option name="MAIN_CLASS_NAME" value="oems.DoubleArrayMapManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DoubleArrayMapManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="oems.map.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="PACKAGE_NAME" value="oems.map" />
       <option name="MAIN_CLASS_NAME" value="oems.map.DoubleArrayMapManagerTest" />
       <option name="TEST_OBJECT" value="class" />
@@ -204,16 +187,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InsightMappingServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InsightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="oems.*" />
+          <option name="PATTERN" value="core.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="oems" />
-      <option name="MAIN_CLASS_NAME" value="oems.InsightMappingServiceTest" />
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="core.InsightTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -234,13 +217,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fingen-mvp-platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="core.StrategyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OEMSTest" />
+        <item itemvalue="JUnit.InsightTest" />
+        <item itemvalue="JUnit.StrategyTest" />
         <item itemvalue="JUnit.ATRTest" />
         <item itemvalue="Application.ATRTest" />
-        <item itemvalue="JUnit.InsightMappingServiceTest" />
-        <item itemvalue="JUnit.DoubleArrayMapManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -288,15 +286,7 @@
       <workItem from="1715131598107" duration="23063000" />
       <workItem from="1715192177944" duration="47990000" />
       <workItem from="1715402052613" duration="8792000" />
-      <workItem from="1715457098249" duration="22533000" />
-    </task>
-    <task id="LOCAL-00051" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
-      <option name="closed" value="true" />
-      <created>1714962047301</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1714962047301</updated>
+      <workItem from="1715457098249" duration="23232000" />
     </task>
     <task id="LOCAL-00052" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
       <option name="closed" value="true" />
@@ -682,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715480521067</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
+      <option name="closed" value="true" />
+      <created>1715565446501</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1715565446501</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,7 +699,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="OrchestratorTest - WIP.&#10;Rolled-back to pre-Account svc." />
     <MESSAGE value=" Re-init commit." />
     <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - WIP." />
     <MESSAGE value=" Re-init commit.&#10; OrchestratorTest - DONE." />
@@ -726,6 +723,7 @@
     <MESSAGE value="Insight - WIP." />
     <MESSAGE value="Insight - DONE.&#10;OEMS - WIP." />
     <MESSAGE value="OEMS - WIP." />
-    <option name="LAST_COMMIT_MESSAGE" value="OEMS - WIP." />
+    <MESSAGE value="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP." />
   </component>
 </project>
