@@ -77,14 +77,15 @@ public class OrchestratorTest {
         // IF statement prevents race-condition that was compromising test-integrity
         // EACH service (Price, Strategy, etc) is pinned to it's own CPU core
         // SO race-conditions are likley
-        if(expectedPriceData.start.equals(actualPriceData.start)) {
-            validatePriceData(actualPriceData, expectedPriceData);
-            validateStrategyData(actualStrategyData, expectedStrategyData);
-            validateInsightData(actualInsightData, expectedInsightData);
-            validateOEMSData(actualOEMSData, expectedOEMSData);
-            validatePerfData(actualPerfData, expectedPerfData);
-            validatePublishingData(actualPubData, expectedPubData);
-            validateOpsData(actualOpsData, expectedOpsData);
+        if(expectedPriceData.recId == actualPriceData.recId) {
+            System.out.println("HERE");
+            validatePriceData(expectedPriceData, actualPriceData);
+            validateStrategyData(expectedStrategyData, actualStrategyData);
+            validateInsightData(expectedInsightData, actualInsightData);
+            validateOEMSData(expectedOEMSData, actualOEMSData);
+            validatePerfData(expectedPerfData, actualPerfData);
+            validatePublishingData(expectedPubData, actualPubData);
+            validateOpsData(expectedOpsData, actualOpsData);
         }
     }
 
@@ -102,7 +103,7 @@ public class OrchestratorTest {
         throw new IOException("Failed to read data from queue: " + queueName);
     }
 
-    private void validatePriceData(PriceData actual, PriceData expected) {
+    private void validatePriceData(PriceData expected, PriceData actual) {
         assertEquals("Mismatch in some price field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some price field", expected.start, actual.start);
         assertEquals("Mismatch in some price field", expected.end, actual.end);
@@ -117,7 +118,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some price field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateStrategyData(StrategyData actual, StrategyData expected) {
+    private void validateStrategyData(StrategyData expected, StrategyData actual) {
         assertEquals("Mismatch in some Strategy field", expected.start, actual.start);
         assertEquals("Mismatch in some Strategy field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some Strategy field", expected.start, actual.start);
@@ -133,7 +134,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Strategy field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateInsightData(InsightData actual, InsightData expected) {
+    private void validateInsightData(InsightData expected, InsightData actual) {
         assertEquals("Mismatch in some Insight field", expected.start, actual.start);
         assertEquals("Mismatch in some Insight field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some Insight field", expected.start, actual.start);
@@ -149,7 +150,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Insight field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateOEMSData(OEMSData actual, OEMSData expected) {
+    private void validateOEMSData(OEMSData expected, OEMSData actual) {
         assertEquals("Mismatch in some OEMS field", expected.start, actual.start);
         assertEquals("Mismatch in some OEMS field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some OEMS field", expected.start, actual.start);
@@ -165,7 +166,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some OEMS field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validatePerfData(PerfData actual, PerfData expected) {
+    private void validatePerfData(PerfData expected, PerfData actual) {
         assertEquals("Mismatch in some Perf field", expected.start, actual.start);
         assertEquals("Mismatch in some Perf field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some Perf field", expected.start, actual.start);
@@ -181,7 +182,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Perf field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validatePublishingData(PublisherData actual, PublisherData expected) {
+    private void validatePublishingData(PublisherData expected, PublisherData actual) {
         assertEquals("Mismatch in some Publishing field", expected.start, actual.start);
         assertEquals("Mismatch in some Publishing field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some Publishing field", expected.start, actual.start);
@@ -197,7 +198,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Publishing field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateOpsData(OpsData actual, OpsData expected) {
+    private void validateOpsData(OpsData expected, OpsData actual) {
         assertEquals("Mismatch in some Ops field", expected.start, actual.start);
         assertEquals("Mismatch in some Ops field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some Ops field", expected.start, actual.start);

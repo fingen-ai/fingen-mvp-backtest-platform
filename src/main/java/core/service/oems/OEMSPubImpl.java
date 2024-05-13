@@ -42,7 +42,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
-        System.out.println("OEMS: " + oemsData);
+        //System.out.println("OEMS: " + oemsData);
         output.simpleCall(oemsData);
     }
 

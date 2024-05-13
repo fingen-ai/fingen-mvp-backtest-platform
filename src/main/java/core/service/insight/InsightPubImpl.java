@@ -116,7 +116,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         // reset
         totalPositionQty = 0;
 
-        System.out.println("INSIGHT ONGOING: " + insightData);
+        //System.out.println("INSIGHT ONGOING: " + insightData);
     }
 
     private String getSide(InsightData insightData) {

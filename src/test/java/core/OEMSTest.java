@@ -18,8 +18,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class OEMSTest {
 
-    int recCount = 1;
-
     @Before
     public void setup() throws IOException {
         // Initialize Orchestrator with test configurations, if needed

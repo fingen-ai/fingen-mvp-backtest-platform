@@ -61,15 +61,11 @@ public class Orchestrator {
 
         CSVFileReader csvFileReader = new CSVFileReader(filePath);
 
-        int i = 0;
-
         try {
             csvFileReader.openStream();
             String[] headers = csvFileReader.readNext(); // Assuming the first row contains headers
             String[] record;
             while ((record = csvFileReader.readNext()) != null) {
-                i++;
-                priceData.recId = i;
                 priceData = printRecord(record);
                 pricePubIn.simpleCall(priceData);
             }
@@ -99,6 +95,7 @@ public class Orchestrator {
             priceData.svcStartTs = priceData.recId;
 
             // 8 data elements within the record array
+            priceData.recId = System.nanoTime();
             priceData.symbol = "DXY";
             priceData.start = record[0];
             priceData.end = record[1];
