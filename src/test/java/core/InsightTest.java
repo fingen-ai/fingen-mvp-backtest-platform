@@ -197,6 +197,19 @@ public class InsightTest {
         if(recCount == 1073) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.orderType);
+            assertEquals("Mismatch in some Insight field", null, actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 0, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Hold", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -233,6 +246,19 @@ public class InsightTest {
         if(recCount == 1153) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.orderType);
+            assertEquals("Mismatch in some Insight field", null, actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 0, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Hold", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -245,6 +271,19 @@ public class InsightTest {
         if(recCount == 1162) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.orderType);
+            assertEquals("Mismatch in some Insight field", null, actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 0, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Hold", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -257,6 +296,19 @@ public class InsightTest {
         if(recCount == 1173) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.orderType);
+            assertEquals("Mismatch in some Insight field", null, actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 0, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Hold", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
