@@ -47,7 +47,7 @@ public class StrategyTest {
             PriceData actualPriceData = priceDataList.get(i);
             StrategyData actualStrategyData = strategyDataList.get(i);
             if (actualPriceData.recId == actualStrategyData.recId) {
-                validateStrategyData(actualPriceData, actualStrategyData);
+                validateDTOAndQueuesIntegration(actualPriceData, actualStrategyData);
             }
         }
     }
@@ -73,7 +73,7 @@ public class StrategyTest {
     }
 
     // Validate data from strategy service matches data passed to insight service
-    private void validateStrategyData(PriceData expected, StrategyData actual) {
+    private void validateDTOAndQueuesIntegration(PriceData expected, StrategyData actual) {
         // Price data, sans start, stop, and latency, being diff. services and all ;)
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId);
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
