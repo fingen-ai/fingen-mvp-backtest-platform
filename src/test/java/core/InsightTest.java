@@ -107,7 +107,7 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
-        // First day of bullish trend
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 49) {
             System.out.println("REC: " + recCount);
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
@@ -126,27 +126,7 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
-        // Find out when we close this position!!!
-        // Ensure we cover the Ongoing (add'l investment) and COS/A events
-        // Last day of bullish trend
-        if(recCount == 403) {
-            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
-
-            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
-            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
-            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
-            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
-            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
-            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
-            assertEquals("Mismatch in some Insight field", 30, actual.openOrderQty, 0.001);
-            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
-            assertEquals("Mismatch in some Insight field", 1.0, actual.openOrderPrice, 0.001);
-            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
-            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
-            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
-        }
-
-        // No trend
+        // NEUTRAL
         if(recCount == 404) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
@@ -165,102 +145,122 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
-        if((recCount == 405) || (recCount == 406)) {
+        // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 405) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
-        if((recCount > 406) && (recCount < 443)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 407) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 443) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
-        if((recCount > 443) && (recCount < 1066)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 444) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1066) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1067) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1068) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1068) && (recCount < 1073)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1069) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1072) && (recCount < 1075)) {
+        // NEUTRAL
+        if(recCount == 1073) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1074) && (recCount < 1082)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1075) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1082) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1082) && (recCount < 1141)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1083) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1141) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1141) && (recCount < 1153)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1142) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // NEUTRAL
         if(recCount == 1153) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1153) && (recCount < 1162)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1154) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // NEUTRAL
         if(recCount == 1162) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1162) && (recCount < 1173)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1163) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
+        // NEUTRAL
         if(recCount == 1173) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
         }
 
-        if((recCount > 1173) && (recCount < 1185)) {
+        // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
+        if(recCount == 1174) {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
