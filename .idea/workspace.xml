@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/core/StrategyTest_BU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/ops/OpsPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/strategy/StrategyPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OrchestratorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/StrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/StrategyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -300,15 +290,7 @@
       <workItem from="1715192177944" duration="47990000" />
       <workItem from="1715402052613" duration="8792000" />
       <workItem from="1715457098249" duration="34410000" />
-      <workItem from="1715623624236" duration="6587000" />
-    </task>
-    <task id="LOCAL-00053" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
-      <option name="closed" value="true" />
-      <created>1714962161077</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1714962161077</updated>
+      <workItem from="1715623624236" duration="7341000" />
     </task>
     <task id="LOCAL-00054" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
       <option name="closed" value="true" />
@@ -694,7 +676,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715566050867</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
+      <option name="closed" value="true" />
+      <created>1715642228901</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1715642228901</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
