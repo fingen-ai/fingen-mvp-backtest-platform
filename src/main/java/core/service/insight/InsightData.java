@@ -42,7 +42,7 @@ public class InsightData extends SelfDescribingMarshallable {
 
     // oems q real-time data
     public long openOrderId;
-    public double openOrderTimestamp;
+    public long openOrderTimestamp;
     public String openOrderExpiry;
     public String openOrderState;
     public double openOrderSLPrice;
