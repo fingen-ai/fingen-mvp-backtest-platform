@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,15 +289,7 @@
       <workItem from="1715192177944" duration="47990000" />
       <workItem from="1715402052613" duration="8792000" />
       <workItem from="1715457098249" duration="34410000" />
-      <workItem from="1715623624236" duration="13292000" />
-    </task>
-    <task id="LOCAL-00061" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
-      <option name="closed" value="true" />
-      <created>1715059637823</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1715059637823</updated>
+      <workItem from="1715623624236" duration="14252000" />
     </task>
     <task id="LOCAL-00062" summary="OEMS &amp; OEMSTest - WIP.&#10;ExecutionReport - WIP.&#10;OMSIn - WIP.">
       <option name="closed" value="true" />
@@ -684,7 +675,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715650585826</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
+      <option name="closed" value="true" />
+      <created>1715651441718</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1715651441718</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

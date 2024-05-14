@@ -93,6 +93,8 @@ public class InsightTest {
         System.out.println("REC: " + recCount);
         System.out.println("IDEA DE BASSO: " + actual.bassoOrderIdea);
 
+        // Perform asserts on the nos map, cos map, and nos id array on each trend beginning!!!
+
         // NEUTRAL
         if(recCount < 49) {
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
