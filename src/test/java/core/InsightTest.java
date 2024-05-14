@@ -94,7 +94,18 @@ public class InsightTest {
             System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
-            // insight bdd here
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.orderType);
+            assertEquals("Mismatch in some Insight field", null, actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 0, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Hold", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
         }
 
         if((recCount > 49) && (recCount < 404)) {
