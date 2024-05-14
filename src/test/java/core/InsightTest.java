@@ -90,6 +90,10 @@ public class InsightTest {
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
         // BDD validation
+        System.out.println("REC: " + recCount);
+        System.out.println("IDEA DE BASSO: " + actual.bassoOrderIdea);
+
+        // NEUTRAL
         if(recCount < 49) {
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
@@ -109,7 +113,6 @@ public class InsightTest {
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 49) {
-            System.out.println("REC: " + recCount);
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
@@ -128,7 +131,6 @@ public class InsightTest {
 
         // NEUTRAL
         if(recCount == 404) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
@@ -147,55 +149,46 @@ public class InsightTest {
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 405) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 407) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 443) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 444) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1066) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1067) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1068) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1069) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // NEUTRAL
         if(recCount == 1073) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
@@ -214,37 +207,31 @@ public class InsightTest {
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1075) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1082) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1083) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1141) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1142) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // NEUTRAL
         if(recCount == 1153) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
@@ -263,13 +250,11 @@ public class InsightTest {
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1154) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // NEUTRAL
         if(recCount == 1162) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
@@ -288,13 +273,11 @@ public class InsightTest {
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1163) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 
         // NEUTRAL
         if(recCount == 1173) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
@@ -313,7 +296,6 @@ public class InsightTest {
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1174) {
-            System.out.println(recCount + " recs");
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
         }
 

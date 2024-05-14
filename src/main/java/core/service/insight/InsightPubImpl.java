@@ -59,7 +59,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         prevInsightData = insightData;
 
-        System.out.println("INSIGHT: " + insightData);
+        //System.out.println("INSIGHT: " + insightData);
         output.simpleCall(insightData);
     }
 
