@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,23 +291,7 @@
       <workItem from="1715402052613" duration="8792000" />
       <workItem from="1715457098249" duration="34410000" />
       <workItem from="1715623624236" duration="17352000" />
-      <workItem from="1715709779238" duration="2881000" />
-    </task>
-    <task id="LOCAL-00066" summary="Insight - WIP.">
-      <option name="closed" value="true" />
-      <created>1715134210988</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1715134210988</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Insight - WIP.">
-      <option name="closed" value="true" />
-      <created>1715141087223</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1715141087223</updated>
+      <workItem from="1715709779238" duration="3554000" />
     </task>
     <task id="LOCAL-00068" summary="Insight - WIP.">
       <option name="closed" value="true" />
@@ -684,7 +669,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715713123961</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
+      <option name="closed" value="true" />
+      <created>1715713251223</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1715713251224</updated>
+    </task>
+    <task id="LOCAL-00116" summary="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
+      <option name="closed" value="true" />
+      <created>1715713345076</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1715713345076</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -279,6 +279,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 444) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 30, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.99995, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -289,6 +314,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1067) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 30, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.9966865371407988, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -299,6 +349,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1069) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 29, actual.openOrderQty);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 1.00158809071858, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // NEUTRAL
@@ -328,6 +403,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1075) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 29, actual.openOrderQty);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 1.0018008648423171, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -338,6 +438,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1083) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 29, actual.openOrderQty);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 1.0005111834449931, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -348,6 +473,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1142) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 29, actual.openOrderQty);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 1.000394671, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // NEUTRAL
@@ -377,6 +527,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1154) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 30, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.99940653, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // NEUTRAL
@@ -406,6 +581,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1163) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 30, actual.openOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.999712626, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
         }
 
         // NEUTRAL
@@ -435,6 +635,31 @@ public class InsightTest {
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 1174) {
             assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+            System.out.println("ACTUAL" + actual);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.currVolRiskPercent, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerRisk, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.orderQtyPerVol, 0.001);
+            assertEquals("Mismatch in some Insight field", "Limit", actual.orderType);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some Insight field", 29, actual.openOrderQty);
+            assertEquals("Mismatch in some Insight field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some Insight field", 1.00002876, actual.openOrderPrice, 0.001);
+            assertEquals("Mismatch in some Insight field", 0, actual.closeOrderQty, 0.001);
+            assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
+
+            // OEMS data created as Insights via Order Mapping and InsightPub services
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+
+            long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
+            assertNull("Mismatch in some Order Map Svc field", nosIDArray);
+            OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
+            assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+
         }
 
         recCount++;
