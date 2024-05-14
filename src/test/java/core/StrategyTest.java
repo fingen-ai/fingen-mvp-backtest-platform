@@ -166,7 +166,40 @@ public class StrategyTest {
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
 
+        if((recCount > 1141) && (recCount < 1153)) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
 
+        if(recCount == 1153) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+        }
+
+        if((recCount > 1153) && (recCount < 1162)) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
+
+        if(recCount == 1162) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+        }
+
+        if((recCount > 1162) && (recCount < 1173)) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
+
+        if(recCount == 1173) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+        }
+
+        if((recCount > 1173) && (recCount < 1185)) {
+            System.out.println(recCount + " recs");
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
 
         recCount++;
     }
