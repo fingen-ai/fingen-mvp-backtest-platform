@@ -73,6 +73,14 @@ public class OrderMappingService {
         cosMap.put(orderId, newData);
     }
 
+    public OEMSData getCOS(long orderId) {
+        return cosMap.get(orderId);
+    }
+
+    public void deleteCOS(OEMSData newData) {
+        cosMap.remove(newData.openOrderId);
+    }
+
     // SYS MGT
     public void close() {
         nosIDArrayMap.close();
