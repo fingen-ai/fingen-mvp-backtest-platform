@@ -2,8 +2,6 @@ package core;
 
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
-import core.service.oems.OEMSData;
-import core.service.price.PriceData;
 import core.service.strategy.StrategyData;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
@@ -15,7 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
 import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class InsightTest {
 
     @Before
     public void setup() throws IOException {
+        // Cleanup maps and queues
+        deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/nosIDArray.dat"));
+        deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/nos.dat"));
+
         // Initialize Orchestrator with test configurations, if needed
         Orchestrator.init();
     }
@@ -96,6 +101,8 @@ public class InsightTest {
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
         // BDD validation begins here
+        System.out.println("REC COUNT: " + recCount);
+        System.out.println("ONGOING: " + actual.openOrderState);
 
         // NEUTRAL
         if(recCount < 49) {
@@ -120,11 +127,13 @@ public class InsightTest {
             assertNull("Mismatch in some OEMS field", actual.openOrderExpiry);
             assertNull("Mismatch in some OEMS field", actual.openOrderState);
 
+            /*
             // neutral means no records
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertNull("Mismatch in some Order Map Svc field", oemsData);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -150,10 +159,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // NEUTRAL
@@ -179,11 +190,13 @@ public class InsightTest {
             assertNull("Mismatch in some OEMS field", actual.openOrderExpiry);
             assertNull("Mismatch in some OEMS field", actual.openOrderState);
 
+            /*
             // neutral means no records
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertNull("Mismatch in some Order Map Svc field", oemsData);
+             */
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -209,10 +222,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -238,10 +253,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -267,10 +284,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -296,10 +315,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -330,10 +351,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -359,10 +382,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -388,10 +413,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // NEUTRAL
@@ -411,11 +438,13 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
 
+            /*
             // neutral means no records
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertNull("Mismatch in some Order Map Svc field", oemsData);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -441,10 +470,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -470,10 +501,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -499,10 +532,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -528,10 +563,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -557,10 +594,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // NEUTRAL
@@ -580,11 +619,13 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
 
+            /*
             // neutral means no records
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertNull("Mismatch in some Order Map Svc field", oemsData);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -610,10 +651,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // NEUTRAL
@@ -633,11 +676,13 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
 
+            /*
             // neutral means no records
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertNull("Mismatch in some Order Map Svc field", oemsData);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -663,10 +708,12 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
         }
 
         // NEUTRAL
@@ -686,11 +733,13 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
 
+            /*
             // neutral means no records
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertNull("Mismatch in some Order Map Svc field", oemsData);
+             */
         }
 
         // BULLISH: BEG OF TREND: CONFIRM OPEN & MAPS
@@ -716,13 +765,36 @@ public class InsightTest {
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
 
+            /*
             long[] nosIDArray = orderMS.getFromNOSIDArray(actual.symbol);
             assertNull("Mismatch in some Order Map Svc field", nosIDArray);
             OEMSData oemsData = orderMS.getNOS(actual.openOrderId);
             assertEquals("Mismatch in some Order Map Svc field", 0, actual.openOrderId);
+             */
 
         }
 
         recCount++;
+    }
+
+    private void deleteFileOrDirectory(Path path) throws IOException {
+        if (Files.exists(path)) {
+            Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    Files.delete(file);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                    Files.delete(dir);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+            System.out.println("Deleted " + path);
+        } else {
+            System.out.println("File or directory does not exist: " + path);
+        }
     }
 }

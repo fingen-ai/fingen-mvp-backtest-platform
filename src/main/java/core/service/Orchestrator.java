@@ -20,6 +20,8 @@ import core.service.strategy.StrategyWrapper;
 import core.util.CSVFileReader;
 
 import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 
 public class Orchestrator {
 
@@ -38,13 +40,13 @@ public class Orchestrator {
         String opsQ = OS.TMP + "/HiveMain/Queues/opsQ";
 
         // Cleanup queues
-        IOTools.deleteDirWithFiles(priceQ, 2);
-        IOTools.deleteDirWithFiles(stratQ, 2);
-        IOTools.deleteDirWithFiles(insightQ, 2);
-        IOTools.deleteDirWithFiles(oemsQ, 2);
-        IOTools.deleteDirWithFiles(perfQ, 2);
-        IOTools.deleteDirWithFiles(pubQ, 2);
-        IOTools.deleteDirWithFiles(opsQ, 2);
+        deleteFileOrDirectory(Paths.get(priceQ)); // Add this line for your specific case
+        deleteFileOrDirectory(Paths.get(stratQ)); // Add this line for your specific case
+        deleteFileOrDirectory(Paths.get(insightQ)); // Add this line for your specific case
+        deleteFileOrDirectory(Paths.get(oemsQ)); // Add this line for your specific case
+        deleteFileOrDirectory(Paths.get(perfQ)); // Add this line for your specific case
+        deleteFileOrDirectory(Paths.get(pubQ)); // Add this line for your specific case
+        deleteFileOrDirectory(Paths.get(opsQ)); // Add this line for your specific case
 
         pricePubIn = SingleChronicleQueueBuilder.binary(priceQ).build().acquireAppender().methodWriter(PricePub.class);
         StrategyWrapper<StrategyPubImpl> strategyPublisherIn = new StrategyWrapper<>(priceQ, stratQ, new StrategyPubImpl());
@@ -110,5 +112,26 @@ public class Orchestrator {
             priceData.svcLatency = priceData.svcStopTs - priceData.svcStartTs;
         }
         return priceData;
+    }
+
+    private static void deleteFileOrDirectory(Path path) throws IOException {
+        if (Files.exists(path)) {
+            Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    Files.delete(file);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                    Files.delete(dir);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+            System.out.println("Deleted " + path);
+        } else {
+            System.out.println("File or directory does not exist: " + path);
+        }
     }
 }
