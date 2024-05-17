@@ -53,7 +53,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.openOrderId = System.nanoTime();
         oemsData.openOrderTimestamp = System.nanoTime();
         oemsData.openOrderExpiry = "GTC";
-        oemsData.openOrderState = "Init  New Order Single";
+        oemsData.openOrderState = "Init New Order Single";
 
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
