@@ -48,21 +48,21 @@ public class OEMSTest {
         Orchestrator.run();
 
         // Introducing a delay
-        Thread.sleep(5000); // Adjust time as needed based on your system's performance
+        Thread.sleep(10000); // Adjust time as needed based on your system's performance
 
         // Read all data from the queues
-        List<StrategyData> strategyDataList = readAllDataFromQueue("stratQ", StrategyData.class);
         List<InsightData> insightDataList = readAllDataFromQueue("insightQ", InsightData.class);
+        List<OEMSData> oemsDataList = readAllDataFromQueue("oemsQ", OEMSData.class);
 
         // Assume equal number of records in both queues for simplicity
-        assertEquals("Mismatch in number of records", strategyDataList.size(), insightDataList.size());
+        assertEquals("Mismatch in number of records", insightDataList.size(), oemsDataList.size());
 
         // Validate each record pair
-        for (int i = 0; i < strategyDataList.size(); i++) {
-            StrategyData actualStrategyData = strategyDataList.get(i);
+        for (int i = 0; i < insightDataList.size(); i++) {
             InsightData actualInsightData = insightDataList.get(i);
-            if (actualStrategyData.recId == actualInsightData.recId) {
-                validateDTOAndQueuesIntegration(actualStrategyData, actualInsightData);
+            OEMSData actualOEMSData = oemsDataList.get(i);
+            if (actualInsightData.recId == actualOEMSData.recId) {
+                validateDTOAndQueuesIntegration(actualInsightData, actualOEMSData);
             }
         }
     }
@@ -88,7 +88,7 @@ public class OEMSTest {
     }
 
     // Validate data from strategy service matches data passed to insight service
-    private void validateDTOAndQueuesIntegration(StrategyData expected, InsightData actual) {
+    private void validateDTOAndQueuesIntegration(InsightData expected, OEMSData actual) {
         // Price data, sans start, stop, and latency, being diff. services and all ;)
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId);
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
@@ -103,9 +103,6 @@ public class OEMSTest {
         // Strategy data
         assertEquals("Mismatch in some Strategy field", expected.lhcAvgPrice, actual.lhcAvgPrice, 0.001);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
-
-        // BDD validation begins here
-        //System.out.println("REC COUNT: " + recCount);
 
         // NEUTRAL
         if(recCount < 49) {
@@ -155,10 +152,10 @@ public class OEMSTest {
             assertEquals("Mismatch in some Insight field", 0.0, actual.closeOrderPrice, 0.001);
 
             // OEMS data created as Insights via Order Mapping and InsightPub services
-            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
-            assertEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp, 0.001);
+            assertNotEquals("Mismatch in some OEMS field", 0, actual.openOrderId);
+            assertNotEquals("Mismatch in some OEMS field", 0, actual.openOrderTimestamp);
             assertEquals("Mismatch in some Insight field", "GTC", actual.openOrderExpiry);
-            assertEquals("Mismatch in some Insight field", "Init Insight", actual.openOrderState);
+            assertEquals("Mismatch in some Insight field", "Init  New Order Single", actual.openOrderState);
 
             // OEMS data
             assertEquals("Mismatch in some OEMS field", 0, actual.closeOrderId, 0.001);
@@ -199,6 +196,8 @@ public class OEMSTest {
 
         // BEARISH: BEG OF TREND: CONFIRM OPEN & MAPS
         if(recCount == 405) {
+            System.out.println("EXPECTED: " + expected + " - " + recCount);
+            //System.out.println("ACTUAL: " + actual + " - " + recCount);
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
 
             assertEquals("Mismatch in some Insight field", 0.0029733, actual.currRiskPercent, 0.001);

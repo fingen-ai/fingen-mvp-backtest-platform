@@ -100,10 +100,6 @@ public class InsightTest {
         assertEquals("Mismatch in some Strategy field", expected.lhcAvgPrice, actual.lhcAvgPrice, 0.001);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
-        // BDD validation begins here
-        System.out.println("REC COUNT: " + recCount);
-        System.out.println("ONGOING: " + actual.openOrderState);
-
         // NEUTRAL
         if(recCount < 49) {
             assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);

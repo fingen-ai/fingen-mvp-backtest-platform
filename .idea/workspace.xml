@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="INSIGHT - WIP. &#10;Back in the &quot;shop.&quot;&#10;Seems there may be an issue with nosIDMap writing. TBD.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
     </list>
@@ -295,15 +294,7 @@
       <workItem from="1715457098249" duration="34410000" />
       <workItem from="1715623624236" duration="17352000" />
       <workItem from="1715709779238" duration="8359000" />
-      <workItem from="1715738547827" duration="25155000" />
-    </task>
-    <task id="LOCAL-00073" summary="Insight - WIP.">
-      <option name="closed" value="true" />
-      <created>1715312368036</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1715312368036</updated>
+      <workItem from="1715738547827" duration="28776000" />
     </task>
     <task id="LOCAL-00074" summary="Insight - WIP.">
       <option name="closed" value="true" />
@@ -689,7 +680,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715834433410</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
+      <option name="closed" value="true" />
+      <created>1715900433035</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1715900433036</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,7 +707,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - WIP.&#10;EMA rewrite - WIP.&#10;EMAX rewrite - WIP.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="InsightTest - WIP.&#10;&#10;And Indicators svcs:&#10;&#10;ATR - DONE.&#10;EMA rewrite - DONE.&#10;EMAX rewrite - DONE.&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="InsightTest - DONE.&#10;&#10;And Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
@@ -733,6 +731,7 @@
     <MESSAGE value="INSIGHT - DONE.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file." />
     <MESSAGE value="OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file." />
     <MESSAGE value="INSIGHT - WIP. &#10;Back in the &quot;shop.&quot;&#10;Seems there may be an issue with nosIDMap writing. TBD.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file." />
-    <option name="LAST_COMMIT_MESSAGE" value="INSIGHT - WIP. &#10;Back in the &quot;shop.&quot;&#10;Seems there may be an issue with nosIDMap writing. TBD.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file." />
+    <MESSAGE value="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues." />
+    <option name="LAST_COMMIT_MESSAGE" value="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues." />
   </component>
 </project>

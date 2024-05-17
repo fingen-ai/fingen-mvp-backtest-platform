@@ -4,6 +4,7 @@ import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
+import java.math.RoundingMode;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
@@ -24,21 +25,15 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
-        System.out.println("REC: " + i);
-
         if (!oemsData.bassoOrderIdea.equals("Neutral")) {
 
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
 
             if (openOrdersIDArray != null) {
-
-                System.out.println("ONGOING ID ARRAY: " + openOrdersIDArray.length);
                 placeCOAOrder(oemsData, openOrdersIDArray);
                 getStopLoss(oemsData);
                 placeNOSOngoingOrder(oemsData);
             } else {
-
-                System.out.println("INIT ID ARRAY: " + 0);
                 placeNOSInitOrder(oemsData);
             }
         } else {
@@ -62,7 +57,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
-        System.out.println("INIT: " +oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
     }
 
@@ -74,7 +68,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
-        System.out.println("ONGOING: " +oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
     }
 
@@ -102,7 +95,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 }
             }
         }
-        System.out.println("COS SL: " + oemsData.openOrderSLPrice);
     }
 
     private void placeCOSOrder(OEMSData oemsData) {
@@ -117,13 +109,10 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.closeOrderTimestamp = System.nanoTime();
         oemsData.closeOrderExpiry = "GTC";
         oemsData.closeOrderState = "Close Order Single";
-        System.out.println("COS: " +oemsData.openOrderId);
         orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
-
-        System.out.println("COA: " + openOrdersIDArray[i]);
 
         if(prevOEMSData != null) {
             oemsData.prevBassoOrderIdea = prevOEMSData.bassoOrderIdea;
