@@ -94,7 +94,7 @@ public class Orchestrator {
     private static PriceData printRecord(String[] record) {
 
         if (record.length >= 8) { // Ensure there are enough elements in the record
-            priceData.svcStartTs = priceData.recId;
+            priceData.svcStartTs = System.nanoTime();
 
             // 8 data elements within the record array
             priceData.recId = System.nanoTime();

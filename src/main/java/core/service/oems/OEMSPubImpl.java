@@ -4,13 +4,12 @@ import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
-import java.math.RoundingMode;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     OrderMappingService orderMS = new OrderMappingService();
-    OEMSData prevOEMSData = new OEMSData();
-    int i = 1;
+    String prevBassoOrderIdea = "";
+    int j = 0;
     long[] openOrdersIDArray =  new long[0];
 
     private OEMSPub output;
@@ -25,6 +24,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public void simpleCall(OEMSData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
+        oemsData.prevBassoOrderIdea = prevBassoOrderIdea;
+
         if (!oemsData.bassoOrderIdea.equals("Neutral")) {
 
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
@@ -34,17 +35,19 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 getStopLoss(oemsData);
                 placeNOSOngoingOrder(oemsData);
             } else {
+                getStopLoss(oemsData);
                 placeNOSInitOrder(oemsData);
             }
         } else {
             oemsData.openOrderSide = "Hold";
         }
 
-        prevOEMSData.prevBassoOrderIdea = oemsData.bassoOrderIdea;
-        i++;
+        prevBassoOrderIdea = oemsData.bassoOrderIdea;
+        j++;
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
+
         //System.out.println("OEMS: " + oemsData);
         output.simpleCall(oemsData);
     }
@@ -58,6 +61,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
+
+        if(j <= 50) {
+            //System.out.println("REC: " + j);
+            //System.out.println("OEMS NOS INIT: " + oemsData);
+        }
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
@@ -69,6 +77,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
+
+        if(j <= 50) {
+            //System.out.println("REC: " + j);
+            //System.out.println("OEMS NOS ONGOING: " + oemsData);
+        }
     }
 
     /**
@@ -77,22 +90,15 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
      * @param oemsData
      */
     private void getStopLoss(OEMSData oemsData) {
-
-        if(oemsData.openOrderSLPrice != 0) {
-            if (oemsData.openOrderSide.equals("Buy")) {
-                if (oemsData.close < oemsData.openOrderSLPrice) {
-                    placeCOSOrder(oemsData);
-                } else {
-                    oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
-                }
+        oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
+        if (oemsData.openOrderSide.equals("Buy")) {
+            if (oemsData.close < oemsData.openOrderSLPrice) {
+                placeCOSOrder(oemsData);
             }
-
-            if (oemsData.openOrderSide.equals("Sell")) {
-                if (oemsData.close > oemsData.openOrderSLPrice) {
-                    placeCOSOrder(oemsData);
-                } else {
-                    oemsData.openOrderSLPrice = oemsData.close + (oemsData.atr * 3);
-                }
+        }
+        if (oemsData.openOrderSide.equals("Sell")) {
+            if (oemsData.close > oemsData.openOrderSLPrice) {
+                placeCOSOrder(oemsData);
             }
         }
     }
@@ -110,12 +116,17 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.closeOrderExpiry = "GTC";
         oemsData.closeOrderState = "Close Order Single";
         orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+
+        if(j <= 50) {
+            //System.out.println("REC: " + j);
+            //System.out.println("OEMS COS: " + oemsData);
+        }
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
 
-        if(prevOEMSData != null) {
-            oemsData.prevBassoOrderIdea = prevOEMSData.bassoOrderIdea;
+        if(prevBassoOrderIdea != null) {
+            oemsData.prevBassoOrderIdea = prevBassoOrderIdea;
             if (!oemsData.bassoOrderIdea.equals(oemsData.prevBassoOrderIdea)) {
 
                 orderMS.deleteFromNOSIDArray(oemsData.symbol);
@@ -126,6 +137,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     oemsData.closeOrderExpiry = "GTC";
                     oemsData.closeOrderState = "Close Orders All";
                     orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+
+                    if(j <= 50) {
+                        //System.out.println("REC: " + j);
+                        //System.out.println("OEMS COA: " + oemsData);
+                    }
                 }
             }
         }

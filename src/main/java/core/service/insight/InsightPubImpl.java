@@ -30,19 +30,18 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     public InsightPubImpl() throws IOException {
     }
 
-    public void init(InsightPub output) {this.output = output;}
+    public void init(InsightPub output) {
+        accountData.nav = 10000;
+        this.output = output;
+    }
 
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
 
         insightData.previousClose = prevInsightData.previousClose;
+        insightData.atr = atr.calculateATR(insightData, 10);
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
-
-            if(recCount == 0) {
-                accountData.nav = 10000;
-                recCount++;
-            }
 
             openOrdersIDArray = orderMS.getFromNOSIDArray(insightData.symbol);
             if(openOrdersIDArray != null) {
@@ -54,10 +53,10 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
             insightData.openOrderSide = "Hold";
         }
 
+        prevInsightData.previousClose = insightData.close;
+
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
-
-        prevInsightData = insightData;
 
         //System.out.println("INSIGHT: " + insightData);
         output.simpleCall(insightData);
@@ -88,8 +87,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.currRiskPercent = risk.getCurrentTotalPercentRisk(
                 (totalPositionQty * insightData.close), accountData.nav);
 
-        insightData.atr = atr.calculateATR(insightData, 10);
-
         insightData.currVolRiskPercent = risk.getCurrentTotalVolPercentRisk(
                 (insightData.atr * insightData.close), accountData.nav);
 
@@ -108,15 +105,18 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.openOrderState = "Ongoing Insight";
         insightData.orderType = "Limit";
 
-        insightData.openOrderQty = Math.min(insightData.orderQtyPerRisk, insightData.orderQtyPerVol);
+        if(Math.min(insightData.orderQtyPerRisk, insightData.orderQtyPerVol) > 0) {
+            insightData.openOrderQty = Math.min(insightData.orderQtyPerRisk, insightData.orderQtyPerVol);
+        } else {
+            insightData.openOrderQty = 0;
+        }
+
         insightData.openOrderSide = getSide(insightData);;
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
 
         // reset
         totalPositionQty = 0;
-
-        //System.out.println("INSIGHT ONGOING: " + insightData);
     }
 
     private String getSide(InsightData insightData) {
