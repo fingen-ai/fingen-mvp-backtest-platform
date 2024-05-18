@@ -25,9 +25,6 @@ import static org.junit.Assert.assertNull;
 
 public class OEMSTest {
 
-    int recCount = 0;
-    OrderMappingService orderMS = new OrderMappingService();
-
     public OEMSTest() throws IOException {
     }
 

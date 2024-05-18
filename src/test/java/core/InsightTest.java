@@ -8,7 +8,6 @@ import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
 import net.openhft.chronicle.wire.DocumentContext;
-import oems.map.OrderMappingService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,9 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InsightTest {
-
-    int recCount = 0;
-    OrderMappingService orderMS = new OrderMappingService();
 
     public InsightTest() throws IOException {
     }
