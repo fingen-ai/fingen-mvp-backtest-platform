@@ -21,6 +21,8 @@ import java.util.List;
 
 public class InsightTest {
 
+    int recCount = 0;
+
     public InsightTest() throws IOException {
     }
 
@@ -96,6 +98,39 @@ public class InsightTest {
         assertEquals("Mismatch in some Strategy field", expected.lhcAvgPrice, actual.lhcAvgPrice, 0.0);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
+
+        // BDD validate
+
+        // ENTRY: Bullish
+        if(recCount == 49) {
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Bullish
+        // ENTRY: Neutral
+        if(recCount == 404) {
+            assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Neutral
+        // ENTRY: Bearish
+        if(recCount == 405) {
+            assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Bearish
+        // ENTRY: Bullish
+        if(recCount == 407) {
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Bullish
+        // ENTRY: Bearish
+        if(recCount == 443) {
+            assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
+        }
+
+        // END OF BDD SCENARIOS
     }
 
     private void deleteFileOrDirectory(Path path) throws IOException {

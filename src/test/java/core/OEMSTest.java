@@ -25,6 +25,8 @@ import static org.junit.Assert.assertNull;
 
 public class OEMSTest {
 
+    int recCount = 0;
+
     public OEMSTest() throws IOException {
     }
 
@@ -119,6 +121,39 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.closeOrderQty, actual.closeOrderQty);
         assertEquals("Mismatch in some Insight field", expected.closeOrderSide, actual.closeOrderSide);
         assertEquals("Mismatch in some Insight field", expected.closeOrderPrice, actual.closeOrderPrice, 0.0);
+
+        // BDD validate
+
+        // ENTRY: Bullish
+        if(recCount == 49) {
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Bullish
+        // ENTRY: Neutral
+        if(recCount == 404) {
+            assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Neutral
+        // ENTRY: Bearish
+        if(recCount == 405) {
+            assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Bearish
+        // ENTRY: Bullish
+        if(recCount == 407) {
+            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+        }
+
+        // EXIT: Bullish
+        // ENTRY: Bearish
+        if(recCount == 443) {
+            assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
+        }
+
+        // END OF BDD SCENARIOS
     }
 
     private void deleteFileOrDirectory(Path path) throws IOException {

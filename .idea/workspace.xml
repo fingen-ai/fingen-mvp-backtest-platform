@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/InsightTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,23 +293,7 @@
       <workItem from="1715623624236" duration="17352000" />
       <workItem from="1715709779238" duration="8359000" />
       <workItem from="1715738547827" duration="44748000" />
-      <workItem from="1716015830795" duration="8767000" />
-    </task>
-    <task id="LOCAL-00076" summary="Insight - WIP.">
-      <option name="closed" value="true" />
-      <created>1715313736070</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1715313736070</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Insight - WIP.">
-      <option name="closed" value="true" />
-      <created>1715391661152</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1715391661152</updated>
+      <workItem from="1716015830795" duration="9773000" />
     </task>
     <task id="LOCAL-00078" summary="Insight - WIP.">
       <option name="closed" value="true" />
@@ -691,7 +671,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715968698600</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
+      <option name="closed" value="true" />
+      <created>1716073737441</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1716073737441</updated>
+    </task>
+    <task id="LOCAL-00126" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
+      <option name="closed" value="true" />
+      <created>1716073802676</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1716073802676</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
