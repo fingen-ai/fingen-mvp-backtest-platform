@@ -16,7 +16,8 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     ATR atr = new ATRImpl();
 
     AccountData accountData = new AccountData();
-    InsightData prevInsightData = new InsightData(); // previousClose needed for ATR
+    double prevClose = 0.0; // needed for atr
+    String prevBassoIdea = ""; // needed for trend change signaling
 
     long[] openOrdersIDArray = new long[0];
     Risk risk = new RiskImpl();
@@ -38,7 +39,9 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     public void simpleCall(InsightData insightData) throws IOException {
         insightData.svcStartTs = System.nanoTime();
 
-        insightData.previousClose = prevInsightData.previousClose;
+        insightData.previousClose = prevClose;
+        insightData.prevBassoOrderIdea = prevBassoIdea;
+
         insightData.atr = atr.calculateATR(insightData, 10);
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
@@ -53,12 +56,30 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
             insightData.openOrderSide = "Hold";
         }
 
-        prevInsightData.previousClose = insightData.close;
+        prevClose = insightData.close;
+        prevBassoIdea = insightData.bassoOrderIdea;
 
         insightData.svcStopTs = System.nanoTime();
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
 
-        //System.out.println("INSIGHT: " + insightData);
+        if((recCount >= 49) && (recCount < 404)) {
+            if(openOrdersIDArray != null) {
+                System.out.println("NOS ARRAY: " + openOrdersIDArray.length);
+            }
+            System.out.println("INSIGHT: " + insightData.prevBassoOrderIdea);
+            System.out.println("INSIGHT: " + insightData.bassoOrderIdea);
+            System.out.println("INSIGHT: " + insightData.openOrderSide);
+            System.out.println("INSIGHT: " + insightData.openOrderQty);
+            System.out.println("INSIGHT: " + insightData.openOrderExpiry);
+            System.out.println("INSIGHT: " + insightData.openOrderState);
+            System.out.println("INSIGHT: " + risk.getInitRiskPercentThreshold());
+            System.out.println("INSIGHT: " + insightData.currRiskPercent);
+            System.out.println("INSIGHT: " + risk.getInitVolPercentThreshold());
+            System.out.println("INSIGHT: " + insightData.currVolRiskPercent);
+            System.out.println("\n");
+        }
+        recCount++;
+
         output.simpleCall(insightData);
     }
 
