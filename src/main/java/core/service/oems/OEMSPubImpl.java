@@ -1,7 +1,10 @@
 package core.service.oems;
 
+import account.AccountData;
 import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
+import risk.Risk;
+import risk.RiskImpl;
 
 import java.io.IOException;
 
@@ -9,9 +12,15 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     int recCount = 0;
 
+    OEMSData mapOpenOrderOEMS = new OEMSData();
+    AccountData accountData = new AccountData();
+
+    Risk risk = new RiskImpl();
     OrderMappingService orderMS = new OrderMappingService();
+
     String prevBassoOrderIdea = "";
     long[] openOrdersIDArray =  new long[0];
+    long totalCurrOpenPositionQty = 0;
 
     private OEMSPub output;
 
@@ -19,6 +28,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     public void init(OEMSPub output) {
+        accountData.nav = 25000;
         this.output = output;
     }
 
@@ -30,17 +40,37 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         if (!oemsData.bassoOrderIdea.equals("Neutral")) {
 
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
-
             if (openOrdersIDArray != null) {
-                placeCOAOrder(oemsData, openOrdersIDArray);
+
                 getStopLoss(oemsData);
-                placeNOSOngoingOrder(oemsData);
+
+                // coa upon trend reversal
+                if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
+                    placeCOAOrder(oemsData, openOrdersIDArray);
+
+                // cos upon sl exceeded long
+                } else if (oemsData.openOrderSide.equals("Buy")) {
+                    if (oemsData.close < oemsData.openOrderSLPrice) {
+                        placeCOSOrder(oemsData);
+                    }
+                // cos upon sl exceeded short
+                } else if (oemsData.openOrderSide.equals("Sell")) {
+                    if (oemsData.close > oemsData.openOrderSLPrice) {
+                        placeCOSOrder(oemsData);
+                    }
+                // nos ongoing
+                } else {
+                    placeNOSOngoingOrder(oemsData);
+                }
+
             } else {
-                getStopLoss(oemsData);
+                // nos init for new trend
                 placeNOSInitOrder(oemsData);
             }
         } else {
+
             oemsData.openOrderSide = "Hold";
+            getStopLoss(oemsData); // for any curr "running" positions during "neutral" signal moments
         }
 
         prevBassoOrderIdea = oemsData.bassoOrderIdea;
@@ -50,6 +80,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
 
         if((recCount >= 49) && (recCount < 404)) {
+            System.out.println("OEMS:" + recCount);
             if(openOrdersIDArray != null) {
                 System.out.println("NOS ARRAY: " + openOrdersIDArray.length);
             }
@@ -69,6 +100,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeNOSInitOrder(OEMSData oemsData) {
+
+        getInitCurrRiskVolOrderQty(oemsData);
+
         oemsData.openOrderId = System.nanoTime();
         oemsData.openOrderTimestamp = System.nanoTime();
         oemsData.openOrderExpiry = "GTC";
@@ -80,14 +114,61 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
-        oemsData.openOrderId = System.nanoTime();
-        oemsData.openOrderTimestamp = System.nanoTime();
-        oemsData.openOrderExpiry = "GTC";
-        oemsData.openOrderState = "Ongoing New Order Single";
 
-        orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
-        openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
-        orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
+        getOngoingCurrRiskVolOrderQty(oemsData);
+
+        OEMSData currOEMSData = new OEMSData();
+        oemsData.currCarryQty = 0;
+
+        // no ongoing order
+        if(oemsData.currRiskPercent > risk.getOngoingRiskPercentThreshold()) {
+
+            oemsData.openOrderId = 0;
+            oemsData.openOrderTimestamp = System.nanoTime();
+            oemsData.openOrderExpiry = "NA";
+            oemsData.openOrderState = "Ongoing New Order Single > Ongoing Risk %";
+            oemsData.openOrderQty = 0;
+
+            for(int i=0; i<openOrdersIDArray.length; i++) {
+                currOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
+                oemsData.currCarryQty += currOEMSData.openOrderQty;
+            }
+        }
+
+        // no ongoing order
+        if(oemsData.currRiskPercent > risk.getOngoingRiskPercentThreshold()) {
+
+            oemsData.openOrderId = 0;
+            oemsData.openOrderTimestamp = System.nanoTime();
+            oemsData.openOrderExpiry = "NA";
+            oemsData.openOrderState = "Ongoing New Order Single > Ongoing Vol %";
+            oemsData.openOrderQty = 0;
+
+            for(int i=0; i<openOrdersIDArray.length; i++) {
+                currOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
+                oemsData.currCarryQty += currOEMSData.openOrderQty;
+            }
+        }
+
+        // ongoing order
+        if(oemsData.currRiskPercent < risk.getInitRiskPercentThreshold() ||
+                oemsData.currVolRiskPercent < risk.getInitVolPercentThreshold() ) {
+
+            oemsData.openOrderId = System.nanoTime();
+            oemsData.openOrderTimestamp = System.nanoTime();
+            oemsData.openOrderExpiry = "GTC";
+            oemsData.openOrderState = "Ongoing New Order Single";
+            oemsData.currCarryQty += oemsData.openOrderQty;
+
+            for(int i=0; i<openOrdersIDArray.length; i++) {
+                currOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
+                oemsData.currCarryQty += currOEMSData.openOrderQty;
+            }
+
+            orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
+            openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
+            orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
+        }
     }
 
     /**
@@ -97,23 +178,13 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
      */
     private void getStopLoss(OEMSData oemsData) {
         oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
-        if (oemsData.openOrderSide.equals("Buy")) {
-            if (oemsData.close < oemsData.openOrderSLPrice) {
-                placeCOSOrder(oemsData);
-            }
-        }
-        if (oemsData.openOrderSide.equals("Sell")) {
-            if (oemsData.close > oemsData.openOrderSLPrice) {
-                placeCOSOrder(oemsData);
-            }
-        }
     }
 
     private void placeCOSOrder(OEMSData oemsData) {
         // delete the ID from the ID array
         for(int i=0; i < openOrdersIDArray.length; i++) {
             if(oemsData.openOrderId == openOrdersIDArray[i]) {
-                long[] updateOpenOrderIDArray = ArrayUtils.remove(openOrdersIDArray, i);
+                ArrayUtils.remove(openOrdersIDArray, i);
             }
         }
 
@@ -126,20 +197,56 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
 
-        if(prevBassoOrderIdea != null) {
-            oemsData.prevBassoOrderIdea = prevBassoOrderIdea;
-            if (!oemsData.bassoOrderIdea.equals(oemsData.prevBassoOrderIdea)) {
-
-                orderMS.deleteFromNOSIDArray(oemsData.symbol);
-
-                for(int i=0; i < openOrdersIDArray.length; i++) {
-                    oemsData.closeOrderId = System.nanoTime();
-                    oemsData.closeOrderTimestamp = System.nanoTime();
-                    oemsData.closeOrderExpiry = "GTC";
-                    oemsData.closeOrderState = "Close Orders All";
-                    orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
-                }
-            }
+        for(int i=0; i < openOrdersIDArray.length; i++) {
+            oemsData.closeOrderId = System.nanoTime();
+            oemsData.closeOrderTimestamp = System.nanoTime();
+            oemsData.closeOrderExpiry = "GTC";
+            oemsData.closeOrderState = "Close Orders All";
+            orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
         }
+
+        orderMS.deleteFromNOSIDArray(oemsData.symbol);
+    }
+
+    private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
+        for(int i=0; i < openOrdersIDArray.length; i++) {
+            mapOpenOrderOEMS = orderMS.getNOS(openOrdersIDArray[i]);
+            totalCurrOpenPositionQty += mapOpenOrderOEMS.openOrderQty;
+        }
+
+        oemsData.currRiskPercent = risk.getCurrentTotalPercentRisk(
+                (totalCurrOpenPositionQty * oemsData.close), accountData.nav);
+
+        oemsData.currVolRiskPercent = risk.getCurrentTotalVolPercentRisk(
+                (oemsData.atr * oemsData.close), accountData.nav);
+
+        double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - oemsData.currRiskPercent;
+        if(riskPercentAvail > 0) {
+            oemsData.orderQtyPerRisk = (riskPercentAvail * accountData.nav) / oemsData.close;
+        }
+
+        double volRiskPercentAvail =  risk.getOngoingVolPercentThreshold() - oemsData.currVolRiskPercent;
+        if(volRiskPercentAvail > 0) {
+            oemsData.orderQtyPerVol = (volRiskPercentAvail * accountData.nav) / oemsData.close;
+        }
+
+        if(Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol) > 0) {
+            oemsData.openOrderQty = Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol);
+        } else {
+            oemsData.openOrderQty = 0;
+        }
+
+        totalCurrOpenPositionQty = 0;
+    }
+
+    private void getInitCurrRiskVolOrderQty(OEMSData oemsData) {
+
+        oemsData.currRiskPercent = risk.getOngoingRiskPercentThreshold();
+        oemsData.currVolRiskPercent = risk.getOngoingVolPercentThreshold();
+
+        oemsData.orderQtyPerRisk = (oemsData.currRiskPercent * accountData.nav) / oemsData.close;
+        oemsData.orderQtyPerVol = (oemsData.currVolRiskPercent * accountData.nav) / oemsData.close;
+
+        oemsData.openOrderQty = Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol);
     }
 }

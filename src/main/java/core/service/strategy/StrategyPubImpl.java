@@ -25,7 +25,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         this.output = output;
     }
 
-    public void simpleCall(StrategyData strategyData) throws IOException {
+    public void simpleCall(StrategySData strategyData) throws IOException {
         strategyData.svcStartTs = System.nanoTime();
 
         bassTrendStrategy(strategyData);
@@ -36,7 +36,7 @@ public class StrategyPubImpl implements StrategyPub, StrategyHandler<StrategyPub
         output.simpleCall(strategyData);
     }
 
-    private void bassTrendStrategy(StrategyData strategyData) {
+    private void bassTrendStrategy(StrategySData strategyData) {
         low[i] = strategyData.low;
         high[i] = strategyData.high;
         close[i] = strategyData.close;

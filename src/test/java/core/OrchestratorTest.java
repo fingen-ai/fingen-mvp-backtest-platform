@@ -2,12 +2,11 @@ package core;
 
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
-import core.service.oems.OEMSData;
 import core.service.ops.OpsData;
 import core.service.performance.PerfData;
 import core.service.price.PriceData;
 import core.service.publisher.PublisherData;
-import core.service.strategy.StrategyData;
+import core.service.strategy.StrategySData;
 import core.util.CSVFileReader;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
@@ -36,9 +35,9 @@ public class OrchestratorTest {
 
         // Instantiate dto
         PriceData expectedPriceData = new PriceData();
-        StrategyData expectedStrategyData = new StrategyData();
+        StrategySData expectedStrategyData = new StrategySData();
         InsightData expectedInsightData = new InsightData();
-        OEMSData expectedOEMSData = new OEMSData();
+        core.service.oems.OEMSData expectedOEMSData = new core.service.oems.OEMSData();
         PerfData expectedPerfData = new PerfData();
         PublisherData expectedPubData = new PublisherData();
         OpsData expectedOpsData = new OpsData();
@@ -66,9 +65,9 @@ public class OrchestratorTest {
 
         // Read data from each queue
         PriceData actualPriceData = readDataFromQueue("priceQ", PriceData.class);
-        StrategyData actualStrategyData = readDataFromQueue("stratQ", StrategyData.class);
+        StrategySData actualStrategyData = readDataFromQueue("stratQ", StrategySData.class);
         InsightData actualInsightData = readDataFromQueue("insightQ", InsightData.class);
-        OEMSData actualOEMSData = readDataFromQueue("oemsQ", OEMSData.class);
+        core.service.oems.OEMSData actualOEMSData = readDataFromQueue("oemsQ", core.service.oems.OEMSData.class);
         PerfData actualPerfData = readDataFromQueue("perfQ", PerfData.class);
         PublisherData actualPubData = readDataFromQueue("pubQ", PublisherData.class);
         OpsData actualOpsData = readDataFromQueue("opsQ", OpsData.class);
@@ -118,7 +117,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some price field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateStrategyData(StrategyData expected, StrategyData actual) {
+    private void validateStrategyData(StrategySData expected, StrategySData actual) {
         assertEquals("Mismatch in some Strategy field", expected.start, actual.start);
         assertEquals("Mismatch in some Strategy field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some Strategy field", expected.start, actual.start);
@@ -150,7 +149,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Insight field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateOEMSData(OEMSData expected, OEMSData actual) {
+    private void validateOEMSData(core.service.oems.OEMSData expected, core.service.oems.OEMSData actual) {
         assertEquals("Mismatch in some OEMS field", expected.start, actual.start);
         assertEquals("Mismatch in some OEMS field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some OEMS field", expected.start, actual.start);

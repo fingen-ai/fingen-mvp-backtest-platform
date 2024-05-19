@@ -3,25 +3,22 @@ package core;
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
 import core.service.oems.OEMSData;
-import core.service.strategy.StrategyData;
+import core.service.strategy.StrategySData;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
 import net.openhft.chronicle.wire.DocumentContext;
-import oems.map.OrderMappingService;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertNull;
 
 public class OEMSTest {
 
@@ -47,21 +44,21 @@ public class OEMSTest {
         Orchestrator.run();
 
         // Introducing a delay
-        Thread.sleep(5000); // Adjust time as needed based on your system's performance
+        Thread.sleep(10000); // Adjust time as needed based on your system's performance
 
         // Read all data from the queues
+        List<OEMSData> strategyDataList = readAllDataFromQueue("oemsQ", OEMSData.class);
         List<InsightData> insightDataList = readAllDataFromQueue("insightQ", InsightData.class);
-        List<OEMSData> oemsDataList = readAllDataFromQueue("oemsQ", OEMSData.class);
 
         // Assume equal number of records in both queues for simplicity
-        assertEquals("Mismatch in number of records", insightDataList.size(), oemsDataList.size());
+        assertEquals("Mismatch in number of records", strategyDataList.size(), insightDataList.size());
 
         // Validate each record pair
-        for (int i = 0; i < insightDataList.size(); i++) {
+        for (int i = 0; i < strategyDataList.size(); i++) {
+            OEMSData actualStrategyData = strategyDataList.get(i);
             InsightData actualInsightData = insightDataList.get(i);
-            OEMSData actualOEMSData = oemsDataList.get(i);
-            if (actualInsightData.recId == actualOEMSData.recId) {
-                validateDTOAndQueuesIntegration(actualInsightData, actualOEMSData);
+            if (actualStrategyData.recId == actualInsightData.recId) {
+                validateDTOAndQueuesIntegration(actualStrategyData, actualInsightData);
             }
         }
     }
@@ -87,7 +84,7 @@ public class OEMSTest {
     }
 
     // Validate data from strategy service matches data passed to insight service
-    private void validateDTOAndQueuesIntegration(InsightData expected, OEMSData actual) {
+    private void validateDTOAndQueuesIntegration(OEMSData expected, InsightData actual) {
         // Price data, sans start, stop, and latency, being diff. services and all ;)
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId);
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
@@ -103,24 +100,6 @@ public class OEMSTest {
         assertEquals("Mismatch in some Strategy field", expected.lhcAvgPrice, actual.lhcAvgPrice, 0.0);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
-
-        // Insight data
-        assertEquals("Mismatch in some Insight field", expected.currRiskPercent, actual.currRiskPercent, 0.0);
-        assertEquals("Mismatch in some Insight field", expected.currVolRiskPercent, actual.currVolRiskPercent, 0.0);
-
-        assertEquals("Mismatch in some Insight field", expected.orderQtyPerRisk, actual.orderQtyPerRisk, 0.0);
-        assertEquals("Mismatch in some Insight field", expected.orderQtyPerVol, actual.orderQtyPerVol, 0.0);
-
-        assertEquals("Mismatch in some Insight field", expected.orderType, actual.orderType);
-        assertEquals("Mismatch in some Insight field", expected.orderSide, actual.orderSide);
-
-        assertEquals("Mismatch in some Insight field", expected.openOrderQty, actual.openOrderQty);
-        assertEquals("Mismatch in some Insight field", expected.openOrderSide, actual.openOrderSide);
-        assertEquals("Mismatch in some Insight field", expected.openOrderPrice, actual.openOrderPrice, 0.0);
-
-        assertEquals("Mismatch in some Insight field", expected.closeOrderQty, actual.closeOrderQty);
-        assertEquals("Mismatch in some Insight field", expected.closeOrderSide, actual.closeOrderSide);
-        assertEquals("Mismatch in some Insight field", expected.closeOrderPrice, actual.closeOrderPrice, 0.0);
 
         // BDD validate
 

@@ -2,10 +2,7 @@ package core.service.strategy;
 
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
-public class StrategyData extends SelfDescribingMarshallable {
+public class StrategySData extends SelfDescribingMarshallable {
     // Price data
     public long recId;
     public double marketCap;

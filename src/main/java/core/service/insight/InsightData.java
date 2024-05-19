@@ -27,29 +27,29 @@ public class InsightData extends SelfDescribingMarshallable {
     public double atr;
     public double currRiskPercent;
     public double currVolRiskPercent;
-    public int orderQtyPerRisk;
-    public int orderQtyPerVol;
+    public double orderQtyPerRisk;
+    public double orderQtyPerVol;
     public String orderType;
     public String orderSide;
 
-    public int openOrderQty;
+    public double openOrderQty;
     public String openOrderSide;
     public double openOrderPrice;
-
-    public int closeOrderQty;
-    public String closeOrderSide;
-    public double closeOrderPrice;
 
     // oems q real-time data
     public long openOrderId;
     public long openOrderTimestamp;
     public String openOrderExpiry;
     public String openOrderState;
+
     public double openOrderSLPrice;
     public String prevBassoOrderIdea;
 
     public long closeOrderId;
-    public double closeOrderTimestamp;
+    public long closeOrderTimestamp;
     public String closeOrderExpiry;
     public String closeOrderState;
+    public double closeOrderQty;
+    public String closeOrderSide;
+    public double closeOrderPrice;
 }

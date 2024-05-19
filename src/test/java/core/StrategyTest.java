@@ -2,7 +2,7 @@ package core;
 
 import core.service.Orchestrator;
 import core.service.price.PriceData;
-import core.service.strategy.StrategyData;
+import core.service.strategy.StrategySData;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
@@ -37,7 +37,7 @@ public class StrategyTest {
 
         // Read all data from the queues
         List<PriceData> priceDataList = readAllDataFromQueue("priceQ", PriceData.class);
-        List<StrategyData> strategyDataList = readAllDataFromQueue("stratQ", StrategyData.class);
+        List<StrategySData> strategyDataList = readAllDataFromQueue("stratQ", StrategySData.class);
 
         // Assume equal number of records in both queues for simplicity
         assertEquals("Mismatch in number of records", priceDataList.size(), strategyDataList.size());
@@ -45,7 +45,7 @@ public class StrategyTest {
         // Validate each record pair
         for (int i = 0; i < priceDataList.size(); i++) {
             PriceData actualPriceData = priceDataList.get(i);
-            StrategyData actualStrategyData = strategyDataList.get(i);
+            StrategySData actualStrategyData = strategyDataList.get(i);
             if (actualPriceData.recId == actualStrategyData.recId) {
                 validateDTOAndQueuesIntegration(actualPriceData, actualStrategyData);
             }
@@ -73,7 +73,7 @@ public class StrategyTest {
     }
 
     // Validate data from strategy service matches data passed to insight service
-    private void validateDTOAndQueuesIntegration(PriceData expected, StrategyData actual) {
+    private void validateDTOAndQueuesIntegration(PriceData expected, StrategySData actual) {
         // Price data, sans start, stop, and latency, being diff. services and all ;)
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId);
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
