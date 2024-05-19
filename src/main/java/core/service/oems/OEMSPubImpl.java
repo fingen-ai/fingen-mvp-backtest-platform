@@ -7,9 +7,10 @@ import java.io.IOException;
 
 public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
+    int recCount = 0;
+
     OrderMappingService orderMS = new OrderMappingService();
     String prevBassoOrderIdea = "";
-    int j = 0;
     long[] openOrdersIDArray =  new long[0];
 
     private OEMSPub output;
@@ -43,12 +44,27 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         prevBassoOrderIdea = oemsData.bassoOrderIdea;
-        j++;
 
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
-        //System.out.println("OEMS: " + oemsData);
+
+        if((recCount >= 49) && (recCount < 404)) {
+            if(openOrdersIDArray != null) {
+                System.out.println("NOS ARRAY: " + openOrdersIDArray.length);
+            }
+            System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
+            System.out.println("OEMS: " + oemsData.bassoOrderIdea);
+            System.out.println("OEMS: " + oemsData.openOrderSide);
+            System.out.println("OEMS: " + oemsData.openOrderQty);
+            System.out.println("OEMS: " + oemsData.openOrderExpiry);
+            System.out.println("OEMS: " + oemsData.openOrderState);
+            System.out.println("OEMS: " + oemsData.currRiskPercent);
+            System.out.println("OEMS: " + oemsData.currVolRiskPercent);
+            System.out.println("\n");
+        }
+        recCount++;
+
         output.simpleCall(oemsData);
     }
 
@@ -61,11 +77,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
-
-        if(j <= 50) {
-            //System.out.println("REC: " + j);
-            //System.out.println("OEMS NOS INIT: " + oemsData);
-        }
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
@@ -77,11 +88,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
         openOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, openOrdersIDArray);
-
-        if(j <= 50) {
-            //System.out.println("REC: " + j);
-            //System.out.println("OEMS NOS ONGOING: " + oemsData);
-        }
     }
 
     /**
@@ -116,11 +122,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.closeOrderExpiry = "GTC";
         oemsData.closeOrderState = "Close Order Single";
         orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
-
-        if(j <= 50) {
-            //System.out.println("REC: " + j);
-            //System.out.println("OEMS COS: " + oemsData);
-        }
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
@@ -137,11 +138,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     oemsData.closeOrderExpiry = "GTC";
                     oemsData.closeOrderState = "Close Orders All";
                     orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
-
-                    if(j <= 50) {
-                        //System.out.println("REC: " + j);
-                        //System.out.println("OEMS COA: " + oemsData);
-                    }
                 }
             }
         }

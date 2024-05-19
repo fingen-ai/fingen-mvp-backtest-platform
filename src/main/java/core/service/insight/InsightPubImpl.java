@@ -23,7 +23,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     Risk risk = new RiskImpl();
     int riskQty = 0;
     int volRiskQty = 0;
-    double totalPositionQty = 0;
+    double totalCurrPositionQty = 0;
     int recCount = 0;
 
     private InsightPub output;
@@ -46,12 +46,12 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         if(!insightData.bassoOrderIdea.equals("Neutral")) {
 
-            openOrdersIDArray = orderMS.getFromNOSIDArray(insightData.symbol);
-            if(openOrdersIDArray != null) {
-                buildNOSOngoingInsight(insightData);
-            } else {
+            //openOrdersIDArray = orderMS.getFromNOSIDArray(insightData.symbol);
+            //if(openOrdersIDArray != null) {
+                //buildNOSOngoingInsight(insightData);
+            //} else {
                 buildNOSInitInsight(insightData);
-            }
+            //}
         } else {
             insightData.openOrderSide = "Hold";
         }
@@ -63,9 +63,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         insightData.svcLatency = insightData.svcStopTs - insightData.svcStartTs;
 
         if((recCount >= 49) && (recCount < 404)) {
-            if(openOrdersIDArray != null) {
-                System.out.println("NOS ARRAY: " + openOrdersIDArray.length);
-            }
             System.out.println("INSIGHT: " + insightData.prevBassoOrderIdea);
             System.out.println("INSIGHT: " + insightData.bassoOrderIdea);
             System.out.println("INSIGHT: " + insightData.openOrderSide);
@@ -88,17 +85,18 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         riskQty = (int) (Math.round (risk.getInitRiskPercentThreshold() * accountData.nav) / insightData.close);
         volRiskQty = (int) (Math.round (risk.getInitVolPercentThreshold() * accountData.nav) / insightData.close);
 
-        insightData.openOrderId = 0;
-        insightData.openOrderTimestamp = 0;
+        insightData.openOrderQty = Math.min(riskQty, volRiskQty);
+
         insightData.openOrderState = "Init Insight";
         insightData.orderType = "Limit";
-
-        insightData.openOrderQty = Math.min(riskQty, volRiskQty);
         insightData.openOrderSide = getSide(insightData);;
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
+
+        System.out.println("INIT !!" + recCount);
     }
 
+    /*
     private void buildNOSOngoingInsight(InsightData insightData) {
         for(int i=0; i < openOrdersIDArray.length; i++) {
             OEMSData oemsData = orderMS.getNOS(openOrdersIDArray[i]);
@@ -138,7 +136,10 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
 
         // reset
         totalPositionQty = 0;
+
+        System.out.println("ONGOING !!" + recCount);
     }
+     */
 
     private String getSide(InsightData insightData) {
         if(insightData.bassoOrderIdea.equals("Bullish")) {
