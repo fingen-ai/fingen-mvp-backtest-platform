@@ -21,6 +21,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     String prevBassoOrderIdea = "";
     long[] openOrdersIDArray =  new long[0];
     double totalCurrOpenPositionQty = 0;
+    double potentialCurrRiskPercent = 0.0;
+    double potentialCurrVolPercent = 0.0;
 
     private OEMSPub output;
 
@@ -215,14 +217,19 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
 
         totalCurrOpenPositionQty = 0;
+        potentialCurrRiskPercent = 0;
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
             mapOpenOrderOEMS = orderMS.getNOS(openOrdersIDArray[i]);
-            totalCurrOpenPositionQty = mapOpenOrderOEMS.openOrderQty;
+            totalCurrOpenPositionQty += mapOpenOrderOEMS.openOrderQty; // curr open qty
         }
 
-        oemsData.currRiskPercent = (totalCurrOpenPositionQty * oemsData.close) / accountData.nav;
-        double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - oemsData.currRiskPercent;
+        totalCurrOpenPositionQty += oemsData.openOrderQty; // proposed ongoing qty
+
+        potentialCurrRiskPercent = (totalCurrOpenPositionQty * oemsData.close) / accountData.nav;
+        potentialCurrRiskPercent = roundingWithPrecision(potentialCurrRiskPercent, 5);
+
+        double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - potentialCurrRiskPercent;
         if(riskPercentAvail > 0) {
             oemsData.orderQtyPerRisk = (riskPercentAvail * accountData.nav) / oemsData.close;
             oemsData.orderQtyPerRisk = roundingWithPrecision(oemsData.orderQtyPerRisk, 5);
@@ -238,9 +245,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         if(Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol) > 0) {
             oemsData.openOrderQty = Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol);
             oemsData.openOrderQty = roundingWithPrecision(oemsData.openOrderQty, 5);
+            oemsData.currRiskPercent = potentialCurrRiskPercent;
 
         } else {
             oemsData.openOrderQty = 0;
+            oemsData.currRiskPercent = (totalCurrOpenPositionQty * oemsData.close) / accountData.nav;
         }
     }
 
