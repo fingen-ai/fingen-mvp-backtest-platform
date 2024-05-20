@@ -99,6 +99,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             System.out.println("OEMS: " + oemsData.bassoOrderIdea);
             System.out.println("OEMS: " + oemsData.openOrderSide);
             System.out.println("OEMS: " + oemsData.openOrderQty);
+            System.out.println("OEMS: " + oemsData.currCarryQty);
             System.out.println("OEMS: " + oemsData.openOrderExpiry);
             System.out.println("OEMS: " + oemsData.openOrderState);
             System.out.println("OEMS: " + oemsData.currRiskPercent);
@@ -224,16 +225,20 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         double riskPercentAvail = risk.getOngoingRiskPercentThreshold() - oemsData.currRiskPercent;
         if(riskPercentAvail > 0) {
             oemsData.orderQtyPerRisk = (riskPercentAvail * accountData.nav) / oemsData.close;
+            oemsData.orderQtyPerRisk = roundingWithPrecision(oemsData.orderQtyPerRisk, 5);
         }
 
         oemsData.currVolRiskPercent = (oemsData.atr * oemsData.close) / accountData.nav;
         double volRiskPercentAvail =  risk.getOngoingVolPercentThreshold() - oemsData.currVolRiskPercent;
         if(volRiskPercentAvail > 0) {
             oemsData.orderQtyPerVol = (volRiskPercentAvail * accountData.nav) / oemsData.close;
+            oemsData.orderQtyPerVol = roundingWithPrecision(oemsData.orderQtyPerVol, 5);
         }
 
         if(Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol) > 0) {
             oemsData.openOrderQty = Math.min(oemsData.orderQtyPerRisk, oemsData.orderQtyPerVol);
+            oemsData.openOrderQty = roundingWithPrecision(oemsData.openOrderQty, 5);
+
         } else {
             oemsData.openOrderQty = 0;
         }
@@ -242,12 +247,16 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private void getInitCurrRiskVolOrderQty(OEMSData oemsData) {
 
         oemsData.orderQtyPerRisk = (risk.getInitRiskPercentThreshold() * accountData.nav) / oemsData.close;
+        oemsData.orderQtyPerRisk = roundingWithPrecision(oemsData.orderQtyPerRisk, 5);
+
         oemsData.orderQtyPerVol = (risk.getInitVolPercentThreshold() * accountData.nav) / oemsData.close;
+        oemsData.orderQtyPerVol = roundingWithPrecision(oemsData.orderQtyPerVol, 5);
 
         oemsData.currRiskPercent = risk.getInitRiskPercentThreshold();
         oemsData.currVolRiskPercent = 0;
 
         oemsData.openOrderQty = oemsData.orderQtyPerRisk;
+        oemsData.openOrderQty = roundingWithPrecision(oemsData.openOrderQty, 5);
     }
 
     public static double roundingWithPrecision(double value, int places) {
