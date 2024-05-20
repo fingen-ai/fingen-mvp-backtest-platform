@@ -21,7 +21,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     String prevBassoOrderIdea = "";
     long[] openOrdersIDArray =  new long[0];
     double potentialCurrCarryQty = 0;
-    double potentialCurrRiskPercent = 0.0;
+    double currCarryRiskPercent = 0.0;
     double volRiskPercentAvail = 0.0;
     double riskPercentAvail = 0.0;
 
@@ -218,7 +218,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
 
         potentialCurrCarryQty = 0;
-        potentialCurrRiskPercent = 0;
+        currCarryRiskPercent = 0;
         riskPercentAvail = 0;
         volRiskPercentAvail = 0;
         mapOpenOrderOEMS = null;
@@ -230,14 +230,10 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         System.out.println("CURR CARRY QTY: " + oemsData.currCarryQty);
         System.out.println("PROMO NOS QTY: " + oemsData.openOrderQty);
 
-        potentialCurrCarryQty = oemsData.currCarryQty + oemsData.openOrderQty; // proposed qty + curr carry
-        System.out.println("POTENTIAL CURR CARRY QTY: " + potentialCurrCarryQty);
+        currCarryRiskPercent = (oemsData.currCarryQty * oemsData.close) / accountData.nav;
+        currCarryRiskPercent = roundingWithPrecision(currCarryRiskPercent, 5);
 
-        potentialCurrRiskPercent = (potentialCurrCarryQty * oemsData.close) / accountData.nav;
-        potentialCurrRiskPercent = roundingWithPrecision(potentialCurrRiskPercent, 5);
-
-        riskPercentAvail = risk.getOngoingRiskPercentThreshold() - potentialCurrRiskPercent;
-
+        riskPercentAvail = risk.getOngoingRiskPercentThreshold() - currCarryRiskPercent;
         if(riskPercentAvail > 0) {
             oemsData.orderQtyPerRisk = (riskPercentAvail * accountData.nav) / oemsData.close;
             oemsData.orderQtyPerRisk = roundingWithPrecision(oemsData.orderQtyPerRisk, 5);
