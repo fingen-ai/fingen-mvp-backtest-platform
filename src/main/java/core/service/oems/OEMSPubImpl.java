@@ -45,20 +45,17 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
             if (openOrdersIDArray != null) {
 
-                System.out.println("ARRAy L 1: " + openOrdersIDArray.length);
-
                 // coa upon trend reversal
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
 
                     placeCOAOrder(oemsData, openOrdersIDArray);
-                    System.out.println("COA");
 
                 // cos upon sl exceeded long
                 } else if (oemsData.openOrderSide.equals("Buy")) {
 
                     if (oemsData.close < oemsData.openOrderSLPrice) {
                         placeCOSOrder(oemsData);
-                        System.out.println("COS: SL 1");
+                        System.out.println("COS: SL SELL");
                     } else {
                         // nos ongoing
                         System.out.println("NOS ONGOING");
@@ -69,7 +66,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
                         placeCOSOrder(oemsData);
-                        System.out.println("COS: SL 2");
+                        System.out.println("COS: SL BUY");
                     } else {
                         // nos ongoing
                         System.out.println("NOS ONGOING");
@@ -155,20 +152,24 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.openOrderState = "Hold: Ongoing New Order Single > Ongoing Vol %";
         }
 
-        if(oemsData.currRiskPercent < risk.getOngoingRiskPercentThreshold() ||
-                oemsData.currVolRiskPercent < risk.getOngoingVolPercentThreshold() ) {
+        if(oemsData.currRiskPercent <= risk.getOngoingRiskPercentThreshold() ) {
 
             oemsData.openOrderId = System.nanoTime();
             oemsData.openOrderTimestamp = System.nanoTime();
-            oemsData.openOrderExpiry = "GTC";
-            oemsData.openOrderState = "Ongoing New Order Single";
 
-            orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
+            if(oemsData.openOrderQty > 0) {
+                oemsData.openOrderExpiry = "GTC";
+                oemsData.openOrderState = "Ongoing New Order Single";
 
-            updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
-            orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
+                orderMS.addUpdateNOS(oemsData.openOrderId, oemsData);
 
-            System.out.println("ARRAy L 2: " + openOrdersIDArray.length);
+                updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
+                orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
+
+            } else {
+                oemsData.openOrderExpiry = "NA";
+                oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
+            }
 
             openOrdersIDArray = null;
             updateOpenOrdersIDArray = null;
@@ -189,15 +190,22 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         // delete the ID from the ID array
         for(int i=0; i < openOrdersIDArray.length; i++) {
             if(oemsData.openOrderId == openOrdersIDArray[i]) {
-                ArrayUtils.remove(openOrdersIDArray, i);
-            }
-        }
 
-        oemsData.closeOrderId = System.nanoTime();
-        oemsData.closeOrderTimestamp = System.nanoTime();
-        oemsData.closeOrderExpiry = "GTC";
-        oemsData.closeOrderState = "Close Order Single";
-        orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+                oemsData.closeOrderId = System.nanoTime();
+                oemsData.closeOrderTimestamp = System.nanoTime();
+                oemsData.closeOrderExpiry = "GTC";
+                oemsData.closeOrderState = "Close Order Single";
+                orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+
+                orderMS.deleteNOS(oemsData);
+
+                updateOpenOrdersIDArray = ArrayUtils.remove(openOrdersIDArray, i);
+                orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
+            }
+
+            openOrdersIDArray = null;
+            updateOpenOrdersIDArray = null;
+        }
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
@@ -207,7 +215,14 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.closeOrderTimestamp = System.nanoTime();
             oemsData.closeOrderExpiry = "GTC";
             oemsData.closeOrderState = "Close Orders All";
+
             orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+
+            orderMS.deleteNOS(oemsData);
+
+            orderMS.deleteFromNOSIDArray(oemsData.symbol);
+
+            System.out.println("COA: " + oemsData.openOrderId);
         }
 
         orderMS.deleteFromNOSIDArray(oemsData.symbol);
@@ -227,35 +242,29 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         // curr risk % and qty
         oemsData.currRiskPercent = (oemsData.currCarryQty * oemsData.close) / accountData.nav;
         oemsData.currRiskPercent = roundingWithPrecision(oemsData.currRiskPercent, 3);
-        System.out.println("CURR CARRY QTY: " + oemsData.currCarryQty);
-        System.out.println("RISK %: " + oemsData.currRiskPercent);
 
         riskPercentAvail = risk.getOngoingRiskPercentThreshold() - oemsData.currRiskPercent;
-        System.out.println("RISK AVAIL: " + riskPercentAvail);
         if(riskPercentAvail > 0) {
+
             oemsData.orderQtyPerRisk = (riskPercentAvail * accountData.nav) / oemsData.close;
             oemsData.orderQtyPerRisk = roundingWithPrecision(oemsData.orderQtyPerRisk, 5);
+
+            // curr vol % and qty
+            oemsData.currVolRiskPercent = (oemsData.atr * oemsData.close) / accountData.nav;
+            oemsData.currVolRiskPercent = roundingWithPrecision(oemsData.currVolRiskPercent, 3);
+
+            volRiskPercentAvail =  risk.getOngoingVolPercentThreshold() - oemsData.currVolRiskPercent;
+            if(volRiskPercentAvail > 0) {
+                oemsData.orderQtyPerVol = (volRiskPercentAvail * accountData.nav) / oemsData.close;
+                oemsData.orderQtyPerVol = roundingWithPrecision(oemsData.orderQtyPerVol, 5);
+            } else {
+                oemsData.orderQtyPerVol = 0;
+            }
+
         } else {
             oemsData.orderQtyPerRisk = 0;
-        }
-
-        System.out.println("RISK QTY: " + oemsData.orderQtyPerRisk);
-        System.out.println("RISK %: " + oemsData.currRiskPercent);
-
-        // curr vol % and qty
-        oemsData.currVolRiskPercent = (oemsData.atr * oemsData.close) / accountData.nav;
-        oemsData.currVolRiskPercent = roundingWithPrecision(oemsData.currVolRiskPercent, 3);
-
-        volRiskPercentAvail =  risk.getOngoingVolPercentThreshold() - oemsData.currVolRiskPercent;
-        if(volRiskPercentAvail > 0) {
-            oemsData.orderQtyPerVol = (volRiskPercentAvail * accountData.nav) / oemsData.close;
-            oemsData.orderQtyPerVol = roundingWithPrecision(oemsData.orderQtyPerVol, 5);
-        } else {
             oemsData.orderQtyPerVol = 0;
         }
-
-        System.out.println("VOL QTY: " + oemsData.orderQtyPerVol);
-        System.out.println("VOL %: " + oemsData.currVolRiskPercent);
 
         // finalize open order qty
         // finalize curr risk % - dependent on risk or vol qty chosen
@@ -267,18 +276,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.currRiskPercent = (oemsData.currCarryQty * oemsData.close) / accountData.nav;
         oemsData.currRiskPercent = roundingWithPrecision(oemsData.currRiskPercent, 3);
 
-        System.out.println("ORDER QTY: " + oemsData.openOrderQty);
-        System.out.println("CURR CARRY QTY: " + oemsData.currCarryQty);
-        System.out.println("RISK %: " + oemsData.currRiskPercent);
-
         // risk test
         if(oemsData.openOrderQty < 1) {
             // no ongoing order
             oemsData.currCarryQty -= oemsData.openOrderQty;
             oemsData.currRiskPercent = (oemsData.currCarryQty * oemsData.close) / accountData.nav;
-            System.out.println("LTZ CURR CARRY QTY: " + oemsData.currCarryQty);
-            System.out.println("LTZ RISK %: " + oemsData.currRiskPercent);
-            System.out.println("LTZ RISK %: " + oemsData.currVolRiskPercent);
+            oemsData.currRiskPercent = roundingWithPrecision(oemsData.currRiskPercent, 3);
         }
     }
 
