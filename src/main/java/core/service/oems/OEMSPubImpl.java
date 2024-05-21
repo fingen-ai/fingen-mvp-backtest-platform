@@ -52,14 +52,14 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     placeCOAOrder(oemsData, openOrdersIDArray);
 
                     if(oemsData.closeOrderState.equals("Close Orders All")) {
-                        System.out.println("NOS INIT");
+                        System.out.println("NOS INIT via COA");
                         placeNOSInitOrder(oemsData);
                     }
 
                 // sl sell cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
-                        System.out.println("COS BUY: " + oemsData.close + " v " + oemsData.openOrderSLPrice);
+                        System.out.println("COS BUY");
                         placeCOSOrder(oemsData);
                     } else {
                         System.out.println("NOS ONGOING");
@@ -69,7 +69,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     // sl buy cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
-                        System.out.println("COS SELL: " + oemsData.close + " v " + oemsData.openOrderSLPrice);
+                        System.out.println("COS SELL");
                         placeCOSOrder(oemsData);
                     }else {
                         System.out.println("NOS ONGOING");
@@ -205,8 +205,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
                 updateOpenOrdersIDArray = ArrayUtils.remove(openOrdersIDArray, i);
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
-
-                System.out.println("COS");
             }
         }
     }
@@ -224,12 +222,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             orderMS.deleteNOS(oemsData);
 
             orderMS.deleteFromNOSIDArray(oemsData.symbol);
-
-            System.out.println("COA: " + oemsData.openOrderId);
-            System.out.println("\n");
         }
-
-        orderMS.deleteFromNOSIDArray(oemsData.symbol);
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
@@ -289,6 +282,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void getInitCurrRiskVolOrderQty(OEMSData oemsData) {
+
+        openOrdersIDArray = null;
+        updateOpenOrdersIDArray = null;
 
         oemsData.orderQtyPerRisk = (risk.getInitRiskPercentThreshold() * accountData.nav) / oemsData.close;
         oemsData.orderQtyPerRisk = roundingWithPrecision(oemsData.orderQtyPerRisk, 5);
