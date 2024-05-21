@@ -38,7 +38,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStartTs = System.nanoTime();
 
         oemsData.prevBassoOrderIdea = prevBassoOrderIdea;
-        getStopLoss(oemsData); // for any curr "running" positions during all signal moments - incl "neutral"
+
+        getStopLoss(oemsData);
 
         if (!oemsData.bassoOrderIdea.equals("Neutral")) {
 
@@ -58,6 +59,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // sl sell cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
+                        System.out.println("COS BUY: " + oemsData.close + " v " + oemsData.openOrderSLPrice);
                         placeCOSOrder(oemsData);
                     } else {
                         System.out.println("NOS ONGOING");
@@ -67,6 +69,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     // sl buy cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
+                        System.out.println("COS SELL: " + oemsData.close + " v " + oemsData.openOrderSLPrice);
                         placeCOSOrder(oemsData);
                     }else {
                         System.out.println("NOS ONGOING");
@@ -111,6 +114,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         openOrdersIDArray = null;
         updateOpenOrdersIDArray = null;
+        oemsNOSMap = null;
 
         output.simpleCall(oemsData);
     }
@@ -168,9 +172,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 oemsData.openOrderExpiry = "NA";
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
             }
-
-            //openOrdersIDArray = null;
-            //updateOpenOrdersIDArray = null;
         }
     }
 
@@ -180,13 +181,17 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
      * @param oemsData
      */
     private void getStopLoss(OEMSData oemsData) {
-        oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
-        oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
+        if(oemsData.openOrderSide.equals("Buy")) {
+            oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
+            oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
+        } else {
+            oemsData.openOrderSLPrice = oemsData.close + (oemsData.atr * 3);
+            oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
+        }
     }
 
     private void placeCOSOrder(OEMSData oemsData) {
         // delete the ID from the ID array
-
         for(int i=0; i < openOrdersIDArray.length; i++) {
             if(oemsData.openOrderId == openOrdersIDArray[i]) {
 
@@ -200,12 +205,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
                 updateOpenOrdersIDArray = ArrayUtils.remove(openOrdersIDArray, i);
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
+
+                System.out.println("COS");
             }
-
-            System.out.println("COS");
-
-            //openOrdersIDArray = null;
-            //updateOpenOrdersIDArray = null;
         }
     }
 
@@ -234,7 +236,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         riskPercentAvail = 0;
         volRiskPercentAvail = 0;
-        oemsNOSMap = null;
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
             oemsNOSMap = orderMS.getNOS(openOrdersIDArray[i]);
@@ -300,6 +301,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         oemsData.openOrderQty = oemsData.orderQtyPerRisk;
         oemsData.openOrderQty = roundingWithPrecision(oemsData.openOrderQty, 5);
+
+        oemsData.currCarryQty = oemsData.openOrderQty;
     }
 
     public static double roundingWithPrecision(double value, int places) {
