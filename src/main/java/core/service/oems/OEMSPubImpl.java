@@ -45,39 +45,37 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
             if (openOrdersIDArray != null) {
 
-                // coa upon trend reversal
+                // coa, trend reversal
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
 
                     placeCOAOrder(oemsData, openOrdersIDArray);
 
-                // cos upon sl exceeded long
-                } else if (oemsData.openOrderSide.equals("Buy")) {
+                    if(oemsData.closeOrderState.equals("Close Orders All")) {
+                        System.out.println("NOS INIT");
+                        placeNOSInitOrder(oemsData);
+                    }
 
+                // sl sell cos or nos ongoing, still trending
+                } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
                         placeCOSOrder(oemsData);
-                        System.out.println("COS: SL SELL");
                     } else {
-                        // nos ongoing
                         System.out.println("NOS ONGOING");
                         placeNOSOngoingOrder(oemsData);
                     }
 
-                // cos upon sl exceeded short
+                    // sl buy cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
                         placeCOSOrder(oemsData);
-                        System.out.println("COS: SL BUY");
-                    } else {
-                        // nos ongoing
+                    }else {
                         System.out.println("NOS ONGOING");
                         placeNOSOngoingOrder(oemsData);
                     }
                 }
 
             } else {
-
                 System.out.println("NOS INIT");
-                // nos init for new trend
                 placeNOSInitOrder(oemsData);
             }
 
@@ -111,6 +109,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
         recCount++;
 
+        openOrdersIDArray = null;
+        updateOpenOrdersIDArray = null;
+
         output.simpleCall(oemsData);
     }
 
@@ -127,9 +128,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
-
-        openOrdersIDArray = null;
-        updateOpenOrdersIDArray = null;
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
@@ -171,8 +169,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
             }
 
-            openOrdersIDArray = null;
-            updateOpenOrdersIDArray = null;
+            //openOrdersIDArray = null;
+            //updateOpenOrdersIDArray = null;
         }
     }
 
@@ -188,6 +186,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private void placeCOSOrder(OEMSData oemsData) {
         // delete the ID from the ID array
+
         for(int i=0; i < openOrdersIDArray.length; i++) {
             if(oemsData.openOrderId == openOrdersIDArray[i]) {
 
@@ -203,8 +202,10 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
             }
 
-            openOrdersIDArray = null;
-            updateOpenOrdersIDArray = null;
+            System.out.println("COS");
+
+            //openOrdersIDArray = null;
+            //updateOpenOrdersIDArray = null;
         }
     }
 
@@ -223,6 +224,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             orderMS.deleteFromNOSIDArray(oemsData.symbol);
 
             System.out.println("COA: " + oemsData.openOrderId);
+            System.out.println("\n");
         }
 
         orderMS.deleteFromNOSIDArray(oemsData.symbol);
