@@ -93,7 +93,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
 
-        if((recCount >= 49) && (recCount < 404)) {
+        if((recCount >= 49) && (recCount < 407)) {
             System.out.println("OEMS:" + recCount);
             System.out.println("OEMS: " + oemsData.openOrderId);
             System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
