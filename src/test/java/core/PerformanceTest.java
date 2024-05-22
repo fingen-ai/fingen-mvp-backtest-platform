@@ -11,19 +11,19 @@ import net.openhft.chronicle.wire.DocumentContext;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OEMSTest {
+import static org.junit.Assert.assertEquals;
+
+public class PerformanceTest {
 
     int recCount = 0;
 
-    public OEMSTest() throws IOException {
+    public PerformanceTest() throws IOException {
     }
 
     @Before
