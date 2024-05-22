@@ -56,4 +56,5 @@ public class PerfData extends SelfDescribingMarshallable {
     public String orderConfirmationState;
 
     // perf q real-time data
+
 }

@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="INSIGHT - DONE. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - DONE.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/insight/InsightData.java" afterDir="false" />
+    <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,22 +144,7 @@
       <recent name="oems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OEMSTest">
-    <configuration name="DoubleArrayMapManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="fingen-mvp-platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="oems.map.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="oems.map" />
-      <option name="MAIN_CLASS_NAME" value="oems.map.DoubleArrayMapManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.PerformanceTest">
     <configuration name="InsightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
@@ -208,7 +190,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrchestratorTest_BUI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
         <pattern>
@@ -217,7 +199,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="core" />
-      <option name="MAIN_CLASS_NAME" value="core.OrchestratorTest_BUI" />
+      <option name="MAIN_CLASS_NAME" value="core.PerformanceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -240,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="JUnit.StrategyTest" />
         <item itemvalue="JUnit.OrchestratorTest" />
-        <item itemvalue="JUnit.OrchestratorTest_BUI" />
       </list>
     </recent_temporary>
   </component>
@@ -298,15 +280,7 @@
       <workItem from="1715738547827" duration="44748000" />
       <workItem from="1716015830795" duration="15943000" />
       <workItem from="1716080910567" duration="10429000" />
-      <workItem from="1716155609659" duration="48935000" />
-    </task>
-    <task id="LOCAL-00100" summary="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
-      <option name="closed" value="true" />
-      <created>1715565446501</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1715565446501</updated>
+      <workItem from="1716155609659" duration="49429000" />
     </task>
     <task id="LOCAL-00101" summary="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
       <option name="closed" value="true" />
@@ -692,7 +666,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716404173376</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1716404697316</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1716404697316</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,7 +693,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="InsightTest - DONE.&#10;&#10;And Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;DMI - WIP.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;DMI - DONE.&#10;STS - WIP.&#10;ROC - WIP." />
     <MESSAGE value="Indicators svcs:&#10;STS - WIP.&#10;ROC - DONE." />
@@ -736,6 +717,7 @@
     <MESSAGE value="INSIGHT - WIP. &#10;Back in the &quot;shop.&quot;&#10;Seems there may be an issue with nosIDMap writing. TBD.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file." />
     <MESSAGE value="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues." />
     <MESSAGE value="INSIGHT - DONE. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - DONE.&#10;Testing all map (order) actions.&#10;Test integration of queues." />
-    <option name="LAST_COMMIT_MESSAGE" value="INSIGHT - DONE. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - DONE.&#10;Testing all map (order) actions.&#10;Test integration of queues." />
+    <MESSAGE value="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already." />
+    <option name="LAST_COMMIT_MESSAGE" value="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already." />
   </component>
 </project>

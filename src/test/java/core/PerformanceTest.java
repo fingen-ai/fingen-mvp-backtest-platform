@@ -3,6 +3,7 @@ package core;
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
 import core.service.oems.OEMSData;
+import core.service.performance.PerfData;
 import net.openhft.chronicle.core.OS;
 import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
@@ -46,18 +47,18 @@ public class PerformanceTest {
         Thread.sleep(5000); // Adjust time as needed based on your system's performance
 
         // Read all data from the queues
-        List<InsightData> insightDataList = readAllDataFromQueue("insightQ", InsightData.class);
         List<OEMSData> oemsDataList = readAllDataFromQueue("oemsQ", OEMSData.class);
+        List<PerfData> perfDataList = readAllDataFromQueue("perfQ", PerfData.class);
 
         // Assume equal number of records in both queues for simplicity
-        assertEquals("Mismatch in number of records", oemsDataList.size(), insightDataList.size());
+        assertEquals("Mismatch in number of records", oemsDataList.size(), perfDataList.size());
 
         // Validate each record pair
-        for (int i = 0; i < insightDataList.size(); i++) {
-            InsightData actualInsightData = insightDataList.get(i);
+        for (int i = 0; i < perfDataList.size(); i++) {
+            PerfData actualPerfData = perfDataList.get(i);
             OEMSData actualOEMSData = oemsDataList.get(i);
-            if (actualInsightData.recId == actualOEMSData.recId) {
-                validateDTOAndQueuesIntegration(actualInsightData, actualOEMSData);
+            if (actualPerfData.recId == actualOEMSData.recId) {
+                validateDTOAndQueuesIntegration(actualOEMSData, actualPerfData);
             }
         }
     }
@@ -83,7 +84,7 @@ public class PerformanceTest {
     }
 
     // Validate data from strategy service matches data passed to insight service
-    private void validateDTOAndQueuesIntegration(InsightData expected, OEMSData actual) {
+    private void validateDTOAndQueuesIntegration(OEMSData expected, PerfData actual) {
         // Price data, sans start, stop, and latency, being diff. services and all ;)
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId);
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
