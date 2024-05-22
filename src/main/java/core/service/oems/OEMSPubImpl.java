@@ -176,6 +176,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
             }
         }
+
+        getOngoingNOSCompleteConfirmation(oemsData);
     }
 
     /**
@@ -316,6 +318,16 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.orderConfirmationState = "Init NOS Complete Success - Confirmed";
         } else {
             oemsData.orderConfirmationState = "Init NOS Complete Failure - Confirmed";
+        }
+    }
+
+    private void getOngoingNOSCompleteConfirmation(OEMSData oemsData) {
+        OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
+        long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        if(confirmOEMS != null && confirmNOSArray != null) {
+            oemsData.orderConfirmationState = "Ongoing NOS Complete Success - Confirmed";
+        } else {
+            oemsData.orderConfirmationState = "Ongoing NOS Complete Failure - Confirmed";
         }
     }
 }
