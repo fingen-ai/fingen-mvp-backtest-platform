@@ -49,6 +49,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // coa, trend reversal
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
 
+                    System.out.println("COA");
                     placeCOAOrder(oemsData, openOrdersIDArray);
 
                     if(oemsData.closeOrderState.equals("Close Orders All")) {
