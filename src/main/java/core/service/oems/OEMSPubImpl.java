@@ -212,6 +212,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
             }
         }
+
+        getCOSCompleteConfirmation(oemsData);
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
@@ -328,6 +330,16 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.orderConfirmationState = "Ongoing NOS Complete Success - Confirmed";
         } else {
             oemsData.orderConfirmationState = "Ongoing NOS Complete Failure - Confirmed";
+        }
+    }
+
+    private void getCOSCompleteConfirmation(OEMSData oemsData) {
+        OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
+        long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        if(confirmOEMS == null && confirmNOSArray == null) {
+            oemsData.orderConfirmationState = "COS Complete Success - Confirmed";
+        } else {
+            oemsData.orderConfirmationState = "COS Complete Failure - Confirmed";
         }
     }
 }
