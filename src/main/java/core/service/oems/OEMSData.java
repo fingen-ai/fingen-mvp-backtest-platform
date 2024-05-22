@@ -53,4 +53,5 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double closeOrderQty;
     public String closeOrderSide;
     public double closeOrderPrice;
+    public String orderConfirmationState;
 }

@@ -104,6 +104,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             System.out.println("OEMS: " + oemsData.currCarryQty);
             System.out.println("OEMS: " + oemsData.openOrderExpiry);
             System.out.println("OEMS: " + oemsData.openOrderState);
+            System.out.println("OEMS: " + oemsData.orderConfirmationState);
             System.out.println("OEMS: " + oemsData.currRiskPercent);
             System.out.println("OEMS: " + oemsData.currVolRiskPercent);
             System.out.println("OEMS: " + oemsData.close);
@@ -132,6 +133,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
+
+        getInitNOSCompleteConfirmation(oemsData);
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
@@ -304,5 +307,15 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     public static double roundingWithPrecision(double value, int places) {
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;
+    }
+
+    private void getInitNOSCompleteConfirmation(OEMSData oemsData) {
+        OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
+        long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        if(confirmOEMS != null && confirmNOSArray != null) {
+            oemsData.orderConfirmationState = "Init NOS Complete Success - Confirmed";
+        } else {
+            oemsData.orderConfirmationState = "Init NOS Complete Failure - Confirmed";
+        }
     }
 }
