@@ -294,15 +294,7 @@
       <workItem from="1715738547827" duration="44748000" />
       <workItem from="1716015830795" duration="15943000" />
       <workItem from="1716080910567" duration="10429000" />
-      <workItem from="1716155609659" duration="47855000" />
-    </task>
-    <task id="LOCAL-00097" summary="OEMS - WIP.">
-      <option name="closed" value="true" />
-      <created>1715480202187</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1715480202187</updated>
+      <workItem from="1716155609659" duration="48252000" />
     </task>
     <task id="LOCAL-00098" summary="OEMS - WIP.">
       <option name="closed" value="true" />
@@ -688,7 +680,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716403027317</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
+      <option name="closed" value="true" />
+      <created>1716403798952</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1716403798952</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

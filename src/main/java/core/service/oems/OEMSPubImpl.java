@@ -99,16 +99,22 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             System.out.println("OEMS: " + oemsData.openOrderId);
             System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
             System.out.println("OEMS: " + oemsData.bassoOrderIdea);
+
             System.out.println("OEMS: " + oemsData.openOrderSide);
             System.out.println("OEMS: " + oemsData.openOrderQty);
             System.out.println("OEMS: " + oemsData.currCarryQty);
             System.out.println("OEMS: " + oemsData.openOrderExpiry);
             System.out.println("OEMS: " + oemsData.openOrderState);
-            System.out.println("OEMS: " + oemsData.orderConfirmationState);
+
             System.out.println("OEMS: " + oemsData.currRiskPercent);
             System.out.println("OEMS: " + oemsData.currVolRiskPercent);
             System.out.println("OEMS: " + oemsData.close);
             System.out.println("OEMS: " + oemsData.openOrderSLPrice);
+
+            System.out.println("OEMS: " + oemsData.closeOrderSide);
+            System.out.println("OEMS: " + oemsData.closeOrderQty);
+            System.out.println("OEMS: " + oemsData.closeOrderState);
+            System.out.println("OEMS: " + oemsData.orderConfirmationState);
             System.out.println("\n");
         //}
         recCount++;
