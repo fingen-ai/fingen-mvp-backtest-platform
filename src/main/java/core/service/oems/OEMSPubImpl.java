@@ -94,7 +94,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
 
-        if((recCount >= 49) && (recCount < 407)) {
+        //if((recCount >= 49) && (recCount < 407)) {
             System.out.println("OEMS:" + recCount);
             System.out.println("OEMS: " + oemsData.openOrderId);
             System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
@@ -110,7 +110,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             System.out.println("OEMS: " + oemsData.close);
             System.out.println("OEMS: " + oemsData.openOrderSLPrice);
             System.out.println("\n");
-        }
+        //}
         recCount++;
 
         openOrdersIDArray = null;
@@ -171,13 +171,13 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
+                getOngoingNOSCompleteConfirmation(oemsData);
+
             } else {
                 oemsData.openOrderExpiry = "NA";
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
             }
         }
-
-        getOngoingNOSCompleteConfirmation(oemsData);
     }
 
     /**

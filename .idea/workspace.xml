@@ -294,23 +294,7 @@
       <workItem from="1715738547827" duration="44748000" />
       <workItem from="1716015830795" duration="15943000" />
       <workItem from="1716080910567" duration="10429000" />
-      <workItem from="1716155609659" duration="46992000" />
-    </task>
-    <task id="LOCAL-00095" summary="OEMS - WIP.">
-      <option name="closed" value="true" />
-      <created>1715477899389</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1715477899389</updated>
-    </task>
-    <task id="LOCAL-00096" summary="OEMS - WIP.">
-      <option name="closed" value="true" />
-      <created>1715479899828</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1715479899828</updated>
+      <workItem from="1716155609659" duration="47855000" />
     </task>
     <task id="LOCAL-00097" summary="OEMS - WIP.">
       <option name="closed" value="true" />
@@ -688,7 +672,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716402613809</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
+      <option name="closed" value="true" />
+      <created>1716402783044</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1716402783044</updated>
+    </task>
+    <task id="LOCAL-00145" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
+      <option name="closed" value="true" />
+      <created>1716403027317</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1716403027317</updated>
+    </task>
+    <option name="localTasksCounter" value="146" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
