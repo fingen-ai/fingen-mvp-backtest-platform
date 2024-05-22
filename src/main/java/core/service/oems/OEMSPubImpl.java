@@ -213,7 +213,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             }
         }
 
-        getCOSCompleteConfirmation(oemsData);
+        getCOSAndCOACompleteConfirmation(oemsData, "COS");
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
@@ -229,6 +229,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             orderMS.deleteNOS(oemsData);
 
             orderMS.deleteFromNOSIDArray(oemsData.symbol);
+
+            getCOSAndCOACompleteConfirmation(oemsData, "COA");
         }
     }
 
@@ -333,13 +335,23 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void getCOSCompleteConfirmation(OEMSData oemsData) {
+    private void getCOSAndCOACompleteConfirmation(OEMSData oemsData, String cosOrCOA) {
         OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
         long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
-        if(confirmOEMS == null && confirmNOSArray == null) {
-            oemsData.orderConfirmationState = "COS Complete Success - Confirmed";
+
+        if(cosOrCOA.equals("COS")) {
+            if (confirmOEMS == null && confirmNOSArray == null) {
+                oemsData.orderConfirmationState = "COS Complete Success - Confirmed";
+            } else {
+                oemsData.orderConfirmationState = "COS Complete Failure - Confirmed";
+            }
         } else {
-            oemsData.orderConfirmationState = "COS Complete Failure - Confirmed";
+            if (confirmOEMS == null && confirmNOSArray == null) {
+                oemsData.orderConfirmationState = "COA Complete Success - Confirmed";
+            } else {
+                oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
+            }
         }
+
     }
 }
