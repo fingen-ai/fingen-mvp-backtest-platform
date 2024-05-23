@@ -100,6 +100,10 @@ public class OEMSTest {
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
         assertEquals("Mismatch in some Strategy field", expected.bassoOrderIdea, actual.bassoOrderIdea);
 
+        // Insight data
+        assertEquals("Mismatch in some Insight field", expected.previousClose, actual.previousClose, 0.0);
+        assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.0);
+
         // BDD validate
 
         // ENTRY: Bullish

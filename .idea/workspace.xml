@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +146,7 @@
       <recent name="oems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PerformanceTest">
+  <component name="RunManager" selected="JUnit.OEMSTest">
     <configuration name="InsightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
@@ -222,8 +224,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.OEMSTest" />
+        <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="JUnit.StrategyTest" />
         <item itemvalue="JUnit.OrchestratorTest" />
@@ -280,15 +282,7 @@
       <workItem from="1715738547827" duration="44748000" />
       <workItem from="1716015830795" duration="15943000" />
       <workItem from="1716080910567" duration="10429000" />
-      <workItem from="1716155609659" duration="49429000" />
-    </task>
-    <task id="LOCAL-00101" summary="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
-      <option name="closed" value="true" />
-      <created>1715566050867</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1715566050867</updated>
+      <workItem from="1716155609659" duration="50830000" />
     </task>
     <task id="LOCAL-00102" summary="STRATEGY - WIP.&#10;Strategy needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.">
       <option name="closed" value="true" />
@@ -674,7 +668,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716404697316</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1716405213897</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1716405213897</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

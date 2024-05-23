@@ -15,7 +15,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         perfData.svcStartTs = System.nanoTime();
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
-        //System.out.println("PERF: " + perfData);
+        System.out.println("PERF: " + perfData);
         output.simpleCall(perfData);
     }
 }

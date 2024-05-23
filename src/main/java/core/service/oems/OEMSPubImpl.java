@@ -49,37 +49,37 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // coa, trend reversal
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
 
-                    System.out.println("COA");
+                    //System.out.println("COA");
                     placeCOAOrder(oemsData, openOrdersIDArray);
 
                     if(oemsData.closeOrderState.equals("Close Orders All")) {
-                        System.out.println("NOS INIT via COA");
+                        //System.out.println("NOS INIT via COA");
                         placeNOSInitOrder(oemsData);
                     }
 
                 // sl sell cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
-                        System.out.println("COS BUY");
+                        //System.out.println("COS BUY");
                         placeCOSOrder(oemsData);
                     } else {
-                        System.out.println("NOS ONGOING");
+                        //System.out.println("NOS ONGOING");
                         placeNOSOngoingOrder(oemsData);
                     }
 
                     // sl buy cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
-                        System.out.println("COS SELL");
+                        //System.out.println("COS SELL");
                         placeCOSOrder(oemsData);
                     }else {
-                        System.out.println("NOS ONGOING");
+                        //System.out.println("NOS ONGOING");
                         placeNOSOngoingOrder(oemsData);
                     }
                 }
 
             } else {
-                System.out.println("NOS INIT");
+                //System.out.println("NOS INIT");
                 placeNOSInitOrder(oemsData);
             }
 
@@ -94,30 +94,30 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
+        /*
+        System.out.println("OEMS:" + recCount);
+        System.out.println("OEMS: " + oemsData.openOrderId);
+        System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
+        System.out.println("OEMS: " + oemsData.bassoOrderIdea);
 
-        //if((recCount >= 49) && (recCount < 407)) {
-            System.out.println("OEMS:" + recCount);
-            System.out.println("OEMS: " + oemsData.openOrderId);
-            System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
-            System.out.println("OEMS: " + oemsData.bassoOrderIdea);
+        System.out.println("OEMS: " + oemsData.openOrderSide);
+        System.out.println("OEMS: " + oemsData.openOrderQty);
+        System.out.println("OEMS: " + oemsData.currCarryQty);
+        System.out.println("OEMS: " + oemsData.openOrderExpiry);
+        System.out.println("OEMS: " + oemsData.openOrderState);
 
-            System.out.println("OEMS: " + oemsData.openOrderSide);
-            System.out.println("OEMS: " + oemsData.openOrderQty);
-            System.out.println("OEMS: " + oemsData.currCarryQty);
-            System.out.println("OEMS: " + oemsData.openOrderExpiry);
-            System.out.println("OEMS: " + oemsData.openOrderState);
+        System.out.println("OEMS: " + oemsData.currRiskPercent);
+        System.out.println("OEMS: " + oemsData.currVolRiskPercent);
+        System.out.println("OEMS: " + oemsData.close);
+        System.out.println("OEMS: " + oemsData.openOrderSLPrice);
 
-            System.out.println("OEMS: " + oemsData.currRiskPercent);
-            System.out.println("OEMS: " + oemsData.currVolRiskPercent);
-            System.out.println("OEMS: " + oemsData.close);
-            System.out.println("OEMS: " + oemsData.openOrderSLPrice);
+        System.out.println("OEMS: " + oemsData.closeOrderSide);
+        System.out.println("OEMS: " + oemsData.closeOrderQty);
+        System.out.println("OEMS: " + oemsData.closeOrderState);
+        System.out.println("OEMS: " + oemsData.orderConfirmationState);
+        System.out.println("\n");
+         */
 
-            System.out.println("OEMS: " + oemsData.closeOrderSide);
-            System.out.println("OEMS: " + oemsData.closeOrderQty);
-            System.out.println("OEMS: " + oemsData.closeOrderState);
-            System.out.println("OEMS: " + oemsData.orderConfirmationState);
-            System.out.println("\n");
-        //}
         recCount++;
 
         openOrdersIDArray = null;
