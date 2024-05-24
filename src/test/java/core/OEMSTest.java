@@ -105,6 +105,37 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.0);
 
         // BDD validate
+        /*
+        public double currRiskPercent;
+    public double currVolRiskPercent;
+    public double orderQtyPerRisk;
+    public double orderQtyPerVol;
+    public String orderType;
+    public String orderSide;
+
+    public double openOrderQty;
+    public String openOrderSide;
+    public double openOrderPrice;
+
+    // oems q real-time data
+    public long openOrderId;
+    public long openOrderTimestamp;
+    public String openOrderExpiry;
+    public String openOrderState;
+    public double currCarryQty;
+
+    public double openOrderSLPrice;
+    public String prevBassoOrderIdea;
+
+    public long closeOrderId;
+    public long closeOrderTimestamp;
+    public String closeOrderExpiry;
+    public String closeOrderState;
+    public double closeOrderQty;
+    public String closeOrderSide;
+    public double closeOrderPrice;
+    public String orderConfirmationState;
+         */
 
         // ENTRY: Bullish
         if(recCount == 49) {

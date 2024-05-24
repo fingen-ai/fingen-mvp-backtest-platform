@@ -12,7 +12,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     int recCount = 0;
 
-    OEMSData oemsNOSMap = new OEMSData();
+    OEMSData nosOEMSData = new OEMSData();
+    OEMSData cosOEMSData = new OEMSData();
+    OEMSData coaOEMSData = new OEMSData();
     AccountData accountData = new AccountData();
 
     Risk risk = new RiskImpl();
@@ -52,7 +54,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     //System.out.println("COA");
                     placeCOAOrder(oemsData, openOrdersIDArray);
 
-                    if(oemsData.closeOrderState.equals("Close Orders All")) {
+                    if(coaOEMSData.closeOrderState.equals("Close Orders All")) {
                         //System.out.println("NOS INIT via COA");
                         placeNOSInitOrder(oemsData);
                     }
@@ -94,35 +96,35 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
-        /*
-        System.out.println("OEMS:" + recCount);
-        System.out.println("OEMS: " + oemsData.openOrderId);
-        System.out.println("OEMS: " + oemsData.prevBassoOrderIdea);
-        System.out.println("OEMS: " + oemsData.bassoOrderIdea);
 
-        System.out.println("OEMS: " + oemsData.openOrderSide);
-        System.out.println("OEMS: " + oemsData.openOrderQty);
-        System.out.println("OEMS: " + oemsData.currCarryQty);
-        System.out.println("OEMS: " + oemsData.openOrderExpiry);
-        System.out.println("OEMS: " + oemsData.openOrderState);
+        System.out.println("rec count:" + recCount);
+        System.out.println("open order ID: " + oemsData.openOrderId);
+        System.out.println("prev Basso Idea: " + oemsData.prevBassoOrderIdea);
+        System.out.println("basso Idea: " + oemsData.bassoOrderIdea);
 
-        System.out.println("OEMS: " + oemsData.currRiskPercent);
-        System.out.println("OEMS: " + oemsData.currVolRiskPercent);
-        System.out.println("OEMS: " + oemsData.close);
-        System.out.println("OEMS: " + oemsData.openOrderSLPrice);
+        System.out.println("open order side: " + oemsData.openOrderSide);
+        System.out.println("open order qty: " + oemsData.openOrderQty);
+        System.out.println("curr carry qty: " + oemsData.currCarryQty);
+        System.out.println("open order expiry: " + oemsData.openOrderExpiry);
+        System.out.println("open order state: " + oemsData.openOrderState);
 
-        System.out.println("OEMS: " + oemsData.closeOrderSide);
-        System.out.println("OEMS: " + oemsData.closeOrderQty);
-        System.out.println("OEMS: " + oemsData.closeOrderState);
-        System.out.println("OEMS: " + oemsData.orderConfirmationState);
+        System.out.println("curr risk %: " + oemsData.currRiskPercent);
+        System.out.println("curr vol %: " + oemsData.currVolRiskPercent);
+        System.out.println("close: " + oemsData.close);
+        System.out.println("open order SL price: " + oemsData.openOrderSLPrice);
+
+        System.out.println("close order side: " + oemsData.closeOrderSide);
+        System.out.println("close order qty: " + oemsData.closeOrderQty);
+        System.out.println("close order state: " + oemsData.closeOrderState);
+        System.out.println("order confirm state: " + oemsData.orderConfirmationState);
         System.out.println("\n");
-         */
+
 
         recCount++;
 
         openOrdersIDArray = null;
         updateOpenOrdersIDArray = null;
-        oemsNOSMap = null;
+        nosOEMSData = null;
 
         output.simpleCall(oemsData);
     }
@@ -203,41 +205,67 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeCOSOrder(OEMSData oemsData) {
+
         // delete the ID from the ID array
         for(int i=0; i < openOrdersIDArray.length; i++) {
-            if(oemsData.openOrderId == openOrdersIDArray[i]) {
 
-                oemsData.closeOrderId = System.nanoTime();
-                oemsData.closeOrderTimestamp = System.nanoTime();
-                oemsData.closeOrderExpiry = "GTC";
-                oemsData.closeOrderState = "Close Order Single";
-                orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+            if(cosOEMSData.openOrderId == openOrdersIDArray[i]) {
 
-                orderMS.deleteNOS(oemsData);
+                cosOEMSData = orderMS.getNOS(cosOEMSData.openOrderId);
 
+                cosOEMSData.closeOrderId = cosOEMSData.openOrderId;
+                cosOEMSData.closeOrderTimestamp = System.nanoTime();
+                cosOEMSData.closeOrderPrice = oemsData.close;
+                cosOEMSData.closeOrderExpiry = "GTC";
+                cosOEMSData.closeOrderState = "Close Order Single";
+
+                orderMS.deleteNOS(cosOEMSData);
                 updateOpenOrdersIDArray = ArrayUtils.remove(openOrdersIDArray, i);
-                orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
+
+                orderMS.addUpdateCOS(cosOEMSData.openOrderId, cosOEMSData);
+                orderMS.addToNOSIDArray(cosOEMSData.symbol, updateOpenOrdersIDArray);
             }
         }
 
-        getCOSAndCOACompleteConfirmation(oemsData, "COS");
+        getCOSAndCOACompleteConfirmation(cosOEMSData, "COS");
+
+        System.out.println("COS: " + cosOEMSData);
+        System.out.println("\n");
     }
 
     private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
-            oemsData.closeOrderId = System.nanoTime();
-            oemsData.closeOrderTimestamp = System.nanoTime();
-            oemsData.closeOrderExpiry = "GTC";
-            oemsData.closeOrderState = "Close Orders All";
 
-            orderMS.addUpdateCOS(oemsData.openOrderId, oemsData);
+            coaOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
 
-            orderMS.deleteNOS(oemsData);
+            coaOEMSData.openOrderId = openOrdersIDArray[i];
 
-            orderMS.deleteFromNOSIDArray(oemsData.symbol);
+            coaOEMSData.closeOrderId = coaOEMSData.openOrderId;
+            coaOEMSData.closeOrderTimestamp = System.nanoTime();
+            coaOEMSData.closeOrderPrice = oemsData.close;
+            coaOEMSData.closeOrderExpiry = "GTC";
+            coaOEMSData.closeOrderState = "Close Orders All";
 
-            getCOSAndCOACompleteConfirmation(oemsData, "COA");
+            if(coaOEMSData.bassoOrderIdea.equals("Bullish")) {
+                coaOEMSData.closeOrderSide = "Sell"; // sell to close bullish pos
+            } else {
+                coaOEMSData.closeOrderSide = "Buy"; // buy to close bearish pos
+            }
+
+            orderMS.deleteNOS(coaOEMSData);
+            orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
+
+            orderMS.addUpdateCOS(coaOEMSData.openOrderId, coaOEMSData);
+
+            // assume success
+            coaOEMSData.orderConfirmationState = "COA Complete Success - Confirmed";
+
+            // but verify
+            getCOSAndCOACompleteConfirmation(coaOEMSData, "COA");
+
+            System.out.println("COA: " + coaOEMSData);
+            System.out.println("\n");
         }
     }
 
@@ -247,8 +275,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         volRiskPercentAvail = 0;
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
-            oemsNOSMap = orderMS.getNOS(openOrdersIDArray[i]);
-            oemsData.currCarryQty += oemsNOSMap.openOrderQty;
+            nosOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
+            oemsData.currCarryQty += nosOEMSData.openOrderQty;
         }
 
         // curr risk % and qty
@@ -347,15 +375,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
 
         if(cosOrCOA.equals("COS")) {
-            if (confirmOEMS == null && confirmNOSArray == null) {
-                oemsData.orderConfirmationState = "COS Complete Success - Confirmed";
-            } else {
+            if (confirmOEMS != null && confirmNOSArray != null) {
                 oemsData.orderConfirmationState = "COS Complete Failure - Confirmed";
             }
+
         } else {
-            if (confirmOEMS == null && confirmNOSArray == null) {
-                oemsData.orderConfirmationState = "COA Complete Success - Confirmed";
-            } else {
+            if (confirmOEMS != null && confirmNOSArray != null) {
                 oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
             }
         }
