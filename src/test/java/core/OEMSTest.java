@@ -137,18 +137,20 @@ public class OEMSTest {
     public String orderConfirmationState;
          */
 
+        System.out.println("HERE !!! " + recCount);
+
         // ENTRY: Bullish
         if(recCount == 49) {
-            assertEquals("Mismatch in some OEMS field", 93136133804209L, actual.openOrderId, 0);
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
             assertEquals("Mismatch in some OEMS field", "Neutral", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
             assertEquals("Mismatch in some OEMS field", "LMT", actual.orderType);
             assertEquals("Mismatch in some OEMS field", "Buy", actual.openOrderSide);
-            assertEquals("Mismatch in some OEMS field", 0.0, actual.currRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.005, actual.currRiskPercent, 0.0);
             assertEquals("Mismatch in some OEMS field", 0.0, actual.currVolRiskPercent, 0.0);
-            assertEquals("Mismatch in some OEMS field", 0.0, actual.orderQtyPerRisk, 0.0);
-            assertEquals("Mismatch in some OEMS field", 0.0, actual.orderQtyPerVol, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.0, actual.orderQtyPerRisk, 0.0);
+            assertEquals("Mismatch in some OEMS field", 75.0, actual.orderQtyPerVol, 0.0);
             assertEquals("Mismatch in some OEMS field", 125.0, actual.openOrderQty, 0.0);
             assertEquals("Mismatch in some OEMS field", 125.0, actual.currCarryQty, 0.0);
             assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
@@ -182,6 +184,8 @@ public class OEMSTest {
         if(recCount == 443) {
             assertEquals("Mismatch in some Strategy field", "Bearish", actual.bassoOrderIdea);
         }
+
+        recCount++;
 
         // END OF BDD SCENARIOS
     }

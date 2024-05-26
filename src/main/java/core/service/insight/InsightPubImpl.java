@@ -76,7 +76,7 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
         //volRiskQty = (int) (Math.round (risk.getInitVolPercentThreshold() * accountData.nav) / insightData.close);
         //insightData.openOrderQty = Math.min(riskQty, volRiskQty);
         insightData.openOrderState = "Init Insight";
-        insightData.orderType = "Limit";
+        insightData.orderType = "LMT";
         insightData.openOrderSide = getSide(insightData);;
         insightData.openOrderPrice = insightData.close;
         insightData.openOrderExpiry = "GTC";
