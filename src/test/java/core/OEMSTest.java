@@ -106,12 +106,12 @@ public class OEMSTest {
 
         // BDD validate
         /*
-        public double currRiskPercent;
-    public double currVolRiskPercent;
-    public double orderQtyPerRisk;
-    public double orderQtyPerVol;
-    public String orderType;
-    public String orderSide;
+        //public double currRiskPercent;
+        //public double currVolRiskPercent;
+        //public double orderQtyPerRisk;
+        //public double orderQtyPerVol;
+        //public String orderType;
+        //public String orderSide;
 
     public double openOrderQty;
     public String openOrderSide;
@@ -139,7 +139,24 @@ public class OEMSTest {
 
         // ENTRY: Bullish
         if(recCount == 49) {
-            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", 93136133804209L, actual.openOrderId, 0);
+            assertEquals("Mismatch in some OEMS field", "Neutral", actual.prevBassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some OEMS field", "LMT", actual.orderType);
+            assertEquals("Mismatch in some OEMS field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currVolRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.orderQtyPerRisk, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.orderQtyPerVol, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.0, actual.openOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.0, actual.currCarryQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
+            assertEquals("Mismatch in some OEMS field", 1.0, actual.openOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.99769, actual.openOrderSLPrice, 0.0);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
         // EXIT: Bullish
