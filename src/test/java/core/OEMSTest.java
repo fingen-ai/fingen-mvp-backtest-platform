@@ -137,8 +137,6 @@ public class OEMSTest {
     public String orderConfirmationState;
          */
 
-        System.out.println("HERE !!! " + recCount);
-
         // ENTRY: Bullish
         if(recCount == 49) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
@@ -164,7 +162,27 @@ public class OEMSTest {
         // EXIT: Bullish
         // ENTRY: Neutral
         if(recCount == 404) {
-            assertEquals("Mismatch in some Strategy field", "Neutral", actual.bassoOrderIdea);
+            System.out.println("HERE !!! " + recCount);
+            System.out.println("HERE !!! " + actual);
+
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Neutral", actual.bassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", null, actual.orderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.orderType);
+            assertEquals("Mismatch in some OEMS field", "Hold", actual.openOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currVolRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.orderQtyPerRisk, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.orderQtyPerVol, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.openOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currCarryQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.openOrderExpiry);
+            assertEquals("Mismatch in some OEMS field", null, actual.openOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.openOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 1.0089, actual.openOrderSLPrice, 0.0);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderState);
+            assertNull("Mismatch in some OEMS field", actual.orderConfirmationState);
         }
 
         // EXIT: Neutral
