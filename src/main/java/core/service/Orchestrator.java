@@ -59,7 +59,8 @@ public class Orchestrator {
 
     public static void run() {
         String userHome = System.getProperty("user.home");
-        String filePath = userHome + "/FinGen/Test_Data/usd-coin_2018-10-08_2024-04-21.csv";
+        //String filePath = userHome + "/FinGen/Test_Data/usd-coin_2018-10-08_2024-04-21.csv";
+        String filePath = "src/test/resources/Test_Data/usd-coin_2018-10-08_2024-04-21.csv";
 
         CSVFileReader csvFileReader = new CSVFileReader(filePath);
 
