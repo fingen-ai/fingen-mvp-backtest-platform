@@ -85,82 +85,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 placeNOSInitOrder(oemsData);
             }
 
-        } /*else {
-
-            openOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
-            if (openOrdersIDArray != null) {
-                for(int i=0;i<openOrdersIDArray.length;i++) {
-                    nosOEMSData = orderMS.getNOS(oemsData.openOrderId);
-                    oemsData.openOrderId = nosOEMSData.openOrderId;
-                    oemsData.marketCap = 0;
-                    oemsData.svcStartTs = nosOEMSData.svcStartTs;
-                    oemsData.svcStopTs = nosOEMSData.svcStopTs;
-                    oemsData.svcLatency = nosOEMSData.svcLatency;
-                    oemsData.symbol = nosOEMSData.symbol;
-                    oemsData.open = nosOEMSData.open;
-                    oemsData.high = nosOEMSData.high;
-                    oemsData.low = nosOEMSData.low;
-                    oemsData.close = nosOEMSData.close;
-                    oemsData.volume = nosOEMSData.volume;
-                    oemsData.start = nosOEMSData.start;
-                    oemsData.end = nosOEMSData.end;
-                    oemsData.lhcAvgPrice = nosOEMSData.lhcAvgPrice;
-                    oemsData.bassoOrderIdea = nosOEMSData.bassoOrderIdea;
-                    oemsData.prevBassoOrderIdea = nosOEMSData.prevBassoOrderIdea;
-                    oemsData.atr = nosOEMSData.atr;
-                    oemsData.currRiskPercent = nosOEMSData.currRiskPercent;
-                    oemsData.currVolRiskPercent = nosOEMSData.currVolRiskPercent;
-                    oemsData.orderQtyPerRisk = nosOEMSData.orderQtyPerRisk;
-                    oemsData.orderQtyPerVol = nosOEMSData.orderQtyPerVol;
-                    oemsData.orderType = nosOEMSData.orderType;
-                    oemsData.orderSide = nosOEMSData.orderSide;
-                    oemsData.openOrderQty = nosOEMSData.openOrderQty;
-                    oemsData.openOrderSide = nosOEMSData.openOrderSide;
-                    oemsData.openOrderPrice = nosOEMSData.openOrderPrice;
-                    oemsData.openOrderTimestamp = nosOEMSData.openOrderTimestamp;
-                    oemsData.openOrderExpiry = nosOEMSData.openOrderExpiry;
-                    oemsData.openOrderState = nosOEMSData.openOrderState;
-                    oemsData.currCarryQty = nosOEMSData.currCarryQty;
-                    oemsData.openOrderSLPrice = nosOEMSData.openOrderSLPrice;
-                    oemsData.closeOrderId = nosOEMSData.closeOrderId;
-                    oemsData.closeOrderTimestamp = nosOEMSData.closeOrderTimestamp;
-                    oemsData.closeOrderExpiry = nosOEMSData.closeOrderExpiry;
-                    oemsData.closeOrderState = nosOEMSData.closeOrderState;
-                    oemsData.closeOrderQty = nosOEMSData.closeOrderQty;
-                    oemsData.closeOrderSide = nosOEMSData.closeOrderSide;
-                    oemsData.closeOrderPrice = nosOEMSData.closeOrderPrice;
-                    oemsData.orderConfirmationState = nosOEMSData.orderConfirmationState;
-                }
-
-            } else {
-                nosOEMSData = orderMS.getNOS(oemsData.openOrderId);
-                oemsData.openOrderId = 0;
-                oemsData.atr = 0;
-                oemsData.currRiskPercent = 0;
-                oemsData.currVolRiskPercent = 0;
-                oemsData.orderQtyPerRisk = 0;
-                oemsData.orderQtyPerVol = 0;
-                oemsData.orderType = null;
-                oemsData.orderSide = null;
-                oemsData.openOrderQty = 0;
-                oemsData.openOrderSide = null;
-                oemsData.openOrderPrice = 0;
-                oemsData.openOrderTimestamp = 0;
-                oemsData.openOrderExpiry = null;
-                oemsData.openOrderState = null;
-                oemsData.currCarryQty = 0;
-                oemsData.openOrderSLPrice = 0;
-                oemsData.closeOrderId = 0;
-                oemsData.closeOrderTimestamp = 0;
-                oemsData.closeOrderExpiry = null;
-                oemsData.closeOrderState = null;
-                oemsData.closeOrderQty = 0;
-                oemsData.closeOrderSide = null;
-                oemsData.closeOrderPrice = 0;
-                oemsData.orderConfirmationState = null;
-            }
         }
-        */
 
         prevBassoOrderIdea = oemsData.bassoOrderIdea;
 
@@ -185,7 +110,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         System.out.println("open order SL price: " + oemsData.openOrderSLPrice);
 
         System.out.println("close order side: " + oemsData.closeOrderSide);
-        System.out.println("close order qty: " + oemsData.closeOrderQty);
         System.out.println("close order state: " + oemsData.closeOrderState);
         System.out.println("order confirm state: " + oemsData.orderConfirmationState);
         System.out.println("\n");

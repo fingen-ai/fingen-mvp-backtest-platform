@@ -72,9 +72,6 @@ public class InsightPubImpl implements InsightPub, InsightHandler<InsightPub> {
     }
 
     private void buildNOSInsight(InsightData insightData) {
-        //riskQty = (int) (Math.round (risk.getInitRiskPercentThreshold() * accountData.nav) / insightData.close);
-        //volRiskQty = (int) (Math.round (risk.getInitVolPercentThreshold() * accountData.nav) / insightData.close);
-        //insightData.openOrderQty = Math.min(riskQty, volRiskQty);
         insightData.openOrderState = "Init Insight";
         insightData.orderType = "LMT";
         insightData.openOrderSide = getSide(insightData);;
