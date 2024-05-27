@@ -62,7 +62,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // sl sell cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
-                        //System.out.println("COS BUY");
+                        System.out.println("COS BUY");
                         placeCOSOrder(oemsData);
                     } else {
                         //System.out.println("NOS ONGOING");
@@ -72,7 +72,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                     // sl buy cos or nos ongoing, still trending
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
-                        //System.out.println("COS SELL");
+                        System.out.println("COS SELL");
                         placeCOSOrder(oemsData);
                     }else {
                         //System.out.println("NOS ONGOING");
@@ -84,7 +84,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 //System.out.println("NOS INIT");
                 placeNOSInitOrder(oemsData);
             }
-
         }
 
         prevBassoOrderIdea = oemsData.bassoOrderIdea;
@@ -92,7 +91,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
-        /*
         System.out.println("rec count:" + recCount);
         System.out.println("open order ID: " + oemsData.openOrderId);
         System.out.println("prev Basso Idea: " + oemsData.prevBassoOrderIdea);
@@ -113,7 +111,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         System.out.println("close order state: " + oemsData.closeOrderState);
         System.out.println("order confirm state: " + oemsData.orderConfirmationState);
         System.out.println("\n");
-        */
 
         recCount++;
 
@@ -259,8 +256,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             // but verify
             getCOSAndCOACompleteConfirmation(coaOEMSData, "COA");
 
-            //System.out.println("COA: " + coaOEMSData);
-            //System.out.println("\n");
+            System.out.println("COA: " + coaOEMSData);
+            System.out.println("ARRAY: " + openOrdersIDArray.length);
+            System.out.println("\n");
         }
     }
 

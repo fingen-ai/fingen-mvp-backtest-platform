@@ -140,6 +140,9 @@ public class OEMSTest {
         // ENTRY: Bullish
         if(recCount == 49) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
+
             assertEquals("Mismatch in some OEMS field", "Neutral", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
@@ -155,7 +158,17 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 1.0, actual.openOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", 0.99769, actual.openOrderSLPrice, 0.0);
+
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
             assertNull("Mismatch in some OEMS field", actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
+
             assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
@@ -231,8 +244,8 @@ public class OEMSTest {
         // EXIT: Bullish
         // ENTRY: Bearish
         if(recCount == 443) {
-            System.out.println("HERE !!! " + recCount);
-            System.out.println("HERE !!! " + actual);
+            //System.out.println("HERE !!! " + recCount);
+            //System.out.println("HERE !!! " + actual);
 
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
