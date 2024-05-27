@@ -211,7 +211,27 @@ public class OEMSTest {
         // EXIT: Bearish
         // ENTRY: Bullish
         if(recCount == 407) {
-            assertEquals("Mismatch in some Strategy field", "Bullish", actual.bassoOrderIdea);
+            System.out.println("HERE !!! " + recCount);
+            System.out.println("HERE !!! " + actual);
+
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+            assertEquals("Mismatch in some OEMS field", "Bearish", actual.prevBassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some OEMS field", "LMT", actual.orderType);
+            assertEquals("Mismatch in some OEMS field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.005, actual.currRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currVolRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.23795, actual.orderQtyPerRisk, 0.0);
+            assertEquals("Mismatch in some OEMS field", 75.14277, actual.orderQtyPerVol, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.23795, actual.openOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.23795, actual.currCarryQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.9981, actual.openOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.90664, actual.openOrderSLPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
         // EXIT: Bullish
