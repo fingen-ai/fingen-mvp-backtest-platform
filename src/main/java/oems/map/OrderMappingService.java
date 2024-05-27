@@ -9,6 +9,7 @@ import java.io.IOException;
 public class OrderMappingService {
     private ChronicleMap<String, long[]> nosIDArrayMap;
     public ChronicleMap<Long, OEMSData> nosMap;
+    private ChronicleMap<String, long[]> cosIDArrayMap;
     public ChronicleMap<Long, OEMSData> cosMap;
     public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/";
 
@@ -37,6 +38,14 @@ public class OrderMappingService {
                 .entries(10_000)
                 .createPersistedTo(new File(MAP_DIRECTORY + "nos.dat")); // Specific file for this map
 
+        cosIDArrayMap = ChronicleMap
+                .of(String.class, long[].class)
+                .name("cos-id-array-map")
+                .averageKeySize(10) // Average size of a stock symbol, adjust as necessary
+                .averageValueSize(100) // Estimated average size of an array of ints
+                .entries(50_000)
+                .createPersistedTo(new File(MAP_DIRECTORY + "cosIDArray.dat")); // Specific file for this map
+
         cosMap = ChronicleMap
                 .of(Long.class, OEMSData.class)
                 .name("cos-map")
@@ -54,6 +63,16 @@ public class OrderMappingService {
     }
     public void deleteFromNOSIDArray(String symbol) {
         nosIDArrayMap.remove(symbol);
+    }
+
+    public long[] getFromCOSIDArray(String symbol) {
+        return cosIDArrayMap.get(symbol);
+    }
+    public void addToCOSIDArray(String symbol, long[] orderIds) {
+        cosIDArrayMap.put(symbol, orderIds);
+    }
+    public void deleteFromCOSIDArray(String symbol) {
+        cosIDArrayMap.remove(symbol);
     }
 
     // DTO REC MGT

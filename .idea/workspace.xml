@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oems/map/OrderMappingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,15 +283,7 @@
       <workItem from="1716155609659" duration="53840000" />
       <workItem from="1716498064802" duration="29314000" />
       <workItem from="1716848740906" duration="2000" />
-      <workItem from="1716848751033" duration="3910000" />
-    </task>
-    <task id="LOCAL-00115" summary="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
-      <option name="closed" value="true" />
-      <created>1715713251223</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1715713251224</updated>
+      <workItem from="1716848751033" duration="4546000" />
     </task>
     <task id="LOCAL-00116" summary="INSIGHT - WIP.&#10;Insight needs scenarios tests to ensure signal logic working, given the test DXY file.&#10;&#10;OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
       <option name="closed" value="true" />
@@ -678,7 +669,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716851427345</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1716852721416</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1716852721416</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

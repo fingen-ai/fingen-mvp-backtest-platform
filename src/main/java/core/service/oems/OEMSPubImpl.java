@@ -23,6 +23,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     String prevBassoOrderIdea = "";
     long[] openOrdersIDArray =  new long[0];
     long[] updateOpenOrdersIDArray =  new long[0];
+    long[] closeOrdersIDArray =  new long[0];
     double volRiskPercentAvail = 0.0;
     double riskPercentAvail = 0.0;
 
@@ -52,7 +53,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
 
                     //System.out.println("COA");
-                    placeCOAOrder(oemsData, openOrdersIDArray);
+                    placeCOAOrder(oemsData);
 
                     if(coaOEMSData.closeOrderState.equals("Close Orders All")) {
                         //System.out.println("NOS INIT via COA");
@@ -225,7 +226,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         System.out.println("\n");
     }
 
-    private void placeCOAOrder(OEMSData oemsData, long[] openOrdersIDArray) {
+    private void placeCOAOrder(OEMSData oemsData) {
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
@@ -252,6 +253,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             orderMS.addUpdateCOS(coaOEMSData.openOrderId, coaOEMSData);
 
+            closeOrdersIDArray = ArrayUtils.add(openOrdersIDArray, coaOEMSData.closeOrderId);
+
             // assume success
             coaOEMSData.orderConfirmationState = "COA Complete Success - Confirmed";
 
@@ -261,7 +264,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             System.out.println("COA: " + coaOEMSData);
         }
 
-        System.out.println("ARRAY: " + openOrdersIDArray.length);
+        orderMS.addToCOSIDArray(coaOEMSData.symbol, closeOrdersIDArray);
+
+        closeOrdersIDArray = null;
+        openOrdersIDArray = null;
+
         System.out.println("\n");
     }
 
