@@ -238,7 +238,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             coaOEMSData.closeOrderPrice = oemsData.close;
             coaOEMSData.closeOrderExpiry = "GTC";
             coaOEMSData.closedOrderType ="LMT";
-            coaOEMSData.closeOrderQty = coaOEMSData.currCarryQty;
+            coaOEMSData.closeOrderQty = coaOEMSData.openOrderQty;
             coaOEMSData.closeOrderState = "Close Orders All";
 
             if(coaOEMSData.bassoOrderIdea.equals("Bullish")) {
@@ -259,9 +259,10 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             getCOSAndCOACompleteConfirmation(coaOEMSData, "COA");
 
             System.out.println("COA: " + coaOEMSData);
-            System.out.println("ARRAY: " + openOrdersIDArray.length);
-            System.out.println("\n");
         }
+
+        System.out.println("ARRAY: " + openOrdersIDArray.length);
+        System.out.println("\n");
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {

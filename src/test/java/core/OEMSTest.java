@@ -8,6 +8,7 @@ import net.openhft.chronicle.queue.ExcerptTailer;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueue;
 import net.openhft.chronicle.queue.impl.single.SingleChronicleQueueBuilder;
 import net.openhft.chronicle.wire.DocumentContext;
+import oems.map.OrderMappingService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OEMSTest {
+
+    OrderMappingService orderMS = new OrderMappingService();
 
     int recCount = 0;
 
@@ -159,7 +162,7 @@ public class OEMSTest {
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
             assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
             assertNull("Mismatch in some OEMS field", actual.closeOrderState);
-            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0, actual.closeOrderQty, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
@@ -171,9 +174,7 @@ public class OEMSTest {
         // ENTRY: Bearish
         if(recCount == 405) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
-
             assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
-
             assertEquals("Mismatch in some OEMS field", "Neutral", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Sell", actual.orderSide);
@@ -236,9 +237,6 @@ public class OEMSTest {
         // EXIT: Bullish
         // ENTRY: Bearish
         if(recCount == 443) {
-            //System.out.println("HERE !!! " + recCount);
-            //System.out.println("HERE !!! " + actual);
-
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
