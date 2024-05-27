@@ -237,6 +237,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             coaOEMSData.closeOrderTimestamp = System.nanoTime();
             coaOEMSData.closeOrderPrice = oemsData.close;
             coaOEMSData.closeOrderExpiry = "GTC";
+            coaOEMSData.closedOrderType ="LMT";
+            coaOEMSData.closeOrderQty = coaOEMSData.currCarryQty;
             coaOEMSData.closeOrderState = "Close Orders All";
 
             if(coaOEMSData.bassoOrderIdea.equals("Bullish")) {

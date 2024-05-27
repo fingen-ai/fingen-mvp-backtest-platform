@@ -104,45 +104,10 @@ public class OEMSTest {
         assertEquals("Mismatch in some Insight field", expected.previousClose, actual.previousClose, 0.0);
         assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.0);
 
-        // BDD validate
-        /*
-        //public double currRiskPercent;
-        //public double currVolRiskPercent;
-        //public double orderQtyPerRisk;
-        //public double orderQtyPerVol;
-        //public String orderType;
-        //public String orderSide;
-
-    public double openOrderQty;
-    public String openOrderSide;
-    public double openOrderPrice;
-
-    // oems q real-time data
-    public long openOrderId;
-    public long openOrderTimestamp;
-    public String openOrderExpiry;
-    public String openOrderState;
-    public double currCarryQty;
-
-    public double openOrderSLPrice;
-    public String prevBassoOrderIdea;
-
-    public long closeOrderId;
-    public long closeOrderTimestamp;
-    public String closeOrderExpiry;
-    public String closeOrderState;
-    public double closeOrderQty;
-    public String closeOrderSide;
-    public double closeOrderPrice;
-    public String orderConfirmationState;
-         */
-
         // ENTRY: Bullish
         if(recCount == 49) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
-
             assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
-
             assertEquals("Mismatch in some OEMS field", "Neutral", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
@@ -158,7 +123,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 1.0, actual.openOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", 0.99769, actual.openOrderSLPrice, 0.0);
-
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
             assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
@@ -168,7 +132,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-
             assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
@@ -176,6 +139,7 @@ public class OEMSTest {
         // ENTRY: Neutral
         if(recCount == 404) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Neutral", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", null, actual.orderSide);
@@ -191,7 +155,15 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", null, actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.0, actual.openOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", 1.0089, actual.openOrderSLPrice, 0.0);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
             assertNull("Mismatch in some OEMS field", actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             assertNull("Mismatch in some OEMS field", actual.orderConfirmationState);
         }
 
@@ -199,6 +171,9 @@ public class OEMSTest {
         // ENTRY: Bearish
         if(recCount == 405) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
+
             assertEquals("Mismatch in some OEMS field", "Neutral", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Sell", actual.orderSide);
@@ -214,7 +189,15 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.9911, actual.openOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", 1.02726, actual.openOrderSLPrice, 0.0);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
@@ -222,6 +205,7 @@ public class OEMSTest {
         // ENTRY: Bullish
         if(recCount == 407) {
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
@@ -237,7 +221,15 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.9981, actual.openOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", 0.90664, actual.openOrderSLPrice, 0.0);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
@@ -248,6 +240,7 @@ public class OEMSTest {
             //System.out.println("HERE !!! " + actual);
 
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", "Sell", actual.orderSide);
@@ -263,7 +256,15 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.99995, actual.openOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", 1.07047, actual.openOrderSLPrice, 0.0);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             assertEquals("Mismatch in some OEMS field", "Init NOS Complete Success - Confirmed", actual.orderConfirmationState);
         }
 
