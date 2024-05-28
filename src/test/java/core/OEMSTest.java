@@ -33,8 +33,9 @@ public class OEMSTest {
     public void setup() throws IOException {
         // Cleanup maps and queues
         deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/nosIDArray.dat"));
+        deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/coaIDArray.dat"));
         deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/nos.dat"));
-        deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/cos.dat"));
+        deleteFileOrDirectory(Paths.get(System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/coa.dat"));
 
         // Initialize Orchestrator with test configurations, if needed
         Orchestrator.init();
