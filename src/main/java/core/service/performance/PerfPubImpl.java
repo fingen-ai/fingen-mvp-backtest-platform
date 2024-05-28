@@ -10,6 +10,13 @@ import java.io.IOException;
 public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
     OrderMappingService orderMS = new OrderMappingService();
+
+    OEMSData closedOEMS = new OEMSData();
+    OEMSData openOEMS = new OEMSData();
+
+    long[] coaIDArray = new long[0];
+    long[] nosIDArray = new long[0];
+
     Performance perf = new PerformanceImpl();
 
     private PerfPub output;
@@ -24,7 +31,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
-        //getPerformance(perfData);
+        getPerformance(perfData);
 
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
@@ -33,8 +40,28 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     }
 
     private void getPerformance(PerfData perfData) {
-        //OEMSData closedOEMS = orderMS.getCOS(perfData.openOrderId);
-        //System.out.println("CLOSED OEMS: " + closedOEMS);
-        //System.out.println("\n");
+
+        coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
+        if(coaIDArray != null && coaIDArray.length > 0) {
+
+            for (int i = 0; i < coaIDArray.length; i++) {
+                closedOEMS = orderMS.getCOA(coaIDArray[i]);
+                System.out.println("CLOSED OEMS: " + closedOEMS.closeOrderId);
+            }
+        }
+
+        nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
+        if(nosIDArray != null && nosIDArray.length > 0) {
+
+            //System.out.println("OPEN ARRAY: " + nosIDArray.length);
+            for(int i = 0; i < nosIDArray.length; i++) {
+                openOEMS = orderMS.getNOS(nosIDArray[i]);
+                if(openOEMS != null) {
+                    System.out.println("OPEN OEMS: " + openOEMS.openOrderId);
+                }
+            }
+        }
+
+        System.out.println("\n");
     }
 }

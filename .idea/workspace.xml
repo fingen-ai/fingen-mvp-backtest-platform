@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +147,7 @@
       <recent name="oems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OEMSTest">
+  <component name="RunManager" selected="JUnit.PerformanceTest">
     <configuration name="InsightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
@@ -222,8 +225,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.PerformanceTest" />
+        <item itemvalue="JUnit.OEMSTest" />
         <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="JUnit.StrategyTest" />
         <item itemvalue="JUnit.OrchestratorTest" />
@@ -283,15 +286,7 @@
       <workItem from="1716155609659" duration="53840000" />
       <workItem from="1716498064802" duration="29314000" />
       <workItem from="1716848740906" duration="2000" />
-      <workItem from="1716848751033" duration="6503000" />
-    </task>
-    <task id="LOCAL-00119" summary="OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
-      <option name="closed" value="true" />
-      <created>1715832804583</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1715832804583</updated>
+      <workItem from="1716848751033" duration="8346000" />
     </task>
     <task id="LOCAL-00120" summary="OEMS - WIP.&#10;OEMS needs scenarios tests to ensure signal logic working, given the test DXY file.">
       <option name="closed" value="true" />
@@ -677,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716855097642</updated>
     </task>
-    <option name="localTasksCounter" value="168" />
+    <task id="LOCAL-00168" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1716855302256</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1716855302256</updated>
+    </task>
+    <option name="localTasksCounter" value="169" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

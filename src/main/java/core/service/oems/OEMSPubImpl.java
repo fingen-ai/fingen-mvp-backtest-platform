@@ -84,6 +84,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
+        /*
         System.out.println("rec count:" + recCount);
         System.out.println("open order ID: " + oemsData.openOrderId);
         System.out.println("prev Basso Idea: " + oemsData.prevBassoOrderIdea);
@@ -104,6 +105,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         System.out.println("close order state: " + oemsData.closeOrderState);
         System.out.println("order confirm state: " + oemsData.orderConfirmationState);
         System.out.println("\n");
+         */
 
         recCount++;
 
@@ -223,16 +225,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             // but verify
             getCOACompleteConfirmation(coaOEMSData);
-
-            System.out.println("COA: " + coaOEMSData);
         }
 
         orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
 
         closeOrdersIDArray = null;
         openOrdersIDArray = null;
-
-        System.out.println("\n");
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
