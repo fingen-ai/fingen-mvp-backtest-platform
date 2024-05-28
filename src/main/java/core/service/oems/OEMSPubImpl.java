@@ -51,38 +51,31 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
                 // coa, trend reversal
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
-
-                    //System.out.println("COA");
                     placeCOAOrder(oemsData);
 
                     if(coaOEMSData.closeOrderState.equals("Close Orders All")) {
-                        //System.out.println("NOS INIT via COA");
                         placeNOSInitOrder(oemsData);
                     }
 
-                // sl sell cos or nos ongoing, still trending
+                // coa on bullish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
-                        System.out.println("COS BUY");
-                        placeCOSOrder(oemsData);
+                        placeCOAOrder(oemsData);
                     } else {
-                        //System.out.println("NOS ONGOING");
                         placeNOSOngoingOrder(oemsData);
                     }
 
-                    // sl buy cos or nos ongoing, still trending
+                // coa on bearish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
-                        System.out.println("COS SELL");
-                        placeCOSOrder(oemsData);
+                        placeCOAOrder(oemsData);
                     }else {
-                        //System.out.println("NOS ONGOING");
                         placeNOSOngoingOrder(oemsData);
                     }
                 }
 
             } else {
-                //System.out.println("NOS INIT");
+
                 placeNOSInitOrder(oemsData);
             }
         }
@@ -197,35 +190,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void placeCOSOrder(OEMSData oemsData) {
-
-        // delete the ID from the ID array
-        for(int i=0; i < openOrdersIDArray.length; i++) {
-
-            if(cosOEMSData.openOrderId == openOrdersIDArray[i]) {
-
-                cosOEMSData = orderMS.getNOS(cosOEMSData.openOrderId);
-
-                cosOEMSData.closeOrderId = cosOEMSData.openOrderId;
-                cosOEMSData.closeOrderTimestamp = System.nanoTime();
-                cosOEMSData.closeOrderPrice = oemsData.close;
-                cosOEMSData.closeOrderExpiry = "GTC";
-                cosOEMSData.closeOrderState = "Close Order Single";
-
-                orderMS.deleteNOS(cosOEMSData);
-                updateOpenOrdersIDArray = ArrayUtils.remove(openOrdersIDArray, i);
-
-                orderMS.addUpdateCOS(cosOEMSData.openOrderId, cosOEMSData);
-                orderMS.addToNOSIDArray(cosOEMSData.symbol, updateOpenOrdersIDArray);
-            }
-        }
-
-        getCOSAndCOACompleteConfirmation(cosOEMSData, "COS");
-
-        System.out.println("COS: " + cosOEMSData);
-        System.out.println("\n");
-    }
-
     private void placeCOAOrder(OEMSData oemsData) {
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
@@ -259,7 +223,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             coaOEMSData.orderConfirmationState = "COA Complete Success - Confirmed";
 
             // but verify
-            getCOSAndCOACompleteConfirmation(coaOEMSData, "COA");
+            getCOSAndCOACompleteConfirmation(coaOEMSData);
 
             System.out.println("COA: " + coaOEMSData);
         }
@@ -373,20 +337,21 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void getCOSAndCOACompleteConfirmation(OEMSData oemsData, String cosOrCOA) {
-        OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
+    private void getCOSAndCOACompleteConfirmation(OEMSData oemsData) {
+        // cos recs not present in nos array or map?
+        OEMSData confirmNOSOEMS = orderMS.getNOS(oemsData.openOrderId);
         long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
 
-        if(cosOrCOA.equals("COS")) {
-            if (confirmOEMS != null && confirmNOSArray != null) {
-                oemsData.orderConfirmationState = "COS Complete Failure - Confirmed";
-            }
-
-        } else {
-            if (confirmOEMS != null && confirmNOSArray != null) {
-                oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
-            }
+        if (confirmNOSOEMS != null && confirmNOSArray != null) {
+            oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
         }
 
+        // cos recs are present in cos array and map?
+        OEMSData confirmCOSOEMS = orderMS.getCOS(oemsData.openOrderId);
+        long[] confirmCOSArray = orderMS.getFromCOSIDArray(oemsData.symbol);
+
+        if (confirmCOSOEMS == null && confirmCOSArray == null) {
+            oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
+        }
     }
 }
