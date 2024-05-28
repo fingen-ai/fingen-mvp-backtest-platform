@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
+    Performance perf = new PerformanceImpl();
     OrderMappingService orderMS = new OrderMappingService();
 
     OEMSData closedOEMS = new OEMSData();
@@ -17,7 +18,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     long[] coaIDArray = new long[0];
     long[] nosIDArray = new long[0];
 
-    Performance perf = new PerformanceImpl();
+    Performance perfKPI = new PerformanceImpl();
 
     private PerfPub output;
 
@@ -31,8 +32,12 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
+        getClosedPosition(perfData);
         getPerformance(perfData);
-        getPosition(perfData);
+        getOpenPosition(perfData);
+        getRisk(perfData);
+
+        System.out.println("\n");
 
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
@@ -40,7 +45,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         output.simpleCall(perfData);
     }
 
-    private void getPerformance(PerfData perfData) {
+    private void getClosedPosition(PerfData perfData) {
         coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
         if (coaIDArray != null && coaIDArray.length > 0) {
             for (int i = 0; i < coaIDArray.length; i++) {
@@ -52,7 +57,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         }
     }
 
-    private void getPosition(PerfData perfData) {
+    private void getOpenPosition(PerfData perfData) {
         nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
         if(nosIDArray != null && nosIDArray.length > 0) {
             for(int i = 0; i < nosIDArray.length; i++) {
@@ -62,5 +67,16 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 }
             }
         }
+    }
+
+    private void getPerformance(PerfData perfData) {
+        perfData.tradeCount = perfKPI.getTradeCount();
+        if(perfKPI.getTradeCount() > 0) {
+            System.out.println("TRADE COUNT: " + perfData.tradeCount);
+        }
+    }
+
+    private void getRisk(PerfData perfData) {
+        //
     }
 }

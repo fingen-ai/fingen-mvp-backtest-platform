@@ -14,5 +14,5 @@ public interface Performance {
     double getReliabilityPercentage();
     double getTotalProfit();
     double getProfitFactor();
-    int getTradeCount();
+    long getTradeCount();
 }

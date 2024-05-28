@@ -4,7 +4,7 @@ import performance.metrics.FinancialMetrics;
 
 public class PerformanceImpl implements Performance {
 
-    int tradeCount = 0;
+    long tradeCount = 0;
     double initialInvestment = 10000000;
     double finalValue = 11000000;
     double numberOfYears = 5.5415;
@@ -86,7 +86,7 @@ public class PerformanceImpl implements Performance {
         profitFactor = finMet.calculateProfitFactor(profits, losses);
         return profitFactor;
     }
-    public int getTradeCount() {
+    public long getTradeCount() {
         return tradeCount;
     }
 
