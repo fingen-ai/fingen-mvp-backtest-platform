@@ -13,7 +13,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     int recCount = 0;
 
     OEMSData nosOEMSData = new OEMSData();
-    OEMSData cosOEMSData = new OEMSData();
     OEMSData coaOEMSData = new OEMSData();
     AccountData accountData = new AccountData();
 
@@ -215,7 +214,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             orderMS.deleteNOS(coaOEMSData);
             orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
 
-            orderMS.addUpdateCOS(coaOEMSData.openOrderId, coaOEMSData);
+            orderMS.addUpdateCOA(coaOEMSData.openOrderId, coaOEMSData);
 
             closeOrdersIDArray = ArrayUtils.add(openOrdersIDArray, coaOEMSData.closeOrderId);
 
@@ -223,12 +222,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             coaOEMSData.orderConfirmationState = "COA Complete Success - Confirmed";
 
             // but verify
-            getCOSAndCOACompleteConfirmation(coaOEMSData);
+            getCOACompleteConfirmation(coaOEMSData);
 
             System.out.println("COA: " + coaOEMSData);
         }
 
-        orderMS.addToCOSIDArray(coaOEMSData.symbol, closeOrdersIDArray);
+        orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
 
         closeOrdersIDArray = null;
         openOrdersIDArray = null;
@@ -337,8 +336,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void getCOSAndCOACompleteConfirmation(OEMSData oemsData) {
-        // cos recs not present in nos array or map?
+    private void getCOACompleteConfirmation(OEMSData oemsData) {
+        // coa recs not present in nos array or map?
         OEMSData confirmNOSOEMS = orderMS.getNOS(oemsData.openOrderId);
         long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
 
@@ -346,11 +345,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
         }
 
-        // cos recs are present in cos array and map?
-        OEMSData confirmCOSOEMS = orderMS.getCOS(oemsData.openOrderId);
-        long[] confirmCOSArray = orderMS.getFromCOSIDArray(oemsData.symbol);
+        // coa recs are present in coa array and map?
+        OEMSData confirmCOAOEMS = orderMS.getCOA(oemsData.openOrderId);
+        long[] confirmCOAArray = orderMS.getFromCOAIDArray(oemsData.symbol);
 
-        if (confirmCOSOEMS == null && confirmCOSArray == null) {
+        if (confirmCOAOEMS == null && confirmCOAArray == null) {
             oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
         }
     }

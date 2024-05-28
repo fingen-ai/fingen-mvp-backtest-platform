@@ -9,7 +9,7 @@ import java.io.IOException;
 public class OrderMappingService {
     private ChronicleMap<String, long[]> nosIDArrayMap;
     public ChronicleMap<Long, OEMSData> nosMap;
-    private ChronicleMap<String, long[]> cosIDArrayMap;
+    private ChronicleMap<String, long[]> coaIDArrayMap;
     public ChronicleMap<Long, OEMSData> cosMap;
     public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/";
 
@@ -38,20 +38,20 @@ public class OrderMappingService {
                 .entries(10_000)
                 .createPersistedTo(new File(MAP_DIRECTORY + "nos.dat")); // Specific file for this map
 
-        cosIDArrayMap = ChronicleMap
+        coaIDArrayMap = ChronicleMap
                 .of(String.class, long[].class)
-                .name("cos-id-array-map")
+                .name("coa-id-array-map")
                 .averageKeySize(10) // Average size of a stock symbol, adjust as necessary
                 .averageValueSize(100) // Estimated average size of an array of ints
                 .entries(50_000)
-                .createPersistedTo(new File(MAP_DIRECTORY + "cosIDArray.dat")); // Specific file for this map
+                .createPersistedTo(new File(MAP_DIRECTORY + "coaIDArray.dat")); // Specific file for this map
 
         cosMap = ChronicleMap
                 .of(Long.class, OEMSData.class)
-                .name("cos-map")
+                .name("coa-map")
                 .averageValueSize(256) // Estimated average serialized size of OEMSData
                 .entries(10_000)
-                .createPersistedTo(new File(MAP_DIRECTORY + "cos.dat")); // Specific file for this map
+                .createPersistedTo(new File(MAP_DIRECTORY + "coa.dat")); // Specific file for this map
     }
 
     // ARRAYS REC MGT
@@ -65,14 +65,14 @@ public class OrderMappingService {
         nosIDArrayMap.remove(symbol);
     }
 
-    public long[] getFromCOSIDArray(String symbol) {
-        return cosIDArrayMap.get(symbol);
+    public long[] getFromCOAIDArray(String symbol) {
+        return coaIDArrayMap.get(symbol);
     }
-    public void addToCOSIDArray(String symbol, long[] orderIds) {
-        cosIDArrayMap.put(symbol, orderIds);
+    public void addToCOAIDArray(String symbol, long[] orderIds) {
+        coaIDArrayMap.put(symbol, orderIds);
     }
-    public void deleteFromCOSIDArray(String symbol) {
-        cosIDArrayMap.remove(symbol);
+    public void deleteFromCOAIDArray(String symbol) {
+        coaIDArrayMap.remove(symbol);
     }
 
     // DTO REC MGT
@@ -88,15 +88,15 @@ public class OrderMappingService {
         nosMap.remove(newData.openOrderId);
     }
 
-    public void addUpdateCOS(long orderId, OEMSData newData) {
+    public void addUpdateCOA(long orderId, OEMSData newData) {
         cosMap.put(orderId, newData);
     }
 
-    public OEMSData getCOS(long orderId) {
+    public OEMSData getCOA(long orderId) {
         return cosMap.get(orderId);
     }
 
-    public void deleteCOS(OEMSData newData) {
+    public void deleteCOA(OEMSData newData) {
         cosMap.remove(newData.openOrderId);
     }
 
