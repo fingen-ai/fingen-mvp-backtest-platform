@@ -32,6 +32,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         perfData.svcStartTs = System.nanoTime();
 
         getPerformance(perfData);
+        getPosition(perfData);
 
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
@@ -40,20 +41,20 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     }
 
     private void getPerformance(PerfData perfData) {
-
         coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
-        if(coaIDArray != null && coaIDArray.length > 0) {
-
+        if (coaIDArray != null && coaIDArray.length > 0) {
             for (int i = 0; i < coaIDArray.length; i++) {
                 closedOEMS = orderMS.getCOA(coaIDArray[i]);
-                System.out.println("CLOSED OEMS: " + closedOEMS.closeOrderId);
+                if(closedOEMS != null) {
+                    System.out.println("CLOSED OEMS: " + closedOEMS.closeOrderId);
+                }
             }
         }
+    }
 
+    private void getPosition(PerfData perfData) {
         nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
         if(nosIDArray != null && nosIDArray.length > 0) {
-
-            //System.out.println("OPEN ARRAY: " + nosIDArray.length);
             for(int i = 0; i < nosIDArray.length; i++) {
                 openOEMS = orderMS.getNOS(nosIDArray[i]);
                 if(openOEMS != null) {
@@ -61,7 +62,5 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 }
             }
         }
-
-        System.out.println("\n");
     }
 }
