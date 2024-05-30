@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/Performance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +145,7 @@
       <recent name="oems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PerformanceTest">
+  <component name="RunManager" selected="JUnit.OEMSTest">
     <configuration name="InsightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="fingen-mvp-platform" />
       <extension name="coverage">
@@ -225,8 +223,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.OEMSTest" />
+        <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.InsightTest" />
         <item itemvalue="JUnit.StrategyTest" />
         <item itemvalue="JUnit.OrchestratorTest" />
@@ -286,15 +284,7 @@
       <workItem from="1716155609659" duration="53840000" />
       <workItem from="1716498064802" duration="29314000" />
       <workItem from="1716848740906" duration="2000" />
-      <workItem from="1716848751033" duration="9622000" />
-    </task>
-    <task id="LOCAL-00122" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
-      <option name="closed" value="true" />
-      <created>1715900433035</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1715900433036</updated>
+      <workItem from="1716848751033" duration="26969000" />
     </task>
     <task id="LOCAL-00123" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
       <option name="closed" value="true" />
@@ -680,7 +670,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716859338929</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1716859913751</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1716859913751</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

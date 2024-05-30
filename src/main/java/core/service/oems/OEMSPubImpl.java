@@ -1,6 +1,7 @@
 package core.service.oems;
 
 import account.AccountData;
+import core.service.performance.PerfData;
 import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
 import risk.Risk;
@@ -111,7 +112,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         openOrdersIDArray = null;
         updateOpenOrdersIDArray = null;
-        nosOEMSData = null;
+        closeOrdersIDArray =  null;
+        volRiskPercentAvail = 0.0;
+        riskPercentAvail = 0.0;
 
         output.simpleCall(oemsData);
     }
@@ -130,7 +133,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
-        getInitNOSCompleteConfirmation(oemsData);
+        getOpenPositionConfirmation(oemsData);
     }
 
     private void placeNOSOngoingOrder(OEMSData oemsData) {
@@ -167,7 +170,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
-                getOngoingNOSCompleteConfirmation(oemsData);
+                getOpenPositionConfirmation(oemsData);
 
             } else {
                 oemsData.openOrderExpiry = "NA";
@@ -228,9 +231,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
-
-        closeOrdersIDArray = null;
-        openOrdersIDArray = null;
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
@@ -314,41 +314,70 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         return Math.round(value * scale) / scale;
     }
 
-    private void getInitNOSCompleteConfirmation(OEMSData oemsData) {
-        OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
-        long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
-        if(confirmOEMS != null && confirmNOSArray != null) {
-            oemsData.orderConfirmationState = "Init NOS Complete Success - Confirmed";
-        } else {
-            oemsData.orderConfirmationState = "Init NOS Complete Failure - Confirmed";
-        }
-    }
+    private void getOpenPositionConfirmation(OEMSData oemsData) {
+        long[] nosIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        long prevOpenId = 0;
+        OEMSData openOEMS = new OEMSData();
+        OEMSData closeOEMS = new OEMSData();
 
-    private void getOngoingNOSCompleteConfirmation(OEMSData oemsData) {
-        OEMSData confirmOEMS = orderMS.getNOS(oemsData.openOrderId);
-        long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
-        if(confirmOEMS != null && confirmNOSArray != null) {
-            oemsData.orderConfirmationState = "Ongoing NOS Complete Success - Confirmed";
+        if(nosIDArray != null) {
+
+            for(int i = 0; i < nosIDArray.length; i++) {
+
+                // are any nos in coa map?
+                closeOEMS = orderMS.getCOA(nosIDArray[i]);
+                if(closeOEMS != null) {
+                    System.out.println("NOS In COA Check - Failure Confirmed - Open ID: " + closeOEMS.openOrderId);
+                    oemsData.orderConfirmationState = "NOS In COA Check - Failure Confirmed - Open ID: " + closeOEMS.openOrderId;
+                }
+
+                // are all nos in array accounted for in nos map
+                openOEMS = orderMS.getNOS(nosIDArray[i]);
+                if(openOEMS != null) {
+                    System.out.println("NOS Check - Success Confirmed");
+                    oemsData.orderConfirmationState = "NOS Check - Success Confirmed";
+                } else {
+                    System.out.println("NOS Check - Failure Confirmed - Missing - " + nosIDArray[i]);
+                    oemsData.orderConfirmationState = "NOS Check - Failure Confirmed - Missing - " + nosIDArray[i];
+                }
+            }
+
         } else {
-            oemsData.orderConfirmationState = "Ongoing NOS Complete Failure - Confirmed";
+            System.out.println("NOS Check - Failure Confirmed - NULL Array");
+            oemsData.orderConfirmationState = "NOS Check - Failure Confirmed - NULL Array";
         }
     }
 
     private void getCOACompleteConfirmation(OEMSData oemsData) {
-        // coa recs not present in nos array or map?
-        OEMSData confirmNOSOEMS = orderMS.getNOS(oemsData.openOrderId);
-        long[] confirmNOSArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        long[] coaIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
+        long prevCloseId = 0;
+        OEMSData openOEMS = new OEMSData();
+        OEMSData closeOEMS = new OEMSData();
 
-        if (confirmNOSOEMS != null && confirmNOSArray != null) {
-            oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
-        }
+        if(coaIDArray != null) {
+            for(int i = 0; i < coaIDArray.length; i++) {
 
-        // coa recs are present in coa array and map?
-        OEMSData confirmCOAOEMS = orderMS.getCOA(oemsData.openOrderId);
-        long[] confirmCOAArray = orderMS.getFromCOAIDArray(oemsData.symbol);
+                // are any coa in nos map?
+                openOEMS = orderMS.getNOS(coaIDArray[i]);
+                if(openOEMS != null) {
+                    //System.out.println("COA In NOS Check - Failure Confirmed - Open ID: " + openOEMS.closeOrderId);
+                    oemsData.orderConfirmationState = "COA In NOS Check - Failure Confirmed - Open ID: " + openOEMS.closeOrderId;
+                }
 
-        if (confirmCOAOEMS == null && confirmCOAArray == null) {
-            oemsData.orderConfirmationState = "COA Complete Failure - Confirmed";
+                // are all coa in array accounted for in coa map
+                closeOEMS = orderMS.getCOA(coaIDArray[i]);
+                if(closeOEMS != null) {
+                    //System.out.println("COA Check - Success Confirmed");
+                    oemsData.orderConfirmationState = "COA Check - Success Confirmed";
+                } else {
+                    //System.out.println("COA Check - Failure Confirmed - Missing - " + coaIDArray[i]);
+                    oemsData.orderConfirmationState = "COA Check - Failure Confirmed - Missing - " + coaIDArray[i];
+                }
+            }
+
+        } else {
+            //System.out.println("COA Check - Failure Confirmed - NULL Array");
+            oemsData.orderConfirmationState = "COA Check - Failure Confirmed - NULL Array";
         }
     }
 }
