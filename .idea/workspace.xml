@@ -285,15 +285,7 @@
       <workItem from="1716155609659" duration="53840000" />
       <workItem from="1716498064802" duration="29314000" />
       <workItem from="1716848740906" duration="2000" />
-      <workItem from="1716848751033" duration="32054000" />
-    </task>
-    <task id="LOCAL-00124" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
-      <option name="closed" value="true" />
-      <created>1715968698600</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1715968698600</updated>
+      <workItem from="1716848751033" duration="41724000" />
     </task>
     <task id="LOCAL-00125" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
       <option name="closed" value="true" />
@@ -679,7 +671,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717027758892</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717033118833</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1717033118833</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

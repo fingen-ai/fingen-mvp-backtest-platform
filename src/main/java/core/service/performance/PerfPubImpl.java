@@ -17,6 +17,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
     long[] coaIDArray = new long[0];
     long[] nosIDArray = new long[0];
+    long recCount = 0;
 
     private PerfPub output;
 
@@ -31,11 +32,13 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         perfData.svcStartTs = System.nanoTime();
 
 
-        getOpenPosition(perfData);
-        getClosedPosition(perfData);
-        getNOSCOAMatchTest(perfData);
-        getRisk(perfData);
-        getPerformance(perfData);
+        getNosPosition(perfData);
+        getCoaPosition(perfData);
+        //getNosCoaMatchTest(perfData);
+        //getRisk(perfData);
+        //getPerformance(perfData);
+
+        System.out.println("\n");
 
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
@@ -45,10 +48,12 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         openOEMS = null;
         closeOEMS = null;
 
+        recCount++;
+
         output.simpleCall(perfData);
     }
 
-    private void getOpenPosition(PerfData perfData) {
+    private void getNosPosition(PerfData perfData) {
         perfData.tradeCount = 0;
         nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
         if(nosIDArray != null && nosIDArray.length > 0) {
@@ -56,13 +61,15 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 openOEMS = orderMS.getNOS(nosIDArray[i]);
                 if(openOEMS != null) {
                     perfData.tradeCount++;
-                    //System.out.println("OPEN OEMS: " + openOEMS.openOrderId + " - " + perfData.tradeCount);
+                    if(recCount == 60) {
+                        System.out.println("OPEN OEMS: " + openOEMS.openOrderId + " - " + perfData.tradeCount);
+                    }
                 }
             }
         }
     }
 
-    private void getClosedPosition(PerfData perfData) {
+    private void getCoaPosition(PerfData perfData) {
         perfData.tradeCount = 0;
         coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
         if (coaIDArray != null && coaIDArray.length > 0) {
@@ -70,13 +77,15 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 closeOEMS = orderMS.getCOA(coaIDArray[i]);
                 if(closeOEMS != null) {
                     perfData.tradeCount++;
-                    //System.out.println("CLOSED OEMS: " + closeOEMS.closeOrderId + " - " + perfData.tradeCount);
+                    if(recCount == 60) {
+                        System.out.println("CLOSED OEMS: " + closeOEMS.closeOrderId + " - " + perfData.tradeCount);
+                    }
                 }
             }
         }
     }
 
-    private void getNOSCOAMatchTest(PerfData perfData) {
+    private void getNosCoaMatchTest(PerfData perfData) {
         nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
         coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
 

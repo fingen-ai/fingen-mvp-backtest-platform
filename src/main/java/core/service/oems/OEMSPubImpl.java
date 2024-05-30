@@ -1,7 +1,6 @@
 package core.service.oems;
 
 import account.AccountData;
-import core.service.performance.PerfData;
 import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
 import risk.Risk;
@@ -52,32 +51,32 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
                 // coa, trend reversal
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
-                    placeCOAOrder(oemsData);
+                    placeCoaOrder(oemsData);
 
                     if(coaOEMSData.closeOrderState.equals("Close Orders All")) {
-                        placeNOSInitOrder(oemsData);
+                        placeNosInitOrder(oemsData);
                     }
 
                 // coa on bullish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Buy")) {
                     if (oemsData.close < oemsData.openOrderSLPrice) {
-                        placeCOAOrder(oemsData);
+                        placeCoaOrder(oemsData);
                     } else {
-                        placeNOSOngoingOrder(oemsData);
+                        placeNosOngoingOrder(oemsData);
                     }
 
                 // coa on bearish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close > oemsData.openOrderSLPrice) {
-                        placeCOAOrder(oemsData);
+                        placeCoaOrder(oemsData);
                     }else {
-                        placeNOSOngoingOrder(oemsData);
+                        placeNosOngoingOrder(oemsData);
                     }
                 }
 
             } else {
 
-                placeNOSInitOrder(oemsData);
+                placeNosInitOrder(oemsData);
             }
         }
 
@@ -86,12 +85,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
-        /*
         System.out.println("rec count:" + recCount);
         System.out.println("open order ID: " + oemsData.openOrderId);
         System.out.println("prev Basso Idea: " + oemsData.prevBassoOrderIdea);
         System.out.println("basso Idea: " + oemsData.bassoOrderIdea);
-
+        System.out.println("\n");
+        /*
         System.out.println("open order side: " + oemsData.openOrderSide);
         System.out.println("open order qty: " + oemsData.openOrderQty);
         System.out.println("curr carry qty: " + oemsData.currCarryQty);
@@ -120,7 +119,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         output.simpleCall(oemsData);
     }
 
-    private void placeNOSInitOrder(OEMSData oemsData) {
+    private void placeNosInitOrder(OEMSData oemsData) {
 
         getInitCurrRiskVolOrderQty(oemsData);
 
@@ -137,7 +136,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         getOpenPositionConfirmation(oemsData);
     }
 
-    private void placeNOSOngoingOrder(OEMSData oemsData) {
+    private void placeNosOngoingOrder(OEMSData oemsData) {
 
         getOngoingCurrRiskVolOrderQty(oemsData);
 
@@ -195,7 +194,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void placeCOAOrder(OEMSData oemsData) {
+    private void placeCoaOrder(OEMSData oemsData) {
 
         closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
 
