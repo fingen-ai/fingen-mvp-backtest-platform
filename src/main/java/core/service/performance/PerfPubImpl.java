@@ -33,13 +33,12 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
-        oemsRecCount++;
-
         getNosPosition(perfData);
         getCoaPosition(perfData);
-        //getNosCoaMatchTest(perfData);
-        //getRisk(perfData);
-        //getPerformance(perfData);
+        getRisk(perfData);
+        getPerformance(perfData);
+
+        oemsRecCount++;
 
         System.out.println("\n");
 
@@ -51,8 +50,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         openOEMS = null;
         closeOEMS = null;
 
-        openRecCount = 0;
-        closeRecCount = 0;
+        //openRecCount = 0;
+        //closeRecCount = 0;
 
         output.simpleCall(perfData);
     }
@@ -63,13 +62,11 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         if(nosIDArray != null) {
 
             for(int i = 0; i < nosIDArray.length; i++) {
-
                 openOEMS = orderMS.getNOS(nosIDArray[i]);
                 if(openOEMS != null) {
 
-                    openRecCount++;
                     if(oemsRecCount <=407) {
-                        System.out.println("OPEN OEMS: " + nosIDArray[i] + " - " + openRecCount);
+                        //System.out.println("OPEN OEMS: " + nosIDArray[i] + " - " + openRecCount);
                     }
                 }
             }
@@ -82,13 +79,11 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         if (coaIDArray != null) {
 
             for (int i = 0; i < coaIDArray.length; i++) {
-
                 closeOEMS = orderMS.getCOA(coaIDArray[i]);
                 if(closeOEMS != null) {
 
-                    closeRecCount++;
                     if(oemsRecCount <= 407) {
-                        System.out.println("CLOSED OEMS: " + coaIDArray[i] + " - " + closeRecCount);
+                        //System.out.println("CLOSED OEMS: " + coaIDArray[i] + " - " + closeRecCount);
                     }
                 }
             }
@@ -96,7 +91,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     }
 
     private void getPerformance(PerfData perfData) {
-        //
+        System.out.println("NOS Count: " + openRecCount);
+        System.out.println("COA Count: " + closeRecCount);
     }
 
     private void getRisk(PerfData perfData) {
