@@ -17,7 +17,9 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
     long[] coaIDArray = new long[0];
     long[] nosIDArray = new long[0];
-    long recCount = 0;
+    long openRecCount = 0;
+    long closeRecCount = 0;
+    long oemsRecCount = 0;
 
     private PerfPub output;
 
@@ -31,6 +33,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
+        oemsRecCount++;
 
         getNosPosition(perfData);
         getCoaPosition(perfData);
@@ -48,7 +51,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         openOEMS = null;
         closeOEMS = null;
 
-        recCount++;
+        openRecCount = 0;
+        closeRecCount = 0;
 
         output.simpleCall(perfData);
     }
@@ -56,13 +60,16 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     private void getNosPosition(PerfData perfData) {
         perfData.tradeCount = 0;
         nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
-        if(nosIDArray != null && nosIDArray.length > 0) {
+        if(nosIDArray != null) {
+
             for(int i = 0; i < nosIDArray.length; i++) {
+
                 openOEMS = orderMS.getNOS(nosIDArray[i]);
                 if(openOEMS != null) {
-                    perfData.tradeCount++;
-                    if(recCount == 60) {
-                        System.out.println("OPEN OEMS: " + openOEMS.openOrderId + " - " + perfData.tradeCount);
+
+                    openRecCount++;
+                    if(oemsRecCount <=407) {
+                        System.out.println("OPEN OEMS: " + nosIDArray[i] + " - " + openRecCount);
                     }
                 }
             }
@@ -72,35 +79,24 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     private void getCoaPosition(PerfData perfData) {
         perfData.tradeCount = 0;
         coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
-        if (coaIDArray != null && coaIDArray.length > 0) {
+        if (coaIDArray != null) {
+
             for (int i = 0; i < coaIDArray.length; i++) {
+
                 closeOEMS = orderMS.getCOA(coaIDArray[i]);
                 if(closeOEMS != null) {
-                    perfData.tradeCount++;
-                    if(recCount == 60) {
-                        System.out.println("CLOSED OEMS: " + closeOEMS.closeOrderId + " - " + perfData.tradeCount);
+
+                    closeRecCount++;
+                    if(oemsRecCount <= 407) {
+                        System.out.println("CLOSED OEMS: " + coaIDArray[i] + " - " + closeRecCount);
                     }
                 }
             }
         }
     }
 
-    private void getNosCoaMatchTest(PerfData perfData) {
-        nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
-        coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
-
-        if(nosIDArray != null && nosIDArray.length > 0) {
-            //System.out.println("NOS: " + nosIDArray.length);
-        }
-        if(coaIDArray != null && coaIDArray.length > 0) {
-            //System.out.println("COA: " + coaIDArray.length);
-        }
-    }
-
     private void getPerformance(PerfData perfData) {
-        if(perfData.tradeCount > 0) {
-            //System.out.println("TRADE COUNT: " + perfData.tradeCount);
-        }
+        //
     }
 
     private void getRisk(PerfData perfData) {

@@ -85,12 +85,16 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
+        if(recCount <= 407) {
+            System.out.println("REC: " + recCount);
+            System.out.println("\n");
+        }
+
+        /*
         System.out.println("rec count:" + recCount);
         System.out.println("open order ID: " + oemsData.openOrderId);
         System.out.println("prev Basso Idea: " + oemsData.prevBassoOrderIdea);
         System.out.println("basso Idea: " + oemsData.bassoOrderIdea);
-        System.out.println("\n");
-        /*
         System.out.println("open order side: " + oemsData.openOrderSide);
         System.out.println("open order qty: " + oemsData.openOrderQty);
         System.out.println("curr carry qty: " + oemsData.currCarryQty);
@@ -156,6 +160,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.openOrderState = "Hold: Ongoing New Order Single > Ongoing Vol %";
         }
 
+        // ongoing order
         if(oemsData.currRiskPercent <= risk.getOngoingRiskPercentThreshold() ) {
 
             oemsData.openOrderId = System.nanoTime();
@@ -170,12 +175,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
-                getOpenPositionConfirmation(oemsData);
-
             } else {
                 oemsData.openOrderExpiry = "NA";
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
             }
+
+            getOpenPositionConfirmation(oemsData);
         }
     }
 
@@ -196,12 +201,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private void placeCoaOrder(OEMSData oemsData) {
 
-        closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
-
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
             coaOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
             coaOEMSData.openOrderId = openOrdersIDArray[i];
+
             coaOEMSData.closeOrderId = coaOEMSData.openOrderId;
             coaOEMSData.closeOrderTimestamp = System.nanoTime();
             coaOEMSData.closeOrderPrice = oemsData.close;
@@ -219,15 +223,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             orderMS.deleteNOS(coaOEMSData);
             orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
 
-            updateCloseOrdersIDArray = ArrayUtils.add(closeOrdersIDArray, coaOEMSData.openOrderId);
-            orderMS.addToCOAIDArray(coaOEMSData.symbol, updateCloseOrdersIDArray);
             orderMS.addUpdateCOA(coaOEMSData.openOrderId, coaOEMSData);
+            orderMS.addToCOAIDArray(coaOEMSData.symbol, openOrdersIDArray);
 
-            // assume success
-            coaOEMSData.orderConfirmationState = "COA Complete Success - Confirmed";
-
-            // but verify
             getCOACompleteConfirmation(coaOEMSData);
+
+            System.out.println("COA ARRAY: " + openOrdersIDArray[i]);
         }
     }
 
@@ -330,9 +331,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // are all nos in array accounted for in nos map
                 openOEMS = orderMS.getNOS(nosIDArray[i]);
                 if(openOEMS != null) {
-                    oemsData.orderConfirmationState = "NOS Check - Success Confirmed";
-                } else {
-                    oemsData.orderConfirmationState = "NOS Check - Failure Confirmed - Missing - " + nosIDArray[i];
+                    if(nosIDArray[i] == oemsData.openOrderId) {
+                        oemsData.orderConfirmationState = "NOS Check - Success Confirmed";
+                    } else {
+                        oemsData.orderConfirmationState = "NOS Check - Failure Confirmed - Missing - " + nosIDArray[i];
+                    }
                 }
             }
 
@@ -358,9 +361,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // are all coa in array accounted for in coa map
                 closeOEMS = orderMS.getCOA(coaIDArray[i]);
                 if(closeOEMS != null) {
-                    oemsData.orderConfirmationState = "COA Check - Success Confirmed";
-                } else {
-                    oemsData.orderConfirmationState = "COA Check - Failure Confirmed - Missing - " + coaIDArray[i];
+                    if (coaIDArray[i] == oemsData.closeOrderId) {
+                        oemsData.orderConfirmationState = "COA Check - Success Confirmed";
+                    } else {
+                        oemsData.orderConfirmationState = "COA Check - Failure Confirmed - Missing - " + coaIDArray[i];
+                    }
                 }
             }
 
