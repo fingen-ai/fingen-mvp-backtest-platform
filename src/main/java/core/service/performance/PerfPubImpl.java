@@ -17,8 +17,6 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
     long[] coaIDArray = new long[0];
     long[] nosIDArray = new long[0];
-    long openRecCount = 0;
-    long closeRecCount = 0;
     long oemsRecCount = 0;
 
     private PerfPub output;
@@ -57,14 +55,14 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     }
 
     private void getNosPosition(PerfData perfData) {
-        perfData.tradeCount = 0;
         nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
         if(nosIDArray != null) {
+
+            perfData.nosRecCount = nosIDArray.length;
 
             for(int i = 0; i < nosIDArray.length; i++) {
                 openOEMS = orderMS.getNOS(nosIDArray[i]);
                 if(openOEMS != null) {
-
                     if(oemsRecCount <=407) {
                         //System.out.println("OPEN OEMS: " + nosIDArray[i] + " - " + openRecCount);
                     }
@@ -74,14 +72,14 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     }
 
     private void getCoaPosition(PerfData perfData) {
-        perfData.tradeCount = 0;
         coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
         if (coaIDArray != null) {
+
+            perfData.coaRecCount = coaIDArray.length;
 
             for (int i = 0; i < coaIDArray.length; i++) {
                 closeOEMS = orderMS.getCOA(coaIDArray[i]);
                 if(closeOEMS != null) {
-
                     if(oemsRecCount <= 407) {
                         //System.out.println("CLOSED OEMS: " + coaIDArray[i] + " - " + closeRecCount);
                     }
@@ -91,8 +89,10 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     }
 
     private void getPerformance(PerfData perfData) {
-        System.out.println("NOS Count: " + openRecCount);
-        System.out.println("COA Count: " + closeRecCount);
+        perfData.allRecCount = perfData.nosRecCount + perfData.coaRecCount;
+        System.out.println("NOS Count: " + perfData.nosRecCount);
+        System.out.println("COA Count: " + perfData.coaRecCount);
+        System.out.println("ALL Count: " + perfData.allRecCount);
     }
 
     private void getRisk(PerfData perfData) {
