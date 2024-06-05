@@ -280,6 +280,10 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             //assertNull("Mismatch in some OEMS field", actual.orderConfirmationState);
+
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.allRecCount, 0.0);
         }
 
         // EXIT: Neutral
@@ -312,6 +316,10 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
+
+            assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 3.0, actual.allRecCount, 0.0);
         }
 
         // EXIT: Bearish
