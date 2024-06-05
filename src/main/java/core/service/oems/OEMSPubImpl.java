@@ -23,7 +23,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     long[] openOrdersIDArray =  new long[0];
     long[] updateOpenOrdersIDArray =  new long[0];
     long[] closeOrdersIDArray =  new long[0];
-    long[] updateCloseOrdersIDArray =  new long[0];
     double volRiskPercentAvail = 0.0;
     double riskPercentAvail = 0.0;
 
@@ -82,35 +81,10 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         prevBassoOrderIdea = oemsData.bassoOrderIdea;
 
+        getAllRecCount(oemsData);
+
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
-
-        if(recCount <= 407) {
-            System.out.println("REC: " + recCount);
-            System.out.println("\n");
-        }
-
-        /*
-        System.out.println("rec count:" + recCount);
-        System.out.println("open order ID: " + oemsData.openOrderId);
-        System.out.println("prev Basso Idea: " + oemsData.prevBassoOrderIdea);
-        System.out.println("basso Idea: " + oemsData.bassoOrderIdea);
-        System.out.println("open order side: " + oemsData.openOrderSide);
-        System.out.println("open order qty: " + oemsData.openOrderQty);
-        System.out.println("curr carry qty: " + oemsData.currCarryQty);
-        System.out.println("open order expiry: " + oemsData.openOrderExpiry);
-        System.out.println("open order state: " + oemsData.openOrderState);
-
-        System.out.println("curr risk %: " + oemsData.currRiskPercent);
-        System.out.println("curr vol %: " + oemsData.currVolRiskPercent);
-        System.out.println("close: " + oemsData.close);
-        System.out.println("open order SL price: " + oemsData.openOrderSLPrice);
-
-        System.out.println("close order side: " + oemsData.closeOrderSide);
-        System.out.println("close order state: " + oemsData.closeOrderState);
-        System.out.println("order confirm state: " + oemsData.orderConfirmationState);
-        System.out.println("\n");
-         */
 
         recCount++;
 
@@ -138,6 +112,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
         getOpenPositionConfirmation(oemsData);
+
+        oemsData.nosRecCount++;
+        System.out.println("INIT NOS CNT: " + oemsData.nosRecCount);
     }
 
     private void placeNosOngoingOrder(OEMSData oemsData) {
@@ -175,6 +152,10 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
+                oemsData.nosRecCount = openOrdersIDArray.length;
+                oemsData.nosRecCount++;
+                System.out.println("ONG NOS CNT: " + oemsData.nosRecCount);
+
             } else {
                 oemsData.openOrderExpiry = "NA";
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
@@ -200,6 +181,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeCoaOrder(OEMSData oemsData) {
+
+        long[] coaArray = orderMS.getFromCOAIDArray(oemsData.symbol);
+        if(coaArray != null) {
+            oemsData.coaRecCount = coaArray.length;
+        }
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
@@ -228,7 +214,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             getCOACompleteConfirmation(coaOEMSData);
 
-            System.out.println("COA ARRAY: " + openOrdersIDArray[i]);
+            oemsData.coaRecCount++;
+
+            //System.out.println("COA ARRAY: " + openOrdersIDArray[i]);
         }
     }
 
@@ -371,6 +359,17 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         } else {
             oemsData.orderConfirmationState = "COA Check - Failure Confirmed - NULL Array";
+        }
+    }
+
+    private void getAllRecCount(OEMSData oemsData) {
+        long[] coaArray = orderMS.getFromCOAIDArray(oemsData.symbol);
+        long[] nosArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        if(coaArray != null) {
+            oemsData.allRecCount += coaArray.length;
+        }
+        if(nosArray != null) {
+            oemsData.allRecCount += nosArray.length;
         }
     }
 }

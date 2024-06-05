@@ -110,17 +110,13 @@ public class PerformanceTest {
 
         // ENTRY: Bullish
         if(recCount == 49) {
-            assertEquals("Mismatch in some Perf field", 1.0, actual.nosRecCount, 0.0);
-            assertEquals("Mismatch in some Perf field", 0, actual.coaRecCount, 0.0);
-            assertEquals("Mismatch in some Perf field", 1.0, actual.allRecCount, 0.0);
+
         }
 
         // EXIT: Bullish
         // ENTRY: Neutral
         if(recCount == 404) {
-            assertEquals("Mismatch in some Perf field", 2.0, actual.nosRecCount, 0.0);
-            assertEquals("Mismatch in some Perf field", 0, actual.coaRecCount, 0.0);
-            assertEquals("Mismatch in some Perf field", 2.0, actual.allRecCount, 0.0);
+
         }
 
         // EXIT: Neutral

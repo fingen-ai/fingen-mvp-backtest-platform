@@ -137,6 +137,47 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
             assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
+
+            assertEquals("Mismatch in some Perf field", 1.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some Perf field", 0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some Perf field", 1.0, actual.allRecCount, 0.0);
+        }
+
+        // ONGOING: Bullish
+        if(recCount == 50) {
+            System.out.println(actual);
+            System.out.println("\n");
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
+            assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", "Buy", actual.orderSide);
+            assertEquals("Mismatch in some OEMS field", "LMT", actual.orderType);
+            assertEquals("Mismatch in some OEMS field", "Buy", actual.openOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.01, actual.currRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.currVolRiskPercent, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.0125, actual.orderQtyPerRisk, 0.0);
+            assertEquals("Mismatch in some OEMS field", 100.01, actual.orderQtyPerVol, 0.0);
+            assertEquals("Mismatch in some OEMS field", 125.0125, actual.openOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", 250.0125, actual.currCarryQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
+            assertEquals("Mismatch in some OEMS field", "Ongoing New Order Single", actual.openOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.9999, actual.openOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.99763, actual.openOrderSLPrice, 0.0);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
+            assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
+            assertNull("Mismatch in some OEMS field", actual.closeOrderState);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderQty, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
+            assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
+            assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
+
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.allRecCount, 0.0);
         }
 
         // EXIT: Bullish

@@ -38,64 +38,32 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
         oemsRecCount++;
 
-        System.out.println("\n");
-
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
+
+        System.out.println("\n");
 
         nosIDArray = null;
         coaIDArray = null;
         openOEMS = null;
         closeOEMS = null;
 
-        //openRecCount = 0;
-        //closeRecCount = 0;
-
         output.simpleCall(perfData);
     }
 
     private void getNosPosition(PerfData perfData) {
-        nosIDArray = orderMS.getFromNOSIDArray(perfData.symbol);
-        if(nosIDArray != null) {
 
-            perfData.nosRecCount = nosIDArray.length;
-
-            for(int i = 0; i < nosIDArray.length; i++) {
-                openOEMS = orderMS.getNOS(nosIDArray[i]);
-                if(openOEMS != null) {
-                    if(oemsRecCount <=407) {
-                        //System.out.println("OPEN OEMS: " + nosIDArray[i] + " - " + openRecCount);
-                    }
-                }
-            }
-        }
     }
 
     private void getCoaPosition(PerfData perfData) {
-        coaIDArray = orderMS.getFromCOAIDArray(perfData.symbol);
-        if (coaIDArray != null) {
 
-            perfData.coaRecCount = coaIDArray.length;
-
-            for (int i = 0; i < coaIDArray.length; i++) {
-                closeOEMS = orderMS.getCOA(coaIDArray[i]);
-                if(closeOEMS != null) {
-                    if(oemsRecCount <= 407) {
-                        //System.out.println("CLOSED OEMS: " + coaIDArray[i] + " - " + closeRecCount);
-                    }
-                }
-            }
-        }
     }
 
     private void getPerformance(PerfData perfData) {
-        perfData.allRecCount = perfData.nosRecCount + perfData.coaRecCount;
-        System.out.println("NOS Count: " + perfData.nosRecCount);
-        System.out.println("COA Count: " + perfData.coaRecCount);
-        System.out.println("ALL Count: " + perfData.allRecCount);
+
     }
 
     private void getRisk(PerfData perfData) {
-        //
+
     }
 }
