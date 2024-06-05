@@ -110,11 +110,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
         updateOpenOrdersIDArray = ArrayUtils.add(openOrdersIDArray, oemsData.openOrderId);
         orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
-
-        getOpenPositionConfirmation(oemsData);
-
-        oemsData.nosRecCount++;
-        System.out.println("INIT NOS CNT: " + oemsData.nosRecCount);
     }
 
     private void placeNosOngoingOrder(OEMSData oemsData) {
@@ -153,15 +148,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
 
                 oemsData.nosRecCount = openOrdersIDArray.length;
-                oemsData.nosRecCount++;
-                System.out.println("ONG NOS CNT: " + oemsData.nosRecCount);
 
             } else {
                 oemsData.openOrderExpiry = "NA";
                 oemsData.openOrderState = "Hold: Ongoing New Order Single >= Ongoing Risk %";
             }
-
-            getOpenPositionConfirmation(oemsData);
         }
     }
 
@@ -181,11 +172,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeCoaOrder(OEMSData oemsData) {
-
-        long[] coaArray = orderMS.getFromCOAIDArray(oemsData.symbol);
-        if(coaArray != null) {
-            oemsData.coaRecCount = coaArray.length;
-        }
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
@@ -211,12 +197,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             orderMS.addUpdateCOA(coaOEMSData.openOrderId, coaOEMSData);
             orderMS.addToCOAIDArray(coaOEMSData.symbol, openOrdersIDArray);
-
-            getCOACompleteConfirmation(coaOEMSData);
-
-            oemsData.coaRecCount++;
-
-            //System.out.println("COA ARRAY: " + openOrdersIDArray[i]);
         }
     }
 
@@ -301,75 +281,22 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         return Math.round(value * scale) / scale;
     }
 
-    private void getOpenPositionConfirmation(OEMSData oemsData) {
-        long[] nosIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
-        OEMSData openOEMS = new OEMSData();
-        OEMSData closeOEMS = new OEMSData();
-
-        if(nosIDArray != null) {
-
-            for(int i = 0; i < nosIDArray.length; i++) {
-
-                // are any nos in coa map?
-                closeOEMS = orderMS.getCOA(nosIDArray[i]);
-                if(closeOEMS != null) {
-                    oemsData.orderConfirmationState = "NOS In COA Check - Failure Confirmed - Open ID: " + closeOEMS.openOrderId;
-                }
-
-                // are all nos in array accounted for in nos map
-                openOEMS = orderMS.getNOS(nosIDArray[i]);
-                if(openOEMS != null) {
-                    if(nosIDArray[i] == oemsData.openOrderId) {
-                        oemsData.orderConfirmationState = "NOS Check - Success Confirmed";
-                    } else {
-                        oemsData.orderConfirmationState = "NOS Check - Failure Confirmed - Missing - " + nosIDArray[i];
-                    }
-                }
-            }
-
-        } else {
-            oemsData.orderConfirmationState = "NOS Check - Failure Confirmed - NULL Array";
-        }
-    }
-
-    private void getCOACompleteConfirmation(OEMSData oemsData) {
-        long[] coaIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
-        OEMSData openOEMS = new OEMSData();
-        OEMSData closeOEMS = new OEMSData();
-
-        if(coaIDArray != null) {
-            for(int i = 0; i < coaIDArray.length; i++) {
-
-                // are any coa in nos map?
-                openOEMS = orderMS.getNOS(coaIDArray[i]);
-                if(openOEMS != null) {
-                    oemsData.orderConfirmationState = "COA In NOS Check - Failure Confirmed - Open ID: " + openOEMS.closeOrderId;
-                }
-
-                // are all coa in array accounted for in coa map
-                closeOEMS = orderMS.getCOA(coaIDArray[i]);
-                if(closeOEMS != null) {
-                    if (coaIDArray[i] == oemsData.closeOrderId) {
-                        oemsData.orderConfirmationState = "COA Check - Success Confirmed";
-                    } else {
-                        oemsData.orderConfirmationState = "COA Check - Failure Confirmed - Missing - " + coaIDArray[i];
-                    }
-                }
-            }
-
-        } else {
-            oemsData.orderConfirmationState = "COA Check - Failure Confirmed - NULL Array";
-        }
-    }
-
     private void getAllRecCount(OEMSData oemsData) {
         long[] coaArray = orderMS.getFromCOAIDArray(oemsData.symbol);
         long[] nosArray = orderMS.getFromNOSIDArray(oemsData.symbol);
         if(coaArray != null) {
             oemsData.allRecCount += coaArray.length;
+            oemsData.coaRecCount = coaArray.length;
         }
         if(nosArray != null) {
             oemsData.allRecCount += nosArray.length;
+            oemsData.nosRecCount = nosArray.length;
         }
+
+        System.out.println("REC CNT: " + recCount);
+        System.out.println("NOS CNT: " + oemsData.nosRecCount);
+        System.out.println("COA CNT: " + oemsData.coaRecCount);
+        System.out.println("ALL CNT: " + oemsData.allRecCount);
+        System.out.println("\n");
     }
 }
