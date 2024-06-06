@@ -316,9 +316,6 @@ public class OEMSTest {
 
         // ONGOING: Bearish
         if(recCount == 406) {
-            System.out.println("REC: " + recCount);
-            System.out.println(actual);
-            System.out.println("\n");
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.prevBassoOrderIdea);
@@ -354,9 +351,6 @@ public class OEMSTest {
         // EXIT: Bearish
         // ENTRY: Bullish
         if(recCount == 407) {
-            System.out.println("REC: " + recCount);
-            System.out.println(actual);
-            System.out.println("\n");
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.prevBassoOrderIdea);
@@ -391,9 +385,6 @@ public class OEMSTest {
 
         // ONGOING: Bullish
         if(recCount == 408) {
-            System.out.println("REC: " + recCount);
-            System.out.println(actual);
-            System.out.println("\n");
             assertNotNull("Mismatch in some OEMS field", actual.openOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.openOrderTimestamp);
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.prevBassoOrderIdea);
@@ -461,16 +452,26 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 7.0, actual.allRecCount, 0.0);
         }
 
-        // SCENARIO: STOP-LOSS SELL
-        // ENTRY: Bullish
-        if(recCount == 0) {
+        // ONGOING: Bullish
+        if(recCount == 757) {
+            System.out.println("REC: " + recCount);
+            System.out.println(actual);
+            System.out.println("\n");
 
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 7.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 9.0, actual.allRecCount, 0.0);
         }
 
-        // SCENARIO: STOP-LOSS BUY
-        // ENTRY: Bearish
-        if(recCount == 0) {
+        // EXIT: Stop-loss sell
+        if(recCount == 758) {
+            System.out.println("REC: " + recCount);
+            System.out.println(actual);
+            System.out.println("\n");
 
+            assertEquals("Mismatch in some OEMS field", 0.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 9.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 11.0, actual.allRecCount, 0.0);
         }
 
         recCount++;

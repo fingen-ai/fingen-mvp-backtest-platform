@@ -174,9 +174,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     private void placeCoaOrder(OEMSData oemsData) {
 
         closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
-        if(closeOrdersIDArray != null) {
-            System.out.println("COA ARRAY 1: " + closeOrdersIDArray.length);
-        }
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
@@ -300,11 +297,5 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.allRecCount += nosArray.length;
             oemsData.nosRecCount = nosArray.length;
         }
-
-        System.out.println("REC CNT: " + recCount);
-        System.out.println("NOS CNT: " + oemsData.nosRecCount);
-        System.out.println("COA CNT: " + oemsData.coaRecCount);
-        System.out.println("ALL CNT: " + oemsData.allRecCount);
-        System.out.println("\n");
     }
 }
