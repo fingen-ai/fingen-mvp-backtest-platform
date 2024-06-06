@@ -173,6 +173,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private void placeCoaOrder(OEMSData oemsData) {
 
+        closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
+        if(closeOrdersIDArray != null) {
+            System.out.println("COA ARRAY 1: " + closeOrdersIDArray.length);
+        }
+
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
             coaOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
@@ -196,8 +201,11 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
 
             orderMS.addUpdateCOA(coaOEMSData.openOrderId, coaOEMSData);
-            orderMS.addToCOAIDArray(coaOEMSData.symbol, openOrdersIDArray);
+
+            closeOrdersIDArray = ArrayUtils.add(closeOrdersIDArray, coaOEMSData.openOrderId);
         }
+
+        orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
