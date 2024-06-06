@@ -136,7 +136,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some Perf field", 1.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some Perf field", 0, actual.coaRecCount, 0.0);
@@ -171,7 +170,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 0, actual.coaRecCount, 0.0);
@@ -206,7 +204,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 0, actual.coaRecCount, 0.0);
@@ -241,7 +238,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 0, actual.coaRecCount, 0.0);
@@ -277,7 +273,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertNull("Mismatch in some OEMS field", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 0, actual.coaRecCount, 0.0);
@@ -313,7 +308,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 2.0, actual.coaRecCount, 0.0);
@@ -351,7 +345,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 2.0, actual.coaRecCount, 0.0);
@@ -390,7 +383,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 4.0, actual.coaRecCount, 0.0);
@@ -428,7 +420,6 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 4.0, actual.coaRecCount, 0.0);
@@ -464,11 +455,22 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 0.0, actual.closeOrderPrice, 0.0);
             assertEquals("Mismatch in some OEMS field", null, actual.closeOrderSide);
             assertEquals("Mismatch in some OEMS field", null, actual.closedOrderType);
-            //assertEquals("Mismatch in some OEMS field", "NOS Check - Success Confirmed", actual.orderConfirmationState);
 
             assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 6.0, actual.coaRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 7.0, actual.allRecCount, 0.0);
+        }
+
+        // SCENARIO: STOP-LOSS SELL
+        // ENTRY: Bullish
+        if(recCount == 0) {
+
+        }
+
+        // SCENARIO: STOP-LOSS BUY
+        // ENTRY: Bearish
+        if(recCount == 0) {
+
         }
 
         recCount++;
