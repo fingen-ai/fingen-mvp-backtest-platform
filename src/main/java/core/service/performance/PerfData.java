@@ -59,4 +59,15 @@ public class PerfData extends SelfDescribingMarshallable {
     public long allRecCount;
     public long nosRecCount;
     public long coaRecCount;
+    public double cagrPercentage;
+    public double sharpeRatio;
+    public double sortinoRatio;
+    public double returnToAvgDrawdown;
+    public double marRatio;
+    public double maxDrawdownPercentage;
+    public double winCount;
+    public double lossCount;
+    public double reliabilityPercentage;
+    public double totalProfit;
+    public double profitFactor;
 }

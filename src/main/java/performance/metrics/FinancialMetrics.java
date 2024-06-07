@@ -34,18 +34,23 @@ public class FinancialMetrics {
     }
 
     public double calculateMaximumDrawdown(double[] values) {
-        // 'values' should be an array of cumulative returns or portfolio values
         double maxDrawdown = 0;
-        double peak = values[0];
 
-        for (double value : values) {
-            if (value > peak) {
-                peak = value;
+        if(values != null) {
+            // 'values' should be an array of cumulative returns or portfolio values
+            double peak = values[0];
+
+            for (double value : values) {
+                if (value > peak) {
+                    peak = value;
+                }
+                double drawdown = (peak - value) / peak;
+                if (drawdown > maxDrawdown) {
+                    maxDrawdown = drawdown;
+                }
             }
-            double drawdown = (peak - value) / peak;
-            if (drawdown > maxDrawdown) {
-                maxDrawdown = drawdown;
-            }
+        } else {
+            maxDrawdown = 0;
         }
 
         return maxDrawdown;
