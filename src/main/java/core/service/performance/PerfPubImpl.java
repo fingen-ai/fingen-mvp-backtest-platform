@@ -9,15 +9,9 @@ import java.io.IOException;
 
 public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
-    Performance perf = new PerformanceImpl();
-    OrderMappingService orderMS = new OrderMappingService();
 
-    OEMSData closeOEMS = new OEMSData();
-    OEMSData openOEMS = new OEMSData();
-
-    long[] coaIDArray = new long[0];
-    long[] nosIDArray = new long[0];
-    long oemsRecCount = 0;
+    double[] drawdowns = new double[0]; // call DD svc
+    Performance perf = new PerformanceImpl(drawdowns);
 
     private PerfPub output;
 
@@ -31,39 +25,11 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
-        getNosPosition(perfData);
-        getCoaPosition(perfData);
-        getRisk(perfData);
-        getPerformance(perfData);
-
-        oemsRecCount++;
-
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
 
         System.out.println("\n");
 
-        nosIDArray = null;
-        coaIDArray = null;
-        openOEMS = null;
-        closeOEMS = null;
-
         output.simpleCall(perfData);
-    }
-
-    private void getNosPosition(PerfData perfData) {
-
-    }
-
-    private void getCoaPosition(PerfData perfData) {
-
-    }
-
-    private void getPerformance(PerfData perfData) {
-
-    }
-
-    private void getRisk(PerfData perfData) {
-
     }
 }

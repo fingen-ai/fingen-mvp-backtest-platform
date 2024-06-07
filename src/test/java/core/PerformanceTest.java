@@ -108,34 +108,7 @@ public class PerformanceTest {
         assertEquals("Mismatch in some Insight field", expected.previousClose, actual.previousClose, 0.0);
         assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.0);
 
-        // ENTRY: Bullish
-        if(recCount == 49) {
-
-        }
-
-        // EXIT: Bullish
-        // ENTRY: Neutral
-        if(recCount == 404) {
-
-        }
-
-        // EXIT: Neutral
-        // ENTRY: Bearish
-        if(recCount == 405) {
-
-        }
-
-        // EXIT: Bearish
-        // ENTRY: Bullish
-        if(recCount == 407) {
-
-        }
-
-        // EXIT: Bullish
-        // ENTRY: Bearish
-        if(recCount == 443) {
-
-        }
+        // performance report data - tearsheet, landing & blog pages.
 
         recCount++;
 

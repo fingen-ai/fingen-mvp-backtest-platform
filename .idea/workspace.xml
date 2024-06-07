@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/indicators/bollinger/BollingerBands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/indicators/bollinger/BollingerBands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategyImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/strategies/trend/basso/BassoTrendStrategyImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/strategies/indicators/bollingerbands/BollingerBandsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/strategies/indicators/bollingerbands/BollingerBandsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/Test_Data/usd-coin_2018-10-08_2024-04-21.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Test_Data/usd-coin_2018-10-08_2024-04-21.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/performance/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/Performance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/PerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/performance/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/performance/PerformanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,15 +297,7 @@
       <workItem from="1717632785068" duration="2874000" />
       <workItem from="1717638835710" duration="782000" />
       <workItem from="1717709190998" duration="2847000" />
-      <workItem from="1717719596538" duration="15496000" />
-    </task>
-    <task id="LOCAL-00142" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
-      <option name="closed" value="true" />
-      <created>1716402485798</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1716402485798</updated>
+      <workItem from="1717719596538" duration="18170000" />
     </task>
     <task id="LOCAL-00143" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
       <option name="closed" value="true" />
@@ -691,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717781111494</updated>
     </task>
-    <option name="localTasksCounter" value="191" />
+    <task id="LOCAL-00191" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717784386498</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1717784386498</updated>
+    </task>
+    <option name="localTasksCounter" value="192" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

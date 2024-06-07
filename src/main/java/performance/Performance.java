@@ -11,7 +11,7 @@ public interface Performance {
     double getMaxDrawdownPercentage();
     double getWinCount();
     double getLossCount();
-    double getReliabilityPercentage();
+    double getWinPercent();
     double getTotalProfit();
     double getProfitFactor();
     long getTradeCount();

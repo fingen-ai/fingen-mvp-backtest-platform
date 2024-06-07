@@ -8,7 +8,8 @@ public class PerformanceTest {
     @Test
     public void testPerformance() {
 
-        Performance performance = new PerformanceImpl();
+        double[] drawdowns = new double[0]; // call DD svc
+        Performance performance = new PerformanceImpl(drawdowns);
         double cagrPercentage = performance.getCAGRPercentage();
         double sharpeRatio = performance.getSharpeRatio();
         double sortinoRatio = performance.getSortinoRatio();
@@ -17,7 +18,7 @@ public class PerformanceTest {
         double maxDrawdownPercentage = performance.getMaxDrawdownPercentage();
         double winCount = performance.getWinCount();
         double lossCount = performance.getLossCount();
-        double reliabilityPercentage = performance.getReliabilityPercentage();
+        double reliabilityPercentage = performance.getWinPercent();
         double totalProfit = performance.getTotalProfit();
         double profitFactor = performance.getProfitFactor();
 

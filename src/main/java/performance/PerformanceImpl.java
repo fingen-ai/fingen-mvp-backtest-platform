@@ -1,11 +1,32 @@
 package performance;
 
+import core.service.oems.OEMSData;
 import performance.metrics.FinancialMetrics;
 
 public class PerformanceImpl implements Performance {
-
-    long tradeCount = 0;
+    // returns
     double initialInvestment = 10000000;
+    double cagr = 0;
+    double sharpeRatio = 0;
+    double sortinoRatio = 0;
+    double returnToAvgDrawdown = 0;
+    double marRatio = 0;
+    double maxDD = 0;
+    double winCount = 0;
+    double lossCount = 0;
+    double winPercentage = 0;
+    double lossPercentage = 0;
+    double totalProfit = 0;
+    double profitFactor = 0;
+    double sumOfWinPercentages = 0;
+    double sumOfLossPercentages = 0;
+    double avgWinPercentage = 0;
+    double avgLossPercentage = 0;
+    double avgWinAmount = 0;
+    double avgLossAmount = 0;
+    double edge = 0;
+    // vars
+    long tradeCount = 0;
     double finalValue = 11000000;
     double numberOfYears = 5.5415;
     double riskFreeRate = 0.02;
@@ -15,18 +36,12 @@ public class PerformanceImpl implements Performance {
 
 
     FinancialMetrics finMet = new FinancialMetrics();
-    
-    double cagr = 0;
-    double sharpeRatio = 0;
-    double sortinoRatio = 0;
-    double returnToAvgDrawdown = 0;
-    double marRatio = 0;
-    double maxDD = 0;
-    double winCount = 0;
-    double lossCount = 0;
-    double reliablityPercentage = 0;
-    double totalProfit = 0;
-    double profitFactor = 0;
+
+    private double[] drawdowns; // CALC
+
+    public PerformanceImpl(double[] drawdowns) {
+        this.drawdowns = drawdowns;
+    }
 
     public double getInitialInvestment() {
         return initialInvestment;
@@ -72,9 +87,41 @@ public class PerformanceImpl implements Performance {
         return lossCount;
     }
 
-    public double getReliabilityPercentage() {
-        reliablityPercentage = winCount / (winCount + lossCount);
-        return reliablityPercentage;
+    public double getWinPercent() {
+        winPercentage = winCount / (winCount + lossCount);
+        sumOfWinPercentages += winPercentage;
+        return winPercentage;
+    }
+
+    public double getLossPercent() {
+        lossPercentage = lossCount / (winCount + lossCount);
+        sumOfLossPercentages += lossPercentage;
+        return lossPercentage;
+    }
+
+    public double getAvgWinPercent() {
+        avgWinPercentage = sumOfWinPercentages / winCount;
+        return avgWinPercentage;
+    }
+
+    public double getAvgLossPercent() {
+        avgLossPercentage = sumOfLossPercentages / lossCount;
+        return avgLossPercentage;
+    }
+
+    public double getAvgWinAmount(OEMSData oemsData) {
+        avgWinAmount = oemsData.openOrderQty * oemsData.close / winCount;
+        return avgWinAmount;
+    }
+
+    public double getAvgLossAmount(OEMSData oemsData) {
+        return avgLossAmount;
+    }
+
+    public double getEdge() {
+        // avgW% * avgW$
+        // avgL% * avgL$
+        return edge;
     }
 
     public double getTotalProfit() {
@@ -86,6 +133,7 @@ public class PerformanceImpl implements Performance {
         profitFactor = finMet.calculateProfitFactor(profits, losses);
         return profitFactor;
     }
+
     public long getTradeCount() {
         return tradeCount;
     }
