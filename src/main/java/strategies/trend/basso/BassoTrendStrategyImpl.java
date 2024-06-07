@@ -21,7 +21,7 @@ public class BassoTrendStrategyImpl implements BassoTrendStrategy {
         double[] donchianChannel = dc.calculateChannel(49);
 
         BollingerBands bb = new BollingerBands(prices, 50);
-        double[] bollingerBands = bb.calculateBollingerBands(49);
+        double[] bollingerBands = bb.calculateChannel(49);
 
         int buySignals = 0;
         int sellSignals = 0;

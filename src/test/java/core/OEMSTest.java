@@ -485,15 +485,20 @@ public class OEMSTest {
         }
 
         // ENTRY: Bearish
-        if(recCount == 1241) {
-            System.out.println("REC: " + recCount);
-            System.out.println(actual);
-            System.out.println("\n");
-
+        if(recCount == 1244) {
             assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 33.0, actual.coaRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 34.0, actual.allRecCount, 0.0);
+        }
+
+        // EXIT: Bearish
+        // ENTRY: Bullish
+        if(recCount == 1245) {
+            assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
+            assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 34.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 35.0, actual.allRecCount, 0.0);
         }
 
         recCount++;

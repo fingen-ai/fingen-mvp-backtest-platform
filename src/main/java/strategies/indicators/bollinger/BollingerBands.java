@@ -25,7 +25,7 @@ public class BollingerBands {
         return Math.sqrt(sum / (end - start));
     }
 
-    public double[] calculateBollingerBands(int index) {
+    public double[] calculateChannel(int index) {
         if (index < period - 1) {
             throw new IllegalArgumentException("Not enough data to calculate Bollinger Bands.");
         }
