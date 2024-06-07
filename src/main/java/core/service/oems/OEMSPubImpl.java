@@ -20,6 +20,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     OrderMappingService orderMS = new OrderMappingService();
 
     String prevBassoOrderIdea = "";
+    double prevSLPrice = 0;
+
     long[] openOrdersIDArray =  new long[0];
     long[] updateOpenOrdersIDArray =  new long[0];
     long[] closeOrdersIDArray =  new long[0];
@@ -58,7 +60,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
                 // coa on bullish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Buy")) {
-                    if (oemsData.close < oemsData.openOrderSLPrice) {
+
+                    if (oemsData.close <= prevSLPrice) {
                         placeCoaOrder(oemsData);
                     } else {
                         placeNosOngoingOrder(oemsData);
@@ -66,7 +69,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
                 // coa on bearish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Sell")) {
-                    if (oemsData.close > oemsData.openOrderSLPrice) {
+                    if (oemsData.close >= prevSLPrice) {
                         placeCoaOrder(oemsData);
                     }else {
                         placeNosOngoingOrder(oemsData);
@@ -80,6 +83,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         prevBassoOrderIdea = oemsData.bassoOrderIdea;
+        prevSLPrice = oemsData.openOrderSLPrice;
 
         getAllRecCount(oemsData);
 
@@ -172,6 +176,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeCoaOrder(OEMSData oemsData) {
+
+        if(recCount == 758) {System.out.println("SL SELL: " + oemsData.close + " < " + " - " + prevSLPrice);}
 
         closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
 

@@ -471,6 +471,28 @@ public class OEMSTest {
 
             assertEquals("Mismatch in some OEMS field", 0.0, actual.nosRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 9.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 9.0, actual.allRecCount, 0.0);
+        }
+
+        // ENTRY: Bullish
+        if(recCount == 759) {
+            System.out.println("REC: " + recCount);
+            System.out.println(actual);
+            System.out.println("\n");
+
+            assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 9.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 10.0, actual.allRecCount, 0.0);
+        }
+
+        // ONGOING: Bullish
+        if(recCount == 760) {
+            System.out.println("REC: " + recCount);
+            System.out.println(actual);
+            System.out.println("\n");
+
+            assertEquals("Mismatch in some OEMS field", 2.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 9.0, actual.coaRecCount, 0.0);
             assertEquals("Mismatch in some OEMS field", 11.0, actual.allRecCount, 0.0);
         }
 
