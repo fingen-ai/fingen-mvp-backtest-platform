@@ -481,19 +481,25 @@ public class OEMSTest {
         }
 
         // ENTRY: Bearish
-        if(recCount == 1066 && actual.bassoOrderIdea.equals("Bearish")) {
+        if(recCount == 1068) {
             System.out.println("REC: " + recCount);
             System.out.println(actual);
             System.out.println("\n");
+
+            assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 13.0, actual.coaRecCount, 0.0);
+            assertEquals("Mismatch in some OEMS field", 14.0, actual.allRecCount, 0.0);
         }
 
         // EXIT: Bearish @ Stop-loss buy
-        if(recCount == 1067) {
+        if(recCount > 1068 && recCount < 1071) {
             System.out.println("REC: " + recCount);
             System.out.println(actual);
             System.out.println("\n");
 
-            // openOrderSLPrice: 1.05772,
+            //assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
+            //assertEquals("Mismatch in some OEMS field", 14.0, actual.coaRecCount, 0.0);
+            //assertEquals("Mismatch in some OEMS field", 14.0, actual.allRecCount, 0.0);
         }
 
         recCount++;
