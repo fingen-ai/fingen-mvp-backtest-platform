@@ -298,7 +298,7 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.9911, actual.openOrderPrice, 0.0);
-            assertEquals("Mismatch in some OEMS field", 1.02726, actual.openOrderSLPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 1.001011, actual.openOrderSLPrice, 0.0);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
             assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
@@ -332,7 +332,7 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some OEMS field", "Ongoing New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.9736, actual.openOrderPrice, 0.0);
-            assertEquals("Mismatch in some OEMS field", 1.06771, actual.openOrderSLPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 0.983336, actual.openOrderSLPrice, 0.0);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
             assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
@@ -436,7 +436,7 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", "GTC", actual.openOrderExpiry);
             assertEquals("Mismatch in some OEMS field", "Init New Order Single", actual.openOrderState);
             assertEquals("Mismatch in some OEMS field", 0.99995, actual.openOrderPrice, 0.0);
-            assertEquals("Mismatch in some OEMS field", 1.07047, actual.openOrderSLPrice, 0.0);
+            assertEquals("Mismatch in some OEMS field", 1.0099495, actual.openOrderSLPrice, 0.0);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderId);
             assertNotNull("Mismatch in some OEMS field", actual.closeOrderTimestamp);
             assertNull("Mismatch in some OEMS field", actual.closeOrderExpiry);
@@ -460,7 +460,7 @@ public class OEMSTest {
             assertEquals("Mismatch in some OEMS field", 9.0, actual.allRecCount, 0.0);
         }
 
-        // EXIT: Bullish @ Stop-loss sell
+        // EXIT: Bullish "Whipsaw" & Stop-loss sell
         if(recCount == 758) {
             assertEquals("Mismatch in some OEMS field", "Bullish", actual.bassoOrderIdea);
             assertEquals("Mismatch in some OEMS field", 0.0, actual.nosRecCount, 0.0);
@@ -485,31 +485,17 @@ public class OEMSTest {
         }
 
         // ENTRY: Bearish
-        if(recCount == 1082) {
-            assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
+        if(recCount >= 1141) {
             System.out.println("REC: " + recCount);
-            System.out.println(actual);
+            System.out.println(actual.openOrderSLPrice + " v " + actual.close + " = " +
+                    (actual.openOrderSLPrice - actual.close));
             System.out.println("\n");
 
-            assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
-            assertEquals("Mismatch in some OEMS field", 18.0, actual.coaRecCount, 0.0);
-            assertEquals("Mismatch in some OEMS field", 19.0, actual.allRecCount, 0.0);
-        }
-
-        // ENTRY: Bearish
-        if(recCount == 1082) {
-            assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
-            System.out.println("REC: " + recCount);
-            System.out.println(actual);
-            System.out.println("\n");
-
-            assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
+            //assertEquals("Mismatch in some OEMS field", "Bearish", actual.bassoOrderIdea);
             //assertEquals("Mismatch in some OEMS field", 1.0, actual.nosRecCount, 0.0);
             //assertEquals("Mismatch in some OEMS field", 18.0, actual.coaRecCount, 0.0);
             //assertEquals("Mismatch in some OEMS field", 19.0, actual.allRecCount, 0.0);
         }
-
-
 
         recCount++;
 

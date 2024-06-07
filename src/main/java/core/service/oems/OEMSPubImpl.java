@@ -21,6 +21,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     String prevBassoOrderIdea = "";
     double prevSLPrice = 0;
+    double maxSLPrice = 0;
 
     long[] openOrdersIDArray =  new long[0];
     long[] updateOpenOrdersIDArray =  new long[0];
@@ -162,21 +163,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    /**
-     * Exit is 3X Average True Range (10 day period) subtracted from the close.
-     * The trailing stop can only get closer to the current market price, not further away.
-     * @param oemsData
-     */
-    private void getStopLoss(OEMSData oemsData) {
-        if(oemsData.openOrderSide.equals("Buy")) {
-            oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
-            oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
-        } else {
-            oemsData.openOrderSLPrice = oemsData.close + (oemsData.atr * 3);
-            oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
-        }
-    }
-
     private void placeCoaOrder(OEMSData oemsData) {
 
         closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
@@ -209,6 +195,26 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
 
         orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
+    }
+
+    /**
+     * Exit is 3X Average True Range (10 day period) subtracted from the close.
+     * The trailing stop can only get closer to the current market price, not further away.
+     * @param oemsData
+     */
+    private void getStopLoss(OEMSData oemsData) {
+        if(oemsData.openOrderSide.equals("Buy")) {
+            oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
+            oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
+        } else {
+            oemsData.openOrderSLPrice = oemsData.close + (oemsData.atr * 3);
+            oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
+        }
+
+        maxSLPrice = oemsData.close * 1.01;
+        if(oemsData.openOrderSLPrice > maxSLPrice) {
+            oemsData.openOrderSLPrice = maxSLPrice;
+        }
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
