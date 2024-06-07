@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/oems/OEMSPubImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/OEMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/Test_Data/usd-coin_2018-10-08_2024-04-21.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Test_Data/usd-coin_2018-10-08_2024-04-21.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,15 +293,7 @@
       <workItem from="1717632785068" duration="2874000" />
       <workItem from="1717638835710" duration="782000" />
       <workItem from="1717709190998" duration="2847000" />
-      <workItem from="1717719596538" duration="2519000" />
-    </task>
-    <task id="LOCAL-00135" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
-      <option name="closed" value="true" />
-      <created>1716169549223</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1716169549223</updated>
+      <workItem from="1717719596538" duration="2964000" />
     </task>
     <task id="LOCAL-00136" summary="INSIGHT - WIP. &#10;No map testing here.&#10;No map add/updates occur here.&#10;Given the tight link btwn Insight and OEMS, wait to call &quot;DONE&quot; until OEMS &quot;DONE&quot; too.&#10;&#10;OEMS - WIP.&#10;Testing all map (order) actions.&#10;Test integration of queues.">
       <option name="closed" value="true" />
@@ -689,7 +679,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717639236063</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717722157829</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1717722157829</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -62,6 +62,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 } else if (oemsData.openOrderSide.equals("Buy")) {
 
                     if (oemsData.close <= prevSLPrice) {
+                        oemsData.openOrderState = "SL Sell Triggered";
                         placeCoaOrder(oemsData);
                     } else {
                         placeNosOngoingOrder(oemsData);
@@ -70,6 +71,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 // coa on bearish sl - tho no reversal, yet
                 } else if (oemsData.openOrderSide.equals("Sell")) {
                     if (oemsData.close >= prevSLPrice) {
+                        oemsData.openOrderState = "SL Buy Triggered";
                         placeCoaOrder(oemsData);
                     }else {
                         placeNosOngoingOrder(oemsData);
@@ -176,8 +178,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
     }
 
     private void placeCoaOrder(OEMSData oemsData) {
-
-        if(recCount == 758) {System.out.println("SL SELL: " + oemsData.close + " < " + " - " + prevSLPrice);}
 
         closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
 
