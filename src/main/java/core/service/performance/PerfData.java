@@ -55,10 +55,11 @@ public class PerfData extends SelfDescribingMarshallable {
     public String closeOrderSide;
     public String orderConfirmationState;
 
-    // perf q real-time data
     public long allRecCount;
     public long nosRecCount;
     public long coaRecCount;
+
+    // perf q real-time data
     public double cagrPercentage;
     public double sharpeRatio;
     public double sortinoRatio;

@@ -1,5 +1,7 @@
 package core.service.performance;
 
+import core.service.oems.OEMSData;
+import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
 import performance.Performance;
 import performance.PerformanceImpl;
@@ -8,9 +10,11 @@ import java.io.IOException;
 
 public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
+
     CharSequence perfReady = null;
     double[] returns = new double[0];
     double[] drawdowns = new double[0];
+    double roi = 0;
 
     Performance perf = new PerformanceImpl(drawdowns);
 
@@ -38,15 +42,20 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
             perfData.reliabilityPercentage = perf.getWinPercent();
             perfData.totalProfit = perf.getTotalProfit();
             perfData.profitFactor = perf.getProfitFactor();
+
         } else {
-            returns = ArrayUtils.add(returns, (perfData.openOrderPrice-perfData.close));
+
+            roi = (perfData.openOrderPrice - perfData.closeOrderPrice) / perfData.openOrderPrice;
+            returns = ArrayUtils.add(returns, roi);
+
+            System.out.println("COA: " + perfData.closeOrderId + " @ " + perfData.closeOrderPrice);
+            System.out.println("ROI: " + roi);
+            System.out.println("Returns Length: " + returns.length);
+            System.out.println("\n");
         }
 
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
-
-        System.out.println("PERF: " + perfData);
-        System.out.println("\n");
 
         output.simpleCall(perfData);
     }
