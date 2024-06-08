@@ -1,6 +1,7 @@
 package performance;
 
 import core.service.oems.OEMSData;
+import core.service.performance.PerfData;
 import performance.metrics.FinancialMetrics;
 
 public class PerformanceImpl implements Performance {
@@ -47,7 +48,9 @@ public class PerformanceImpl implements Performance {
         return initialInvestment;
     }
 
-    public double getCAGRPercentage() {
+    public double getCAGRPercentage(PerfData perfData) {
+        initialInvestment = perfData.initialInvestment;
+        finalValue = perfData.nav;
         cagr = finMet.calculateCAGR(initialInvestment, finalValue, numberOfYears);
         return cagr;
     }
@@ -67,8 +70,8 @@ public class PerformanceImpl implements Performance {
         return returnToAvgDrawdown;
     }
 
-    public double getMARRatio() {
-        marRatio = finMet.calculateMARRatio(getCAGRPercentage(), getMaxDrawdownPercentage());
+    public double getMARRatio(PerfData perfData) {
+        marRatio = finMet.calculateMARRatio(getCAGRPercentage(perfData), getMaxDrawdownPercentage());
         return marRatio;
     }
 

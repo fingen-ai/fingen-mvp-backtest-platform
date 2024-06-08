@@ -30,8 +30,11 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
-        if(perfReady != null && returns.length > 1) {
-            perfData.cagrPercentage = perf.getCAGRPercentage();
+        if(perfReady != null) {
+            perfData.initialInvestment = perf.getInitialInvestment();
+            perfData.cagrPercentage = perf.getCAGRPercentage(perfData);
+            System.out.println(perfData.cagrPercentage);
+            /*
             perfData.sharpeRatio = perf.getSharpeRatio();
             perfData.sortinoRatio = perf.getSortinoRatio();
             perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
@@ -42,6 +45,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
             perfData.reliabilityPercentage = perf.getWinPercent();
             perfData.totalProfit = perf.getTotalProfit();
             perfData.profitFactor = perf.getProfitFactor();
+             */
 
         } else {
 
@@ -84,8 +88,11 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
                     returns = ArrayUtils.add(returns, perfData.roi);
 
-                    System.out.println("PERF: " + perfData);
-                    System.out.println("Returns Length: " + returns.length);
+                    perfData.nav += perfData.roi;
+                    perfReady = "Ready";
+
+                    //System.out.println("PERF: " + perfData);
+                    //System.out.println("Returns Length: " + returns.length);
                 }
 
                 System.out.println("\n");

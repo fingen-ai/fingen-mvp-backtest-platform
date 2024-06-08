@@ -1,13 +1,15 @@
 package performance;
 
+import core.service.performance.PerfData;
+
 public interface Performance {
 
     double getInitialInvestment();
-    double getCAGRPercentage();
+    double getCAGRPercentage(PerfData perfData);
     double getSharpeRatio();
     double getSortinoRatio();
     double getReturnToAvgDrawdown();
-    double getMARRatio();
+    double getMARRatio(PerfData perfData);
     double getMaxDrawdownPercentage();
     double getWinCount();
     double getLossCount();

@@ -86,4 +86,6 @@ public class PerfData extends SelfDescribingMarshallable {
     public double profitFactor;
     public double roi;
     public double netROI;
+    public double initialInvestment;
+    public double nav;
 }

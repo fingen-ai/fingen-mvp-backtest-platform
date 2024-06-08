@@ -1,20 +1,23 @@
 package performance;
 
+import core.service.performance.PerfData;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class PerformanceTest {
+
+    PerfData perfData = new PerfData();
 
     @Test
     public void testPerformance() {
 
         double[] drawdowns = new double[0]; // call DD svc
         Performance performance = new PerformanceImpl(drawdowns);
-        double cagrPercentage = performance.getCAGRPercentage();
+        double cagrPercentage = performance.getCAGRPercentage(perfData);
         double sharpeRatio = performance.getSharpeRatio();
         double sortinoRatio = performance.getSortinoRatio();
         double returnToAvgDrawdown = performance.getReturnToAvgDrawdown();
-        double marRatio = performance.getMARRatio();
+        double marRatio = performance.getMARRatio(perfData);
         double maxDrawdownPercentage = performance.getMaxDrawdownPercentage();
         double winCount = performance.getWinCount();
         double lossCount = performance.getLossCount();
