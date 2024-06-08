@@ -87,16 +87,31 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
             if(returns.length > 1) {
                 perfData.cagrPercentage = perf.getCAGRPercentage(perfData);
+
                 perfData.sharpeRatio = perf.getSharpeRatio(returns);
+                perfData.sortinoRatio = perf.getSortinoRatio(returns);
+                perfData.marRatio = perf.getMARRatio(perfData, returns);
+
                 System.out.println(perfData);
 
-                perfData.sortinoRatio = perf.getSortinoRatio();
-                perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
-                perfData.marRatio = perf.getMARRatio(perfData, returns);
+                perfData.drawdown = perf.getDrawdown();
                 perfData.maxDrawdownPercentage = perf.getMaxDrawdownPercentage(returns);
+                perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
+
                 perfData.winCount = perf.getWinCount();
                 perfData.lossCount = perf.getLossCount();
-                perfData.reliabilityPercentage = perf.getWinPercent();
+
+                perfData.winPercent = perf.getWinPercent();
+                perfData.lossPercent = perf.getLossPercent();
+
+                perfData.avgWinAmt = perf.getAvgWinAmt(perfData);
+                perfData.avgLossAmt = perf.getAvgLossAmt(perfData);
+
+                perfData.avgWinPercent = perf.getAvgWinPercent();
+                perfData.avgLossPercent = perf.getAvgLossPercent();
+
+                perfData.edge = perf.getEdge();
+
                 perfData.totalProfit = perf.getTotalProfit();
                 perfData.profitFactor = perf.getProfitFactor();
             }

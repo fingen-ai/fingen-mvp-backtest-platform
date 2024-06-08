@@ -86,7 +86,14 @@ public class PerfData extends SelfDescribingMarshallable {
     public double maxDrawdownPercentage;
     public double winCount;
     public double lossCount;
-    public double reliabilityPercentage;
+    public double winPercent;
     public double totalProfit;
     public double profitFactor;
+    public double lossPercent;
+    public double drawdown;
+    public Object avgWinAmt;
+    public Object avgLossAmt;
+    public Object avgWinPercent;
+    public Object avgLossPercent;
+    public Object edge;
 }

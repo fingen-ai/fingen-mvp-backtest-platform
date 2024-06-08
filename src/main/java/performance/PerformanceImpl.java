@@ -60,7 +60,7 @@ public class PerformanceImpl implements Performance {
         return sharpeRatio;
     }
 
-    public double getSortinoRatio() {
+    public double getSortinoRatio(double[] returns) {
         sortinoRatio = finMet.calculateSortinoRatio(returns, riskFreeRate);
         return sortinoRatio;
     }
@@ -75,11 +75,17 @@ public class PerformanceImpl implements Performance {
         return marRatio;
     }
 
+    @Override
+    public double getDrawdown() {
+        return 0;
+    }
+
     public double getMaxDrawdownPercentage(double[] returns) {
         maxDD = finMet.calculateMaximumDrawdown(returns);
         return maxDD;
     }
 
+    // edge related stats
     public double getWinCount() {
         winCount = finMet.calculateWinCount(returns);
         return winCount;
@@ -112,12 +118,15 @@ public class PerformanceImpl implements Performance {
         return avgLossPercentage;
     }
 
-    public double getAvgWinAmount(OEMSData oemsData) {
-        avgWinAmount = oemsData.openOrderQty * oemsData.close / winCount;
+    @Override
+    public double getAvgWinAmt(PerfData perfData) {
+        avgWinAmount = perfData.openOrderQty * perfData.close / winCount;
         return avgWinAmount;
     }
 
-    public double getAvgLossAmount(OEMSData oemsData) {
+    @Override
+    public double getAvgLossAmt(PerfData perfData) {
+        avgLossAmount = perfData.openOrderQty * perfData.close / lossCount;
         return avgLossAmount;
     }
 
@@ -140,5 +149,4 @@ public class PerformanceImpl implements Performance {
     public long getTradeCount() {
         return tradeCount;
     }
-
 }

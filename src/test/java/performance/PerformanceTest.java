@@ -16,7 +16,7 @@ public class PerformanceTest {
         Performance performance = new PerformanceImpl(drawdowns);
         double cagrPercentage = performance.getCAGRPercentage(perfData);
         double sharpeRatio = performance.getSharpeRatio(returns);
-        double sortinoRatio = performance.getSortinoRatio();
+        double sortinoRatio = performance.getSortinoRatio(returns);
         double returnToAvgDrawdown = performance.getReturnToAvgDrawdown();
         double marRatio = performance.getMARRatio(perfData, returns);
         double maxDrawdownPercentage = performance.getMaxDrawdownPercentage(returns);
