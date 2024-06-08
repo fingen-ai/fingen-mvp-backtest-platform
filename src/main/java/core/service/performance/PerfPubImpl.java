@@ -32,10 +32,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
-        System.out.println("PERF: " + perfData.coaCloseOrderId + " and " + perfData.coaCloseOrderId);
-        System.out.println("\n");
-
-        if(perfReady != null) {
+        if(perfReady != null && returns.length > 1) {
             perfData.cagrPercentage = perf.getCAGRPercentage();
             perfData.sharpeRatio = perf.getSharpeRatio();
             perfData.sortinoRatio = perf.getSortinoRatio();
@@ -50,6 +47,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
         } else {
 
+            //System.out.println("PERF: " + perfData.coaCloseOrderId);
+
             if(perfData.coaCloseOrderId > 0) {
 
                 long[] coaArray = orderMS.getFromCOAIDArray(perfData.symbol);
@@ -58,23 +57,32 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
                     OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
 
+                    //System.out.println("PERF: " + coaOEMS.coaCloseOrderId + " and " + coaOEMS.coaCloseOrderId);
+
                     roi = (coaOEMS.coaOpenOrderPrice - coaOEMS.coaCloseOrderPrice) / coaOEMS.coaOpenOrderPrice;
                     roi = roundingWithPrecision(roi, 4);
                     netROI += roi;
 
-                    //System.out.println("SIDE: " + coaOEMS.openOrderSide);
-                    //System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
-                    //System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
+                    System.out.println("SIDE: " + coaOEMS.openOrderSide);
+                    System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
+                    System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
 
-                    //System.out.println("ROI: " + roi);
-                    //System.out.println("NET ROI: " + netROI);
+                    System.out.println("ROI: " + roi);
+                    System.out.println("NET ROI: " + netROI);
+
                     returns = ArrayUtils.add(returns, roi);
-                    //System.out.println("Returns Length: " + returns.length);
+
+                    System.out.println("Returns Length: " + returns.length);
                 }
 
                 //System.out.println("\n");
             }
+            System.out.println("\n");
         }
+
+        roi = 0;
+        netROI = 0;
+        returns = null;
 
         perfData.svcStopTs = System.nanoTime();
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;

@@ -204,9 +204,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.coaOpenOrderPrice = nosOEMSData.coaOpenOrderPrice;
             oemsData.coaCloseOrderPrice = nosOEMSData.coaCloseOrderPrice;
 
-            System.out.println("COA Close ID: " + coaOEMSData.coaCloseOrderId + " and " + oemsData.coaCloseOrderId);
+            //System.out.println("OPEN ORDER ARRAY L: " + openOrdersIDArray.length);
+            //System.out.println("OPEN ORDER L: " + openOrdersIDArray[i]);
+            //System.out.println("COA Close IDs: " + coaOEMSData.coaCloseOrderId + " and " + oemsData.coaCloseOrderId);
         }
 
+        //System.out.println("\n");
         orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
         orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
     }

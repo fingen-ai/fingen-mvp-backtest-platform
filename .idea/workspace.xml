@@ -295,14 +295,7 @@
       <workItem from="1717638835710" duration="782000" />
       <workItem from="1717709190998" duration="2847000" />
       <workItem from="1717719596538" duration="29687000" />
-    </task>
-    <task id="LOCAL-00153" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <option name="closed" value="true" />
-      <created>1716511139042</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1716511139042</updated>
+      <workItem from="1717863964259" duration="916000" />
     </task>
     <task id="LOCAL-00154" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <option name="closed" value="true" />
@@ -688,7 +681,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717825617226</updated>
     </task>
-    <option name="localTasksCounter" value="202" />
+    <task id="LOCAL-00202" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717864229146</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1717864229146</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
