@@ -15,8 +15,6 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     CharSequence perfReady = null;
     double[] returns = new double[0];
     double[] drawdowns = new double[0];
-    double roi = 0;
-    double netROI = 0;
 
     Performance perf = new PerformanceImpl(drawdowns);
 
@@ -47,41 +45,53 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
         } else {
 
-            //System.out.println("PERF: " + perfData.coaCloseOrderId);
-
             if(perfData.coaCloseOrderId > 0) {
 
                 long[] coaArray = orderMS.getFromCOAIDArray(perfData.symbol);
-                /// something to commit
+
                 for(int i=0; i < coaArray.length; i++) {
 
                     OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
 
-                    //System.out.println("PERF: " + coaOEMS.coaCloseOrderId + " and " + coaOEMS.coaCloseOrderId);
+                    perfData.symbol = coaOEMS.symbol;
+                    perfData.coaOpenOrderId = coaOEMS.coaOpenOrderId;
+                    perfData.coaCloseOrderId = coaOEMS.coaCloseOrderId;
 
-                    roi = (coaOEMS.coaOpenOrderPrice - coaOEMS.coaCloseOrderPrice) / coaOEMS.coaOpenOrderPrice;
-                    roi = roundingWithPrecision(roi, 4);
-                    netROI += roi;
+                    perfData.coaOpenOrderSide = coaOEMS.coaOpenOrderSide;
+                    perfData.coaCloseOrderSide = coaOEMS.coaCloseOrderSide;
 
-                    System.out.println("SIDE: " + coaOEMS.openOrderSide);
-                    System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
-                    System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
+                    perfData.coaOpenOrderTimestamp = coaOEMS.coaOpenOrderTimestamp;
+                    perfData.coaCloseOrderTimestamp = coaOEMS.coaCloseOrderTimestamp;
 
-                    System.out.println("ROI: " + roi);
-                    System.out.println("NET ROI: " + netROI);
+                    perfData.coaOpenOrderPrice = coaOEMS.coaOpenOrderPrice;
+                    perfData.coaCloseOrderPrice = coaOEMS.coaCloseOrderPrice;
 
-                    returns = ArrayUtils.add(returns, roi);
+                    perfData.coaOpenOrderQty = coaOEMS.coaOpenOrderQty;
+                    perfData.coaCloseOrderQty = coaOEMS.coaCloseOrderQty;
 
+                    perfData.coaOpenOrderExpiry = coaOEMS.coaOpenOrderExpiry;
+                    perfData.coaCloseOrderExpiry = coaOEMS.coaCloseOrderExpiry;
+
+                    perfData.coaOpenOrderType = coaOEMS.coaOpenOrderType;
+                    perfData.coaClosedOrderType = coaOEMS.coaClosedOrderType;
+
+                    perfData.coaOpenOrderState = coaOEMS.coaOpenOrderState;
+                    perfData.coaCloseOrderState = coaOEMS.coaCloseOrderState;
+
+                    perfData.roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
+                    perfData.roi = roundingWithPrecision(perfData.roi, 4);
+                    perfData.netROI += perfData.roi;
+
+                    returns = ArrayUtils.add(returns, perfData.roi);
+
+                    System.out.println("PERF: " + perfData);
                     System.out.println("Returns Length: " + returns.length);
                 }
 
-                //System.out.println("\n");
+                System.out.println("\n");
             }
-            System.out.println("\n");
         }
 
-        roi = 0;
-        netROI = 0;
         returns = null;
 
         perfData.svcStopTs = System.nanoTime();

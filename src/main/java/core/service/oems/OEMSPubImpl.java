@@ -93,8 +93,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
-        System.out.println("REC: " + recCount);
-
         recCount++;
 
         openOrdersIDArray = null;
@@ -173,6 +171,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
             nosOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
 
+            coaOEMSData.coaOpenOrderSide = nosOEMSData.orderSide;
+
             if(nosOEMSData.bassoOrderIdea.equals("Bullish")) {
                 coaOEMSData.coaCloseOrderSide = "Sell"; // sell to close bullish pos
             } else {
@@ -184,13 +184,22 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             coaOEMSData.coaOpenOrderId = openOrdersIDArray[i];
             coaOEMSData.coaCloseOrderId = openOrdersIDArray[i];
 
-            coaOEMSData.coaOpenOrderPrice = nosOEMSData.openOrderPrice;
-
+            coaOEMSData.coaOpenOrderTimestamp = nosOEMSData.openOrderTimestamp;
             coaOEMSData.coaCloseOrderTimestamp = System.nanoTime();
+
+            coaOEMSData.coaOpenOrderPrice = nosOEMSData.openOrderPrice;
             coaOEMSData.coaCloseOrderPrice = oemsData.close;
+
+            coaOEMSData.coaOpenOrderExpiry = nosOEMSData.openOrderExpiry;
             coaOEMSData.coaCloseOrderExpiry = "GTC";
+
+            coaOEMSData.coaOpenOrderType = nosOEMSData.orderType;
             coaOEMSData.coaClosedOrderType ="LMT";
+
+            coaOEMSData.openOrderQty = nosOEMSData.openOrderQty;
             coaOEMSData.coaCloseOrderQty = nosOEMSData.openOrderQty;
+
+            coaOEMSData.coaOpenOrderState = nosOEMSData.openOrderState;
             coaOEMSData.coaCloseOrderState = "Close Orders All";
 
             // kv store events
@@ -201,15 +210,12 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             // pass svc-state via dto-pipeline
             oemsData.coaOpenOrderId = openOrdersIDArray[i];
             oemsData.coaCloseOrderId = openOrdersIDArray[i];
-            oemsData.coaOpenOrderPrice = nosOEMSData.coaOpenOrderPrice;
-            oemsData.coaCloseOrderPrice = nosOEMSData.coaCloseOrderPrice;
-
-            //System.out.println("OPEN ORDER ARRAY L: " + openOrdersIDArray.length);
-            //System.out.println("OPEN ORDER L: " + openOrdersIDArray[i]);
-            //System.out.println("COA Close IDs: " + coaOEMSData.coaCloseOrderId + " and " + oemsData.coaCloseOrderId);
+            oemsData.openOrderTimestamp = coaOEMSData.openOrderTimestamp;
+            oemsData.coaCloseOrderTimestamp = coaOEMSData.coaCloseOrderTimestamp;
+            oemsData.coaOpenOrderPrice = coaOEMSData.coaOpenOrderPrice;
+            oemsData.coaCloseOrderPrice = coaOEMSData.coaCloseOrderPrice;
         }
 
-        //System.out.println("\n");
         orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
         orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
     }
