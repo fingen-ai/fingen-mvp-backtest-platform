@@ -172,6 +172,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             coaOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
 
             coaOEMSData.coaOpenOrderId = openOrdersIDArray[i];
+            coaOEMSData.coaOpenOrderPrice = coaOEMSData.openOrderPrice;
             coaOEMSData.coaCloseOrderId = coaOEMSData.openOrderId;
             coaOEMSData.coaCloseOrderTimestamp = System.nanoTime();
             coaOEMSData.coaCloseOrderPrice = oemsData.close;

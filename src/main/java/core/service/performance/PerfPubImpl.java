@@ -48,6 +48,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
             if(perfData.coaCloseOrderId > 0) {
                 roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
+                roi = roundingWithPrecision(roi, 4);
                 System.out.println("CLOSE PRICE: " + perfData.coaCloseOrderPrice);
                 System.out.println("OPEN PRICE: " + perfData.coaOpenOrderPrice);
 
@@ -62,5 +63,10 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         perfData.svcLatency = perfData.svcStopTs - perfData.svcStartTs;
 
         output.simpleCall(perfData);
+    }
+
+    public static double roundingWithPrecision(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
     }
 }
