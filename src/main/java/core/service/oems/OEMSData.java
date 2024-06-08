@@ -44,16 +44,16 @@ public class OEMSData extends SelfDescribingMarshallable {
     public double orderQtyPerVol;
     public double openOrderSLPrice;
 
-    public long closeOrderTimestamp;
-    public long closeOrderId;
-    public String closeOrderExpiry;
-    public double closeOrderQty;
-
-    public String closeOrderState;
-    public String closedOrderType;
-    public double closeOrderPrice;
-    public String closeOrderSide;
-    public String orderConfirmationState;
+    public long coaOpenOrderId;
+    public double coaOpenOrderPrice;
+    public long coaCloseOrderTimestamp;
+    public long coaCloseOrderId;
+    public String coaCloseOrderExpiry;
+    public double coaCloseOrderQty;
+    public String coaCloseOrderState;
+    public String coaClosedOrderType;
+    public double coaCloseOrderPrice;
+    public String coaCloseOrderSide;
 
     public long allRecCount;
     public long nosRecCount;

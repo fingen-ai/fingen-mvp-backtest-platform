@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
+    OrderMappingService orderMS = new OrderMappingService();
 
     CharSequence perfReady = null;
     double[] returns = new double[0];
@@ -45,13 +46,16 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
         } else {
 
-            roi = (perfData.openOrderPrice - perfData.closeOrderPrice) / perfData.openOrderPrice;
-            returns = ArrayUtils.add(returns, roi);
+            if(perfData.coaCloseOrderId > 0) {
+                roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
+                System.out.println("CLOSE PRICE: " + perfData.coaCloseOrderPrice);
+                System.out.println("OPEN PRICE: " + perfData.coaOpenOrderPrice);
 
-            System.out.println("COA: " + perfData.closeOrderId + " @ " + perfData.closeOrderPrice);
-            System.out.println("ROI: " + roi);
-            System.out.println("Returns Length: " + returns.length);
-            System.out.println("\n");
+                System.out.println("ROI: " + roi);
+                returns = ArrayUtils.add(returns, roi);
+                System.out.println("Returns Length: " + returns.length);
+                System.out.println("\n");
+            }
         }
 
         perfData.svcStopTs = System.nanoTime();

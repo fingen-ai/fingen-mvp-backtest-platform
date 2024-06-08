@@ -93,6 +93,7 @@ public class OrderMappingService {
     }
 
     public OEMSData getCOA(long orderId) {
+        System.out.println("COA: " + orderId);
         return cosMap.get(orderId);
     }
 

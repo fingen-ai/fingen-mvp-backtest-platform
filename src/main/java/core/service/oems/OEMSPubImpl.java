@@ -55,7 +55,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
                 if(!oemsData.bassoOrderIdea.equals(prevBassoOrderIdea)) {
                     placeCoaOrder(oemsData);
 
-                    if(coaOEMSData.closeOrderState.equals("Close Orders All")) {
+                    if(coaOEMSData.coaCloseOrderState.equals("Close Orders All")) {
                         placeNosInitOrder(oemsData);
                     }
 
@@ -170,20 +170,26 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
             coaOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
-            coaOEMSData.openOrderId = openOrdersIDArray[i];
 
-            coaOEMSData.closeOrderId = coaOEMSData.openOrderId;
-            coaOEMSData.closeOrderTimestamp = System.nanoTime();
-            coaOEMSData.closeOrderPrice = oemsData.close;
-            coaOEMSData.closeOrderExpiry = "GTC";
-            coaOEMSData.closedOrderType ="LMT";
-            coaOEMSData.closeOrderQty = coaOEMSData.openOrderQty;
-            coaOEMSData.closeOrderState = "Close Orders All";
+            coaOEMSData.coaOpenOrderId = openOrdersIDArray[i];
+            coaOEMSData.coaCloseOrderId = coaOEMSData.openOrderId;
+            coaOEMSData.coaCloseOrderTimestamp = System.nanoTime();
+            coaOEMSData.coaCloseOrderPrice = oemsData.close;
+            coaOEMSData.coaCloseOrderExpiry = "GTC";
+            coaOEMSData.coaClosedOrderType ="LMT";
+            coaOEMSData.coaCloseOrderQty = coaOEMSData.openOrderQty;
+            coaOEMSData.coaCloseOrderState = "Close Orders All";
+
+            oemsData.openOrderId = coaOEMSData.coaOpenOrderId;
+            oemsData.coaOpenOrderPrice = coaOEMSData.coaOpenOrderPrice;
+            oemsData.coaCloseOrderId = coaOEMSData.coaCloseOrderId;
+            oemsData.coaCloseOrderTimestamp = coaOEMSData.coaCloseOrderTimestamp;
+            oemsData.coaCloseOrderPrice = coaOEMSData.coaCloseOrderPrice;
 
             if(coaOEMSData.bassoOrderIdea.equals("Bullish")) {
-                coaOEMSData.closeOrderSide = "Sell"; // sell to close bullish pos
+                coaOEMSData.coaCloseOrderSide = "Sell"; // sell to close bullish pos
             } else {
-                coaOEMSData.closeOrderSide = "Buy"; // buy to close bearish pos
+                coaOEMSData.coaCloseOrderSide = "Buy"; // buy to close bearish pos
             }
 
             orderMS.deleteNOS(coaOEMSData);
