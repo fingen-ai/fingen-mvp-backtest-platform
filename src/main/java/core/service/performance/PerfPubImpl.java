@@ -12,9 +12,12 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
     OrderMappingService orderMS = new OrderMappingService();
 
-    CharSequence perfReady = null;
     double[] returns = new double[0];
     double[] drawdowns = new double[0];
+
+    CharSequence perfReady = null;
+    double initialInvestment = 0;
+    double nav = 0;
 
     Performance perf = new PerformanceImpl(drawdowns);
 
@@ -30,74 +33,76 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
 
-        if(perfReady != null) {
-            perfData.initialInvestment = perf.getInitialInvestment();
-            perfData.cagrPercentage = perf.getCAGRPercentage(perfData);
+        if(initialInvestment == 0) {
+            initialInvestment = perf.getInitialInvestment();
+            nav = initialInvestment;
+        }
 
-            System.out.println(perfData);
-            /*
-            perfData.sharpeRatio = perf.getSharpeRatio();
-            perfData.sortinoRatio = perf.getSortinoRatio();
-            perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
-            perfData.marRatio = perf.getMARRatio();
-            perfData.maxDrawdownPercentage = perf.getMaxDrawdownPercentage();
-            perfData.winCount = perf.getWinCount();
-            perfData.lossCount = perf.getLossCount();
-            perfData.reliabilityPercentage = perf.getWinPercent();
-            perfData.totalProfit = perf.getTotalProfit();
-            perfData.profitFactor = perf.getProfitFactor();
-             */
+        if(perfData.coaCloseOrderId > 0) {
 
-        } else {
+            long[] coaArray = orderMS.getFromCOAIDArray(perfData.symbol);
 
-            if(perfData.coaCloseOrderId > 0) {
+            perfData.initialInvestment = initialInvestment;
+            perfData.nav = nav;
 
-                long[] coaArray = orderMS.getFromCOAIDArray(perfData.symbol);
+            for(int i=0; i < coaArray.length; i++) {
 
-                for(int i=0; i < coaArray.length; i++) {
+                OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
 
-                    OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
+                perfData.symbol = coaOEMS.symbol;
+                perfData.coaOpenOrderId = coaOEMS.coaOpenOrderId;
+                perfData.coaCloseOrderId = coaOEMS.coaCloseOrderId;
 
-                    perfData.symbol = coaOEMS.symbol;
-                    perfData.coaOpenOrderId = coaOEMS.coaOpenOrderId;
-                    perfData.coaCloseOrderId = coaOEMS.coaCloseOrderId;
+                perfData.coaOpenOrderSide = coaOEMS.coaOpenOrderSide;
+                perfData.coaCloseOrderSide = coaOEMS.coaCloseOrderSide;
 
-                    perfData.coaOpenOrderSide = coaOEMS.coaOpenOrderSide;
-                    perfData.coaCloseOrderSide = coaOEMS.coaCloseOrderSide;
+                perfData.coaOpenOrderTimestamp = coaOEMS.coaOpenOrderTimestamp;
+                perfData.coaCloseOrderTimestamp = coaOEMS.coaCloseOrderTimestamp;
 
-                    perfData.coaOpenOrderTimestamp = coaOEMS.coaOpenOrderTimestamp;
-                    perfData.coaCloseOrderTimestamp = coaOEMS.coaCloseOrderTimestamp;
+                perfData.coaOpenOrderPrice = coaOEMS.coaOpenOrderPrice;
+                perfData.coaCloseOrderPrice = coaOEMS.coaCloseOrderPrice;
 
-                    perfData.coaOpenOrderPrice = coaOEMS.coaOpenOrderPrice;
-                    perfData.coaCloseOrderPrice = coaOEMS.coaCloseOrderPrice;
+                perfData.coaOpenOrderQty = coaOEMS.coaOpenOrderQty;
+                perfData.coaCloseOrderQty = coaOEMS.coaCloseOrderQty;
 
-                    perfData.coaOpenOrderQty = coaOEMS.coaOpenOrderQty;
-                    perfData.coaCloseOrderQty = coaOEMS.coaCloseOrderQty;
+                perfData.coaOpenOrderExpiry = coaOEMS.coaOpenOrderExpiry;
+                perfData.coaCloseOrderExpiry = coaOEMS.coaCloseOrderExpiry;
 
-                    perfData.coaOpenOrderExpiry = coaOEMS.coaOpenOrderExpiry;
-                    perfData.coaCloseOrderExpiry = coaOEMS.coaCloseOrderExpiry;
+                perfData.coaOpenOrderType = coaOEMS.coaOpenOrderType;
+                perfData.coaClosedOrderType = coaOEMS.coaClosedOrderType;
 
-                    perfData.coaOpenOrderType = coaOEMS.coaOpenOrderType;
-                    perfData.coaClosedOrderType = coaOEMS.coaClosedOrderType;
+                perfData.coaOpenOrderState = coaOEMS.coaOpenOrderState;
+                perfData.coaCloseOrderState = coaOEMS.coaCloseOrderState;
 
-                    perfData.coaOpenOrderState = coaOEMS.coaOpenOrderState;
-                    perfData.coaCloseOrderState = coaOEMS.coaCloseOrderState;
+                perfData.roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
+                perfData.roi = roundingWithPrecision(perfData.roi, 4);
+                perfData.netROI += perfData.roi;
 
-                    perfData.roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
-                    perfData.roi = roundingWithPrecision(perfData.roi, 4);
-                    perfData.netROI += perfData.roi;
+                returns = ArrayUtils.add(returns, perfData.roi);
 
-                    returns = ArrayUtils.add(returns, perfData.roi);
+                perfData.nav += perfData.roi;
 
-                    perfData.nav += perfData.roi;
-                    perfReady = "Ready";
-
-                    //System.out.println("PERF: " + perfData);
-                    //System.out.println("Returns Length: " + returns.length);
-                }
-
-                System.out.println("\n");
+                perfReady = "Ready";
             }
+
+            if(returns.length > 1) {
+                perfData.cagrPercentage = perf.getCAGRPercentage(perfData);
+                System.out.println(perfData);
+
+                perfData.sharpeRatio = perf.getSharpeRatio();
+                perfData.sortinoRatio = perf.getSortinoRatio();
+                perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
+                perfData.marRatio = perf.getMARRatio(perfData, returns);
+                perfData.maxDrawdownPercentage = perf.getMaxDrawdownPercentage(returns);
+                perfData.winCount = perf.getWinCount();
+                perfData.lossCount = perf.getLossCount();
+                perfData.reliabilityPercentage = perf.getWinPercent();
+                perfData.totalProfit = perf.getTotalProfit();
+                perfData.profitFactor = perf.getProfitFactor();
+            }
+
+            System.out.println("\n");
+
         }
 
         returns = null;

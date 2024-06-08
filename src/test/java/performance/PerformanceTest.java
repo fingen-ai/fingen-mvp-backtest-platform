@@ -11,14 +11,15 @@ public class PerformanceTest {
     @Test
     public void testPerformance() {
 
+        double[] returns = new double[0]; // call DD svc
         double[] drawdowns = new double[0]; // call DD svc
         Performance performance = new PerformanceImpl(drawdowns);
         double cagrPercentage = performance.getCAGRPercentage(perfData);
         double sharpeRatio = performance.getSharpeRatio();
         double sortinoRatio = performance.getSortinoRatio();
         double returnToAvgDrawdown = performance.getReturnToAvgDrawdown();
-        double marRatio = performance.getMARRatio(perfData);
-        double maxDrawdownPercentage = performance.getMaxDrawdownPercentage();
+        double marRatio = performance.getMARRatio(perfData, returns);
+        double maxDrawdownPercentage = performance.getMaxDrawdownPercentage(returns);
         double winCount = performance.getWinCount();
         double lossCount = performance.getLossCount();
         double reliabilityPercentage = performance.getWinPercent();

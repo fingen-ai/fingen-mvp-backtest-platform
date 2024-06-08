@@ -70,12 +70,12 @@ public class PerformanceImpl implements Performance {
         return returnToAvgDrawdown;
     }
 
-    public double getMARRatio(PerfData perfData) {
-        marRatio = finMet.calculateMARRatio(getCAGRPercentage(perfData), getMaxDrawdownPercentage());
+    public double getMARRatio(PerfData perfData, double[] returns) {
+        marRatio = finMet.calculateMARRatio(getCAGRPercentage(perfData), getMaxDrawdownPercentage(returns));
         return marRatio;
     }
 
-    public double getMaxDrawdownPercentage() {
+    public double getMaxDrawdownPercentage(double[] returns) {
         maxDD = finMet.calculateMaximumDrawdown(returns);
         return maxDD;
     }

@@ -9,8 +9,8 @@ public interface Performance {
     double getSharpeRatio();
     double getSortinoRatio();
     double getReturnToAvgDrawdown();
-    double getMARRatio(PerfData perfData);
-    double getMaxDrawdownPercentage();
+    double getMARRatio(PerfData perfData, double[] returns);
+    double getMaxDrawdownPercentage(double[] returns);
     double getWinCount();
     double getLossCount();
     double getWinPercent();

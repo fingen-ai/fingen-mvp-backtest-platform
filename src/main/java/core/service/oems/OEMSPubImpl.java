@@ -233,11 +233,6 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.openOrderSLPrice = oemsData.close + (oemsData.atr * 3);
             oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
         }
-
-        maxSLPrice = oemsData.close * 1.0025;
-        if(oemsData.openOrderSLPrice > maxSLPrice) {
-            //oemsData.openOrderSLPrice = maxSLPrice;
-        }
     }
 
     private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
