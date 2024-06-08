@@ -56,6 +56,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
                     roi = (coaOEMS.coaOpenOrderPrice - coaOEMS.coaCloseOrderPrice) / coaOEMS.coaOpenOrderPrice;
                     roi = roundingWithPrecision(roi, 4);
+
+                    System.out.println("SIDE: " + coaOEMS.openOrderSide);
                     System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
                     System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
 
