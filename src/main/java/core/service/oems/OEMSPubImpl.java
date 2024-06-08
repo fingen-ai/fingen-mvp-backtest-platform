@@ -165,7 +165,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private void placeCoaOrder(OEMSData oemsData) {
 
-        closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
+        closeOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
 

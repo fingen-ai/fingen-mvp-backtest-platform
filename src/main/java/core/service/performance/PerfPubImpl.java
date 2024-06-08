@@ -64,8 +64,9 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                     System.out.println("ROI: " + roi);
                     returns = ArrayUtils.add(returns, roi);
                     System.out.println("Returns Length: " + returns.length);
-                    System.out.println("\n");
                 }
+
+                System.out.println("END\n");
             }
         }
 
