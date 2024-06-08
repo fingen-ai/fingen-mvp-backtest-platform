@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/Performance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,15 +294,7 @@
       <workItem from="1717638835710" duration="782000" />
       <workItem from="1717709190998" duration="2847000" />
       <workItem from="1717719596538" duration="29687000" />
-      <workItem from="1717863964259" duration="6079000" />
-    </task>
-    <task id="LOCAL-00156" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <option name="closed" value="true" />
-      <created>1716757760300</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1716757760300</updated>
+      <workItem from="1717863964259" duration="6431000" />
     </task>
     <task id="LOCAL-00157" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <option name="closed" value="true" />
@@ -691,7 +680,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717868095873</updated>
     </task>
-    <option name="localTasksCounter" value="205" />
+    <task id="LOCAL-00205" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717873994750</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1717873994750</updated>
+    </task>
+    <option name="localTasksCounter" value="206" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

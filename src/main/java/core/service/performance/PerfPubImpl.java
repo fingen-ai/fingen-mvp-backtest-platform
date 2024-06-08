@@ -33,7 +33,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         if(perfReady != null) {
             perfData.initialInvestment = perf.getInitialInvestment();
             perfData.cagrPercentage = perf.getCAGRPercentage(perfData);
-            System.out.println(perfData.cagrPercentage);
+
+            System.out.println(perfData);
             /*
             perfData.sharpeRatio = perf.getSharpeRatio();
             perfData.sortinoRatio = perf.getSortinoRatio();

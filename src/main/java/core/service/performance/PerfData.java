@@ -73,6 +73,11 @@ public class PerfData extends SelfDescribingMarshallable {
     public long coaRecCount;
 
     // perf q real-time data
+    public double roi;
+    public double netROI;
+    public double initialInvestment;
+    public double nav;
+
     public double cagrPercentage;
     public double sharpeRatio;
     public double sortinoRatio;
@@ -84,8 +89,4 @@ public class PerfData extends SelfDescribingMarshallable {
     public double reliabilityPercentage;
     public double totalProfit;
     public double profitFactor;
-    public double roi;
-    public double netROI;
-    public double initialInvestment;
-    public double nav;
 }
