@@ -15,7 +15,7 @@ public class PerformanceTest {
         double[] drawdowns = new double[0]; // call DD svc
         Performance performance = new PerformanceImpl(drawdowns);
         double cagrPercentage = performance.getCAGRPercentage(perfData);
-        double sharpeRatio = performance.getSharpeRatio();
+        double sharpeRatio = performance.getSharpeRatio(returns);
         double sortinoRatio = performance.getSortinoRatio();
         double returnToAvgDrawdown = performance.getReturnToAvgDrawdown();
         double marRatio = performance.getMARRatio(perfData, returns);

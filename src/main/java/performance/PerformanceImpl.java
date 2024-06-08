@@ -55,7 +55,7 @@ public class PerformanceImpl implements Performance {
         return cagr;
     }
 
-    public double getSharpeRatio() {
+    public double getSharpeRatio(double[] returns) {
         sharpeRatio = finMet.calculateSharpeRatio(returns, riskFreeRate);;
         return sharpeRatio;
     }

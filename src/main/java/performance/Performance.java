@@ -6,7 +6,7 @@ public interface Performance {
 
     double getInitialInvestment();
     double getCAGRPercentage(PerfData perfData);
-    double getSharpeRatio();
+    double getSharpeRatio(double[] returns);
     double getSortinoRatio();
     double getReturnToAvgDrawdown();
     double getMARRatio(PerfData perfData, double[] returns);
