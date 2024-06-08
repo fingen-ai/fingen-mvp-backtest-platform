@@ -93,6 +93,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         oemsData.svcStopTs = System.nanoTime();
         oemsData.svcLatency = oemsData.svcStopTs - oemsData.svcStartTs;
 
+        System.out.println("REC: " + recCount);
+
         recCount++;
 
         openOrdersIDArray = null;
@@ -165,42 +167,47 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     private void placeCoaOrder(OEMSData oemsData) {
 
-        closeOrdersIDArray = orderMS.getFromNOSIDArray(oemsData.symbol);
+        closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
 
         for(int i=0; i < openOrdersIDArray.length; i++) {
 
-            coaOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
+            nosOEMSData = orderMS.getNOS(openOrdersIDArray[i]);
 
-            coaOEMSData.coaOpenOrderId = openOrdersIDArray[i];
-            coaOEMSData.coaOpenOrderPrice = coaOEMSData.openOrderPrice;
-            coaOEMSData.coaCloseOrderId = coaOEMSData.openOrderId;
-            coaOEMSData.coaCloseOrderTimestamp = System.nanoTime();
-            coaOEMSData.coaCloseOrderPrice = oemsData.close;
-            coaOEMSData.coaCloseOrderExpiry = "GTC";
-            coaOEMSData.coaClosedOrderType ="LMT";
-            coaOEMSData.coaCloseOrderQty = coaOEMSData.openOrderQty;
-            coaOEMSData.coaCloseOrderState = "Close Orders All";
-
-            oemsData.openOrderId = coaOEMSData.coaOpenOrderId;
-            oemsData.coaOpenOrderPrice = coaOEMSData.coaOpenOrderPrice;
-            oemsData.coaCloseOrderId = coaOEMSData.coaCloseOrderId;
-            oemsData.coaCloseOrderTimestamp = coaOEMSData.coaCloseOrderTimestamp;
-            oemsData.coaCloseOrderPrice = coaOEMSData.coaCloseOrderPrice;
-
-            if(coaOEMSData.bassoOrderIdea.equals("Bullish")) {
+            if(nosOEMSData.bassoOrderIdea.equals("Bullish")) {
                 coaOEMSData.coaCloseOrderSide = "Sell"; // sell to close bullish pos
             } else {
                 coaOEMSData.coaCloseOrderSide = "Buy"; // buy to close bearish pos
             }
 
-            orderMS.deleteNOS(coaOEMSData);
-            orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
+            // id for kv store events
+            coaOEMSData.symbol = nosOEMSData.symbol;
+            coaOEMSData.coaOpenOrderId = openOrdersIDArray[i];
+            coaOEMSData.coaCloseOrderId = openOrdersIDArray[i];
 
-            orderMS.addUpdateCOA(coaOEMSData.openOrderId, coaOEMSData);
+            coaOEMSData.coaOpenOrderPrice = nosOEMSData.openOrderPrice;
 
-            closeOrdersIDArray = ArrayUtils.add(closeOrdersIDArray, coaOEMSData.openOrderId);
+            coaOEMSData.coaCloseOrderTimestamp = System.nanoTime();
+            coaOEMSData.coaCloseOrderPrice = oemsData.close;
+            coaOEMSData.coaCloseOrderExpiry = "GTC";
+            coaOEMSData.coaClosedOrderType ="LMT";
+            coaOEMSData.coaCloseOrderQty = nosOEMSData.openOrderQty;
+            coaOEMSData.coaCloseOrderState = "Close Orders All";
+
+            // kv store events
+            orderMS.deleteNOS(nosOEMSData);
+            orderMS.addUpdateCOA(openOrdersIDArray[i], coaOEMSData);
+            closeOrdersIDArray = ArrayUtils.add(closeOrdersIDArray, openOrdersIDArray[i]);
+
+            // pass svc-state via dto-pipeline
+            oemsData.coaOpenOrderId = openOrdersIDArray[i];
+            oemsData.coaCloseOrderId = openOrdersIDArray[i];
+            oemsData.coaOpenOrderPrice = nosOEMSData.coaOpenOrderPrice;
+            oemsData.coaCloseOrderPrice = nosOEMSData.coaCloseOrderPrice;
+
+            System.out.println("COA Close ID: " + coaOEMSData.coaCloseOrderId + " and " + oemsData.coaCloseOrderId);
         }
 
+        orderMS.deleteFromNOSIDArray(coaOEMSData.symbol);
         orderMS.addToCOAIDArray(coaOEMSData.symbol, closeOrdersIDArray);
     }
 
@@ -218,9 +225,9 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
             oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
         }
 
-        maxSLPrice = oemsData.close * 1.01;
+        maxSLPrice = oemsData.close * 1.0025;
         if(oemsData.openOrderSLPrice > maxSLPrice) {
-            oemsData.openOrderSLPrice = maxSLPrice;
+            //oemsData.openOrderSLPrice = maxSLPrice;
         }
     }
 

@@ -16,6 +16,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
     double[] returns = new double[0];
     double[] drawdowns = new double[0];
     double roi = 0;
+    double netROI = 0;
 
     Performance perf = new PerformanceImpl(drawdowns);
 
@@ -30,6 +31,9 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
     public void simpleCall(PerfData perfData) {
         perfData.svcStartTs = System.nanoTime();
+
+        System.out.println("PERF: " + perfData.coaCloseOrderId + " and " + perfData.coaCloseOrderId);
+        System.out.println("\n");
 
         if(perfReady != null) {
             perfData.cagrPercentage = perf.getCAGRPercentage();
@@ -56,17 +60,19 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
                     roi = (coaOEMS.coaOpenOrderPrice - coaOEMS.coaCloseOrderPrice) / coaOEMS.coaOpenOrderPrice;
                     roi = roundingWithPrecision(roi, 4);
+                    netROI += roi;
 
-                    System.out.println("SIDE: " + coaOEMS.openOrderSide);
-                    System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
-                    System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
+                    //System.out.println("SIDE: " + coaOEMS.openOrderSide);
+                    //System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
+                    //System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
 
-                    System.out.println("ROI: " + roi);
+                    //System.out.println("ROI: " + roi);
+                    //System.out.println("NET ROI: " + netROI);
                     returns = ArrayUtils.add(returns, roi);
-                    System.out.println("Returns Length: " + returns.length);
+                    //System.out.println("Returns Length: " + returns.length);
                 }
 
-                System.out.println("END\n");
+                //System.out.println("\n");
             }
         }
 
