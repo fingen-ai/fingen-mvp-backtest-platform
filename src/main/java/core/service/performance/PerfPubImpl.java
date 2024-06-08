@@ -47,15 +47,23 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
         } else {
 
             if(perfData.coaCloseOrderId > 0) {
-                roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
-                roi = roundingWithPrecision(roi, 4);
-                System.out.println("CLOSE PRICE: " + perfData.coaCloseOrderPrice);
-                System.out.println("OPEN PRICE: " + perfData.coaOpenOrderPrice);
 
-                System.out.println("ROI: " + roi);
-                returns = ArrayUtils.add(returns, roi);
-                System.out.println("Returns Length: " + returns.length);
-                System.out.println("\n");
+                long[] coaArray = orderMS.getFromCOAIDArray(perfData.symbol);
+
+                for(int i=0; i < coaArray.length; i++) {
+
+                    OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
+
+                    roi = (coaOEMS.coaOpenOrderPrice - coaOEMS.coaCloseOrderPrice) / coaOEMS.coaOpenOrderPrice;
+                    roi = roundingWithPrecision(roi, 4);
+                    System.out.println("CLOSE PRICE: " + coaOEMS.coaCloseOrderPrice);
+                    System.out.println("OPEN PRICE: " + coaOEMS.coaOpenOrderPrice);
+
+                    System.out.println("ROI: " + roi);
+                    returns = ArrayUtils.add(returns, roi);
+                    System.out.println("Returns Length: " + returns.length);
+                    System.out.println("\n");
+                }
             }
         }
 
