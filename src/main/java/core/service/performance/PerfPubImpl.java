@@ -49,7 +49,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
             if(perfData.coaCloseOrderId > 0) {
 
                 long[] coaArray = orderMS.getFromCOAIDArray(perfData.symbol);
-
+                /// something to commit
                 for(int i=0; i < coaArray.length; i++) {
 
                     OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
