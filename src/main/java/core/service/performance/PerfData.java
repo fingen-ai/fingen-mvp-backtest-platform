@@ -30,19 +30,19 @@ public class PerfData extends SelfDescribingMarshallable {
     public String openOrderSide;
 
     // oems q real-time data
+    public String prevBassoOrderIdea;
     public long openOrderTimestamp;
     public long openOrderId;
     public String openOrderExpiry;
-    public String prevBassoOrderIdea;
-    public double previousClose;
     public double openOrderQty;
+    public double orderQtyPerRisk;
+    public double orderQtyPerVol;
+    public double openOrderSLPrice;
+    public double previousClose;
     public double currCarryQty;
     public double atr;
     public double currRiskPercent;
     public double currVolRiskPercent;
-    public double orderQtyPerRisk;
-    public double orderQtyPerVol;
-    public double openOrderSLPrice;
 
     public long coaOpenOrderId;
     public double coaOpenOrderPrice;
