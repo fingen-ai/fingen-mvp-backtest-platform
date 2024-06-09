@@ -76,44 +76,67 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
                 perfData.roi = (perfData.coaOpenOrderPrice - perfData.coaCloseOrderPrice) / perfData.coaOpenOrderPrice;
                 perfData.roi = roundingWithPrecision(perfData.roi, 4);
+
                 perfData.netROI += perfData.roi;
+                perfData.netROI = roundingWithPrecision(perfData.netROI, 4);
 
                 returns = ArrayUtils.add(returns, perfData.roi);
 
                 perfData.nav += perfData.roi;
+                perfData.nav = roundingWithPrecision(perfData.nav, 4);
 
                 perfReady = "Ready";
             }
 
             if(returns.length > 1) {
                 perfData.cagrPercentage = perf.getCAGRPercentage(perfData);
+                perfData.cagrPercentage = roundingWithPrecision(perfData.cagrPercentage, 4);
 
                 perfData.sharpeRatio = perf.getSharpeRatio(returns);
+                perfData.sharpeRatio = roundingWithPrecision(perfData.sharpeRatio, 4);
+
                 perfData.sortinoRatio = perf.getSortinoRatio(returns);
+                perfData.sortinoRatio = roundingWithPrecision(perfData.sortinoRatio, 4);
+
                 perfData.marRatio = perf.getMARRatio(perfData, returns);
+                perfData.marRatio = roundingWithPrecision(perfData.marRatio, 4);
 
                 System.out.println(perfData);
 
                 perfData.drawdown = perf.getDrawdown();
+                perfData.drawdown = roundingWithPrecision(perfData.drawdown, 4);
+
                 perfData.maxDrawdownPercentage = perf.getMaxDrawdownPercentage(returns);
+                perfData.maxDrawdownPercentage = roundingWithPrecision(perfData.maxDrawdownPercentage, 4);
+
                 perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
+                perfData.returnToAvgDrawdown = roundingWithPrecision(perfData.returnToAvgDrawdown, 4);
 
                 perfData.winCount = perf.getWinCount();
                 perfData.lossCount = perf.getLossCount();
 
                 perfData.winPercent = perf.getWinPercent();
+                perfData.winPercent = roundingWithPrecision(perfData.winPercent, 4);
+
                 perfData.lossPercent = perf.getLossPercent();
+                perfData.lossPercent = roundingWithPrecision(perfData.lossPercent, 4);
 
                 perfData.avgWinAmt = perf.getAvgWinAmt(perfData);
                 perfData.avgLossAmt = perf.getAvgLossAmt(perfData);
 
                 perfData.avgWinPercent = perf.getAvgWinPercent();
+                perfData.avgWinPercent = roundingWithPrecision(perfData.avgWinPercent, 4);
+
                 perfData.avgLossPercent = perf.getAvgLossPercent();
+                perfData.avgLossPercent = roundingWithPrecision(perfData.avgLossPercent, 4);
 
                 perfData.edge = perf.getEdge();
+                perfData.edge = roundingWithPrecision(perfData.edge, 4);
 
                 perfData.totalProfit = perf.getTotalProfit();
+
                 perfData.profitFactor = perf.getProfitFactor();
+                perfData.profitFactor = roundingWithPrecision(perfData.profitFactor, 4);
             }
 
             System.out.println("\n");

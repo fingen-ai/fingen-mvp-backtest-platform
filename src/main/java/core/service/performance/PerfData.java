@@ -93,7 +93,7 @@ public class PerfData extends SelfDescribingMarshallable {
     public double drawdown;
     public Object avgWinAmt;
     public Object avgLossAmt;
-    public Object avgWinPercent;
-    public Object avgLossPercent;
-    public Object edge;
+    public double avgWinPercent;
+    public double avgLossPercent;
+    public double edge;
 }
