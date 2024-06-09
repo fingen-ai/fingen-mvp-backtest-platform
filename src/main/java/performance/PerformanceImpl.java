@@ -85,12 +85,12 @@ public class PerformanceImpl implements Performance {
     }
 
     // edge related stats
-    public double getWinCount() {
+    public double getWinCount(double[] returns) {
         winCount = finMet.calculateWinCount(returns);
         return winCount;
     }
 
-    public double getLossCount() {
+    public double getLossCount(double[] returns) {
         lossCount = finMet.calculateLossCount(returns);
         return lossCount;
     }
@@ -130,8 +130,7 @@ public class PerformanceImpl implements Performance {
     }
 
     public double getEdge() {
-        // avgW% * avgW$
-        // avgL% * avgL$
+        edge = (avgWinPercentage * avgWinPercentage) - (avgLossAmount * avgWinPercentage);
         return edge;
     }
 

@@ -117,10 +117,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
                 perfData.returnToAvgDrawdown = roundingWithPrecision(perfData.returnToAvgDrawdown, 4);
 
-                System.out.println(perfData);
-
-                perfData.winCount = perf.getWinCount();
-                perfData.lossCount = perf.getLossCount();
+                perfData.winCount = perf.getWinCount(returns);
+                perfData.lossCount = perf.getLossCount(returns);
 
                 perfData.winPercent = perf.getWinPercent();
                 perfData.winPercent = roundingWithPrecision(perfData.winPercent, 4);
@@ -139,6 +137,8 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
                 perfData.edge = perf.getEdge();
                 perfData.edge = roundingWithPrecision(perfData.edge, 4);
+
+                System.out.println(perfData);
 
                 perfData.totalProfit = perf.getTotalProfit();
 

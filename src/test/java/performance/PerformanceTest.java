@@ -20,8 +20,8 @@ public class PerformanceTest {
         double returnToAvgDrawdown = performance.getReturnToAvgDrawdown();
         double marRatio = performance.getMARRatio(perfData, returns);
         double maxDrawdownPercentage = performance.getDrawdownPercentage(returns);
-        double winCount = performance.getWinCount();
-        double lossCount = performance.getLossCount();
+        double winCount = performance.getWinCount(returns);
+        double lossCount = performance.getLossCount(returns);
         double reliabilityPercentage = performance.getWinPercent();
         double totalProfit = performance.getTotalProfit();
         double profitFactor = performance.getProfitFactor();

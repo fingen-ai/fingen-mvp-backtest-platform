@@ -16,8 +16,8 @@ public interface Performance {
     double getReturnToAvgDrawdown();
     double getDrawdownPercentage(double[] returns);
 
-    double getWinCount();
-    double getLossCount();
+    double getWinCount(double[] returns);
+    double getLossCount(double[] returns);
 
     double getWinPercent();
     double getLossPercent();
