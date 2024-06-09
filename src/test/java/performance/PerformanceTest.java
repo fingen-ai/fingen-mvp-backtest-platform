@@ -19,7 +19,7 @@ public class PerformanceTest {
         double sortinoRatio = performance.getSortinoRatio(returns);
         double returnToAvgDrawdown = performance.getReturnToAvgDrawdown();
         double marRatio = performance.getMARRatio(perfData, returns);
-        double maxDrawdownPercentage = performance.getMaxDrawdownPercentage(returns);
+        double maxDrawdownPercentage = performance.getDrawdownPercentage(returns);
         double winCount = performance.getWinCount();
         double lossCount = performance.getLossCount();
         double reliabilityPercentage = performance.getWinPercent();

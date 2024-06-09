@@ -1,6 +1,5 @@
 package performance;
 
-import core.service.oems.OEMSData;
 import core.service.performance.PerfData;
 
 public interface Performance {
@@ -13,9 +12,9 @@ public interface Performance {
     double getSortinoRatio(double[] returns);
     double getMARRatio(PerfData perfData, double[] returns);
 
-    double getDrawdown();
+    double getDrawdown(double[] returns);
     double getReturnToAvgDrawdown();
-    double getMaxDrawdownPercentage(double[] returns);
+    double getDrawdownPercentage(double[] returns);
 
     double getWinCount();
     double getLossCount();
@@ -34,5 +33,4 @@ public interface Performance {
     double getAvgLossPercent();
 
     double getEdge();
-
 }

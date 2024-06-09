@@ -1,6 +1,5 @@
 package performance;
 
-import core.service.oems.OEMSData;
 import core.service.performance.PerfData;
 import performance.metrics.FinancialMetrics;
 
@@ -71,17 +70,17 @@ public class PerformanceImpl implements Performance {
     }
 
     public double getMARRatio(PerfData perfData, double[] returns) {
-        marRatio = finMet.calculateMARRatio(getCAGRPercentage(perfData), getMaxDrawdownPercentage(returns));
+        marRatio = finMet.calculateMARRatio(getCAGRPercentage(perfData), getDrawdownPercentage(returns));
         return marRatio;
     }
 
     @Override
-    public double getDrawdown() {
-        return 0;
+    public double getDrawdown(double[] returns) {
+        return finMet.calculateDrawdown(returns);
     }
 
-    public double getMaxDrawdownPercentage(double[] returns) {
-        maxDD = finMet.calculateMaximumDrawdown(returns);
+    public double getDrawdownPercentage(double[] returns) {
+        maxDD = finMet.calculateDrawdown(returns);
         return maxDD;
     }
 

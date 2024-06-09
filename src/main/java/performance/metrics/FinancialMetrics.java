@@ -8,7 +8,7 @@ public class FinancialMetrics {
     }
 
     public double calculateAnnualReturn(double positionBegValue, double positionEndValue) {
-        return (positionEndValue - positionBegValue) / positionEndValue;
+        return (positionEndValue - positionBegValue) / positionBegValue;
     }
 
     public double calculateCAGR(double initialInvestment, double finalValue, double numberOfYears) {
@@ -33,27 +33,25 @@ public class FinancialMetrics {
         return avgDrawdown;
     }
 
-    public double calculateMaximumDrawdown(double[] values) {
-        double maxDrawdown = 0;
-
-        if(values != null) {
-            // 'values' should be an array of cumulative returns or portfolio values
-            double peak = values[0];
-
-            for (double value : values) {
-                if (value > peak) {
-                    peak = value;
-                }
-                double drawdown = (peak - value) / peak;
-                if (drawdown > maxDrawdown) {
-                    maxDrawdown = drawdown;
-                }
-            }
-        } else {
-            maxDrawdown = 0;
+    public double calculateDrawdown(double[] returns) {
+        if (returns == null || returns.length == 0) {
+            return 0;
         }
 
-        return maxDrawdown;
+        double maxDrawdown = 0;
+        double peak = returns[0];
+
+        for (double value : returns) {
+            if (value > peak) {
+                peak = value;
+            }
+            double drawdown = (peak - value) / peak;
+            if (drawdown > maxDrawdown) {
+                maxDrawdown = drawdown;
+            }
+        }
+
+        return maxDrawdown * 100;  // return as a percentage
     }
 
     public double calculateMARRatio(double cagr, double maxDrawdown) {

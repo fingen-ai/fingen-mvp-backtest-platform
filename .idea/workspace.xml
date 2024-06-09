@@ -8,6 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/performance/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/Performance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/PerformanceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/performance/metrics/FinancialMetrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/performance/metrics/FinancialMetrics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/performance/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/performance/PerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/performance/metrics/FinancialMetricsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/performance/metrics/FinancialMetricsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,15 +300,7 @@
       <workItem from="1717638835710" duration="782000" />
       <workItem from="1717709190998" duration="2847000" />
       <workItem from="1717719596538" duration="29687000" />
-      <workItem from="1717863964259" duration="13432000" />
-    </task>
-    <task id="LOCAL-00161" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <option name="closed" value="true" />
-      <created>1716849645537</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1716849645539</updated>
+      <workItem from="1717863964259" duration="14966000" />
     </task>
     <task id="LOCAL-00162" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <option name="closed" value="true" />
@@ -689,7 +686,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717878616393</updated>
     </task>
-    <option name="localTasksCounter" value="210" />
+    <task id="LOCAL-00210" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717895264775</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1717895264775</updated>
+    </task>
+    <option name="localTasksCounter" value="211" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

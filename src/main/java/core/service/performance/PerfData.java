@@ -83,7 +83,7 @@ public class PerfData extends SelfDescribingMarshallable {
     public double sortinoRatio;
     public double returnToAvgDrawdown;
     public double marRatio;
-    public double maxDrawdownPercentage;
+    public double drawdownPercentage;
     public double winCount;
     public double lossCount;
     public double winPercent;

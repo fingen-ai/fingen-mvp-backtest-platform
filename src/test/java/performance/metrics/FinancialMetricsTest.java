@@ -2,7 +2,6 @@ package performance.metrics;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import performance.metrics.FinancialMetrics;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -57,9 +56,9 @@ class FinancialMetricsTest {
     }
 
     @Test
-    void testCalculateMaximumDrawdown() {
+    void testCalculateDrawdown() {
         if(drawdowns != null) {
-            double maxDrawdown = fm.calculateMaximumDrawdown(drawdowns);
+            double maxDrawdown = fm.calculateDrawdown(drawdowns);
             assertEquals(0.0455, maxDrawdown, 0.0001);
         }
     }
@@ -73,7 +72,7 @@ class FinancialMetricsTest {
     @Test
     void testCalculateMARRatio() {
         double cagr = fm.calculateCAGR(initialInvestment, finalValue, numberOfYears);
-        double maxDrawdown = fm.calculateMaximumDrawdown(drawdowns);
+        double maxDrawdown = fm.calculateDrawdown(drawdowns);
         double marRatio = fm.calculateMARRatio(cagr, maxDrawdown);
         assertEquals(0.2200000000000002, marRatio, 0.001);
     }

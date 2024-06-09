@@ -3,6 +3,7 @@ package core.service.performance;
 import core.service.oems.OEMSData;
 import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.SystemUtils;
 import performance.Performance;
 import performance.PerformanceImpl;
 
@@ -101,16 +102,22 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 perfData.marRatio = perf.getMARRatio(perfData, returns);
                 perfData.marRatio = roundingWithPrecision(perfData.marRatio, 4);
 
-                System.out.println(perfData);
-
-                perfData.drawdown = perf.getDrawdown();
+                perfData.drawdown = perf.getDrawdown(returns);
                 perfData.drawdown = roundingWithPrecision(perfData.drawdown, 4);
 
-                perfData.maxDrawdownPercentage = perf.getMaxDrawdownPercentage(returns);
-                perfData.maxDrawdownPercentage = roundingWithPrecision(perfData.maxDrawdownPercentage, 4);
+                double[] drawdowns = new double[returns.length];
+                drawdowns = ArrayUtils.add(drawdowns, perfData.drawdown);
+                if(drawdowns != null) {
+                    System.out.println("DD Array: " + drawdowns.length);
+                }
+
+                perfData.drawdownPercentage = perf.getDrawdownPercentage(returns);
+                perfData.drawdownPercentage = roundingWithPrecision(perfData.drawdownPercentage, 4);
 
                 perfData.returnToAvgDrawdown = perf.getReturnToAvgDrawdown();
                 perfData.returnToAvgDrawdown = roundingWithPrecision(perfData.returnToAvgDrawdown, 4);
+
+                System.out.println(perfData);
 
                 perfData.winCount = perf.getWinCount();
                 perfData.lossCount = perf.getLossCount();
