@@ -138,7 +138,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 perfData.edge = perf.getEdge();
                 perfData.edge = roundingWithPrecision(perfData.edge, 4);
 
-                System.out.println(perfData);
+                //System.out.println(perfData);
 
                 perfData.totalProfit = perf.getTotalProfit();
 
@@ -146,7 +146,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 perfData.profitFactor = roundingWithPrecision(perfData.profitFactor, 4);
             }
 
-            System.out.println("\n");
+            //System.out.println("\n");
 
         }
 
