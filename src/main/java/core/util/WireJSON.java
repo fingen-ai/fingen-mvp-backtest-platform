@@ -3,8 +3,8 @@ package core.util;
 import net.openhft.chronicle.bytes.Bytes;
 import net.openhft.chronicle.core.pool.ClassAliasPool;
 import net.openhft.chronicle.wire.JSONWire;
-import net.openhft.chronicle.wire.Marshallable;
 import net.openhft.chronicle.wire.Wire;
+import net.openhft.chronicle.wire.SelfDescribingMarshallable;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,39 +13,9 @@ import java.nio.file.Paths;
 
 public class WireJSON {
 
-    private static final String OUTPUT_PATH = "src/test/resources/JSON/car.json";
+    private static final String OUTPUT_PATH = "src/test/resources/JSON/data.json";
 
-    public static class Car implements Marshallable {
-        private int number;
-        private String driver;
-
-        public Car() {
-            // Default constructor needed for Marshallable
-        }
-
-        public Car(String driver, int number) {
-            this.driver = driver;
-            this.number = number;
-        }
-
-        public int getNumber() {
-            return number;
-        }
-
-        public void setNumber(int number) {
-            this.number = number;
-        }
-
-        public String getDriver() {
-            return driver;
-        }
-
-        public void setDriver(String driver) {
-            this.driver = driver;
-        }
-    }
-
-    public static void writeCarToJSON(Car car) {
+    public static void writeToJSON(SelfDescribingMarshallable dto) {
         // Create directories if they don't exist
         try {
             Files.createDirectories(Paths.get("src/test/resources/JSON"));
@@ -54,12 +24,12 @@ public class WireJSON {
             return;
         }
 
-        // Register alias
-        ClassAliasPool.CLASS_ALIASES.addAlias(Car.class);
+        // Register alias for the DTO class
+        ClassAliasPool.CLASS_ALIASES.addAlias(dto.getClass());
 
         // Create Wire object for serialization
         Wire wire = new JSONWire(Bytes.allocateElasticOnHeap());
-        wire.getValueOut().object(car);
+        wire.getValueOut().object(dto);
 
         // Write JSON to file
         try (FileWriter fileWriter = new FileWriter(OUTPUT_PATH)) {
