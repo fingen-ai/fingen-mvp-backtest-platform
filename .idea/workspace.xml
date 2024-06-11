@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/Orchestrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/util/WireJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/util/WireJSON.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +67,7 @@
     &quot;Application.OrderViewerMain.executor&quot;: &quot;Run&quot;,
     &quot;Application.ROCTest.executor&quot;: &quot;Run&quot;,
     &quot;Application.SpeculativeEdgeHMMTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.WireJSONTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ATRTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.AppendArrayTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.BRMTest.executor&quot;: &quot;Run&quot;,
@@ -294,15 +297,14 @@
       <workItem from="1717709190998" duration="2847000" />
       <workItem from="1717719596538" duration="29687000" />
       <workItem from="1717863964259" duration="17264000" />
-      <workItem from="1717910545621" duration="1732000" />
-    </task>
-    <task id="LOCAL-00166" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
-      <option name="closed" value="true" />
-      <created>1716854845306</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1716854845306</updated>
+      <workItem from="1717910545621" duration="2614000" />
+      <workItem from="1718032549483" duration="1720000" />
+      <workItem from="1718071251129" duration="6000" />
+      <workItem from="1718071266615" duration="3000" />
+      <workItem from="1718081168366" duration="652000" />
+      <workItem from="1718081971833" duration="598000" />
+      <workItem from="1718119478088" duration="9000" />
+      <workItem from="1718121870506" duration="354000" />
     </task>
     <task id="LOCAL-00167" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <option name="closed" value="true" />
@@ -688,7 +690,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717903931972</updated>
     </task>
-    <option name="localTasksCounter" value="215" />
+    <task id="LOCAL-00215" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
+      <option name="closed" value="true" />
+      <created>1717982501637</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1717982501637</updated>
+    </task>
+    <option name="localTasksCounter" value="216" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

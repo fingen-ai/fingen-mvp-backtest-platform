@@ -13,12 +13,14 @@ import java.nio.file.Paths;
 
 public class WireJSON {
 
-    private static final String OUTPUT_PATH = "src/test/resources/JSON/data.json";
+    //private static final String OUTPUT_PATH = "src/test/resources/JSON/data.json";
+    private static final String OUTPUT_PATH = "/Users/bart/IdeaProjects/json-server-api/resources/JSON/data.json";
 
     public static void writeToJSON(SelfDescribingMarshallable dto) {
         // Create directories if they don't exist
         try {
-            Files.createDirectories(Paths.get("src/test/resources/JSON"));
+            //Files.createDirectories(Paths.get("src/test/resources/JSON"));
+            Files.createDirectories(Paths.get("/Users/bart/IdeaProjects/json-server-api/resources/JSON"));
         } catch (IOException e) {
             e.printStackTrace();
             return;
