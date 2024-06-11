@@ -3,8 +3,10 @@ package core.util;
 import core.service.publisher.PublisherData;
 import core.util.wirejson.WireJSONImpl;
 
+import java.io.IOException;
+
 public class WireJSONTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Create an instance of PublisherData and populate it
         PublisherData publisherData = new PublisherData();
         publisherData.recId = 12345;

@@ -107,7 +107,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
                 double[] drawdowns = new double[returns.length];
                 drawdowns = ArrayUtils.add(drawdowns, perfData.drawdown);
                 if(drawdowns != null) {
-                    System.out.println("DD Array: " + drawdowns.length);
+                    //System.out.println("DD Array: " + drawdowns.length);
                 }
 
                 perfData.drawdownPercentage = perf.getDrawdownPercentage(returns);

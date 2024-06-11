@@ -3,6 +3,8 @@ package core.service.publisher;
 import core.util.wirejson.*;
 import publish.LandingPageData;
 
+import java.io.IOException;
+
 public class PublisherPubImpl implements PublisherPub, PublisherHandler<PublisherPub> {
 
     WireJSON wireJSON = new WireJSONImpl();
@@ -17,7 +19,7 @@ public class PublisherPubImpl implements PublisherPub, PublisherHandler<Publishe
         this.output = output;
     }
 
-    public void simpleCall(PublisherData pubData) {
+    public void simpleCall(PublisherData pubData) throws IOException {
         pubData.svcStartTs = System.nanoTime();
 
         landingPageData.avgLossAmt = pubData.avgLossAmt;
@@ -31,7 +33,7 @@ public class PublisherPubImpl implements PublisherPub, PublisherHandler<Publishe
         pubData.svcStopTs = System.nanoTime();
         pubData.svcLatency = pubData.svcStopTs - pubData.svcStartTs;
 
-        System.out.println("PUBLISHER: " + pubData);
+        //System.out.println("PUBLISHER: " + pubData);
         System.out.println("\n");
 
         output.simpleCall(pubData);
