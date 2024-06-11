@@ -1,9 +1,8 @@
 package core.service.performance;
 
-import core.service.oems.OEMSData;
+import core.service.oems.pubData;
 import oems.map.OrderMappingService;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.SystemUtils;
 import performance.Performance;
 import performance.PerformanceImpl;
 
@@ -48,7 +47,7 @@ public class PerfPubImpl implements PerfPub, PerfHandler<PerfPub> {
 
             for(int i=0; i < coaArray.length; i++) {
 
-                OEMSData coaOEMS = orderMS.getCOA(coaArray[i]);
+                pubData coaOEMS = orderMS.getCOA(coaArray[i]);
 
                 perfData.symbol = coaOEMS.symbol;
                 perfData.coaOpenOrderId = coaOEMS.coaOpenOrderId;

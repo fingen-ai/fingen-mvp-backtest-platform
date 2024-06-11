@@ -2,7 +2,7 @@ package core.service.oems;
 
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
 
-public class OEMSData extends SelfDescribingMarshallable {
+public class pubData extends SelfDescribingMarshallable {
     // Price data
     public long recId;
     public double marketCap;

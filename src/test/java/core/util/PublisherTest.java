@@ -20,13 +20,13 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PerformanceTest {
+public class PublisherTest {
 
     OrderMappingService orderMS = new OrderMappingService();
 
     int recCount = 0;
 
-    public PerformanceTest() throws IOException {
+    public PublisherTest() throws IOException {
     }
 
     @Before
@@ -50,18 +50,18 @@ public class PerformanceTest {
         Thread.sleep(5000); // Adjust time as needed based on your system's performance
 
         // Read all data from the queues
-        List<pubData> oemsDataList = readAllDataFromQueue("oemsQ", pubData.class);
         List<PerfData> perfDataList = readAllDataFromQueue("perfQ", PerfData.class);
+        List<pubData> pubDataList = readAllDataFromQueue("pubQ", pubData.class);
 
         // Assume equal number of records in both queues for simplicity
-        assertEquals("Mismatch in number of records", oemsDataList.size(), perfDataList.size());
+        assertEquals("Mismatch in number of records", pubDataList.size(), perfDataList.size());
 
         // Validate each record pair
-        for (int i = 0; i < oemsDataList.size(); i++) {
+        for (int i = 0; i < perfDataList.size(); i++) {
             PerfData actualPerfData = perfDataList.get(i);
-            pubData actualOEMSData = oemsDataList.get(i);
-            if (actualPerfData.recId == actualOEMSData.recId) {
-                validateDTOAndQueuesIntegration(actualOEMSData, actualPerfData);
+            pubData actualPubData = pubDataList.get(i);
+            if (actualPerfData.recId == actualPubData.recId) {
+                validateDTOAndQueuesIntegration(actualPerfData, actualPubData);
             }
         }
     }
@@ -87,7 +87,7 @@ public class PerformanceTest {
     }
 
     // Validate data from strategy service matches data passed to insight service
-    private void validateDTOAndQueuesIntegration(pubData expected, PerfData actual) {
+    private void validateDTOAndQueuesIntegration(PerfData actual, pubData expected) {
         // Price data, sans start, stop, and latency, being diff. services and all ;)
         assertEquals("Mismatch in some Price field", expected.recId, actual.recId);
         assertEquals("Mismatch in some Price field", expected.start, actual.start);
@@ -108,7 +108,7 @@ public class PerformanceTest {
         assertEquals("Mismatch in some Insight field", expected.previousClose, actual.previousClose, 0.0);
         assertEquals("Mismatch in some Insight field", expected.atr, actual.atr, 0.0);
 
-        // performance report data - tearsheet, landing & blog pages.
+        // publisher bdd
 
         recCount++;
 

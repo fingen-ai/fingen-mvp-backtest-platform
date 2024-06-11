@@ -12,8 +12,8 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
 
     int recCount = 0;
 
-    OEMSData nosOEMSData = new OEMSData();
-    OEMSData coaOEMSData = new OEMSData();
+    pubData nosOEMSData = new pubData();
+    pubData coaOEMSData = new pubData();
     AccountData accountData = new AccountData();
 
     Risk risk = new RiskImpl();
@@ -39,7 +39,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         this.output = output;
     }
 
-    public void simpleCall(OEMSData oemsData) throws IOException {
+    public void simpleCall(pubData oemsData) throws IOException {
         oemsData.svcStartTs = System.nanoTime();
 
         oemsData.prevBassoOrderIdea = prevBassoOrderIdea;
@@ -104,7 +104,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         output.simpleCall(oemsData);
     }
 
-    private void placeNosInitOrder(OEMSData oemsData) {
+    private void placeNosInitOrder(pubData oemsData) {
 
         getInitCurrRiskVolOrderQty(oemsData);
 
@@ -119,7 +119,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         orderMS.addToNOSIDArray(oemsData.symbol, updateOpenOrdersIDArray);
     }
 
-    private void placeNosOngoingOrder(OEMSData oemsData) {
+    private void placeNosOngoingOrder(pubData oemsData) {
 
         getOngoingCurrRiskVolOrderQty(oemsData);
 
@@ -163,7 +163,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void placeCoaOrder(OEMSData oemsData) {
+    private void placeCoaOrder(pubData oemsData) {
 
         closeOrdersIDArray = orderMS.getFromCOAIDArray(oemsData.symbol);
 
@@ -225,7 +225,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
      * The trailing stop can only get closer to the current market price, not further away.
      * @param oemsData
      */
-    private void getStopLoss(OEMSData oemsData) {
+    private void getStopLoss(pubData oemsData) {
         if(oemsData.openOrderSide.equals("Buy")) {
             oemsData.openOrderSLPrice = oemsData.close - (oemsData.atr * 3);
             oemsData.openOrderSLPrice = roundingWithPrecision(oemsData.openOrderSLPrice, 5);
@@ -235,7 +235,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void getOngoingCurrRiskVolOrderQty(OEMSData oemsData) {
+    private void getOngoingCurrRiskVolOrderQty(pubData oemsData) {
 
         riskPercentAvail = 0;
         volRiskPercentAvail = 0;
@@ -291,7 +291,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         }
     }
 
-    private void getInitCurrRiskVolOrderQty(OEMSData oemsData) {
+    private void getInitCurrRiskVolOrderQty(pubData oemsData) {
 
         openOrdersIDArray = null;
         updateOpenOrdersIDArray = null;
@@ -316,7 +316,7 @@ public class OEMSPubImpl implements OEMSPub, OEMSHandler<OEMSPub> {
         return Math.round(value * scale) / scale;
     }
 
-    private void getAllRecCount(OEMSData oemsData) {
+    private void getAllRecCount(pubData oemsData) {
         long[] coaArray = orderMS.getFromCOAIDArray(oemsData.symbol);
         long[] nosArray = orderMS.getFromNOSIDArray(oemsData.symbol);
         if(coaArray != null) {

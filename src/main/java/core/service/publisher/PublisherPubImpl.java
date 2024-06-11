@@ -1,11 +1,13 @@
 package core.service.publisher;
 
+import core.util.wirejson.*;
+import publish.LandingPageData;
 
 public class PublisherPubImpl implements PublisherPub, PublisherHandler<PublisherPub> {
 
-    private PublisherData publisherDataALL = new PublisherData();
+    WireJSON wireJSON = new WireJSONImpl();
 
-    int counter = 0;
+    LandingPageData landingPageData = new LandingPageData();
 
     private PublisherPub output;
 
@@ -15,14 +17,23 @@ public class PublisherPubImpl implements PublisherPub, PublisherHandler<Publishe
         this.output = output;
     }
 
-    public void simpleCall(PublisherData publisherData) {
-        publisherData.svcStartTs = System.nanoTime();
-        publisherData.svcStopTs = System.nanoTime();
-        publisherData.svcLatency = publisherData.svcStopTs - publisherData.svcStartTs;
+    public void simpleCall(PublisherData pubData) {
+        pubData.svcStartTs = System.nanoTime();
 
-        System.out.println("PUBLISHER: " + publisherData);
+        landingPageData.avgLossAmt = pubData.avgLossAmt;
+        landingPageData.avgWinAmt = pubData.avgWinAmt;
+        landingPageData.avgLossPercent = pubData.avgLossPercent;
+        landingPageData.avgWinPercent = pubData.avgWinPercent;
+        landingPageData.edge = pubData.edge;
+
+        wireJSON.wireLandingPageJSON(landingPageData);
+
+        pubData.svcStopTs = System.nanoTime();
+        pubData.svcLatency = pubData.svcStopTs - pubData.svcStartTs;
+
+        System.out.println("PUBLISHER: " + pubData);
         System.out.println("\n");
 
-        output.simpleCall(publisherData);
+        output.simpleCall(pubData);
     }
 }

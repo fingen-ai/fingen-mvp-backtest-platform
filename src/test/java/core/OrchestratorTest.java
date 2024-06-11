@@ -2,6 +2,7 @@ package core;
 
 import core.service.Orchestrator;
 import core.service.insight.InsightData;
+import core.service.oems.pubData;
 import core.service.ops.OpsData;
 import core.service.performance.PerfData;
 import core.service.price.PriceData;
@@ -37,7 +38,7 @@ public class OrchestratorTest {
         PriceData expectedPriceData = new PriceData();
         StrategySData expectedStrategyData = new StrategySData();
         InsightData expectedInsightData = new InsightData();
-        core.service.oems.OEMSData expectedOEMSData = new core.service.oems.OEMSData();
+        pubData expectedOEMSData = new pubData();
         PerfData expectedPerfData = new PerfData();
         PublisherData expectedPubData = new PublisherData();
         OpsData expectedOpsData = new OpsData();
@@ -67,7 +68,7 @@ public class OrchestratorTest {
         PriceData actualPriceData = readDataFromQueue("priceQ", PriceData.class);
         StrategySData actualStrategyData = readDataFromQueue("stratQ", StrategySData.class);
         InsightData actualInsightData = readDataFromQueue("insightQ", InsightData.class);
-        core.service.oems.OEMSData actualOEMSData = readDataFromQueue("oemsQ", core.service.oems.OEMSData.class);
+        pubData actualOEMSData = readDataFromQueue("oemsQ", pubData.class);
         PerfData actualPerfData = readDataFromQueue("perfQ", PerfData.class);
         PublisherData actualPubData = readDataFromQueue("pubQ", PublisherData.class);
         OpsData actualOpsData = readDataFromQueue("opsQ", OpsData.class);
@@ -149,7 +150,7 @@ public class OrchestratorTest {
         assertEquals("Mismatch in some Insight field", expected.svcLatency, actual.svcLatency, 0.001);
     }
 
-    private void validateOEMSData(core.service.oems.OEMSData expected, core.service.oems.OEMSData actual) {
+    private void validateOEMSData(pubData expected, pubData actual) {
         assertEquals("Mismatch in some OEMS field", expected.start, actual.start);
         assertEquals("Mismatch in some OEMS field", expected.recId, actual.recId, 0.001);
         assertEquals("Mismatch in some OEMS field", expected.start, actual.start);

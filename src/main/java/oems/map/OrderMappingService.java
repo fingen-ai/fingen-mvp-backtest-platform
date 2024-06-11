@@ -1,6 +1,6 @@
 package oems.map;
 
-import core.service.oems.OEMSData;
+import core.service.oems.pubData;
 import net.openhft.chronicle.map.ChronicleMap;
 
 import java.io.File;
@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class OrderMappingService {
     private ChronicleMap<String, long[]> nosIDArrayMap;
-    public ChronicleMap<Long, OEMSData> nosMap;
+    public ChronicleMap<Long, pubData> nosMap;
     private ChronicleMap<String, long[]> coaIDArrayMap;
-    public ChronicleMap<Long, OEMSData> cosMap;
+    public ChronicleMap<Long, pubData> cosMap;
     public static final String MAP_DIRECTORY = System.getProperty("user.home") + "/FinGen/Maps/OMS/Orders/";
 
     public OrderMappingService() throws IOException {
@@ -32,7 +32,7 @@ public class OrderMappingService {
                 .createPersistedTo(new File(MAP_DIRECTORY + "nosIDArray.dat")); // Specific file for this map
 
         nosMap = ChronicleMap
-                .of(Long.class, OEMSData.class)
+                .of(Long.class, pubData.class)
                 .name("nos-map")
                 .averageValueSize(256) // Estimated average serialized size of OEMSData
                 .entries(10_000)
@@ -47,7 +47,7 @@ public class OrderMappingService {
                 .createPersistedTo(new File(MAP_DIRECTORY + "coaIDArray.dat")); // Specific file for this map
 
         cosMap = ChronicleMap
-                .of(Long.class, OEMSData.class)
+                .of(Long.class, pubData.class)
                 .name("coa-map")
                 .averageValueSize(256) // Estimated average serialized size of OEMSData
                 .entries(10_000)
@@ -76,27 +76,27 @@ public class OrderMappingService {
     }
 
     // DTO REC MGT
-    public void addUpdateNOS(long orderId, OEMSData newData) {
+    public void addUpdateNOS(long orderId, pubData newData) {
         nosMap.put(orderId, newData);
     }
 
-    public OEMSData getNOS(long orderId) {
+    public pubData getNOS(long orderId) {
         return nosMap.get(orderId);
     }
 
-    public void deleteNOS(OEMSData newData) {
+    public void deleteNOS(pubData newData) {
         nosMap.remove(newData.openOrderId);
     }
 
-    public void addUpdateCOA(long orderId, OEMSData newData) {
+    public void addUpdateCOA(long orderId, pubData newData) {
         cosMap.put(orderId, newData);
     }
 
-    public OEMSData getCOA(long orderId) {
+    public pubData getCOA(long orderId) {
         return cosMap.get(orderId);
     }
 
-    public void deleteCOA(OEMSData newData) {
+    public void deleteCOA(pubData newData) {
         cosMap.remove(newData.openOrderId);
     }
 

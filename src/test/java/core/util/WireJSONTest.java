@@ -1,6 +1,7 @@
 package core.util;
 
 import core.service.publisher.PublisherData;
+import core.util.wirejson.WireJSONImpl;
 
 public class WireJSONTest {
     public static void main(String[] args) {
@@ -14,6 +15,6 @@ public class WireJSONTest {
         // ... populate other fields ...
 
         // Write the DTO to JSON
-        WireJSON.writeToJSON(publisherData);
+        WireJSONImpl.writeToJSON(publisherData);
     }
 }

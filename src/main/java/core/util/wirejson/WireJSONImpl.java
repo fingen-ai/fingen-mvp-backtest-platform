@@ -1,20 +1,27 @@
-package core.util;
+package core.util.wirejson;
 
+import core.service.publisher.PublisherData;
 import net.openhft.chronicle.bytes.Bytes;
 import net.openhft.chronicle.core.pool.ClassAliasPool;
 import net.openhft.chronicle.wire.JSONWire;
 import net.openhft.chronicle.wire.Wire;
 import net.openhft.chronicle.wire.SelfDescribingMarshallable;
+import publish.LandingPageData;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class WireJSON {
+public class WireJSONImpl implements WireJSON {
 
     //private static final String OUTPUT_PATH = "src/test/resources/JSON/data.json";
-    private static final String OUTPUT_PATH = "/Users/bart/IdeaProjects/json-server-api/resources/JSON/data.json";
+    private static final String OUTPUT_PATH = "/Users/bart/IdeaProjects/json-server-api/resources/JSON/landingPage.json";
+
+    @Override
+    public void wireLandingPageJSON(LandingPageData landingPageData) {
+        writeToJSON(landingPageData);
+    }
 
     public static void writeToJSON(SelfDescribingMarshallable dto) {
         // Create directories if they don't exist
