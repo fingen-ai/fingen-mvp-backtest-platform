@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f95f39d-a632-4a79-a1c7-2065983d32d2" name="Changes" comment="PERF - WIP&#10;PUB - WIP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/performance/PerfPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/publisher/PublisherPubImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/util/wirejson/WireJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/util/wirejson/WireJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/util/wirejson/WireJSONImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/util/wirejson/WireJSONImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/util/WireJSONTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/util/WireJSONTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,6 +306,7 @@
       <workItem from="1718121870506" duration="2511000" />
       <workItem from="1718125803596" duration="1270000" />
       <workItem from="1718127082916" duration="969000" />
+      <workItem from="1718288491794" duration="586000" />
     </task>
     <task id="LOCAL-00169" summary="PERF - WIP&#10;Test integration of queues.&#10;Test performance reporting completeness. Perf-metrics unit testing in-place, already.">
       <option name="closed" value="true" />
